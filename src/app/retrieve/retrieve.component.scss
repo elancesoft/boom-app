@@ -1,0 +1,28 @@
+.container {
+  margin-top: 100px !important;
+  @media screen and (max-width: 1024px){
+    .loader{
+      .loadingTitle{
+        font-size: 25px;
+      }
+      .loadingNumber{
+        font-size: 30px;
+      }
+    }
+  }
+  .retrievePage {
+    margin-bottom: 50px;
+
+    .row {
+      .offset-md-3 {
+        margin-top: 30px;
+      }
+      input[type=text], input[type=date], input[type=email] {
+        background-color: lightgray !important;
+        border-radius: 10px !important;
+        border: 1px solid lightgray !important;
+        text-indent: 10px !important;
+      }
+    }
+  }
+}

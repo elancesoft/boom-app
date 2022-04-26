@@ -1,0 +1,51 @@
+<div class="container-fluid card card-body">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 demo-price-container">
+      <div class="pt-5 mobile-padding d-none">
+        <div class="address-header">
+          <span class="address-text font-weight-normal h3" [ngClass]="commonService.isMobileMode() ? 'd-none' : ''">{{ formattedAddress }}</span>
+        </div>
+      </div>
+
+
+      <div class="phase2PriceHeader">
+        <div class="innerText">
+          <h4>Quick Price Estimate:</h4>
+          <p>After running your house through multiple carriers and getting <strong>18 prices</strong> , we found that this price below is attainable with strong coverage.</p>
+        </div>
+        <div class="redCricelWithPrice">
+          <img src="../../../assets/house2.svg" alt="home data" />
+          <div class="fc-price-mo-yr">
+            <div class="fc-moyr-wrap">
+              <span class="fc_price-wrap">
+                <p class="fc-price-estimate fc-price-month">{{ fcManipulatedSecondLowestPrice / 12 | currency: "USD":"symbol":"1.0-0" }}</p>
+                <p class="fc-price-estimate fc-price-year">{{ fcManipulatedSecondLowestPrice | currency: "USD":"symbol":"1.0-0" }}</p>
+              </span>
+              <span class="fc_date-wrap">
+                <span class="fc-mo-price price-active" id="monthTog" (click)="toggleMonthYear(true)">mo</span>
+                <span class="fc-yr-price" id="yearTog" (click)="toggleMonthYear(false)">yr</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-100 mt-5" style="max-width: 300px; margin: auto">
+        <p class="font-weight-light mb-0">1 of 7</p>
+      </div>
+      <div class="button-groups d-flex mx-auto row fc-bg-btm-buttons">
+        <div class="col-md-12 d-flex button-wrap px-0">
+          <button class="w-100 my-0 btn cmpltBtn btn-white font-weight-bold mx-0 d-flex justify-content-between" (click)="goToThreeStep()">
+            Complete Your Quote
+            <mdb-icon fas icon="arrow-right" class="customIcon"></mdb-icon>
+          </button>
+        </div>
+        <div class="col-md-12 button-wrap px-0 d-md-flex d-none mt-3">
+          <button class="w-100 my-0 btn btn-primary font-weight-bold mx-0 d-flex justify-content-between text-dark" (click)="chartModelBackdrop()" data-toggle="modal" data-target="#detailsModal">
+            See All Info
+            <img src="/assets/images/icons/list.svg" class="customIcon" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

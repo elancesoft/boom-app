@@ -1,0 +1,84 @@
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_27 valign=middle colspan="2"
+            style=font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;>
+          <h2 style="text-align: center;">Your homeowners insurance estimate is attached here.</h2>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_27 valign=middle colspan="2"
+            style=font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;>
+          <img src="https://boom.insure/assets/images/range_new.png"
+               style="width: 75px; margin-left: 40%;margin-bottom: 15px;">
+
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style="padding:0 0 27px;">
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_26 width=40 valign=middle>
+        </td>
+        <td mc:edit=block_27 valign=middle
+            style=font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;>
+            <b>Price</b>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style="padding:0 0 27px;">
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+            <b style="color:#58575A">call agent now:</b> <div style="font:20px/24px Verdana, Geneva, sans-serif; color:#ff0000; font-weight: bold;">+1 {{ support_phone }}</div>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style="padding:0 0 27px;">
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+            <b style="color:#58575A">email agent:</b> <div style="font:20px/24px Verdana, Geneva, sans-serif; color:#ff0000; font-weight: bold">PETE@BOOMCOVERED.COM</div>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_27 valign=middle colspan="2"
+            style=font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;>
+          <a href="https://boom.insure"
+             style="text-align: center; color: #2e353b; font: 15px Verdana, Geneva, sans-serif;color: #2e353b;
+    height: 35px !important;width: 80%;margin-left: 10%;margin-top: 20px;padding-top: 10px;display: block;background: #ed1c24 !important;
+    text-decoration: none;color:white !important;" target="_blank">
+            Continue your quote here. </a>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

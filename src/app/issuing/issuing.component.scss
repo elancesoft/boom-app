@@ -1,0 +1,436 @@
+@import '../../assets/styles/variables';
+
+.form-row {
+
+  display: flex;
+  justify-content: center;
+
+  //===================================
+  // +++ Start New front page styles +++
+  //===================================
+
+  // removes mdb default down caret
+  .dropdown-toggle:after {
+    display: none;
+  }
+
+  #jumbo-div{
+    text-align: center;
+    margin-top: 0 !important;
+    font-family: arial;
+
+    .jumbo-h1{
+      font-weight: 900;
+      // 99px is about equal to 6.05em
+      font-size: 55px;
+      // font-size: 6.05em;
+      letter-spacing: 5px;
+      font-family: "Arial Rounded MT Bold";
+    }
+
+    .jumbo-p{
+      color: gray;
+      letter-spacing: 4px;
+      font-size: 18px;
+      margin-bottom: 75px;;
+    }
+
+    @media screen and (max-width: 1026px) {
+      .jumbo-h1 {
+        font-size: 50px !important;
+      }
+    }
+    @media screen and (max-width: 991px) {
+      .jumbo-h1 {
+        font-size: 46px !important;
+      }
+    }
+    @media screen and (max-width: 519px) {
+      .jumbo-h1 {
+        letter-spacing: 1px;
+      }
+    }
+    @media screen and (max-width: 478px) {
+      .jumbo-h1 {
+        letter-spacing: normal;
+        font-size: 38px !important;
+      }
+    }
+    @media screen and (max-width: 466px) {
+      .jumbo-h1 {
+        font-size: 38px !important;
+      }
+    }
+    @media screen and (max-width: 403px) {
+      .jumbo-h1 {
+        font-size: 36px !important;
+      }
+    }
+    @media screen and (max-width: 383px) {
+      .jumbo-h1 {
+        font-size: 32px !important;
+      }
+    }
+    @media screen and (max-width: 365px) {
+      .jumbo-h1 {
+        font-size: 32px !important;
+      }
+    }
+    @media screen and (max-width: 355px) {
+      .jumbo-h1 {
+        font-size: 32px !important;
+      }
+    }
+  }
+
+  #dropdown-btn{
+    width: 100%;
+    height: 80px;
+    padding: 2px 2px 2px 2px !important;
+    color: #000 !important;
+    border: 1px solid #ccc;
+    font-family: arial;
+    display: block;
+    align-items: center;
+    border-radius: 0px 10px 10px 0px !important;
+    .home-img{
+      width: 40px;
+      display: inline;
+    }
+
+    .home-txt {
+      text-transform: lowercase;
+      display: inline;
+      font-family: "Arial Rounded MT Bold";
+      font-weight: bolder;
+      font-size: 44px;
+      margin-right: 100px;
+      margin-bottom: 0 !important;
+      color: #000;
+    }
+
+    .home-checkbox-container {
+      display: inline;
+      position: relative;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    .home-checkbox-container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .home-checkmark {
+      position: absolute;
+      top: -3px;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .home-checkbox-container:hover input ~ .home-checkmark {
+      background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .home-checkbox-container input:checked ~ .home-checkmark {
+      background-color: #EA0A3F;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .home-checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .home-checkbox-container input:checked ~ .home-checkmark:after {
+      display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .home-checkbox-container .home-checkmark:after {
+      left: 9px;
+      top: 3px;
+      width: 8px;
+      height: 14px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    .dropDownCaretContainer {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+
+      .select-txt {
+        margin: 0;
+        font-size: .6em;
+        font-weight: bolder;
+      }
+
+      .caretIcon {
+      }
+
+      .caretIcon:before {
+        font-size: 40px;
+        line-height: 14px;
+      }
+    }
+  }
+
+  #dropdown-btn:hover{
+    background-color: $primary-color;
+    .home-txt {
+      color: #FCFDFF !important;
+    }
+
+    .dropDownCaretContainer {
+      color: #FCFDFF !important;
+    }
+  }
+
+  #jumbo-dropdown-menu{
+    width: 100%;
+    // margin: 0 .375rem !important;
+   //  margin-top: 30px;
+
+    .jumbo-option{
+      font-weight: bold;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .jumbo-option.selected{
+      background-color: $primary-color !important;
+    }
+    .jumbo-option:hover {
+      border-radius: 10px;
+      background-color: $primary-color !important;
+      color: #FCFDFF;
+    }
+
+    .jumbo-dropdown-text{
+      text-transform: lowercase;
+      display: inline;
+      font-family: "Arial Rounded MT Bold";
+      font-weight: bolder;
+      font-size: 44px;
+    }
+
+    .jumbo-option-divider-div{
+      border-bottom: 1px solid lightgray;
+      width: 100%;
+      margin: auto;
+      margin: 15px 0px 10px 0px;
+    }
+
+    .jumbo-option-last-item{
+      margin: 15px 0px 0px 0px;
+    }
+
+    .option-checkbox{
+      width: 30px;
+      height: 15px;
+    }
+
+    .checkbox-container {
+      display: inline;
+      position: relative;
+      padding-right: 175px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    .checkbox-container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+      top: -3px;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .checkbox-container:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .checkbox-container input:checked ~ .checkmark {
+      background-color: #EA0A3F;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .checkbox-container input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .checkbox-container .checkmark:after {
+      left: 9px;
+      top: 3px;
+      width: 8px;
+      height: 14px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+
+  // === Media Queries Start ===
+
+  @media screen and (max-width: 560px) {
+    #dropdown-btn{
+      width: 100% !important;
+
+      .home-txt {
+        margin-right: 25px !important;
+      }
+    }
+
+    #jumbo-dropdown-menu{
+      width: 100% !important;
+
+      .checkbox-container {
+        padding-right: 90px !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 441px) {
+    #jumbo-div{
+      padding: 0 !important;
+
+      .jumbo-p{
+        margin-bottom: 30px;
+        letter-spacing: normal;
+      }
+    }
+
+    #dropdown-btn{
+      height: 80px;
+      width: 100% !important;
+      // padding-left: 20px;
+      // padding-right: 20px;
+
+      .home-txt {
+        margin-right: 15px !important;
+        font-size: 34px;
+      }
+    }
+
+    #jumbo-dropdown-menu{
+      width: 100% !important;
+
+      .jumbo-dropdown-text {
+        font-size: 34px !important;
+      }
+      .checkbox-container {
+        padding-right: 60px !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+
+      #dropdown-btn{
+        width: 100% !important;
+       // padding: 5px 15px 5px 15px !important;
+
+        .home-txt {
+          margin-right: 10px !important;
+          font-size: 30px;
+        }
+
+        .dropDownCaretContainer {
+          width: 60px;
+
+          .select-txt {
+            margin: 0;
+            font-size: 8px!important;
+            font-weight: bolder;
+          }
+        }
+      }
+
+      #jumbo-dropdown-menu{
+        width: 100% !important;
+
+        .jumbo-dropdown-text {
+          font-size: 30px !important;
+        }
+        .checkbox-container {
+          padding-right: 50px !important;
+        }
+      }
+    }
+
+  // === Media Queries End ===
+
+}
+
+:host ::ng-deep .dropdown-menu {
+    min-width: 5rem;
+    text-align: center;
+    margin: 2em 0.15em 0.2em 0em;
+    margin-left: -0.325rem;
+}
+
+:host ::ng-deep .form-row {
+  display: block;
+}
+
+:host ::ng-deep .btn {
+  margin: 0rem;
+}
+
+.btn .fa-2x, .btn-floating .fa-2x {
+  font-size: 2em!important;
+  margin-top: -10px !important;
+}
+  //===================================
+  // +++ End New front page styles +++
+  //===================================

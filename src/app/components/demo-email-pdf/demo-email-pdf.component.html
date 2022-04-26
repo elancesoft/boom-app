@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row pb-5">
+    <div class="col-6 text-right pr-5">
+      <img src="../../../assets/images/preview.png" height="220" />
+    </div>
+    <div class="col-6">
+      <p class="title text-pink" style="font-family: AllerDisplay, sans-serif;">Email PDF</p>
+      <form>
+        <div class="md-form">
+          <input mdbInput mdbValidate type="email" class="form-control pr-0 rounded-0 emailInput mb-5"
+                 [(ngModel)]="demoEmailAddr" #input="ngModel" required pattern="[^ @]*@[^ @]*" id="form8"
+                 placeholder="Send to:"
+                 name="input" style="max-width: 300px; border: 1px solid #ced4da !important;">
+          <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)">Email is invalid</mdb-error>
+          <mdb-success *ngIf="input.valid && (input.dirty || input.touched)">Email is valid</mdb-success>
+        </div>
+      </form>
+
+      <button type="button" mdbBtn color="primary" size="sm"
+              class="btn btn-block relative waves-light text-white modal-send-btn"
+              style="border-radius: 3px !important; font-size: 1.2rem; width: 140px; background-color: #34C07D; text-transform: none"
+              (click)="sendDemoEmailFunc()" mdbWavesEffect>Send
+      </button>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,369 @@
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_27 valign=middle colspan="2"
+            style=font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;>
+          <h2 style="text-align: center;">This user has agreed to issue a policy. </h2>
+          <h2 style="text-align: center;">The policy is not issued yet. </h2>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_27 valign=middle colspan="2"
+            style=font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;>
+          <img src="https://boom.insure/assets/images/demo-price/range_new.png" width="100px"
+               style="width: 50px; margin-left: 45%;margin-bottom: 25px;">
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <h3>Basic Coverage</h3>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <h3>Extra Coverage</h3>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <h3>Applicant Details</h3>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Name : </b> <span>{{ name }}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Date of Birth : </b> <span>{{ dob }}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Email : </b> <span>{{ email }}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Phone : </b> <span>{{ phone }}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+ {# {% for person in personData %}
+<tr mc:repeatable="item">
+  <td style="padding:0 0 10px;">
+	<table width="100%" cellpadding="0" cellspacing="0">
+	  <tr>
+		<td mc:edit="block_27" valign="top"
+			style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+		  <b style="margin-left:10px;">Person {{ loop.index }}:</b> <span
+			style="float: right;">
+			{{ person['first_name']+ ' ' + person['last_name'] + ' ' + person['dob'] }}</span>
+		</td>
+	  </tr>
+	</table>
+  </td>
+</tr>
+{% endfor %} #}
+
+
+{% for relation in relations %}
+<tr mc:repeatable="item">
+  <td style="padding:0 0 10px;">
+	<table width="100%" cellpadding="0" cellspacing="0">
+	  <tr>
+		<td mc:edit="block_27" valign="top"
+			style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+		  <b style="margin-left:10px;">Relation {{ loop.index }}:</b> <span
+			style="float: right;">
+			{{ relation['firstName']+ ' ' + relation['lastName'] + ' ' + relation['dob'] + ' ' + relation['relation'] }}</span>
+		</td>
+	  </tr>
+	</table>
+  </td>
+</tr>
+{% endfor %}
+
+
+
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <h3>Property Details</h3>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Year Built: </b> <span>{{built_year}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Square Feet: </b> <span>{{square}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Home Type: </b> <span>{{HomeType}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Roof Shape: </b> <span>{{RoofShape}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Roof Type: </b> <span>{{RoofType}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Foundation: </b> <span>{{foundation}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Construction Type: </b> <span> {{construction_type}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Exterior: </b> <span>{{exterior_type}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Roof Year: </b> <span>{{roof_year}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>A/C: </b> <span>{{ac_year}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Electric: </b> <span>{{electric_year}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Plumbing: </b> <span>{{plumbing_year}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

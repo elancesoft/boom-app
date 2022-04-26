@@ -1,0 +1,147 @@
+.batch-page.bulk-area div.button {
+  font-size: 1.2rem;
+}
+.batch-page {
+  margin-top: 20px;
+
+  input[type="file"] {
+    display: none;
+  }
+
+  .custom-file-upload {
+    display: flex;
+    padding: 18px 73px;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .success-message {
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 5px;
+  }
+
+  .button {
+    background: #f2f2f2;
+    padding: 5px 31px;
+    margin-right: 3rem;
+    width: 218px;
+    height: 65px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+  }
+
+
+  .input-wrapper input{
+    background: #f2f2f2;
+    padding: 5px 31px;
+    margin-right: 3rem;
+    width: 218px;
+    height: 65px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button {
+    img {
+      padding-right: 15px;
+    }
+  }
+
+  .welcome-img {
+    margin-top: 3rem;
+  }
+
+  .input-wrapper {
+    border: 1px solid;
+    border-width: 1px 0;
+    padding: 50px 0;
+    margin: 50px 0;
+
+    div {
+      display: inline-block;
+
+      .input {
+        background: #f2f2f2;
+        padding: 5px 31px;
+
+        border: none;
+        border-radius: 0 !important;
+        width: 314px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  .button.done {
+    background: #68D7E5 !important;
+    color: #fff;
+    flex-direction: column;
+  }
+
+  div > input {
+    margin: 0px 5px 0px 5px !important;
+  }
+}
+
+/*toast services*/
+.toast.show {
+  display: block;
+  opacity: 1;
+}
+
+.toast {
+  min-width: 420px;
+  overflow: hidden;
+  font-size: .875rem;
+  background-clip: padding-box;
+ // border: 1px solid rgba(0,0,0,.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  border-radius: .25rem;
+  position: absolute;
+  bottom: 0px;
+  right: 5px;
+}
+.text-white {
+  color: #fff!important;
+}
+.bg-info {
+  background-color: #39c0ed!important;
+}
+.bg-success {
+  background-color: #34C07D!important;
+}
+.fade {
+  -webkit-transition: opacity 1.15s linear;
+  transition: opacity 1.15s linear;
+}
+
+.fade-success {
+  -webkit-transition: opacity 5.15s linear;
+  transition: opacity 5.15s linear;
+}
+
+.toast-header-show {
+   span {
+     float:right;
+   }
+   border-bottom: solid 2px;
+  }
+
+.toast-body{
+ padding: 20px;
+}
+:host ::ng-deep .spinner-grow {
+  margin: 5px;
+    width: 0.75rem;
+    height: 0.75rem;
+    float: right;
+    -webkit-animation: spinner-grow .75s linear infinite;
+    animation: spinner-grow 1.25s linear infinite;
+}

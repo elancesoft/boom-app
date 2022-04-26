@@ -1,0 +1,13 @@
+<div class="container batch-page">
+    <div class="row">
+        <div class="col"> <label>User Email</label> <input type="email" class="input" required placeholder=""
+                name="user_email" [(ngModel)]="user.user_email"> </div>
+    </div>
+    <div class="row pt-3">
+        <div class="col"> <label>Partnership Code</label> <input type="text" class="input" required placeholder=""
+                name="code" [(ngModel)]="user.code"> </div>
+    </div> <button (click)="saveUser()" class="btn btn-success">Add</button>
+    <div class="mt-5" *ngIf="submitted">
+        <h4>You submitted successfully!</h4> <button (click)="newUser()" class="btn btn-success">Add</button>
+    </div>
+</div>

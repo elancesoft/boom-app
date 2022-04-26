@@ -1,0 +1,84 @@
+@import '../../assets/styles/variables';
+
+.container {
+  padding-bottom: 50px;
+
+  #firstname.ng-dirty, #lastname.ng-dirty, input[type=date].ng-dirty, #email.ng-dirty, #phone.ng-dirty {
+    background-color: $primary-color !important;
+    border-radius: 10px !important;
+    border: none !important;
+    color: #fff !important;
+  }
+
+  mdb-badge {
+    padding: 10px;
+    min-width: 100px;
+    //background-color: #f57c00 !important;
+  }
+
+  mdb-badge:hover {
+    cursor: pointer;
+  }
+
+  .badge-warning {
+    background-color: #f57c00 !important;
+    color: #fff !important;
+  }
+
+  .badge-default {
+    background-color: #CCCCCC !important;
+    color: #000 !important;
+  }
+
+  #firstname:focus, #lastname:focus, input[type=date]:focus, #email:focus, #phone:focus {
+    box-shadow: none !important;
+  }
+
+  .notSpecificPage {
+    margin-bottom: 50px;
+    padding: 0px 3rem !important;
+
+    .row {
+      .col-md-12 {
+        .logoImg {
+          height: 300px;
+          margin: 0 auto;
+        }
+
+        h1 {
+          border-bottom: dashed 1px #cecece;
+          padding-bottom: 30px;
+        }
+      }
+    }
+  }
+
+  /*comment*/
+  form {
+    .margin10 {
+      margin-top: 10px;
+    }
+  }
+
+  #nextBtn {
+    background-color: $primary-color !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+
+  .container {
+    max-width: 700px;
+    margin-left: calc((100% - 700px) / 2) !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .col-md-6, .col-md-4 {
+    margin-top: 15px;
+  }
+}
+
+.loadingDiv {
+  margin-top: 199px !important;
+}

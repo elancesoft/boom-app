@@ -1,0 +1,15 @@
+<div *ngIf="isProcessing" class="processingDiv">
+  <div class="form-row">
+    <img src="../../assets/images/loader/IMG_4718.GIF" class="mx-auto"
+         [ngStyle]="this.commonService.isMobileMode()?{width:'100px', 'max-height':'110px'}:{width:'150px','max-height':'160px'}"
+         style="height: auto !important; max-height: 250px;"/>
+  </div>
+  <div class="form-row mt-5">
+    <div class="progress-stats" style="position: relative !important;" *ngIf="totalProgress<=100">
+      <div class="progress col-md-4 col-8 mt-2 pl-0 pr-0 mx-auto">
+        <div class="filled-in" [ngStyle]="{width:totalProgress+'%'}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

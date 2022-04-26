@@ -1,0 +1,81 @@
+<section class="view intro-video">
+  <video playsinline autoplay="true" muted loop id="video">
+    <source type="video/mp4" id="mp4">
+  </video>
+  <div class="mask rgba-gradient">
+    <div class="full-bg-img">
+      <div class="row">
+        <div class="col-md-12 pr-0" [ngStyle]="{height:topQuoteHeight+'px'}">
+          <div class="container-fluid pt-5 pl-5 notSpecificPage" *ngIf="selectedMode==null">
+            <div class="row selectMode mt-5" style="padding-top: 60px;">
+              <div class="col-md-12 offset-1 offset-md-0 selectBlock">
+                <p class="font-weight-bold text-left text-white introText pl-4">TECH Enabled</p>
+                <p class="font-weight-bold text-left text-white introText pl-4">Homeowners</p>
+                <p class="font-weight-bold text-left text-white introText pl-4">Insurance</p>
+              </div>
+              <div class="col-md-12 col-12"></div>
+              <div class="col-md-12 quoteBtnDiv">
+                <div id="quoteButton" class="pl-3">
+                  <button class="btn btn-lg btn-danger shadow-none" (click)="selectMode('0')">Start quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---->
+</section>
+
+<div class="mainDiv row">
+  <div class="row nationWide col-md-10 offset-md-1 col-xl-6 offset-xl-3"
+       [ngStyle]="{marginTop:'50px'}">
+    <div class="col-md-6 col-12">
+      <h3 class="text-center mt-5 h3-responsive">Compare our top</h3>
+      <h3 class="text-center h3-responsive">carriers all online.</h3>
+      <p class="text-center">Get coverage recommendations from companies like Progressive,
+        MetLife, Nationwide
+        and other
+        top companies.</p>
+    </div>
+    <div class="col-md-6 col-12">
+      <img class="img-responsive nationWideImg" src="../../assets/images/slider.gif" width="100%"/>
+    </div>
+  </div>
+  <div class="coverageAds">
+    <div class="row nationWide col-md-10 offset-md-1 col-xl-6 offset-xl-3 mt-3 mt-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-center mt-5 h3-responsive">Coverage is better</h3>
+        <h3 class="text-center h3-responsive">because we start higher</h3>
+        <p class="col-md-10 offset-md-1 text-center">Many companies wills send you bare bones
+          quotes to win on price. We take the opposite
+          approach to build confidence. You’ll notice
+          our isntant options are heavy on coverage! </p>
+      </div>
+      <div class="col-md-6 col-12">
+        <img class="img-responsive coverageImg mt-5" src="../../assets/images/cover-comp.png"/>
+      </div>
+    </div>
+  </div>
+  <div class="benefitsDiv">
+    <div class="row nationWide col-md-10 offset-md-1 col-xl-6 offset-xl-3 mt-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-center mt-5 h3-responsive">3mins to coverage but</h3>
+        <h3 class="text-center h3-responsive">we have agents on standby</h3>
+        <h3 class="text-center h3-responsive">if you need them!</h3>
+        <p class="col-md-10 offset-md-1 text-center">You can get coverage completely online in 3 minutes. If you need
+          help, you can call or chat with us along way to get to the finish line! </p>
+        <div class="row col-xl-6 offset-xl-3 col-md-10 col-12 offset-md-1">
+          <div class="mx-auto buttonDiv">
+            <button mdbBtn type="button" class="btn btn-md callBtn">call</button>
+            <button mdbBtn type="button" class="btn btn-md callBtn">chat</button>
+          </div>
+        </div>
+      </div>
+      <div class="benefitsImgDiv col-md-6 col-12">
+        <img class="img-responsive benefitsImg mt-5" src="../../assets/images/icon-grid.png"/>
+      </div>
+    </div>
+  </div>
+</div>

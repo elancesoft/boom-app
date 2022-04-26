@@ -1,0 +1,63 @@
+.inputContainer {
+  margin-top: 100px;
+  input[type=date]{
+    min-height: 26px !important;
+  }
+}
+
+.loaderContainer {
+  margin-top: 100px;
+
+  .loader {
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid #f43c58;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    margin: auto;
+  }
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+input:focus {
+  box-shadow: none !important;
+}
+
+input[type=text], input[type=date] {
+  border: 1px solid #ced4da !important;
+  background-color: transparent !important;
+  border-radius: 0.25rem !important;
+  font-weight: normal !important;
+}
+
+input, input::placeholder, select {
+  font-weight: bold !important;
+  color: #B3B3B3 !important;
+}
+input.form-control,select{
+  background-color: #FEFBFC !important;
+}
+.custom-select:focus{
+  border-color: #ced4da !important;
+  box-shadow: none !important;
+}

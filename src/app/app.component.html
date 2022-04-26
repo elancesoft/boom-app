@@ -1,0 +1,147 @@
+<!-- Image and text -->
+<!-- <mdb-navbar *ngIf="isShowHeader" SideClass="container-fluid navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [ngClass]="!commonService.isMobileMode() ? 'red navbar-dark' : 'white  navbar-light'" [containerInside]="false">
+  <div class="d-md-none d-flex mobileFoward mr-auto">
+    <img (click)="moveTab(false)" src="../../assets/images/SVG/mobileleft.png" id="mobileLeft" alt="" />
+  </div>
+  <a href="/" class="site-logo"><img src="../../assets/images/SVG/boom-icon.svg" /></a>
+  <links class="pr-5 d-md-flex d-none">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link waves-light" routerLink="/step1" mdbWavesEffect>quotes</a>
+      </li>
+      <li class="nav-item mr-5" routerLinkActive="active">
+        <a class="nav-link waves-light" routerLink="/step1" mdbWavesEffect>about</a>
+      </li>
+    </ul>
+  </links>
+  <div id="gif_div" class="d-none d-md-flex mr-2">
+    <a href="/" class="site-logo"><img src="../../assets/images/SVG/ezgif.com-crop.gif" /></a>
+  </div>
+  <div class="d-flex d-md-none mobileFoward ml-auto pr-1">
+    <img (click)="moveTab(true)" src="../../assets/images/SVG/mobileright.png" id="mobileRight" alt="" />
+  </div>
+</mdb-navbar> -->
+
+<!-- <app-sub-header></app-sub-header> -->
+<div class="main" [@routeAnimations]="o && o.activatedRouteData && o.activatedRouteData['animation']">
+  <!--<div class="main" [ngStyle]="{minHeight:mainHeight+'px'}">-->
+  <router-outlet #o="outlet" s></router-outlet>
+</div>
+<!---->
+<!-- Footer -->
+<!-- === Curved Background  ===-->
+<!--div class="footer-svg-curve footerFlag" *ngIf="isShowFooter && headerFooter">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 315" viewport-fill="#2A354C" style="stroke-width: 0px">
+    <path
+      fill="#2A354C"
+      fill-opacity="1"
+      d="M0,192L60,181.3C120,171,240,149,360,154.7C480,160,600,192,720,224C840,256,960,288,1080,293.3C1200,299,1320,277,1380,266.7L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+      data-darkreader-inline-fill=""
+      style="--darkreader-inline-fill: #2a354c"
+    ></path>
+  </svg>
+</div-->
+<!-- === Curved Background  ===-->
+<!--footer class="font-small footerFlag" *ngIf="isShowFooter && headerFooter">
+  <div class="bg-ground">
+    <div class="container">
+      <div class="row py-4 d-flex align-items-center"></div>
+    </div>
+  </div>
+  <div class="container text-center text-md-left mt-2 footer-links">
+    <div class="row">
+      <div class="col-md-4 offset-md-2 offset-4">
+        <h6 class="text-center">Insurance Carriers</h6>
+      </div>
+      <div class="col-md-2 offset-md-1 d-none d-md-flex">
+        <h6 class="mx-auto">Follow us on</h6>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-4 col-md-2">
+        <p class="text-center flex-container" routerLinkActive="active">
+          <a class="footer-link" routerLink="/about">About Us</a>
+        </p>
+        <p class="text-center flex-container" routerLinkActive="active">
+          <a class="footer-link" routerLink="/contact">Contact Us</a>
+        </p>
+        <p class="text-center flex-container">
+          <a class="footer-link" href="#">FAQ's</a>
+        </p>
+        <p class="text-center flex-container">
+          <a class="footer-link" href="#">Info</a>
+        </p>
+        <p class="text-center flex-container">
+          <a class="footer-link" href="#">Ask an Agent</a>
+        </p>
+      </div>
+      <div class="col-4 col-md-2">
+        <div class="carrier-links-inner-container">
+          <p class="text-center flex-container">
+            <a class="footer-link" href="https://www.libertymutual.com/">Liberty Mutual</a>
+          </p>
+          <p class="text-center flex-container">
+            <a class="footer-link" href="https://www.metlife.com/">MetLife</a>
+          </p>
+          <p class="text-center flex-container">
+            <a class="footer-link" href="https://www.progressive.com/">Progressive</a>
+          </p>
+          <p class="text-center flex-container">
+            <a class="footer-link" href="https://www.nationwide.com/">Nationwide</a>
+          </p>
+          <p class="text-center flex-container">
+            <a class="footer-link" href="https://www.stateauto.com/">State Auto</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-4 col-md-2">
+        <div>
+          <p class="text-center flex-container">
+            <a class="footer-link" href="https://www.travelers.com/">Travelers</a>
+          </p>
+          <p class="text-center flex-container">
+            <a class="footer-link" href="https://www.plymouthrock.com/">Plymouth Rock</a>
+          </p>
+          <p class="text-center flex-container">
+            <a class="footer-link" href="https://universalproperty.com/">Universal</a>
+          </p>
+          <p class="text-center flex-container">
+            <a class="footer-link" href="https://stillwaterinsurance.com/">Still Water</a>
+          </p>
+          <p class="text-center flex-container">
+            <a class="footer-link" href="https://neptuneflood.com/">Neptune</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-2 offset-md-1 offset-3">
+        <h6 class="text-center d-block d-md-none mx-auto my-3">Follow us on</h6>
+        <div class="d-flex flex-row justify-content-between">
+          <p class="text-center">
+            <a class="footer-link" href="#"><i class="fab fa-facebook fa-2x"></i></a>
+          </p>
+          <p class="text-center">
+            <a class="footer-link" href="#"><i class="fab fa-twitter fa-2x"></i></a>
+          </p>
+          <p class="text-center">
+            <a class="footer-link" href="#"><i class="fab fa-instagram fa-2x"></i></a>
+          </p>
+          <p class="text-center">
+            <a class="footer-link" href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+          </p>
+        </div>
+      </div>
+      <div class="col-md-3 d-flex">
+        <img class="footer-img m-auto" src="../assets/images/buildings/med.jpg" width="150" height="150" />
+      </div>
+    </div>
+    <p class="text-center copyright-txt">
+      &copy; 2020 SwypeCov Insurance. All Rights Reserved. Use of SwypeCov is subject to our <span><a class="copyright-link" href="#">Terms of Service </a></span> & <span><a class="copyright-link" href="#"> Privacy Policy</a></span>
+    </p>
+  </div>
+</footer-->
+<!-- Footer -->
+
+
+
+

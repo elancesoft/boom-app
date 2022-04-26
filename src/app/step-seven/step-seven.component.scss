@@ -1,0 +1,102 @@
+@import '../../assets/styles/variables';
+.container {
+  padding-bottom: 50px !important;
+
+  mdb-badge {
+    padding: 10px;
+    min-width: 100px;
+    background-color: #fff !important;
+    color: #000 !important;
+    box-shadow: none;
+    border-radius: 10px;
+  }
+
+  mdb-badge:hover {
+    cursor: pointer;
+  }
+
+  .badge-warning {
+    color: #000 !important;
+  }
+
+  .badge-default {
+    color: #000 !important;
+  }
+  .form-control:focus{
+    box-shadow: none !important;
+  }
+  .notSpecificPage {
+    margin-bottom: 50px;
+    padding: 0px 3rem !important;
+    margin-top: 50px;
+    .row {
+      .col-md-12 {
+        .logoImg {
+          height: 300px;
+          margin: 0 auto;
+        }
+
+        h1 {
+          border-bottom: dashed 1px #cecece;
+          padding-bottom: 30px;
+        }
+      }
+    }
+  }
+
+  .margin10 {
+    margin-top: 10px;
+  }
+
+  .disabled {
+    background-color: #CCCCCC !important;
+    color: black !important;
+    opacity: 1;
+  }
+
+  .form-row {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+
+  .container {
+    max-width: 700px;
+    margin-left: calc((100% - 700px) / 2) !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .loader{
+    strong{
+      font-size: 25px;
+    }
+    .loadingNumber{
+      strong{
+        font-size: 20px !important;
+      }
+    }
+  }
+}
+select {
+  background-color: transparent !important;
+  border-radius: 10px !important;
+  border-color: $primary-color !important;
+  border-width: 2px;
+  text-indent: 10px !important;
+}
+
+@media screen and (max-width: 767px) {
+  .cityDiv, .stateDiv, .zipDiv {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  label{
+    font-weight: bold;
+  }
+  .cityDiv label, .stateDiv label, .zipDiv label {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+/*comment*/

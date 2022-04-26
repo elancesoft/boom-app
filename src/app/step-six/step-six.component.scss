@@ -1,0 +1,302 @@
+@import "../../assets/styles/variables";
+
+.view-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  width: 100%;
+  @media screen and (max-width: 767px) {
+    justify-content: space-between;
+    margin-bottom: 55px;
+    flex-direction: column !important;
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .form-group {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    label {
+      margin: 0;
+    }
+  }
+  .first-span {
+    border-right: 2px solid #cccccc;
+    padding-right: 15px;
+  }
+  .price-dropdown-view-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .form-group {
+      background-color: #f2f2f2;
+      padding: 10px 30px;
+      border-radius: 50px;
+      align-items: center;
+      position: relative;
+      @media screen and (max-width: 385px) {
+        padding: 13px;
+      }
+      @media screen and (max-width: 350px) {
+        font-size: 14px;
+      }
+      @media screen and (max-width: 320px) {
+        font-size: 12px;
+        padding: 13px 0px 13px 6px;
+      }
+
+      label {
+        color: black;
+      }
+      select {
+        border: none;
+        background: none;
+        color: black;
+        &:focus {
+          outline: none;
+        }
+        @media screen and (max-width: 767px) {
+          -webkit-appearance: none;
+          width: 110px;
+        }
+        @media screen and (max-width: 320px) {
+          width: 90px;
+        }
+      }
+      .price_caret {
+        position: absolute;
+        right: 10px;
+        pointer-events: none;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      justify-content: space-around;
+      padding: 0px 15px;
+    }
+    span {
+      cursor: pointer;
+      img {
+        width: 20px;
+      }
+    }
+  }
+  .custom-plans {
+    text-align: left;
+
+    span {
+      .live-agent {
+        color: #25a6e3;
+        cursor: pointer;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+  .gird-list-view-icons {
+    @media screen and (max-width: 992px) {
+      display: flex;
+    }
+  }
+}
+
+.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 32px solid #fff;
+  border-color: rgb(252, 55, 55) transparent rgb(14, 62, 194) transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+#wave {
+  position: relative;
+  // margin-top:50vh;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .dot {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 3px;
+    background: #303131;
+    animation: wave 0.5s linear infinite;
+
+    &:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: -0.1s;
+    }
+  }
+}
+
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: initial;
+  }
+
+  30% {
+    transform: translateY(-15px);
+  }
+}
+
+%skeleton {
+  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  background-size: 600px;
+  -webkit-animation: shine-lines 1.6s infinite linear;
+  animation: shine-lines 1.6s infinite linear;
+  background-color: #ddd;
+}
+
+.skeleton {
+  background-color: #fcfcfc;
+  max-width: 526px;
+  margin-bottom: 20px;
+  border-radius: 5.81px;
+  overflow: hidden;
+  .card-body {
+    background: #fcfcfc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logoAndText {
+      max-width: 140px;
+      margin-left: 32px;
+      @media screen and (max-width: 500px) {
+        margin-left: 0;
+      }
+      .brand_logo {
+        max-width: 100px;
+        img{
+          max-width: 100%;
+          height: auto;
+        }
+        // @extend %skeleton;
+      }
+
+      .brandText {
+        li {
+          height: 4px;
+          width: 100px;
+          margin-top: 4px;
+          border-radius: 7px;
+          @extend %skeleton;
+          list-style: none;
+        }
+      }
+
+      .priceDetailText {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 15px;
+        li {
+          height: 4px;
+          width: 100px;
+          margin-top: 4px;
+          border-radius: 7px;
+          @extend %skeleton;
+          list-style: none;
+        }
+      }
+    }
+
+    .priceAndButton {
+      > h1 {
+        height: 30px;
+        border-radius: 7px;
+        @extend %skeleton;
+      }
+      > p {
+        height: 5px;
+        border-radius: 7px;
+        @extend %skeleton;
+      }
+      > button {
+        width: 113.45px;
+        height: 49px;
+        border-radius: 7px;
+        @extend %skeleton;
+        border-color: #ddd;
+        @media screen and (max-width: 500px) {
+          width: 100%;
+          font-size: 18px;
+        }
+      }
+    }
+
+    .requestBtn {
+      > button {
+        background-color: #3873f2;
+        color: #fff !important;
+        border-radius: 9px;
+        width: 114px;
+        height: 49px;
+        font-size: 12px;
+        line-height: 15px;
+        font-family: "Myriad Pro Regular";
+        @media screen and (max-width: 500px) {
+          width: 100%;
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
+@keyframes shine-lines {
+  0% {
+    background-position: -100px;
+  }
+  40%,
+  100% {
+    background-position: 140px;
+  }
+}
+@keyframes shine-avatar {
+  0% {
+    background-position: -32px;
+  }
+  40%,
+  100% {
+    background-position: 208px;
+  }
+}

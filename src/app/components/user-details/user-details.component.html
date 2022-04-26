@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div *ngIf="currentUser" class="edit-form">
+                <h4>User</h4>
+                <form>
+                    <div class="form-group"> <label for="title">User Email</label> <input type="text"
+                            class="form-control" id="title" [(ngModel)]="currentUser.user_email" name="title" /> </div>
+                    <div class="form-group"> <label for="code">Partnership Code</label> <input type="text"
+                            class="form-control" id="code" [(ngModel)]="currentUser.code" name="partnership code" />
+                    </div>
+                </form> <button class="badge badge-danger mr-2" (click)="deleteUser()"> Delete </button> <button
+                    type="submit" class="badge badge-success" (click)="updateUser()"> Update </button>
+                <p>{{ message }}</p>
+            </div>
+            <div *ngIf="!currentUser"> <br />
+                <p>Cannot access this User...</p>
+            </div>
+        </div>
+    </div>
+</div>

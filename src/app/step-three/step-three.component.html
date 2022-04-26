@@ -1,0 +1,240 @@
+<!---->
+<div class="container col-md-10 offset-md-1 col-lg-6 offset-lg-3 pb-5">
+  <form>
+    <div class="col-md-8">
+      <!-- Grid row -->
+      <h3 class="text-center font-weight-bold hover hover-1" style="margin-bottom: 25px">Confirm some details about your house:</h3>
+      <div class="form-row">
+        <!-- white input -->
+        <div class="form-group col-md-12">
+          <label for="yearInput" class="font-weight-bold hover-animation">Year Built&nbsp;<span class="text-danger">*</span></label>
+          <input mdbInput type="number" class="form-control" [(ngModel)]="built_year" [ngModelOptions]="{ standalone: true }" id="yearInput" />
+        </div>
+      </div>
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- white input -->
+        <div class="form-group col-md-12">
+          <label for="squareInput" class="font-weight-bold hover-animation">Square Footage&nbsp;<span class="text-danger">*</span></label>
+          <input mdbInput type="number" class="form-control" [(ngModel)]="square" [ngModelOptions]="{ standalone: true }" id="squareInput" />
+        </div>
+      </div>
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- white input -->
+        <div class="form-group col-md-12">
+          <div class="title-container">
+            <img src="../../assets/images/icons/dimensions.svg" class="icon-img" alt="" />
+            <label class="font-weight-bold hover-animation">Construction Type&nbsp;<span class="text-danger">*</span></label>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv">
+              <mdb-badge [white]="constructionType != 1" [danger]="constructionType == 1" (click)="constructionType = 1">
+                <img src="../../assets/images/icons/woodframe.svg" class="btn-icon" alt="" />
+                Wood Frame
+              </mdb-badge>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv">
+              <mdb-badge [white]="constructionType != 2" [danger]="constructionType == 2" (click)="constructionType = 2">
+                <img src="../../assets/images/icons/building.svg" class="btn-icon" alt="" />
+                Steel Frame
+              </mdb-badge>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv">
+              <mdb-badge [white]="constructionType != 3" [danger]="constructionType == 3" (click)="constructionType = 3">
+                <img src="../../assets/images/icons/brick.svg" class="btn-icon" alt="" />
+                Masonry / Brick
+              </mdb-badge>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv">
+              <mdb-badge [white]="constructionType != 4" [danger]="constructionType == 4" (click)="constructionType = 4">
+                <img src="../../assets/images/icons/cement.svg" class="btn-icon" alt="" />
+                Concrete
+              </mdb-badge>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- white input -->
+        <div class="form-group col-md-12">
+          <div class="title-container">
+            <img src="../../assets/images/icons/floor.svg" class="foundation-img icon-img" alt="" />
+            <label class="font-weight-bold hover-animation">Foundation Type&nbsp;<span class="text-danger">*</span></label>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv">
+              <mdb-badge [white]="foundationType != 1" [danger]="foundationType == 1" (click)="foundationType = 1">
+                <img src="../../assets/images/icons/basement-1.svg" class="btn-icon" alt="" />
+                Basement
+              </mdb-badge>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv">
+              <mdb-badge [white]="foundationType != 2" [danger]="foundationType == 2" (click)="foundationType = 2">
+                <img src="../../assets/images/icons/basement-3.svg" class="btn-icon" alt="" />
+                Craw Space
+              </mdb-badge>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv">
+              <mdb-badge [white]="foundationType != 3" [danger]="foundationType == 3" (click)="foundationType = 3">
+                <img src="../../assets/images/icons/foundation.png" class="btn-icon" alt="" />
+                Slab
+              </mdb-badge>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv">
+              <mdb-badge [white]="foundationType != 4" [danger]="foundationType == 4" (click)="foundationType = 4">
+                <img src="../../assets/images/icons/floor5.svg" class="btn-icon" alt="" />
+                Other
+              </mdb-badge>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- white input -->
+        <div class="form-group col-md-12">
+          <div class="title-container">
+            <img src="../../assets/images/icons/floor3.svg" class="foundation-img icon-img" alt="" />
+            <label class="font-weight-bold hover-animation">Basement Finished&nbsp;<span class="text-danger">*</span></label>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-6 margin10 basementDiv">
+              <mdb-badge [white]="isBasement != 1" [danger]="isBasement == 1" (click)="isBasement = 1"><img src="../../assets/images/icons/basement4.svg" class="btn-icon" alt="" />Yes</mdb-badge>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 margin10 basementDiv">
+              <mdb-badge [white]="isBasement != 0" [danger]="isBasement == 0" (click)="isBasement = 0"><img src="../../assets/images/icons/basement6.svg" class="btn-icon" alt="" />No</mdb-badge>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- white input -->
+        <div class="form-group col-md-12">
+          <div class="title-container">
+            <img src="../../assets/images/icons/roof.svg" class="roof-img icon-img" alt="" />
+            <label class="font-weight-bold hover-animation">Is your roof flat or peaked?&nbsp;<span class="text-danger">*</span></label>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-6 margin10 roofDiv">
+              <mdb-badge [white]="roof_status != 'flat'" [danger]="roof_status == 'flat'" (click)="roof_status = 'flat'">
+                <img src="../../assets/images/icons/bungalow.svg" class="btn-icon" alt="" />
+                flat
+              </mdb-badge>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 margin10 roofDiv">
+              <mdb-badge [white]="roof_status != 'peaked'" [danger]="roof_status == 'peaked'" (click)="roof_status = 'peaked'">
+                <img src="../../assets/images/icons/casa-mila.svg" class="btn-icon" alt="" />
+                peaked
+              </mdb-badge>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Grid row -->
+      <div class="form-row">
+        <!-- white input -->
+        <div class="form-group col-md-12">
+          <label class="font-weight-bold hover-animation">What year is each system from&nbsp;<span class="text-danger">*</span></label>
+          <div class="row">
+            <!--<div class="col-xl-3 col-sm-6 col-6">-->
+            <!--<p class="text-center system_year"><label for="roofInput">Roof</label></p>-->
+            <!--<input mdbInput type="number" class="form-control" id="roofInput" [(ngModel)]="roof_year"-->
+            <!--[ngModelOptions]="{standalone: true}">-->
+            <!--</div>-->
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-6">
+              <p class="text-center system_year"><label class="font-weight-bold" for="acInput">A/C</label></p>
+              <input mdbInput type="number" class="form-control" id="acInput" [(ngModel)]="ac_year" [ngModelOptions]="{ standalone: true }" />
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-6">
+              <p class="text-center system_year"><label class="font-weight-bold" for="electricInput">Electric</label></p>
+              <input mdbInput type="number" class="form-control" id="electricInput" [(ngModel)]="electric_year" [ngModelOptions]="{ standalone: true }" />
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-6">
+              <p class="text-center system_year"><label class="font-weight-bold" for="plumbingInput">Plumbing</label></p>
+              <input mdbInput type="number" class="form-control" id="plumbingInput" [(ngModel)]="plumbing_year" [ngModelOptions]="{ standalone: true }" />
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-6">
+              <p class="text-center system_year"><label class="font-weight-bold" for="plumbingInput">Roof Year</label></p>
+              <input mdbInput type="number" class="form-control" id="roofyearInput" [(ngModel)]="roof_year" [ngModelOptions]="{ standalone: true }" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <!-- white input -->
+      <div class="form-row building_row">
+        <label class="font-weight-bold hover-animation">What type of building is your home&nbsp;<span class="text-danger">*</span></label>
+        <div class="row col-md-10 col-xl-10 col-lg-12 buildingDiv">
+          <div class="col-xl-6 col-md-6 col-sm-6 margin10">
+            <div class="building_type" [ngClass]="buildingType == 1 ? 'activeHome' : ''" (click)="buildingType = 1">
+              <img [src]="'../../assets/images/buildings/colonial.jpg'" width="80" />
+              <h5>Colonial</h5>
+            </div>
+          </div>
+          <div class="col-xl-6 col-md-6 col-sm-6 margin10">
+            <div class="building_type" [ngClass]="buildingType == 2 ? 'activeHome' : ''" (click)="buildingType = 2">
+              <img [src]="'../../assets/images/buildings/ranch.jpg'" width="80" style="margin-top: -10px" />
+              <h5>Ranch</h5>
+            </div>
+          </div>
+          <div class="col-xl-6 col-md-6 col-sm-6 margin10">
+            <div class="building_type" [ngClass]="buildingType == 3 ? 'activeHome' : ''" (click)="buildingType = 3">
+              <img src="../../assets/images/buildings/med.jpg" width="80" />
+              <h5>Mediterranean</h5>
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-md-6 col-sm-6 margin10">
+            <div class="building_type" [ngClass]="buildingType == 4 ? 'activeHome' : ''" (click)="buildingType = 4">
+              <img [src]="'../../assets/images/buildings/contemporary.jpg'" width="80" />
+              <h5>Contemporary</h5>
+            </div>
+          </div>
+          <div class="col-xl-6 col-md-6 col-sm-6 margin10">
+            <div class="building_type" [ngClass]="buildingType == 5 ? 'activeHome' : ''" (click)="buildingType = 5">
+              <img [src]="'../../assets/images/buildings/rowcenter.jpg'" width="80" />
+              <h5>Row Center</h5>
+            </div>
+          </div>
+          <div class="col-xl-6 col-md-6 col-sm-6 margin10">
+            <div class="building_type" [ngClass]="buildingType == 6 ? 'activeHome' : ''" (click)="buildingType = 6">
+              <img [src]="'../../assets/images/buildings/split.jpg'" width="80" />
+              <h5>Split</h5>
+            </div>
+          </div>
+          <div class="col-xl-6 col-md-6 col-sm-6 margin10">
+            <div class="building_type" [ngClass]="buildingType == 7 ? 'activeHome' : ''" (click)="buildingType = 7">
+              <img [src]="'../../assets/images/buildings/townhome.jpg'" width="80" />
+              <h5>Town Home</h5>
+            </div>
+          </div>
+          <div class="col-xl-6 col-md-6 col-sm-6 margin10">
+            <div class="building_type" [ngClass]="buildingType == 8 ? 'activeHome' : ''" (click)="buildingType = 8">
+              <img [src]="'../../assets/images/buildings/victorian.jpg'" width="80" />
+              <h5>Victorian</h5>
+            </div>
+          </div>
+          <div class="col-xl-6 col-md-6 col-sm-6 margin10">
+            <div class="building_type" [ngClass]="buildingType == 0 ? 'activeHome' : ''" (click)="buildingType = 0">
+              <h5>Other</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="form-group mt-3">
+        <div class="col-md-6 offset-md-3">
+          <button mdbBtn type="button" class="btn btn-red btn-block mx-auto" id="nextBtn" (click)="goToFourStep()">
+            Next&nbsp;
+            <mdb-icon fas icon="angle-right"></mdb-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

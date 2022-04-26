@@ -1,0 +1,10 @@
+.resultContainer{
+  h1{
+    font-size: 40px;
+  }
+  @media screen and (max-width:768px){
+  	.ads-text{
+  		font-size:12px !important;
+  	}
+  }
+}

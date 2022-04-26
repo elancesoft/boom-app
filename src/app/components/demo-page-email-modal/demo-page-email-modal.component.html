@@ -1,0 +1,41 @@
+<div style="overflow-y: auto" mdbModal #basicModal="mdbModal" class="modal fade top" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-top-center" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="../../assets/images/email.png" class="mx-auto" width="30" />
+        <div class="clearfix"></div>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true" class="text-black-50">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4 class="font-weight-bold text-center">Email this quote to yourself or someone who needs it!</h4>
+        <div class="col-12 emailContainer mb-3">
+          <form>
+            <div class="md-form">
+              <input mdbInput mdbValidate type="email" class="form-control pr-0 rounded-0 emailInput" [(ngModel)]="demoEmailAddr" #input="ngModel" required pattern="[^ @]*@[^ @]*" id="form8" name="input" />
+              <label for="form8" class="">Send to:</label>
+              <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)">Email is invalid</mdb-error>
+              <mdb-success *ngIf="input.valid && (input.dirty || input.touched)">Email is valid</mdb-success>
+            </div>
+            <div class="md-form mt-5">
+              <input mdbInput mdbValidate type="email" class="form-control pr-0 rounded-0 emailInput" id="ccInput" name="cc_input" #cc_input="ngModel" [(ngModel)]="ccEmail" required pattern="[^ @]*@[^ @]*" />
+              <mdb-error *ngIf="cc_input.invalid && (cc_input.dirty || cc_input.touched)">Email is invalid</mdb-error>
+              <mdb-success *ngIf="cc_input.valid && (cc_input.dirty || cc_input.touched)">Email is valid</mdb-success>
+              <label for="ccInput" class="">CC:</label>
+            </div>
+            <div class="md-form">
+              <h6 class="font-weight-bold text-center">Send this quote so you can save it and pickup where you left off!</h6>
+            </div>
+            <!-- <div class="form-row">
+              <img src="../../assets/images/doc.png" class="mx-auto docImage" style="height: 100px !important;"/>
+            </div> -->
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="primary" size="sm" class="relative waves-light modal-send-btn" (click)="sendDemoEmailFunc()" mdbWavesEffect>Send</button>
+      </div>
+    </div>
+  </div>
+</div>

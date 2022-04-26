@@ -1,0 +1,26 @@
+<div class="check-container pt-3 pb-3 pl-3">
+  <div class="check-inner-container pb-2">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" [(ngModel)]="well" (change)="doFilter()" id="wellknown">
+      <label class="custom-control-label font-weight-bold" for="wellknown">well known</label>
+    </div>
+  </div>
+  <div class="check-inner-container pb-2">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" [(ngModel)]="bundle" (change)="doFilter()" id="bundle-ability">
+      <label class="custom-control-label font-weight-bold" for="bundle-ability">bundle-ability</label>
+    </div>
+  </div>
+  <div class="check-inner-container pb-2">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" [(ngModel)]="underground" (change)="doFilter()" id="underground">
+      <label class="custom-control-label font-weight-bold" for="underground">underground</label>
+    </div>
+  </div>
+  <div class="check-inner-container">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" [(ngModel)]="extended" (change)="doFilter()" id="extended">
+      <label class="custom-control-label font-weight-bold" for="extended">extended</label>
+    </div>
+  </div>
+</div>

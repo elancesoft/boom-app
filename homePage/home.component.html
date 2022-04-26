@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="uf8"/>
+  <link rel="stylesheet" href="./home.component.css">
+</head>
+<body>
+
+<div class="mainDiv row">
+  <div class="col-md-10 offset-md-1 col-xl-8 offset-xl-2 mainContent pr-0">
+    <h3 class="text-center mt-5 h3-responsive">Get really good homeowners</h3>
+    <h3 class="text-center h3-responsive">insurance ONLINE in only 3 minutes!</h3>
+    <div class="pt-5 notSpecificPage" *ngIf="selectedMode==null">
+      <div class="row selectMode">
+        <div class="col-md-6 col-6 selectBlock">
+
+          <div class="imgDiv mx-auto">
+            <p class="form-row"><span class="mx-auto">Home</span></p>
+            <div class="form-row"><img src="./assets/images/SVG/home.svg" class="mx-auto"/></div>
+            <p class="form-row mt-1">
+              <button mdbBtn class="btn btn-sm mx-auto" (click)="selectMode('0');">Select</button>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-6 selectBlock" style="margin-bottom: 30px;">
+
+          <div class="imgDiv mx-auto">
+            <p class="form-row mt-1"><span class="mx-auto">Condo</span></p>
+            <div class="form-row"><img src="./assets/images/SVG/condo.svg" class="mx-auto"/></div>
+            <p class="form-row mt-1">
+              <button mdbBtn class="btn btn-sm mx-auto" (click)="selectMode('1');">Select</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row nationWide col-md-10 offset-md-1 col-xl-6 offset-xl-3 mt-3">
+    <div class="col-md-6 col-12">
+      <h3 class="text-center mt-5 h3-responsive">Compare our top</h3>
+      <h3 class="text-center h3-responsive">carriers all online.</h3>
+      <p class="col-md-10 offset-md-1 text-center">Get coverage recommendations from companies like Progressive,
+        MetLife, Nationwide
+        and other
+        top companies.</p>
+    </div>
+    <div class="col-md-6 col-12">
+      <img class="img-responsive nationWideImg mt-5" src="./assets/images/nationwide.svg"/>
+    </div>
+  </div>
+  <div class="coverageAds">
+    <div class="row nationWide col-md-10 offset-md-1 col-xl-6 offset-xl-3 mt-3 mt-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-center mt-5 h3-responsive">Coverage is better</h3>
+        <h3 class="text-center h3-responsive">because we start higher</h3>
+        <p class="col-md-10 offset-md-1 text-center">Many companies wills send you bare bones
+          quotes to win on price. We take the opposite
+          approach to build confidence. You’ll notice
+          our isntant options are heavy on coverage! </p>
+      </div>
+      <div class="col-md-6 col-12">
+        <img class="img-responsive coverageImg mt-5" src="./assets/images/cover-comp.png"/>
+      </div>
+    </div>
+  </div>
+  <div class="benefitsDiv">
+    <div class="row nationWide col-md-10 offset-md-1 col-xl-6 offset-xl-3 mt-3">
+      <div class="col-md-6 col-12">
+        <h3 class="text-center mt-5 h3-responsive">3mins to coverage but</h3>
+        <h3 class="text-center h3-responsive">we have agents on standby</h3>
+        <h3 class="text-center h3-responsive">if you need them!</h3>
+        <p class="col-md-10 offset-md-1 text-center">You can get coverage completely online in 3 minutes. If you need
+          help, you can call or chat with us along way to get to the finish line! </p>
+        <div class="row col-xl-6 offset-xl-3 col-md-10 col-12 offset-md-1">
+          <div class="mx-auto buttonDiv"><button mdbBtn type="button" class="btn btn-md callBtn">call</button>
+          <button mdbBtn type="button" class="btn btn-md callBtn">chat</button></div>
+        </div>
+      </div>
+      <div class="benefitsImgDiv col-md-6 col-12">
+        <img class="img-responsive benefitsImg mt-5" src="./assets/images/icon-grid.png"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+<!---->

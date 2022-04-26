@@ -1,0 +1,34 @@
+<header class="phase2header">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-md-6 col-xl-8">
+        <!-- new header info -->
+        <div class="header-infos p-0 pt-3 pb-3">
+          <div class="address-ctas">
+            <span class="address-container">
+              <div class="d-flex align-items-center">
+                <span class="back-btn d-none d-md-inline backBtn mr-3">
+                  <img class="" src="./.././../../../../assets/17.svg " (click)="commonService.back(currentUrl)" alt="" />
+                </span>
+                <div class="selected-address d-flex" data-toggle="modal" data-target="#myModal">
+                  <img src="./../../../../assets/location.svg" width="20" height="20" alt="" />
+                  <p>
+                    {{ formattedAddress }}
+                  </p>
+                  <i class="fa fa-bars text-seconadry pl-2 pr-2" aria-hidden="true" style="color: lightgray"></i>
+                </div>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-4 d-md-block d-none text-right text-lg-center text-xl-left">
+        <mat-form-field appearance="fill">
+          <input matInput #input [matDatepicker]="picker1" (click)="picker1.open()" [formControl]="date" />
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1 (closed)="input.blur()"></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</header>

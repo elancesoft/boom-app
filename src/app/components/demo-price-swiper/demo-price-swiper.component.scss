@@ -1,0 +1,105 @@
+@import '../../../assets/styles/variables';
+
+.swipeDiv {
+  margin: 0 auto;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+
+  swiper {
+    width: 400px;
+    height: 60px;
+    margin: 0 auto;
+    border: solid 1px $primary-color;
+    border-radius: 10px;
+    animation: shadow-pulse 1s infinite;
+
+    .swiper-wrapper {
+      border-radius: 10px;
+
+      .swiper-slide {
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .first {
+        border-radius: 10px 0 0 10px;
+        background-color: $primary-color;
+        color: #fff;
+      }
+
+      .last {
+        border-radius: 10px;
+        color: #000;
+        background-color: #fff;
+
+        .left-edge {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 16%;
+          height: 100%;
+          z-index: 10000;
+          left: -2px;
+          background-color: $primary-color;
+          color: #fff;
+
+          .arrow {
+            animation-name: fade;
+            animation-duration: 1s;
+            animation-direction: alternate-reverse;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+          }
+
+          @keyframes fade {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 100;
+            }
+          }
+        }
+
+        .swipe-txt {
+          font-size: 30px;
+          color: #686868;
+        }
+      }
+    }
+
+    .first, .last {
+      padding-top: 6px !important;
+      padding-bottom: 6px !important;
+
+      p {
+        text-align: center;
+        margin: 0 0 0 50px;
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 441px) {
+  .swipeDiv {
+    width: 350px !important;
+
+    swiper {
+      width: 350px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .swipeDiv {
+    width: 270px !important;
+
+    swiper {
+      width: 270px !important;
+    }
+  }
+}

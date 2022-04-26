@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://neighborlyins.com/index -->
+<html lang="en" style="height: 100%;" ng-app="swipe.example" ng-controller="swipeCtrl">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Boomcovered</title>
+  <!--<base href="/">-->
+  <base href=".">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="https://boom.insure/assets/images/logo/logo-white.svg">
+  <link href="./Boomcovered_files/css" rel="stylesheet" type="text/css">
+  <link href="./Boomcovered_files/css(1)" rel="stylesheet">
+
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>-->
+  <!--<script src="https://cdn.rawgit.com/hammerjs/touchemulator/master/touch-emulator.js"></script>-->
+
+  <script src="./Boomcovered_files/storage.js.download"></script>
+  <style type="text/css">
+    body {
+      font-family: poppins !important;
+    }
+
+    @media screen and (max-width: 768px) {
+
+      .lds-roller {
+        left: 40% !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <app-root _nghost-eao-c0="" class="ng-tns-c0-0" ng-version="8.2.13">
+    <mdb-navbar _ngcontent-eao-c0="" class="ng-tns-c0-0"
+      sideclass="navbar navbar-expand-md  navbar-dark red sticky-top">
+      <nav class="navbar navbar-expand-md  navbar-dark red sticky-top"
+        style="background-color: rgb(237, 28, 36) !important; z-index: 10000 !important;">
+        <div class="container">
+          <!---->
+          <!---->
+          <mdb-navbar-brand _ngcontent-eao-c0="" style="padding-top:8.5px;" class="ng-tns-c0-0 ng-star-inserted"><button
+              _ngcontent-eao-c0="" class="btn btn-sm arrow-btn ng-tns-c0-0" mdbbtn="" type="button">
+              <mdb-icon _ngcontent-eao-c0="" fas="" icon="chevron-left" size="1x" class="fas ng-tns-c0-0"><i
+                  class="fa-chevron-left fa-1x fas"></i></mdb-icon>
+            </button><button _ngcontent-eao-c0="" class="btn btn-sm arrow-btn ng-tns-c0-0" mdbbtn="" type="button">
+              <mdb-icon _ngcontent-eao-c0="" fas="" icon="chevron-right" size="1x" class="fas ng-tns-c0-0"><i
+                  class="fa-chevron-right fa-1x fas"></i></mdb-icon>
+            </button></mdb-navbar-brand>
+          <!---->
+          <!---->
+          <div class="navbar-collapse collapse" id="navbarCollapse" style="">
+            <links _ngcontent-eao-c0="" class="ng-tns-c0-0">
+              <ul _ngcontent-eao-c0="" class="navbar-nav ng-tns-c0-0" style="width: 100%">
+                <li _ngcontent-eao-c0="" class="nav-item active" routerlinkactive="active"><a _ngcontent-eao-c0=""
+                    class="nav-link waves-light" mdbwaveseffect="" routerlink="/index"
+                    href="https://neighborlyins.com/index">Home</a></li>
+                <li _ngcontent-eao-c0="" class="nav-item" routerlinkactive="active"><a _ngcontent-eao-c0=""
+                    class="nav-link waves-light" mdbwaveseffect="">Contact</a></li>
+                <li _ngcontent-eao-c0="" class="nav-item" routerlinkactive="active"><a _ngcontent-eao-c0=""
+                    class="nav-link waves-light" mdbwaveseffect="" routerlink="/retrieve"
+                    href="https://neighborlyins.com/retrieve">Retrieve Quote</a></li>
+                <li _ngcontent-eao-c0="" class="quoteBtn"><button _ngcontent-eao-c0="" class="btn btn-white btn-md"
+                    mdbbtn="" type="button"><span _ngcontent-eao-c0=""
+                      class="text-danger font-weight-bold ng-tns-c0-0">START QUOTE</span></button></li>
+              </ul>
+            </links>
+          </div>
+        </div>
+      </nav>
+    </mdb-navbar>
+    <app-sub-header _ngcontent-eao-c0="" class="ng-tns-c0-0" _nghost-eao-c3="">
+      <div _ngcontent-eao-c3="" class="mainDiv pr-0 pl-0 mr-0 ml-0" style="top: 76px;">
+        <div _ngcontent-eao-c3="" class="col-md-10 offset-md-1 row pr-0">
+          <!---->
+          <!---->
+          <!---->
+        </div>
+        <!---->
+      </div>
+    </app-sub-header>
+    <div class="main ng-trigger ng-trigger-routeAnimations">
+      <div _ngcontent-eao-c5="" class="mainDiv row">
+        <div _ngcontent-eao-c5="" class="col-md-10 offset-md-1 col-xl-8 offset-xl-2 mainContent pr-0">
+          <h3 _ngcontent-eao-c5="" class="text-center mt-5 h3-responsive">Get really good homeowners</h3>
+          <h3 _ngcontent-eao-c5="" class="text-center h3-responsive">insurance ONLINE in only 3 minutes!</h3>
+          <!---->
+          <div _ngcontent-eao-c5="" class="pt-5 notSpecificPage ng-star-inserted">
+            <div _ngcontent-eao-c5="" class="row selectMode">
+              <div _ngcontent-eao-c5="" class="col-md-6 col-6 selectBlock">
+                <div _ngcontent-eao-c5="" class="imgDiv mx-auto">
+                  <p _ngcontent-eao-c5="" class="form-row"><span _ngcontent-eao-c5="" class="mx-auto">Home</span></p>
+                  <div _ngcontent-eao-c5="" class="form-row"><img _ngcontent-eao-c5="" class="mx-auto"
+                      src="./Boomcovered_files/home.svg"></div>
+                  <p _ngcontent-eao-c5="" class="form-row mt-1"><button _ngcontent-eao-c5="" class="btn btn-sm mx-auto"
+                      mdbbtn="">Select</button></p>
+                </div>
+              </div>
+              <div _ngcontent-eao-c5="" class="col-md-6 col-6 selectBlock" style="margin-bottom: 30px;">
+                <div _ngcontent-eao-c5="" class="imgDiv mx-auto">
+                  <p _ngcontent-eao-c5="" class="form-row mt-1"><span _ngcontent-eao-c5="" class="mx-auto">Condo</span>
+                  </p>
+                  <div _ngcontent-eao-c5="" class="form-row"><img _ngcontent-eao-c5="" class="mx-auto"
+                      src="./Boomcovered_files/condo.svg"></div>
+                  <p _ngcontent-eao-c5="" class="form-row mt-1"><button _ngcontent-eao-c5="" class="btn btn-sm mx-auto"
+                      mdbbtn="">Select</button></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div _ngcontent-eao-c5="" class="row nationWide col-md-10 offset-md-1 col-xl-6 offset-xl-3 mt-3">
+          <div _ngcontent-eao-c5="" class="col-md-6 col-12">
+            <h3 _ngcontent-eao-c5="" class="text-center mt-5 h3-responsive">Compare our top</h3>
+            <h3 _ngcontent-eao-c5="" class="text-center h3-responsive">carriers all online.</h3>
+            <p _ngcontent-eao-c5="" class="col-md-10 offset-md-1 text-center">Get coverage recommendations from
+              companies like Progressive, MetLife, Nationwide and other top companies.</p>
+          </div>
+          <div _ngcontent-eao-c5="" class="col-md-6 col-12"><img _ngcontent-eao-c5=""
+              class="img-responsive nationWideImg mt-5" src="./Boomcovered_files/nationwide.svg"></div>
+        </div>
+        <div _ngcontent-eao-c5="" class="coverageAds">
+          <div _ngcontent-eao-c5="" class="row nationWide col-md-10 offset-md-1 col-xl-6 offset-xl-3 mt-3 mt-3">
+            <div _ngcontent-eao-c5="" class="col-md-6 col-12">
+              <h3 _ngcontent-eao-c5="" class="text-center mt-5 h3-responsive">Coverage is better</h3>
+              <h3 _ngcontent-eao-c5="" class="text-center h3-responsive">because we start higher</h3>
+              <p _ngcontent-eao-c5="" class="col-md-10 offset-md-1 text-center">Many companies wills send you bare bones
+                quotes to win on price. We take the opposite approach to build confidence. You’ll notice our isntant
+                options are heavy on coverage! </p>
+            </div>
+            <div _ngcontent-eao-c5="" class="col-md-6 col-12"><img _ngcontent-eao-c5=""
+                class="img-responsive coverageImg mt-5" src="./Boomcovered_files/cover-comp.png"></div>
+          </div>
+        </div>
+        <div _ngcontent-eao-c5="" class="benefitsDiv">
+          <div _ngcontent-eao-c5="" class="row nationWide col-md-10 offset-md-1 col-xl-6 offset-xl-3 mt-3">
+            <div _ngcontent-eao-c5="" class="col-md-6 col-12">
+              <h3 _ngcontent-eao-c5="" class="text-center mt-5 h3-responsive">3mins to coverage but</h3>
+              <h3 _ngcontent-eao-c5="" class="text-center h3-responsive">we have agents on standby</h3>
+              <h3 _ngcontent-eao-c5="" class="text-center h3-responsive">if you need them!</h3>
+              <p _ngcontent-eao-c5="" class="col-md-10 offset-md-1 text-center">You can get coverage completely online
+                in 3 minutes. If you need help, you can call or chat with us along way to get to the finish line! </p>
+              <div _ngcontent-eao-c5="" class="row col-xl-6 offset-xl-3 col-md-10 col-12 offset-md-1">
+                <div _ngcontent-eao-c5="" class="mx-auto buttonDiv"><button _ngcontent-eao-c5=""
+                    class="btn btn-md callBtn" mdbbtn="" type="button">call</button><button _ngcontent-eao-c5=""
+                    class="btn btn-md callBtn" mdbbtn="" type="button">chat</button></div>
+              </div>
+            </div>
+            <div _ngcontent-eao-c5="" class="benefitsImgDiv col-md-6 col-12"><img _ngcontent-eao-c5=""
+                class="img-responsive benefitsImg mt-5" src="./Boomcovered_files/icon-grid.png"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!---->
+    <footer _ngcontent-eao-c0="" class="page-footer font-small ng-tns-c0-0 ng-star-inserted"
+      style="background-color: #2A354C;">
+      <div _ngcontent-eao-c0="" class="ng-tns-c0-0" style="background-color:#2A354C;">
+        <div _ngcontent-eao-c0="" class="container">
+          <div _ngcontent-eao-c0="" class="row py-4 d-flex align-items-center"></div>
+        </div>
+      </div>
+      <div _ngcontent-eao-c0="" class="container text-center text-md-left mt-2">
+        <div _ngcontent-eao-c0="" class="row mt-1">
+          <div _ngcontent-eao-c0="" class="col-md-4 col-lg-3 col-xl-3 mb-4">
+            <p _ngcontent-eao-c0="" class="ng-tns-c0-0"><a _ngcontent-eao-c0="" class="ng-tns-c0-0"
+                href="https://neighborlyins.com/#!">Lorem Ipsum</a></p>
+            <p _ngcontent-eao-c0="" class="ng-tns-c0-0"><a _ngcontent-eao-c0="" class="ng-tns-c0-0"
+                href="https://neighborlyins.com/#!">Lorem Ipsum</a></p>
+            <p _ngcontent-eao-c0="" class="ng-tns-c0-0"><a _ngcontent-eao-c0="" class="ng-tns-c0-0"
+                href="https://neighborlyins.com/#!">Lorem Ipsum</a></p>
+            <p _ngcontent-eao-c0="" class="ng-tns-c0-0"><a _ngcontent-eao-c0="" class="ng-tns-c0-0"
+                href="https://neighborlyins.com/#!">Lorem Ipsum</a></p>
+          </div>
+          <div _ngcontent-eao-c0="" class="col-md-4 col-lg-3 col-xl-3 mb-4">
+            <p _ngcontent-eao-c0="" class="ng-tns-c0-0"><a _ngcontent-eao-c0="" class="ng-tns-c0-0"
+                href="https://neighborlyins.com/#!">Lorem Ipsum</a></p>
+            <p _ngcontent-eao-c0="" class="ng-tns-c0-0"><a _ngcontent-eao-c0="" class="ng-tns-c0-0"
+                href="https://neighborlyins.com/#!">Lorem Ipsum</a></p>
+            <p _ngcontent-eao-c0="" class="ng-tns-c0-0"><a _ngcontent-eao-c0="" class="ng-tns-c0-0"
+                href="https://neighborlyins.com/#!">Lorem Ipsum</a></p>
+            <p _ngcontent-eao-c0="" class="ng-tns-c0-0"><a _ngcontent-eao-c0="" class="ng-tns-c0-0"
+                href="https://neighborlyins.com/#!">Lorem Ipsum</a></p>
+          </div>
+          <div _ngcontent-eao-c0="" class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-6 mx-auto mb-4"><img
+              _ngcontent-eao-c0="" class="ng-tns-c0-0" height="150" src="./Boomcovered_files/med.jpg"
+              style="border-radius: 50%" width="150"></div>
+        </div>
+      </div>
+    </footer>
+  </app-root>
+  <script src="./Boomcovered_files/runtime.js.download" defer=""></script>
+  <script src="./Boomcovered_files/polyfills-es5.js.download" nomodule="" defer=""></script>
+  <script src="./Boomcovered_files/polyfills.js.download" defer=""></script>
+  <script src="./Boomcovered_files/styles.js.download" defer=""></script>
+  <script src="./Boomcovered_files/scripts.js.download" defer=""></script>
+  <script src="./Boomcovered_files/vendor.js.download" defer=""></script>
+  <script src="./Boomcovered_files/main.js.download" defer=""></script>
+
+  <!---->
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-12">
+    <div class="row bind-board">
+      <!--div class="col-md-12">
+        <p class="mb-1 bind-text">INSTANT BIND</p>
+      </div-->
+      <div class="col-12 ">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-row">
+              <img src="../../../assets/images/companies/hippo.png" class="mt-3" width="100%" style="object-fit: contain; max-height: 26px;"/>
+            </div>
+          </div>
+          <div class="col-12" *ngIf="hippo['quote_premium']">
+            <p class="hippo-price pt-2">{{hippo['quote_premium']|currency:'USD':'symbol':'1.0-0'}} <span class="text-smaller">/ YEAR</span></p>
+            <!--p class="clock-text">
+              <img src="../../../assets/images/demo-price/clock.png" width="20"/>
+              <span>bind in 60 seconds</span>
+            </p-->
+          </div>
+          <div class="col-12">
+            <p class="description mb-5">Need a policy fast? Continue here for an express policy purchase!<br>(2 ~ 3 mins)</p>
+            <a [href]="hippo['quote_url']" target="_blank" class="btn btn-block next-btn shadow-none text-white" style="border-radius: 3px !important; font-size: 2rem; max-width: 250px; background-color: #34C07D; text-transform: none">
+              <i><img src="../../../assets/images/bind-go.png" width="36" class="mr-3"/></i>Go
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

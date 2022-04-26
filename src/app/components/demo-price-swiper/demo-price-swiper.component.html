@@ -1,0 +1,18 @@
+<div class="container" >
+<div class="swipeDiv animated bounceInRight" >
+  <div class="swipePrediv"></div>
+  <swiper [config]="config" #usefulSwiper>
+    <div class="swiper-wrapper align-middle">
+      <div class="swiper-slide first mx-auto" (click)="goToThreeStep()">
+        <p class="font-weight-bold">Next</p>
+      </div>
+      <div class="swiper-slide last mx-auto">
+        <div class="left-edge">
+          <i class="arrow fas fa-angle-double-right fa-2x"></i>
+        </div>
+        <p class="text-center font-weight-bold swipe-txt">Continue</p>
+      </div>
+    </div>
+  </swiper>
+</div>
+</div>

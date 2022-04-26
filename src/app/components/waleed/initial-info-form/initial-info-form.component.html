@@ -1,0 +1,105 @@
+<app-header [currentUrl]="'initial-info-form'" ></app-header>
+<div class="fc_design" *ngIf="!isProcessing">
+  <div class="row fc-step-popup m-0" *ngIf="!isProcessing">
+    <div class="col-lg-3 fc-form-img text-center">
+      <!-- <img src="https://boom.insure/assets/images/step2-imgs/lighted-beige-house-1396132.jpg" alt="image"> -->
+    </div>
+    <form [formGroup]="basicInfo" (ngSubmit)="onSubmitForm()" class="col-lg-7">
+      <div class="pb-0">
+        <div class="form-row mt-md-5">
+          <p class="w-100" style="font-size: xx-large; font-weight: bolder; font-family: 'Open Sans Bold'">Create Household</p>
+          <div class="form-group col-md-4 col-6 m-0">
+            <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" />
+            <span class="text-danger" *ngIf="basicInfo.controls.firstName.touched && basicInfo.controls.firstName.errors?.required"> FIrstname is required </span>
+          </div>
+          <div class="form-group col-md-4 col-6 m-0">
+            <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" />
+            <span class="text-danger" *ngIf="basicInfo.controls.lastName.touched && basicInfo.controls.lastName.errors?.required"> Lastname is required </span>
+          </div>
+          <div class="form-group col-md-4 col-6 m-0 position-relative">
+            <!-- <input type="date" id="dobInput" class="form-control"  placeholder="mm/dd/yyyy" formControlName="dob" /> -->
+
+            <mat-form-field appearance="fill" class="customInputDate">
+          
+              <input matInput #input [matDatepicker]="picker1" id="dobInput" formControlName="dob" class="form-control" placeholder="mm/dd/yyyy" (click)="picker1.open()" >
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1 (closed)="input.blur()"></mat-datepicker>
+            </mat-form-field>
+
+            <span class="text-danger" *ngIf="basicInfo.controls.dob.touched && basicInfo.controls.dob.errors?.required"> Date of birth is required. </span>
+            <!-- <label for="dobInput" class="fa fa-calendar" style="position: absolute; top: 20px; right: 0; transform: translateY(-50%); margin-right: 16px; z-index: 0"></label> -->
+          </div>
+          <div class="form-check col-md-10 mx-auto py-3 d-flex" style="padding: 0 25px">
+            <input type="checkbox" class="mt-1 mr-2 form-check-input" id="fc-terms" formControlName="termsAndConditions" />
+
+            <label for="fc-terms" class="form-check-label" style="font-size: 0.8rem"
+              >This application will run real home insurance quotes based on your information. Please check here that you agree to <a href="">terms and conditions.</a>
+              <!-- (click)="handleAddressChange() -->
+              <a class="text-dark ml-3" (click)="initRequests()" ><u>Skip enter later</u></a>
+            </label>
+            
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer p-0">
+        <button type="submit" class="btn m-auto p-3 text-white" style="font-weight: bolder; background-color: #000000 !important; width: 200px; height: 44px; display: flex; align-items: center; justify-content: center">Run Qoutes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="isProcessing" style="overflow: hidden" class="processingDiv pt-md-5 mt-sm-5 mx-auto back-img-process">
+  <!----animation div---->
+
+  <!-- ------------------ -->
+  <div class="loader mt-md-5">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 mr-auto ml-auto mb-0">
+        <div class="row progress_cont">
+          <div class="col-md-12 text-center loadingdText">
+            <p *ngIf="progress <= 33">
+              Gathering Data<span class="text_loader dot-spinner" *ngIf="isProcessing && progress < 100">
+                <span class="bounce1"></span>
+                <span class="bounce2"></span>
+                <span class="bounce3"></span>
+              </span>
+            </p>
+            <p *ngIf="progress >= 34 && progress <= 66">
+              Running Quotes<span class="text_loader dot-spinner" *ngIf="isProcessing && progress < 100">
+                <span class="bounce1"></span>
+                <span class="bounce2"></span>
+                <span class="bounce3"></span>
+              </span>
+            </p>
+            <p *ngIf="progress >= 67 && progress <= 100">
+              Preparing Quotes<span class="text_loader dot-spinner" *ngIf="isProcessing && progress < 100">
+                <span class="bounce1"></span>
+                <span class="bounce2"></span>
+                <span class="bounce3"></span>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mapBox">
+    <div class="snippet step-one-loading" data-title=".dot-typing">
+      <!-- <div id="wave">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div> -->
+      <span class="text_loader dot-spinner">
+        <span class="bounce1" style="width: 20px; height: 20px"></span>
+        <span class="bounce2" style="width: 20px; height: 20px"></span>
+        <span class="bounce3" style="width: 20px; height: 20px"></span>
+      </span>
+    </div>
+    <div class="map-container" style="opacity: 1">
+      <agm-map [zoom]="12" [latitude]="lat" [longitude]="lng" [disableDefaultUI]="true" [scaleControl]="false" [draggable]="false">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>

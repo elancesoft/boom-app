@@ -1,0 +1,59 @@
+header.phase2header {
+  background: white;
+  padding: 0.3rem 1rem;
+
+  .backBtn {
+    cursor: pointer;
+  }
+  mat-form-field {
+    color: #1a1a1a !important;
+    > input {
+      border: 0;
+      border-bottom: 1px solid #333;
+      border-radius: 0;
+      font-size: 19px;
+      width: 122.54px;
+      text-align: center;
+      padding-bottom: 11px;
+      color: #1a1a1a !important;
+      outline: 0;
+      font-family: myriad-pro, sans-serif;
+      font-weight: 700;
+      font-style: normal;
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    mat-datepicker-toggle {
+      color: #1a1a1a !important;
+    }
+  }
+
+  .selected-address {
+    border: 1px solid #ccc;
+    border-radius: 10rem;
+    align-items: center;
+    padding: 0.5rem 0.7rem;
+    max-width: 450px;
+    @media screen and (max-width: 767px) {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    p {
+      margin-bottom: 0;
+      flex: 1 0 80%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      font-weight: 600 !important;
+      font-size: 16px !important;
+      font-family: "Source Sans Pro", sans-serif;
+      max-width: 80%;
+      @media screen and (max-width: 767px) {
+        font-size: calc(5px + 2vmin) !important;
+      }
+    }
+  }
+}

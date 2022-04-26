@@ -1,0 +1,202 @@
+<div class="container pt-md-3 pb-5">
+  <div class="col-md-10 offset-md-1">
+    <div class="pl-0 pr-0 mapContainer">
+      <agm-map [zoom]="17" [latitude]="mapData.lat" *ngIf="mapData" [longitude]="mapData.lng">
+        <agm-marker [latitude]="mapData.lat" [longitude]="mapData.lng"></agm-marker>
+      </agm-map>
+    </div>
+
+    <!-- Material input -->
+    <div class="form-group mb-1 button-container">
+      <div class="btn-group btn-group-sm offset-md-2 col-md-4 col-6 mt-md-4" role="group">
+        <button mdbBtn type="button" color="unique" size="sm" [class.active]="selectedMode == 0" class="waves-light switch even shadow-none z-depth-2" mdbWavesEffect (click)="getPricing(0); selectedMode = 0">home</button>
+        <button mdbBtn type="button" color="unique" size="sm" [class.active]="selectedMode == 1" class="waves-light switch odd shadow-none z-depth-2" mdbWavesEffect (click)="getPricing(1); selectedMode = 1">condo</button>
+      </div>
+      <div class="btn-group btn-group-sm col-md-4 col-6 mt-md-4" role="group">
+        <button mdbBtn type="button" color="unique" size="sm" [class.active]="isAnnual" class="waves-light switch even shadow-none z-depth-2" mdbWavesEffect (click)="isAnnual = true">yr.</button>
+        <button mdbBtn type="button" color="unique" size="sm" [class.active]="!isAnnual" class="waves-light switch odd shadow-none z-depth-2" mdbWavesEffect (click)="isAnnual = false">mo.</button>
+      </div>
+    </div>
+
+    <div class="price-container mt-4 mb-5 animated bounceInLeft" *ngIf="isPriceLoaded && isPriceDiv">
+      <div class="new-price-ranges-container">
+        <div class="back-img">
+          <img src="../../assets/images/step2-imgs/lighted-beige-house-1396132.jpg" alt="" />
+        </div>
+        <div class="circle-container">
+          <p class="range-title font-weight-bold">Basic</p>
+        </div>
+        <div class="price-range-inner-container">
+          <p class="range-number font-weight-bold font-italic">{{ (isAnnual ? lowest_price : lowest_price / 12) | currency: "USD":"symbol":"1.0-0" }}{{ isAnnual ? "/yr" : "/mo" }}</p>
+          <div class="icon-container">
+            <img src="../../assets/images/icons/fire.png" alt="" />
+            <img src="../../assets/images/icons/water.png" alt="" />
+            <img src="../../assets/images/icons/wind.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="new-price-ranges-container">
+        <div class="back-img">
+          <img src="../../assets/images/step2-imgs/brown-and-gray-painted-house-in-front-of-road-1396122.jpg" alt="" />
+        </div>
+        <div class="circle-container">
+          <p class="range-title font-weight-bold">Choice</p>
+        </div>
+        <div class="price-range-inner-container">
+          <p class="range-number font-weight-bold font-italic">{{ (isAnnual ? medium_price : medium_price / 12) | currency: "USD":"symbol":"1.0-0" }}{{ isAnnual ? "/yr" : "/mo" }}</p>
+          <div class="icon-container">
+            <img src="../../assets/images/icons/fire.png" alt="" />
+            <img src="../../assets/images/icons/water.png" alt="" />
+            <img src="../../assets/images/icons/wind.png" alt="" />
+            <img src="../../assets/images/icons/water.png" alt="" />
+            <img src="../../assets/images/icons/wind.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="new-price-ranges-container">
+        <div class="back-img">
+          <img src="../../assets/images/step2-imgs/home-real-estate-106399.jpg" alt="" />
+        </div>
+        <div class="circle-container">
+          <p class="range-title font-weight-bold">Elite</p>
+        </div>
+        <div class="price-range-inner-container">
+          <p class="range-number font-weight-bold font-italic">{{ (isAnnual ? highest_price : highest_price / 12) | currency: "USD":"symbol":"1.0-0" }}{{ isAnnual ? "/yr" : "/mo" }}</p>
+          <div class="icon-container">
+            <img src="../../assets/images/icons/fire.png" alt="" />
+            <img src="../../assets/images/icons/water.png" alt="" />
+            <img src="../../assets/images/icons/wind.png" alt="" />
+            <img src="../../assets/images/icons/water.png" alt="" />
+            <img src="../../assets/images/icons/wind.png" alt="" />
+            <img src="../../assets/images/icons/moreicon.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loader form-row animated fadeIn mt-5" *ngIf="!isPriceLoaded">
+      <div class="preloader-wrapper big active mx-auto">
+        <div class="spinner-layer spinner-red-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- New Price Range section End -->
+
+    <div class="swipeDiv mt-5 mb-5 animated bounceInRight" *ngIf="isPriceLoaded && isPriceDiv">
+      <div class="swipePrediv"></div>
+      <swiper [config]="config" #usefulSwiper>
+        <div class="swiper-wrapper align-middle">
+          <div class="swiper-slide first mx-auto" (click)="goToThreeStep()">
+            <p class="font-weight-bold">Next</p>
+          </div>
+          <div class="swiper-slide last mx-auto">
+            <div class="left-edge">
+              <i class="arrow fas fa-angle-double-right fa-2x"></i>
+            </div>
+            <p class="text-center font-weight-bold swipe-txt">Next</p>
+          </div>
+        </div>
+      </swiper>
+    </div>
+
+    <div class="flood-house-details-container animated bounceInRight mb-4" *ngIf="isPriceLoaded && isPriceDiv">
+      <div class="details-container mx-auto">
+        <div class="details-img-wrapper">
+          <img class="flood-img" src="../../assets/images/icons/flood.png" alt="" />
+        </div>
+        <div class="details-inner-container">
+          <p class="font-weight-bold font-italic">
+            {{ floodZone ? " flood zone:&nbsp;&nbsp;&nbsp;" + floodZone : "" }}
+          </p>
+          <p class="font-weight-bold font-italic">
+            {{ floodCost ? "flood quote:&nbsp;&nbsp;&nbsp;$" + floodCost.toFixed(0) : "" }}
+          </p>
+        </div>
+      </div>
+      <div class="details-container mx-auto">
+        <div class="details-img-wrapper">
+          <img class="house-img" src="../../assets/images/icons/houseinfo.png" alt="" />
+        </div>
+        <div class="details-inner-container">
+          <p class="font-weight-bold font-italic" [ngClass]="commonService.isMobileMode() ? 'text-left' : 'text-center'">
+            {{ sqft ? sqft + " &nbsp;&nbsp;&nbsp;Square Feet" : "" }}
+          </p>
+          <p class="font-weight-bold font-italic" [ngClass]="commonService.isMobileMode() ? 'text-left' : 'text-center'">
+            {{ builtYear ? builtYear + " &nbsp;&nbsp;&nbsp;Year Built" : "" }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="email-btn mx-auto" *ngIf="isPriceLoaded && isPriceDiv">
+      <div class="email-btn-inner mx-auto hoverable" style="border-radius: 10px !important" (click)="basicModal.show()">
+        <!-- <div class="col-6 col-md-4 col-sm-6 mx-auto" style="border-radius: 10px !important;" (click)="basicModal.show()"> -->
+        <!-- <div class="col-6 col-md-4 col-sm-3 mx-auto" style="border-radius: 10px !important;" (click)="basicModal.show()"> -->
+        <p class="text-center mb-1">
+          <!-- <mdb-icon far icon="paper-plane" class="text-white mt-1 paperplane" size="4x"></mdb-icon> -->
+          <!-- <i class="fas fa-paper-plane fa-3x mt-2"></i> -->
+          <!-- <i class="far fa-paper-plane fa-3x mt-2"></i> -->
+          <!-- <i class="fas fa-envelope fa-3x mt-2"></i> -->
+          <!-- <i class="far fa-envelope fa-3x mt-2"></i> -->
+          <i class="fas fa-mail-bulk fa-3x mt-2"></i>
+        </p>
+        <h6 class="text-center text-white mb-1">Email Quote</h6>
+      </div>
+    </div>
+    <div class="form-row" *ngIf="showErrorMessage">
+      <h3 class="text-center font-weight-bold h3-responsive mx-auto">No data found. Please try again later.</h3>
+    </div>
+  </div>
+  <app-alerts></app-alerts>
+</div>
+
+<div style="overflow-y: auto" mdbModal #basicModal="mdbModal" class="modal fade top" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-top-center" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="../../assets/images/email.png" class="mx-auto" width="30" />
+        <div class="clearfix"></div>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true" class="text-black-50">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4 class="font-weight-bold text-center">Email this quote to yourself or someone who needs it!</h4>
+        <div class="col-12 emailContainer mb-3">
+          <form>
+            <div class="md-form">
+              <input mdbInput mdbValidate type="email" class="form-control pr-0 rounded-0 emailInput" [(ngModel)]="demoEmailAddr" #input="ngModel" required pattern="[^ @]*@[^ @]*" id="form8" name="input" />
+              <label for="form8" class="">Send to:</label>
+              <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)">Email is invalid</mdb-error>
+              <mdb-success *ngIf="input.valid && (input.dirty || input.touched)">Email is valid</mdb-success>
+            </div>
+            <div class="md-form mt-5">
+              <input mdbInput mdbValidate type="email" class="form-control pr-0 rounded-0 emailInput" id="ccInput" name="cc_input" #cc_input="ngModel" [(ngModel)]="ccEmail" required pattern="[^ @]*@[^ @]*" />
+              <mdb-error *ngIf="cc_input.invalid && (cc_input.dirty || cc_input.touched)">Email is invalid</mdb-error>
+              <mdb-success *ngIf="cc_input.valid && (cc_input.dirty || cc_input.touched)">Email is valid</mdb-success>
+              <label for="ccInput" class="">CC:</label>
+            </div>
+            <div class="md-form">
+              <h6 class="font-weight-bold text-center">Send this quote so you can save it and pickup where you left off!</h6>
+            </div>
+            <!-- <div class="form-row">
+              <img src="../../assets/images/doc.png" class="mx-auto docImage" style="height: 100px !important;"/>
+            </div> -->
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="primary" size="sm" class="relative waves-light modal-send-btn" (click)="sendDemoEmailFunc()" mdbWavesEffect>Send</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mortgageContainer">
+      <h4 class="text-center font-weight-bold pb-4 h4-responsive font-italic">Do you have a mortgage?</h4>
+      <div class="form-group col-md-4 offset-md-4 col-8 offset-2">
+        <button
+          class="btn btn-block btn-gray text-center font-weight-bold font-italic shadow-none ml-0"
+          type="button" (click)="next(true)" [ngClass]="isHaveMortgage?'btn-danger':'btn-white'">yes
+        </button>
+        <button
+          class="btn btn-block btn-gray text-center font-weight-bold font-italic shadow-none ml-0 mt-3"
+          type="button" (click)="next(false)" [ngClass]="isHaveMortgage===false?'btn-danger':'btn-white'">no
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

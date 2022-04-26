@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ACORD>
+  <SignonRq>
+    <SignonPswd>
+      <SignonRoleCd>{{username}}</SignonRoleCd>
+      <CustId>
+        <SPName>{{password}}</SPName>
+        <CustLoginId>XMLCNGTEST</CustLoginId>
+      </CustId>
+      <CustPswd>
+        <EncryptionTypeCd>NONE</EncryptionTypeCd>
+        <Pswd>JK33NT</Pswd>
+      </CustPswd>
+    </SignonPswd>
+    <ClientDt>2019-09-26</ClientDt>
+    <CustLangPref>en-US</CustLangPref>
+    <ClientApp>
+      <Org>Partner</Org>
+      <Name>Partner</Name>
+      <Version>1.0</Version>
+    </ClientApp>
+    <State>PA</State>
+    <LOB>Home</LOB>
+    <Company>HP</Company>
+  </SignonRq>
+</ACORD>

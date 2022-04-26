@@ -1,0 +1,97 @@
+<!---->
+<div class="container col-md-10 offset-md-1 col-lg-8 offset-lg-2 pt-md-5 pt-3">
+
+  <div class="p-5 notSpecificPage" *ngIf="!loading">
+    <form [formGroup]="mortgageForm" (ngSubmit)="submitMortgageData()">
+      <!-- Grid row -->
+      <div class="form-row">
+        <label for="start_date">Start Date <span class="text-danger">*</span></label>
+        <input type="date" id="start_date" class="form-control" mdbInput [(ngModel)]="startDate"
+               formControlName="startdateInput" [min]="setValdiStartDate()['minDate']"
+               [max]="setValdiStartDate()['maxDate']"/>
+      </div>
+
+      <!-- Grid row -->
+      <div class="form-group row" style="margin-top: 25px;">
+        <label class="col-md-12">Add mortgage company? <span class="text-danger">*</span></label>
+
+        <div class="col-md-5 offset-md-3 col-sm-12 col-12 margin10">
+          <mdb-badge [default]="!isMortgage" [warning]="isMortgage" (click)="isMortgage=true">Yes</mdb-badge>
+          <mdb-badge [default]="isMortgage" [warning]="!isMortgage" (click)="isMortgage=false" style="float: right">No
+          </mdb-badge>
+        </div>
+      </div>
+      <div *ngIf="isMortgage">
+        <!-- Grid row -->
+        <div class="form-row">
+          <label for="start_date" class="col-md-12">Mortgage name <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" [(ngModel)]="name" formControlName="nameInput"/>
+        </div>
+        <div class="form-row">
+          <label for="mortgage_address" class="col-md-12">Mortgage address <span class="text-danger">*</span></label>
+          <input type="text" id="mortgage_address" class="form-control" [(ngModel)]="address"
+                 formControlName="addressInput"/>
+        </div>
+        <div class="form-row">
+          <!-- Default input -->
+          <div class="form-group col-md-5 cityDiv" style="padding-left: 0px;">
+            <label for="city" class="col-md-12">City <span class="text-danger">*</span></label>
+            <input mdbInput type="text" id="city" class="form-control" [(ngModel)]="city" formControlName="cityInput">
+          </div>
+          <!-- Default input -->
+          <div class="form-group col-md-2 stateDiv">
+            <label for="state" class="col-md-12">State <span class="text-danger">*</span></label>
+            <select name="state" id="state" mdbInput class="form-control" id="inputStateMD" placeholder="State"
+                    formControlName="stateInput" mdbvalidate [(ngModel)]="state" style="height: 41px !important;">
+              <option *ngFor="let state of stateAry" [ngValue]="state"
+                      [selected]="state['value'] === 'PA'">{{state}}</option>
+            </select>
+            <!--<mdb-error *ngIf="stateInput.invalid && (stateInput.dirty || stateInput.touched)">State is required-->
+            <!--</mdb-error>-->
+            <!--<mdb-success *ngIf="stateInput.valid && (stateInput.dirty || stateInput.touched)">State is valid-->
+            <!--</mdb-success>-->
+          </div>
+          <!-- Default input -->
+          <div class="form-group col-md-5 zipDiv" style="padding-right: 0px;">
+            <label for="zip" class="col-md-12">Zip <span class="text-danger">*</span></label>
+            <input mdbInput type="text" id="zip" class="form-control" [(ngModel)]="zip" formControlName="zipInput">
+          </div>
+        </div>
+        <!-- Grid row -->
+        <div class="form-group row">
+          <label for="start_date" class="col-md-12">Are you buying this house? <span class="text-danger">*</span></label>
+
+          <div class="col-md-5 offset-md-3 col-sm-12 col-12 margin10">
+            <mdb-badge [default]="!isBuying" [warning]="isBuying" (click)="isBuying=true">Yes</mdb-badge>
+            <mdb-badge [default]="isBuying" [warning]="!isBuying" (click)="isBuying=false" style="float: right">No
+            </mdb-badge>
+          </div>
+        </div>
+        <!-- Grid row -->
+        <div class="form-group row" *ngIf="isBuying">
+          <label for="start_date" class="col-md-12">Want us to email settlement documents to your lender? <span
+            class="text-danger">*</span></label>
+          <div class="col-md-5 offset-md-3 col-sm-12 col-12 margin10">
+            <mdb-badge [default]="!isLender" [warning]="isLender" (click)="isLender=true">Yes</mdb-badge>
+            <mdb-badge [default]="isLender" [warning]="!isLender" (click)="isLender=false" style="float: right">No
+            </mdb-badge>
+          </div>
+        </div>
+        <!-- Grid row -->
+        <div class="form-row" style="margin-bottom: 50px;" *ngIf="isLender">
+          <label for="lender_email" class="col-md-12">Lender's email <span class="text-danger">*</span></label>
+          <input type="text" id="lender_email" [(ngModel)]="email" class="form-control" formControlName="emailInput"/>
+        </div>
+      </div>
+      <div class="form-group mt-9" style="margin-top: 100px;">
+        <div class="col-md-12">
+          <button mdbBtn type="submit" class="btn btn-success btn-block mx-auto"
+                  id="nextBtn">
+            ISSUE POLICY&nbsp;
+            <mdb-icon fas icon="angle-right"></mdb-icon>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

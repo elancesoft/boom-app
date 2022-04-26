@@ -1,0 +1,30 @@
+img {
+    max-height: 25px;
+    display: block;
+    margin: 12px auto;
+    max-width: 102px;
+}
+
+.text-center {
+    padding: 0 30px;
+    color: #000;
+    margin-top: -12px;
+}
+
+#chart {
+  padding: 0;
+  .apexcharts-legend, .apexcharts-grid {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .col-2 {
+    padding-bottom: 5rem !important;
+  }
+
+  img {
+    max-width: 70px;
+    margin: 14px auto;
+  }
+}

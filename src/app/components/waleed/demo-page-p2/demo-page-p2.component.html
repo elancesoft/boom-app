@@ -1,0 +1,21 @@
+<app-header [currentUrl]="'demopage'"></app-header>
+<div class="demoPageP2">
+  <h2>Homeowners Insurance Estimate</h2>
+  <div class="priceAndMapContainer">
+    <div class="priceDicv">
+      <h1>${{secondLowestPrice.toLocaleString()}}</h1>
+      <small>year</small>
+      <img src="./../../../assets/info1.svg" alt="" />
+    </div>
+    <div class="map-container">
+      <agm-map class="hello Test" [zoom]="12" [latitude]="lat" [longitude]="lng" [disableDefaultUI]="true" [scaleControl]="false" [draggable]="false">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+
+  <div class="btnContainer">
+    <a class="btn" href="javascript:void(0)" (click)="goToThreeStep()">Complete Your Quote <img src="./../../../assets/Group 162.svg" width="25.63px" height="14.09px" alt="" /> </a>
+    <a class="btn" href="javascript:void(0)" (click)="goToEditCoverage()">Edit Coverages <img src="./../../../assets/setting-lines.svg" alt="" width="24.38px" height="23.9px" /></a>
+  </div>
+</div>

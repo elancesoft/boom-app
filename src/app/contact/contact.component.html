@@ -1,0 +1,132 @@
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+
+<!-- <div class="container pt-md-2 pt-2 pb-5"> -->
+<!-- <div class="form-group inner-container"> -->
+<div class="h1-container">
+  <div class="h1-opacity">
+    <h1 class="contact-h1">Contact Us</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="inner-container">
+    <h3>Ask how we can help you</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam temporibus natus sequi reprehenderit fugiat id
+      illo omnis ipsam illum voluptate.</p>
+    <h2 class="points-of-contact text-center">Points of Contact</h2>
+
+    <button type="button" mdbBtn class="mt-3 modal-btn" rounded="true" data-toggle="modal" data-target="#basicExample"
+      (click)="frame.show()" mdbWavesEffect>Contact Us
+    </button>
+    <!-- Contact form start -->
+    <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Contact to us</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5">
+              <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+              <input type="text" id="form34" class="form-control" mdbInput mdbValidate
+                [formControl]="contactFormModalName">
+              <label for="form34">Your name</label>
+              <mdb-error
+                *ngIf="contactFormModalName.invalid && (contactFormModalName.dirty || contactFormModalName.touched)">
+                Input
+                invalid
+              </mdb-error>
+              <mdb-success
+                *ngIf="contactFormModalName.valid && (contactFormModalName.dirty || contactFormModalName.touched)">Input
+                valid
+              </mdb-success>
+            </div>
+
+            <div class="md-form mb-5">
+              <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+              <input type="email" id="form29" class="form-control" mdbInput mdbValidate
+                [formControl]="contactFormModalEmail">
+              <label for="form29">Your email</label>
+              <mdb-error
+                *ngIf="contactFormModalEmail.invalid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)">
+                Input invalid
+              </mdb-error>
+              <mdb-success
+                *ngIf="contactFormModalEmail.valid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)">
+                Input
+                valid
+              </mdb-success>
+            </div>
+
+            <div class="md-form mb-5">
+              <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
+              <input type="text" id="form32" class="form-control" mdbInput mdbValidate
+                [formControl]="contactFormModalSubject">
+              <label for="form32">Subject</label>
+              <mdb-error
+                *ngIf="contactFormModalSubject.invalid && (contactFormModalSubject.dirty || contactFormModalSubject.touched)">
+                Input invalid
+              </mdb-error>
+              <mdb-success
+                *ngIf="contactFormModalSubject.valid && (contactFormModalSubject.dirty || contactFormModalSubject.touched)">
+                Input valid
+              </mdb-success>
+            </div>
+
+            <div class="md-form">
+              <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+              <textarea type="text" id="form8" class="md-textarea form-control" rows="1" mdbInput mdbValidate
+                [formControl]="contactFormModalMessage"></textarea>
+              <label for="form8">Your message</label>
+              <mdb-error
+                *ngIf="contactFormModalMessage.invalid && (contactFormModalMessage.dirty || contactFormModalMessage.touched)">
+                Input invalid
+              </mdb-error>
+              <mdb-success
+                *ngIf="contactFormModalMessage.valid && (contactFormModalMessage.dirty || contactFormModalMessage.touched)">
+                Input valid
+              </mdb-success>
+            </div>
+
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button mdbBtn class="waves-light send-btn" mdbWavesEffect>Send
+              <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Contact form end -->
+
+    <h3>Headquarters</h3>
+    <p class="text-center">2200 Western Ave, Suite 200, Exton, PA 98121</p>
+
+    <h3>Information and Sales</h3>
+    <p class="text-center">1-111-111-1111</p>
+
+    <h3>Email</h3>
+    <p class="text-center">info@swypecov.com</p>
+
+    <h3>Support</h3>
+    <p class="text-center">info@swypecov.com</p>
+
+    <h3 class="faq"><a href="#">FAQs</a></h3>
+
+    <h3>More Information on how to get in touch</h3>
+    <p class="text-center">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus veniam deserunt et ut? Explicabo
+      accusantium facilis vitae molestias iusto ea dignissimos, voluptatum eligendi quidem ab tempore! Sequi a velit
+      doloremque ut? Totam laboriosam eveniet ex!
+    </p>
+
+    <p class="text-center">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum totam suscipit labore in iure, commodi
+      reiciendis molestiae unde ipsa possimus consectetur cum omnis iste nobis optio voluptates fugit dolor architecto!
+    </p>
+
+  </div>
+</div>

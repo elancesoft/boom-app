@@ -1,0 +1,13 @@
+.coustom_slide_in {
+  max-width: 366px;
+  @media screen and (max-width: 767px) {
+    max-width: 100%;
+    app-demo-price-header {
+      .card {
+        box-shadow: none;
+        box-shadow: none;
+        border: 0;
+      }
+    }
+  }
+}

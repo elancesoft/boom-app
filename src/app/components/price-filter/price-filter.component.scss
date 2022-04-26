@@ -1,0 +1,12 @@
+
+.check-container {
+  width: 168px;
+  border-radius: 5px;
+  border: 1px solid darkgrey;
+}
+
+@media screen and (max-width: 780px) {
+  .check-container {
+    display: none;
+  }
+}

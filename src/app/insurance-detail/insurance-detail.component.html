@@ -1,0 +1,95 @@
+<div class="insurance_detail prepering_policy_main_div">
+  <!-- new header info -->
+  <app-header [currentUrl]="'policy-start-date'" ></app-header>
+  <div class="container-fluid insure_record">
+    <!-- <h1 class="pl-5">Preparing your policy...</h1> -->
+    <h1 class="pl-5" (click)="back()">You've selected {{ selectedPlan.name }}! <img src="/assets/images/icons/confetti.png" class="customIcon pb-2 pl-1" /></h1>
+    <div class="row">
+      <div class="col-md-12 col-lg-12 inputContainer prepering_policy_cont">
+        <div class="row px-0 px-md-5">
+          <div class="col-md-5 col-lg-4 app_price_widget my-3">
+            <app-price-widget
+              [data]="selectedPlan"
+              [hideSelectPlan]="true"
+            >
+            </app-price-widget>
+            <!-- <div class="d-flex buy-now mx-auto pl-3 pr-4 py-2 mb-4" (click)="openModal()"><img src="../../../assets/images/SVG/shopping-cart.svg" /> <span class="ml-3 h4 mb-0">buy</span></div> -->
+          </div>
+          <div class="col-md-7 col-lg-8 next-steps px-4 px-4">
+            <div class="startdateContainer">
+              <!-- <h4 class=" h4-responsive">Start Date</h4> -->
+              <h3 class="text-danger">
+                <strong><img src="/assets/images/icons/finish-flag.png" class="customIcon pr-1" /> Final Steps:</strong>
+              </h3>
+              <!-- <h4>Just a few minutes remaining...</h4> -->
+              <h4 class="mt-4">When will your policy need to start?</h4>
+              <!-- <div class="start-date">{{startDate}}</div> -->
+              <!-- <ejs-datepicker  [min]="minDate" [max]="maxDate" class="form-control policy_final_step_datepicker" name="datetime" placeholder='start date'></ejs-datepicker> -->
+              <ejs-datepicker type="text" (focus)="onFocus($event)" class="form-control policy_final_step_datepicker py-0" id="date" name="datetime" placeholder="Start Date" format="MM/dd/yyyy" [(ngModel)]="start_date"></ejs-datepicker>
+
+              <div class="form-row">
+                <!-- <input type="date" class="form-control start-date" [(ngModel)]="start_date"/> -->
+              </div>
+            </div>
+
+            <div class="mortgageContainer">
+              <!-- <h4 class=" h4-responsive">Will you have a mortgage for this property?</h4> -->
+              <h4 class="mb-0">Do you have a mortgage?</h4>
+              <div class="form-group col-md-12">
+                <button class="btn text-center font-weight-bold" type="button" (click)="next(true)" [ngClass]="isHaveMortgage ? 'btn-danger' : 'btn-white'">Y</button>
+                <button class="btn text-center font-weight-bold" type="button" (click)="next(false)" [ngClass]="isHaveMortgage === false ? 'btn-danger' : 'btn-white'">N</button>
+              </div>
+            </div>
+
+            <div class="mortgageContainer">
+              <!-- <h4 class="text-center font-weight-bold pb-4 h4-responsive font-italic">Please provide your contact at your mortgage company?</h4> -->
+              <!-- <h4 class="text-center font-weight-bold pb-4 h4-responsive font-italic">What is your lender's email address?  <span> <a href="#">I dont have it.</a></span></h4> -->
+              <form [formGroup]="userForm" (ngSubmit)="saveLeaderInfo(userForm.value)">
+                <div class="form-group lenders-email">
+                  <h4 class="mb-2 mt-3">What is your lender's email address?</h4>
+                  <input type="email" class="form-control" placeholder="Email address?" [(ngModel)]="lender_email" formControlName="leader_email" />
+                  <span (click)="next(false)" class="mt-3 d-block" style="text-decoration: underline"> I dont have it. </span>
+                  <button class="btn btn-success" (click)="next(true)" [disabled]="!isHaveMortgage" style="color: #fff; background-color: #28a745; border-color: #28a745">Next</button>
+                </div>
+                <!-- <div class="form-group get_quotes_btn mt-4">
+                  <button class="btn text-center font-weight-bold btn-block" type="submit">Get Quotes</button>
+                </div> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="text-center p-3" id="price_div">
+        <div class="price_break range_modal" style="width: 637px">
+          <div class="">
+            <button class="btn w-100 mx-0 d-flex justify-content-center m-auto" (click)="refresh()">RESTART <i class="fa fa-refresh pl-4" aria-hidden="true"></i></button>
+          </div>
+          <h5 class="d-flex mt-4 pl-2 align-items-center">
+            <img src="/assets/images/icons/year-sq.png" class="customIcon" /><span class="font-weight-bold">{{ builtyear }} year built</span>
+          </h5>
+          <h5 class="d-flex pl-2 align-items-center">
+            <img src="/assets/images/icons/year-sq.png" class="customIcon" /><span class="font-weight-bold">{{ square.toLocaleString() }} sq ft</span>
+          </h5>
+          <h5 class="d-flex pl-2 align-items-center">
+            <img src="/assets/images/icons/year-sq.png" class="customIcon" /><span class="font-weight-bold">${{ estimate }}</span>
+          </h5>
+          <h5 class="text-left pl-2 pt-3 font-weight-bold">Flood zone: {{ neptuneFlood }}</h5>
+
+          <p class="text-left pl-2 pt-4 pb-3" style="font-weight: bold"><strong>Value Spectrum:</strong></p>
+
+          <ng5-slider [(value)]="spectrum_val" [options]="modal_range_picker" class="spectrum_modal_range"></ng5-slider>
+
+          <div class="pt-5">
+            <button class="btn w-100 mx-0 d-flex justify-content-center m-auto" data-dismiss="modal" (click)="popupStatus = 0">Close <span class="pl-4">X</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

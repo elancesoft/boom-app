@@ -1,0 +1,87 @@
+<div class="mainDiv pr-0 pl-0 mr-0 ml-0" [ngStyle]="{top:progressTop+'px'}">
+  <div>
+    <div class="pl-0 pr-0 mapContainer" *ngIf="isProcessing">
+      <agm-map [zoom]="17" [latitude]="mapData.lat" *ngIf="mapData" [longitude]="mapData.lng">
+        <agm-marker [latitude]="mapData.lat" [longitude]="mapData.lng"></agm-marker>
+      </agm-map>
+    </div>
+    <div class="pl-0 pr-0 mapContainer2" *ngIf="isProcessing2">
+      <agm-map [zoom]="17" [latitude]="mapData.lat" *ngIf="mapData" [longitude]="mapData.lng">
+        <agm-marker [latitude]="mapData.lat" [longitude]="mapData.lng"></agm-marker>
+      </agm-map>
+    </div>
+    <div class="address-policy-container" *ngIf="isDetailsPolicyProcessing">
+      <div class="address-details-container">
+        <div class="detailsDiv">
+          <p class="font-weight-bold text-center">
+            <span class="text-right">Year Built:</span>
+            <span class="text-left">{{zillowData['built_year']}}</span>
+          </p>
+          <p class="font-weight-bold text-center">
+            <span class="text-right">Square Feet:</span>
+            <span class="text-left">{{commonService.commafy(zillowData['square'])}}</span>
+          </p>
+          <p class="font-weight-bold text-center" *ngIf="zillowData['estimate'] != 'NaN'">
+            <span class="text-right">Est value:</span>
+            <span class="text-left">{{'$' + commonService.commafy(zillowData['estimate'])}}</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Button trigger modal-->
+      <button type="button" class="btn btn-yellow font-weight-bold policy-btn" data-toggle="modal"
+        data-target="#modalAbandonedCart" style="color: #000 !important;" *ngIf="isBTNProcessing"><i
+          class="far fa-gem mx-auto text-center mb-1"></i>Buy Best Policy</button>
+
+      <!-- Modal: modalAbandonedCart-->
+      <div class="modal fade right" id="modalAbandonedCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+          <!--Content-->
+          <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+              <p class="heading">Product in the cart
+              </p>
+
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="white-text">&times;</span>
+              </button>
+            </div>
+
+            <!--Body-->
+            <div class="modal-body">
+
+              <div class="row">
+                <div class="col-3">
+                  <p></p>
+                  <p class="text-center"><i class="fas fa-shopping-cart fa-4x"></i></p>
+                </div>
+
+                <div class="col-9">
+                  <p>Do you need more time to make a purchase decision?</p>
+                  <p>No pressure, your product will be waiting for you in the cart.</p>
+                </div>
+              </div>
+            </div>
+
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+              <a type="button" class="btn btn-info btn-yellow waves-effect btn-rounded" style="color: #000;">Go to
+                cart</a>
+              <a type="button" class="btn btn-info btn-yellow waves-effect btn-rounded" data-dismiss="modal"
+                style="color: #000;">Cancel</a>
+            </div>
+          </div>
+          <!--/.Content-->
+        </div>
+      </div>
+      <!-- Modal: modalAbandonedCart-->
+    </div>
+  </div>
+  <div class="progress top-progress" *ngIf="isProcessing">
+    <div class="progress-bar" role="progressbar"
+      [ngStyle]="isFinish?{width:progress+'%', 'background-color':'#0644f4'}:{width:progress+'%'}" aria-valuenow="25"
+      [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+</div>

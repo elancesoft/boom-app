@@ -1,0 +1,29 @@
+<!---->
+<div class="container-fluid">
+  <div class="col-md-6 offset-md-3 pt-md-3">
+    <h1>Your policy is ready</h1>
+    <h4 class="text-danger mt-5">policy #: {{commonService.getUniqueID()}}</h4>
+    <h4 class="effectiveTitle">{{effective_date|date: 'dd/MM/yyyy'}} - {{expiration_date|date: 'dd/MM/yyyy'}}</h4>
+    <div class="policyDiv">
+      <div class="form-group">
+        <a href="{{evidencePDFURL}}" target="_blank">
+          <img src="../../assets/images/pdf_logo.svg"/>
+        </a>
+        <h5>Evidence of insurance</h5>
+      </div>
+      <div class="form-group">
+        <a href="{{invoicePDFURL}}" target="_blank">
+          <img src="../../assets/images/pdf_logo.svg"/>
+        </a>
+        <h5>Invoice</h5>
+      </div>
+      <div>
+        <a href="{{evidencePDFURL}}" target="_blank">
+          <img src="../../assets/images/pdf_logo.svg"/>
+        </a>
+        <h5>Management Guide</h5>
+      </div>
+
+    </div>
+  </div>
+</div>

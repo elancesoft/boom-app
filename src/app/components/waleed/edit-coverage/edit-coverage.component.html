@@ -1,0 +1,13 @@
+<app-header [currentUrl]="'edit-coverage'" class="shadow"></app-header>
+<div class="container-fluid bg-light pt-md-5 px-0">
+  <div class="row justify-content-center mx-0">
+    <div class="col-xl-5 col-md-6 order-2 order-md-1 fc-main-sidebar">
+      <app-demo-page  (finalPrice)=finalPrice($event) ></app-demo-page>
+    </div>
+    <div class="col-xl-4 col-md-6 order-1 order-md-2 fc-main-right-section">
+      <div class="coustom_slide_in animated slideInUp_custom">
+        <app-demo-price-header  [finalPrice]="_finalPrice" (sendPdf)="downloadPdf($event)" (sendEmail)="sendEmail($event)"></app-demo-price-header>
+      </div>
+    </div>
+  </div>
+</div>

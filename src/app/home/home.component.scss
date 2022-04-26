@@ -1,0 +1,538 @@
+@import '../../assets/styles/variables';
+
+.body-bg {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+}
+
+.introText {
+  @media screen and (max-width: 768px) {
+    font-size: 20pt;
+    padding-left: 0px !important;
+  }
+  @media screen and (min-width: 992px) {
+    font-size: 60pt;
+  }
+  @media screen and (max-width: 991px) {
+    font-size: 28pt;
+  }
+  text-shadow: 2px 2px #2a1c30;
+  line-height: 1 !important;
+}
+.notSpecificPage {
+  margin-bottom: 50px;
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    bottom: -10vh !important;
+  }
+}
+.selectMode{
+  @media screen and (max-width: 768px) {
+  }
+}
+.mainDiv {
+  margin-right: 0px !important;
+
+  .notSpecificPage:first-of-type {
+    padding: 0px 3rem;
+    margin-bottom: 0px;
+  }
+
+  .notSpecificPage:nth-of-type(2) {
+    padding: 3rem 0px !important;
+  }
+
+  .notSpecificPage {
+    margin-bottom: 50px;
+
+    .row {
+      .col-md-12 {
+        .logoImg {
+          height: 300px;
+          margin: 0 auto;
+        }
+
+        .badge-image {
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+
+        mdb-badge {
+          height: 30px;
+        }
+
+        mdb-badge.mobileBadge {
+          background-color: orangered;
+          font-size: 15px;
+          margin-top: 10px;
+          border-radius: 10px;
+          float: right;
+        }
+
+
+        @media screen and (max-width: 768px) and (min-width: 385px) {
+          mdb-badge {
+            margin-top: 10px !important;
+            min-width: 120px !important;
+          }
+          mdb-badge:first-of-type {
+            margin-right: 0px !important;
+          }
+          .switchArea a {
+            margin-top: 50px !important;
+            padding-left: 0px !important;
+          }
+          .badge-image {
+
+            margin-top: 10px;
+            margin-left: 10px !important;
+          }
+        }
+        @media screen and (max-width: 435px) {
+          mdb-badge:last-of-type {
+            margin-right: 0px !important;
+          }
+        }
+        @media screen and (max-width: 368px) {
+          mdb-badge {
+            margin-right: 0px !important;
+            margin-top: 10px;
+          }
+          mdb-badge:nth-of-type(2) {
+            margin-top: 0px !important;
+          }
+          .badge-image {
+            margin-top: 10px !important;
+          }
+
+        }
+      }
+    }
+
+    .row.selectMode {
+      margin-top: 12vh;
+
+      h6 {
+        width: 150px;
+        margin-top: 10px;
+        font-size: 14px;
+      }
+
+      .imgDiv {
+        padding: 5px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px 3px #aaa8a8;
+
+        cursor: pointer;
+        max-width: 180px !important;
+        max-height: 180px;
+
+        img {
+          height: 80px;
+          @media screen and (max-width: 767px) {
+            width: 35%;
+            height: auto !important;
+          }
+        }
+
+        .form-row {
+          margin-bottom: 5px !important;
+        }
+
+        button {
+          background-color: $primary-color;
+          -webkit-border-radius: 10px !important;
+          -moz-border-radius: 10px !important;
+          border-radius: 10px !important;
+        }
+
+        button:hover {
+          color: #fff;
+        }
+      }
+    }
+
+    .switchArea {
+      padding-top: 8px;
+      display: contents;
+      //margin-left: 80%;
+
+      a {
+        padding: 8px;
+        padding-left: 15px !important;
+        text-decoration: underline;
+      }
+    }
+
+    form.personForm {
+      padding-top: 20px;
+      padding-bottom: 20px;;
+
+      @media screen and (max-width: 997px) {
+
+        button {
+          width: 50%;
+          margin-left: 25%;
+        }
+      }
+
+      .userFormGroup {
+        button[type=submit] {
+          padding: 10px 12px;
+          margin-left: 0;
+        }
+      }
+    }
+
+    .rangeBarImg img {
+      width: 100%;
+      height: auto;
+      margin-top: -2%;
+    }
+
+    .bindSection {
+      .consume {
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+
+      .bindInfo {
+        //height: 497px;
+      }
+
+      .coverageContent {
+        width: 100% !important;
+      }
+
+      .coverageContent .starCovg h5 {
+        display: inline-block;
+      }
+
+      .coverSection {
+        padding-left: calc(50% - 30px);
+
+        .coverButton {
+          width: 20px;
+          height: 20px;
+          border: solid 3px darkorange;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+          display: inline-block;
+          cursor: pointer;
+        }
+
+        .coverButton:first-of-type {
+          margin-right: 5px;
+        }
+
+        .coverButton:last-of-type {
+          margin-left: 5px;
+        }
+
+        .active {
+          background-color: darkorange;
+        }
+
+        .inactive {
+          background-color: white;
+        }
+      }
+
+      .starCovg {
+        strong {
+          margin-left: 5px;
+        }
+
+        border-bottom: 1px solid lightgray;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+      }
+
+      .handoffdiv {
+        padding-top: 16px;
+        border-bottom: solid 1px #d3d3d3;
+      }
+
+      .addCar {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 16px;
+      }
+
+      #bindNowPrice {
+        color: #ff7f00;
+        font-family: $primary-font;
+        font-size: 40px;
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+
+    @media screen and (max-width: 1024px) {
+      .priceSection {
+        .lowPrice, .highPrice {
+          font-size: 108%;
+        }
+
+        .rangeBarImg {
+          padding-right: 0px !important;
+        }
+      }
+    }
+  }
+
+  .nationWide:not(first-type-of) {
+    @media screen and (max-width: 767px) {
+      padding-left: 60px !important;
+    }
+  }
+
+
+  .coverageImg, .benefitsImg {
+    width: 70%;
+    margin-left: 15%;
+  }
+
+  .nationWide, .coverageAds {
+    padding-bottom: 30px;
+  }
+
+  .nationWide {
+    @media screen and (min-width: 980px) {
+      min-width: 960px !important;
+      margin: 0 auto;
+    }
+  }
+
+  .coverageAds {
+    background-color: #ededed;
+  }
+
+  .buttonDiv {
+    @media screen and (max-width: 767px) {
+      padding-left: 30px;
+    }
+
+    .callBtn, .chatBtn {
+      background-color: $primary-color !important;
+    }
+
+    .callBtn:hover, .chatBtn:hover {
+      color: #fff !important;
+    }
+
+    @media screen and (max-width: 320px) {
+      .callBtn {
+        margin-right: 0px !important;
+      }
+
+      .callBtn {
+        margin-right: 0px !important;
+      }
+    }
+  }
+
+  .nationwideMobileImg {
+    width: 60%;
+  }
+
+  .benefitsDiv {
+    width: 100% !important;
+    @media screen and (min-width: 768px) {
+      padding-bottom: 100px;
+    }
+  }
+
+  .zillowBoard {
+    img {
+      width: 65px;
+    }
+
+    span {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+
+  .mainContent {
+    max-width: 700px;
+    margin-left: calc((100% - 700px) / 2) !important;
+  }
+  .selectBlock {
+    margin-top: 10vh;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .homeBg {
+    height: 60vh !important;
+    position: absolute;
+    margin-left: -20vh !important;
+    z-index: -1;
+    margin-top: -50px !important;
+  }
+  .selectBlock {
+    margin-top: 15vh;
+  }
+  .quoteBtnDiv {
+    margin-top: 5vh;
+  }
+}
+
+input[type=text], input[type=date], input[type=email] {
+  background-color: lightgray !important;
+  border-radius: 10px !important;
+  border: 1px solid lightgray !important;
+  text-indent: 10px !important;
+}
+
+input[type=number] {
+  background-color: lightgray !important;
+  border-radius: 10px !important;
+  text-indent: 10px !important;
+}
+
+.border-light {
+  background-color: white;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+
+.squareFeetTag {
+  padding: 8px;
+  height: 20px;
+  background-color: orangered;
+  color: white;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-right: 10px;
+  display: inline;
+}
+
+.userFormGroup .col-form-label {
+  color: lightgray !important;
+}
+
+.userFormGroup .btn.btn-sm, .carFormGroup .btn.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.64rem;
+  background: lightgray;
+  color: #3d3d3d;
+}
+
+.handOffImage {
+  background: orangered;
+  width: 40px;
+  border-radius: 10px;
+  padding: 5px;
+  margin-top: -5px;
+}
+
+#dobInput {
+  min-height: 26px !important;
+}
+
+.carForm {
+  margin-bottom: 0;
+
+  .col-md-6 {
+    height: 50px;
+  }
+}
+
+.col {
+  margin-top: 20px;
+}
+
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.content {
+  min-height: 475px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .coverageContent .starCovg h5 {
+    font-size: 15px !important;
+  }
+  h6 {
+    font-size: 12px !important;
+    width: auto !important;
+  }
+  .imgDiv {
+    width: auto !important;
+    max-height: 180px !important;
+
+    div {
+      max-height: 60px !important;
+    }
+  }
+
+  .nationWideImg {
+    width: 100% !important;
+  }
+  .selectBlock:first-of-type {
+    padding-left: 0;
+  }
+  .selectBlock:last-of-type {
+    padding-right: 0;
+  }
+  .selectBlock {
+    .col-12 {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  .notSpecificPage:first-of-type {
+    padding: 0px 1rem !important;
+  }
+  .homeBg {
+    width: calc(100% - 20px) !important;
+    margin: 0 auto !important;
+    position: absolute;
+    z-index: -1;
+    margin-top: 50px !important;
+  }
+}
+
+
+.carousel.pointer-event {
+  touch-action: pan-y;
+}
+
+.slide-overlay {
+  opacity: 0.1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: white
+}
+
+
+section {
+  height: 100vh;
+  //width: 100% !important;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}

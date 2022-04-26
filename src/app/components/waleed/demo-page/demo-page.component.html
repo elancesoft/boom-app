@@ -1,0 +1,783 @@
+<div class="card card-body coverdProfileCard">
+  <div class="cardTopText {{ disabled ? 'd-none' : 'd-block' }}">
+    <h5>Covered Profile:</h5>
+    <small class="d-md-block d-none">Hover over each coverage to see what each coverage is. </small>
+  </div>
+  <div class="cardTopText {{ disabled ? 'd-block' : 'd-none' }} ">
+    <h5>Here are your quote results:</h5>
+    <p>We ran your quotes with your coverage request.</p>
+  </div>
+
+  <!-- sidebar filter -->
+  <div class="fc-filters-main">
+    <!-- Dwelling -->
+    <div class="fc-filters-value-wrap">
+      <div class="fc-title-value">
+        <div class="fc-title-filter">
+          <h4>
+            Dwelling
+            <span class="fc-title-info">
+              <span class="fc-title-icon">
+                <img src="./../../../../assets/info.svg" />
+              </span>
+              <p class="fc-title-tooltip">info about this filter</p>
+            </span>
+          </h4>
+          <p class="fc-title-price-value {{ disabled ? 'text-grey' : '' }}" id="value-dwalling">{{ fcDwelling.toLocaleString() }}</p>
+
+          <div class="card popUpCard" *ngIf="!disabled">
+            <div class="card-body">
+              <div class="TopText">
+                <h4>
+                  Dwelling
+                  <span class="fc-title-info">
+                    <span class="fc-title-icon">
+                      <img src="./../../../../assets/info.svg" />
+                    </span>
+                    <p class="fc-title-tooltip">info about this filter</p>
+                  </span>
+                </h4>
+                <p class="fc-title-price-value {{ disabled ? 'text-grey' : '' }}" id="value-dwalling">{{ fcDwelling.toLocaleString() }}</p>
+              </div>
+              <p class="textLine">Covers the cost to rebuild or repair the
+                structure of your home</p>
+
+              <div class="imagesContainer">
+                <div class="row g-4">
+                  <div class="col-6">
+                    <p>Walls</p>
+                    <img src="../../../assets/images/fc/img/popupimg2.png" />
+                  </div>
+                  <div class="col-6">
+                    <p>Roofs</p>
+                    <img src="../../../assets/images/fc/img/popupimg3.png" />
+                  </div>
+                  <div class="col-6">
+                    <p>Foundation</p>
+                    <img src="../../../assets/images/fc/img/popupimg1.png" />
+                  </div>
+                  <div class="col-6">
+                    <p>Flooring</p>
+                    <img src="../../../assets/images/fc/img/popupimg4.png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slidecontainer">
+        <input disabled="{{ disabledInput }}" type="range" [(ngModel)]="fcDwelling" (ngModelChange)="filterChange($event, 'fcDwelling')" min="{{ dwellingFromhippoMin }}" step="2500" max="{{ dwellingFromhippoMax }}" class="slider" id="myRange-dwalling" />
+      </div>
+      <div class="fc-bottom-values">
+        <h4>
+          Dwelling Extension
+          <span class="fc-title-info">
+            <span class="fc-title-icon">
+              <img src="./../../../assets/info.svg" />
+            </span>
+            <p class="fc-title-tooltip">info about this filter</p>
+          </span>
+        </h4>
+        <div class="fc-options-wrapper">
+          <span class="fc-checkbox-filter">
+            <input disabled="{{ disabledInput }}" type="radio" id="first25" name="checkbox-dwalling" value="15" [(ngModel)]="fcDwellingExtension" (ngModelChange)="filterChange($event, 'fcDwellingExtension')" />
+            <label for="first25">25%</label>
+          </span>
+          <span class="fc-checkbox-filter">
+            <input disabled="{{ disabledInput }}" type="radio" id="first50" name="checkbox-dwalling" value="35" [(ngModel)]="fcDwellingExtension" (ngModelChange)="filterChange($event, 'fcDwellingExtension')" />
+            <label for="first50">50%</label>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- liability -->
+    <div class="fc-filters-value-wrap">
+      <div class="fc-title-value">
+        <div class="fc-title-filter">
+          <h4>
+            Liability
+            <span class="fc-title-info">
+              <span class="fc-title-icon"> <img src="./../../../../assets/info.svg" /></span>
+              <p class="fc-title-tooltip">info about this filter</p>
+            </span>
+          </h4>
+          <p class="fc-title-price-value {{ disabled ? 'text-grey' : '' }}" id="value-liability">{{ convertToLocal(fcLiability) }}</p>
+
+          <div class="card popUpCard" *ngIf="!disabled">
+            <div class="card-body">
+              <div class="TopText">
+                <h4>
+                  Liability
+                  <span class="fc-title-info">
+                    <span class="fc-title-icon"> <img src="./../../../../assets/info.svg" /></span>
+                    <p class="fc-title-tooltip">info about this filter</p>
+                  </span>
+                </h4>
+                <p class="fc-title-price-value {{ disabled ? 'text-grey' : '' }}" id="value-liability">{{ convertToLocal(fcLiability) }}</p>
+              </div>
+              <p class="textLine">Provides coverage for bodily injury
+                sustained by others where you are responsible</p>
+
+              <div class="imagesContainer">
+                <div class="row g-4">
+                  <div class="col-6">
+                    <p>Dog</p>
+                    <img src="../../../assets/images/fc/img/liability-dog.jpeg" />
+                  </div>
+                  <div class="col-6">
+                    <p>Fall</p>
+                    <img src="../../../assets/images/fc/img/liability-fall.jpeg" />
+                  </div>
+                  <div class="col-6">
+                    <p>Sidewalk</p>
+                    <img src="../../../assets/images/fc/img/liability-sidewalk.jpeg" />
+                  </div>
+                  <div class="col-6">
+                    <p>Tree</p>
+                    <img src="../../../assets/images/fc/img/liability-tree.jpeg" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fc-bottom-values justValues">
+        <div class="fc-options-wrapper">
+          <span class="fc-checkbox-filter">
+            <input disabled="{{ disabledInput }}" [(ngModel)]="fcLiability" (ngModelChange)="filterChange($event, 'fcLiability')" type="radio" id="100000" value="100000" name="liability-price" />
+            <label for="100000">100,000</label>
+          </span>
+          <span class="fc-checkbox-filter">
+            <input disabled="{{ disabledInput }}" [(ngModel)]="fcLiability" (ngModelChange)="filterChange($event, 'fcLiability')" type="radio" id="300000" value="300000" name="liability-price" />
+            <label for="300000" ng-model="precheck">300,000</label>
+          </span>
+          <span class="fc-checkbox-filter">
+            <input disabled="{{ disabledInput }}" [(ngModel)]="fcLiability" (ngModelChange)="filterChange($event, 'fcLiability')" type="radio" id="500000" value="500000" name="liability-price" />
+            <label for="500000">500,000</label>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- personal property -->
+    <div class="fc-filters-value-wrap" (mouseover)="hidePopUp = true" (mouseout)="hidePopUp = false">
+      <div class="fc-title-value">
+        <div class="fc-title-filter">
+          <h4>
+            Personal Property
+            <span class="fc-title-info">
+              <span class="fc-title-icon"> <img src="../../../../assets/info.svg" /></span>
+              <p class="fc-title-tooltip">info about this filter</p>
+            </span>
+          </h4>
+          <p class="fc-title-price-value {{ disabled ? 'text-grey' : '' }}" id="value-liability">{{ fcProperty.toLocaleString() }}</p>
+
+          <!-- popup values -->
+          <div class="card popUpCard" *ngIf="!disabled">
+            <div class="card-body">
+              <div class="TopText">
+                <h4>
+                  Personal Property
+                  <span class="fc-title-info">
+                    <span class="fc-title-icon"> <img src="../../../../assets/info.svg" /></span>
+                    <p class="fc-title-tooltip">info about this filter</p>
+                  </span>
+                </h4>
+                <p class="fc-title-price-value {{ disabled ? 'text-grey' : '' }}" id="value-liability">{{ fcProperty.toLocaleString() }}</p>
+              </div>
+              <p class="textLine">Covers the cost to replace
+                your belongings (e.g. clothing and furniture)</p>
+
+              <div class="imagesContainer">
+                <div class="row g-4">
+                  <div class="col-6">
+                    <p>Computer</p>
+                    <img src="../../../assets/images/fc/img/personal-property-computer.jpeg" />
+                  </div>
+                  <div class="col-6">
+                    <p>Couch</p>
+                    <img src="../../../assets/images/fc/img/personal-property-couch.jpeg" />
+                  </div>
+                  <div class="col-6">
+                    <p>TV</p>
+                    <img src="../../../assets/images/fc/img/personal-property-tv.jpeg" />
+                  </div>
+                  <div class="col-6">
+                    <p>Wardrobe</p>
+                    <img src="../../../assets/images/fc/img/personal-property-wardrobe.jpeg" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slidecontainer">
+        <input disabled="{{ disabledInput }}" type="range" [(ngModel)]="fcProperty" (ngModelChange)="filterChange($event, 'fcProperty')" min="{{ personalPropertyFromHippoDwellMin }}" max="{{ personalPropertyFromHippoDwellMax }}" class="slider" />
+      </div>
+    </div>
+    <!-- Other Structures -->
+    <div class="fc-filters-value-wrap">
+      <div class="fc-title-value">
+        <div class="fc-title-filter">
+          <h4>
+            Other Structures
+            <span class="fc-title-info">
+              <span class="fc-title-icon"> <img src="../../../../assets/info.svg" /></span>
+              <p class="fc-title-tooltip">info about this filter</p>
+            </span>
+          </h4>
+          <p class="fc-title-price-value {{ disabled ? 'text-grey' : '' }}" id="value-other-structures">{{ convertToLocal(otherStructuresMinValue) }}</p>
+
+          <!-- popup values -->
+          <div class="card popUpCard" *ngIf="!disabled">
+            <div class="card-body">
+              <div class="TopText">
+                <h4>
+                  Other Structures
+                  <span class="fc-title-info">
+                    <span class="fc-title-icon"> <img src="../../../../assets/info.svg" /></span>
+                    <p class="fc-title-tooltip">info about this filter</p>
+                  </span>
+                </h4>
+                <p class="fc-title-price-value {{ disabled ? 'text-grey' : '' }}" id="value-other-structures">{{  convertToLocal(otherStructuresMinValue) }}</p>
+              </div>
+              <p class="textLine">Other Structures coverage covers everything from the foundation to the walls to the roof. It is the full structure of the house.</p>
+
+              <div class="imagesContainer">
+                <div class="row g-4">
+                  <div class="col-6">
+                    <p>Fence</p>
+                    <img src="../../../assets/images/fc/img/other-structures-fence.jpeg" />
+                  </div>
+                  <div class="col-6">
+                    <p>Garage</p>
+                    <img src="../../../assets/images/fc/img/other-structures-garage.jpeg" />
+                  </div>
+                  <div class="col-6">
+                    <p>Pool</p>
+                    <img src="../../../assets/images/fc/img/other-structures-pool.jpeg" />
+                  </div>
+                  <div class="col-6">
+                    <p>Shed</p>
+                    <img src="../../../assets/images/fc/img/other-structures-shed.jpeg" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slidecontainer">
+        <input disabled="{{ disabledInput }}" type="range" [(ngModel)]="otherStructuresMinValue" min="60000" max="500000" class="slider" />
+      </div>
+    </div>
+    <!-- deductible -->
+    <div class="fc-filters-value-wrap">
+      <div class="fc-title-value">
+        <div class="fc-title-filter">
+          <h4>
+            deductible
+            <span class="fc-title-info">
+              <span class="fc-title-icon"><img src="./../../../assets/info.svg" /></span>
+              <p class="fc-title-tooltip">info about this filter</p>
+            </span>
+          </h4>
+          <p class="fc-title-price-value {{ disabled ? 'text-grey' : '' }}" id="value-liability">{{convertToLocal(fcDeductible) }}</p>
+
+          <!-- popup values -->
+          <div class="card popUpCard" *ngIf="!disabled">
+            <div class="card-body">
+              <div class="TopText">
+                <h4>
+                  Deductible
+                  <span class="fc-title-info">
+                    <span class="fc-title-icon"><img src="./../../../assets/info.svg" /></span>
+                    <p class="fc-title-tooltip">info about this filter</p>
+                  </span>
+                </h4>
+                <p class="fc-title-price-value {{ disabled ? 'text-grey' : '' }}" id="value-liability">{{convertToLocal(fcDeductible) }}</p>
+              </div>
+              <p class="textLine">The amount you will pay if a covered claim
+                occurs</p>
+
+              <div class="imagesContainer">
+                <div class="row g-4">
+                  <div class="col-6">
+                    <p>Walls</p>
+                    <img src="../../../assets/images/fc/img/popupimg2.png" />
+                  </div>
+                  <div class="col-6">
+                    <p>Roofs</p>
+                    <img src="../../../assets/images/fc/img/popupimg3.png" />
+                  </div>
+                  <div class="col-6">
+                    <p>Foundation</p>
+                    <img src="../../../assets/images/fc/img/popupimg1.png" />
+                  </div>
+                  <div class="col-6">
+                    <p>Flooring</p>
+                    <img src="../../../assets/images/fc/img/popupimg4.png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fc-bottom-values justValues">
+        <div class="fc-options-wrapper">
+          <span class="fc-checkbox-filter">
+            <input disabled="{{ disabledInput }}" [(ngModel)]="fcDeductible" (ngModelChange)="filterChange($event, 'fcDeductible')" type="radio" name="deductibleValue" id="1000" value="1000" />
+            <label for="1000">1,000</label>
+          </span>
+          <span class="fc-checkbox-filter">
+            <input disabled="{{ disabledInput }}" [(ngModel)]="fcDeductible" (ngModelChange)="filterChange($event, 'fcDeductible')" type="radio" name="deductibleValue" id="2500" value="2500" />
+            <label for="2500">2,500</label>
+          </span>
+          <span class="fc-checkbox-filter">
+            <input disabled="{{ disabledInput }}" [(ngModel)]="fcDeductible" (ngModelChange)="filterChange($event, 'fcDeductible')" type="radio" name="deductibleValue" id="5000" value="5000" />
+            <label for="5000">5,000</label>
+          </span>
+        </div>
+      </div>
+      <!-- <div class="slidecontainer">
+                <input type="range" [(ngModel)]="fcDeductible" (ngModelChange)="filterChange($event, 'fcDeductible')" min="1000" max="5000" class="slider" step="500" />
+              </div> -->
+    </div>
+    <!-- other coverages -->
+    <div class="fc-filters-value-wrap">
+      <div class="fc-title-value noAfter">
+        <div class="fc-title-filter">
+          <h4>
+            Other Coverages
+            <span class="fc-title-info">
+              <span class="fc-title-icon"><img src="./../../../assets/info.svg" /></span>
+              <p class="fc-title-tooltip">info about this filter</p>
+            </span>
+          </h4>
+
+          <!-- popup values -->
+
+        </div>
+      </div>
+      <div class="fc-bottom-values justValues">
+        <div class="fc-options-wrapper">
+          <span class="fc-checkbox-filter hoverCheck">
+            <input disabled="{{ disabledInput }}" type="checkbox" id="watherbackup" [(ngModel)]="fcWaterBackup" (ngModelChange)="filterChange($event, 'fcWaterBackup')" />
+            <label for="watherbackup">Water Backup</label>
+            <div class="card popUpCard2" *ngIf="!disabled">
+              <div class="card-body">
+                <div class="TopText">
+                  <h4>
+                    Water Backup
+                    <span class="fc-title-info">
+                      <span class="fc-title-icon"><img src="./../../../assets/info.svg" /></span>
+                      <p class="fc-title-tooltip">info about this filter</p>
+                    </span>
+                  </h4>
+                </div>
+                <p class="textLine">Coverage for damage caused by water entering
+                  the home through a sewer or drain or resulting from a backed up drain or sump pump"</p>
+
+                <div class="imagesContainer">
+                  <div class="row g-4">
+                    <div class="col-6">
+                      <!-- <p>Walls</p> -->
+                      <img src="./../../../assets/water1.jpeg" />
+                    </div>
+                    <div class="col-6">
+                      <!-- <p>Roofs</p> -->
+                      <img src="./../../../assets/water2.jpeg" />
+                    </div>
+                    <div class="col-6">
+                      <!-- <p>Foundation</p> -->
+                      <img src="./../../../assets/water3.png" />
+                    </div>
+                    <div class="col-6">
+                      <!-- <p>Flooring</p> -->
+                      <img src="./../../../assets/water4.jpeg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </span>
+          <span class="fc-checkbox-filter hoverCheck">
+            <input disabled="{{ disabledInput }}" type="checkbox" id="serverline" [(ngModel)]="fcSewerLine" (ngModelChange)="filterChange($event, 'fcSewerLine')" />
+            <label for="serverline">Server Line</label>
+            <div class="card popUpCard2" *ngIf="!disabled">
+              <div class="card-body">
+                <div class="TopText">
+                  <h4>
+                    Service Line:
+                    <span class="fc-title-info">
+                      <span class="fc-title-icon"><img src="./../../../assets/info.svg" /></span>
+                      <p class="fc-title-tooltip">info about this filter</p>
+                    </span>
+                  </h4>
+                </div>
+                <p class="textLine">Coverage for repairing or replacing buried utility
+                  lines on the residence premises like your sewer line, gas lines and some others.</p>
+
+                <div class="imagesContainer">
+                  <div class="row g-4">
+                    <div class="col-6">
+                      <!-- <p>Walls</p> -->
+                      <img src="../../../assets/service-line-example 1.jpeg" />
+                    </div>
+                    <div class="col-6">
+                      <!-- <p>Roofs</p> -->
+                      <img src="../../../assets/service-line-example 2.png" />
+                    </div>
+                    <div class="col-6">
+                      <!-- <p>Foundation</p> -->
+                      <img src="../../../assets/service-line-example 3.png" />
+                    </div>
+                    <!-- <div class="col-6">
+                      <p>Flooring</p>
+                      <img src="../../../assets/images/fc/img/popupimg4.png" />
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </span>
+          <span class="fc-checkbox-filter hoverCheck">
+            <input disabled="{{ disabledInput }}" type="checkbox" id="equipbreakdown" [(ngModel)]="fcEquipmentBreakdown" (ngModelChange)="filterChange($event, 'fcEquipmentBreakdown')" />
+            <label for="equipbreakdown">Equipment Breakdown</label>
+            <div class="card popUpCard2" *ngIf="!disabled">
+              <div class="card-body">
+                <div class="TopText">
+                  <h4>
+                    Equipment Breakdown:
+                    <span class="fc-title-info">
+                      <span class="fc-title-icon"><img src="./../../../assets/info.svg" /></span>
+                      <p class="fc-title-tooltip">info about this filter</p>
+                    </span>
+                  </h4>
+                </div>
+                <p class="textLine">Covers the cost to replace or restore
+                  home equipment due to mechanical or electrical breakdown</p>
+
+                <div class="imagesContainer">
+                  <div class="row g-4">
+                    <div class="col-6">
+                      <p>Others</p>
+                      <img src="../../../assets/eq -1.png" />
+                    </div>
+                    <div class="col-6">
+                      <p>Circuit Breaker</p>
+                      <img src="../../../assets/eq-circuit breaker.webp" />
+                    </div>
+                    <div class="col-6">
+                      <p>Water Heater</p>
+                      <img src="../../../assets/eq-water heater.webp" />
+                    </div>
+                    <!-- <div class="col-6">
+                      <p>Flooring</p>
+                      <img src="../../../assets/images/fc/img/popupimg4.png" />
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </span>
+          <span class="fc-checkbox-filter hoverCheck">
+            <input disabled="{{ disabledInput }}" type="checkbox" id="serverline1" [(ngModel)]="fcReplacementCost" (ngModelChange)="filterChange($event, 'fcReplacementCost')" />
+            <label for="serverline1">Replacement Cost</label>
+            <div class="card popUpCard2" *ngIf="!disabled">
+              <div class="card-body">
+                <div class="TopText">
+                  <h4>
+                    Replacement Cost:
+                    <span class="fc-title-info">
+                      <span class="fc-title-icon"><img src="./../../../assets/info.svg" /></span>
+                      <p class="fc-title-tooltip">info about this filter</p>
+                    </span>
+                  </h4>
+                </div>
+                <p class="textLine">This add-on gives upgrades the amount received for your personal
+                  property to the off the shelf new amount!</p>
+
+                <div class="imagesContainer">
+                  <div class="row g-4">
+                    <div class="col-6">
+                      <p>Couch</p>
+                      <img style="object-fit: contain;" src="../../../assets/images/fc/img/replacement-cost-couch.png" />
+                    </div>
+                    <div class="col-6">
+                      <p>TV</p>
+                      <img style="object-fit: contain;" src="../../../assets/images/fc/img/replacement-cost-tv.png" />
+                    </div>
+                    <!-- <div class="col-6">
+                      <p>Foundation</p>
+                      <img src="../../../assets/images/fc/img/popupimg1.png" />
+                    </div>
+                    <div class="col-6">
+                      <p>Flooring</p>
+                      <img src="../../../assets/images/fc/img/popupimg4.png" /> 
+                    </div>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-block border-0 p-0">
+        <div class="map-container pr-0 pl-0">
+          <agm-map [zoom]="12" [latitude]="lat" [longitude]="lng" [disableDefaultUI]="true" [scaleControl]="false" [draggable]="false">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+        </div>
+
+        <div class="address">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <img src="/assets/images/icons/close.svg" class="customIcon close-icon" />
+          </button>
+          <button type="button" class="close download">
+            <img src="/assets/images/icons/download.svg" class="customIcon downlode-icon" />
+          </button>
+          <h2 class="white-text">{{ mobileAddress }}</h2>
+          <div class="text-center align-items-center w-100 mt-4">
+            <h5 class="hedding white-text mb-2">HOME INSURANCE</h5>
+            <h5 class="hedding white-text">SMART PRICE</h5>
+            <p class="font-weight-bold white-text mb-0 price-per-year">${{ sortedPrices.length > 2 ? sortedPrices[1].toLocaleString() : (0 | currency: "USD":"symbol":"1.0-0") }} / YEAR</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body px-0 border-0 mb-4 mt-0 pt-0">
+        <div class="container-fluid">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-lg-12 col-md-12 pr-0 d-flex justify-content-center"></div>
+            </div>
+          </div>
+          <!-- *ngIf="!commonService.isMobileMode()" -->
+          <div class="row">
+            <div class="col-12 col-md-12 initial-price-sec px-sm-5">
+              <div class="row my-4">
+                <div class="col-md-7">
+                  <div class="chart-row" id="chart_sec">
+                    <h5 class="mt-4 pl-3 pr-3 hedding-modal">graphed prices</h5>
+
+                    <div class="w-100">
+                      <canvas id="canvas" width="300" height="220"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="row">
+                    <div class="col-12 col-md-12">
+                      <h5 class="mt-4 hedding-modal">INITIAL PRICE SPECTRUM</h5>
+                      <div class="price-spectrum">
+                        <img src="/assets/images/topprice.jpg" class="icon" /><span class="hedding-span">{{ "$" + minPrice.toLocaleString() + " - " + "$" + maxPrice.toLocaleString() }}</span>
+                      </div>
+                      <div class="price-spectrum">
+                        <img src="/assets/images/all.jpg" class="icon" /><span class="hedding-span">{{ sortedPrices.length }} Prices Returned</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="my-2 d-flex justify-content-sm-start property-data">
+                      <h5 class="mt-4 hedding-modal">PROPERTY DATA</h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-7 col-sm-7 p-0">
+                      <h5>Flood zone: {{ neptuneFlood }}</h5>
+                      <h5>${{ neptuneFloodPrice.toLocaleString() }} - $3,340</h5>
+                    </div>
+
+                    <div class="col-5 col-sm-5 builtyear p-0">
+                      <h5 class="d-flex">
+                        <div class="icon d-flex justify-content-center mr-1 mr-sm-3">
+                          <img src="/assets/images/icons/year-sq.png" class="customIcon" />
+                        </div>
+                        <div>{{ builtyear }} year built</div>
+                      </h5>
+                      <h5 class="d-flex">
+                        <div class="icon d-flex justify-content-center mr-1 mr-sm-3">
+                          <img src="/assets/images/icons/year-sq.png" class="customIcon" />
+                        </div>
+                        <div>{{ square }} sq ft</div>
+                      </h5>
+                      <h5 class="d-flex">
+                        <div class="icon d-flex justify-content-center mr-1 mr-sm-3">
+                          <img src="/assets/images/icons/year-sq.png" class="customIcon" />
+                        </div>
+                        <div>${{ estimate }}</div>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-12 coverages-sec px-sm-5">
+              <div class="row property-data my-4">
+                <div class="col-md-12">
+                  <h5 class="mt-4 hedding-modal">COVERAGES</h5>
+                  <div class="row pb-3 covrege-sec-row">
+                    <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                      <div class="d-flex align-items-center"></div>
+                      <h5 class="m-0">
+                        Dwelling <strong>{{ dwelling | number }}</strong>
+                      </h5>
+                    </div>
+                    <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                      <div class="d-flex align-items-center"></div>
+                      <h5 class="m-0">
+                        Deductible <strong>{{ 0.2 * dwelling | number }}</strong>
+                      </h5>
+                    </div>
+                    <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                      <div class="d-flex align-items-center"></div>
+                      <h5 class="m-0">Contents <strong>$1,000</strong></h5>
+                    </div>
+                    <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                      <div class="d-flex align-items-center"></div>
+                      <h5 class="m-0">
+                        Medical <strong>{{ 0.1 * dwelling | number }}</strong>
+                      </h5>
+                    </div>
+                    <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                      <div class="d-flex align-items-center"></div>
+                      <h5 class="m-0">
+                        Dwelling <strong>{{ 0.5 * dwelling | number }}</strong>
+                      </h5>
+                    </div>
+                    <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                      <div class="d-flex align-items-center"></div>
+                      <h5 class="m-0">Deductible <strong>Yes</strong></h5>
+                    </div>
+                    <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                      <div class="d-flex align-items-center"></div>
+                      <h5 class="m-0">
+                        Contents <strong>{{ "500000" | number }}</strong>
+                      </h5>
+                    </div>
+                    <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                      <div class="d-flex align-items-center"></div>
+                      <h5 class="m-0">Medical <strong>Yes</strong></h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row pl-2 pr-2" *ngIf="commonService.isMobileMode()">
+            <div class="col-12 col-md-5 initial-price-sec">
+              <div class="row chart-row">
+                <h5 class="mt-4 pl-3 pr-3 chart-hedding">GRAPHED PRICES</h5>
+
+                <div class="d-flex justify-content-center w-100">
+                  <canvas id="canvas" width="300" height="220"></canvas>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-12 col-md-12">
+                  <h5 class="mt-4 hedding-modal">INITIAL PRICE SPECTRUM</h5>
+                  <div class="price-spectrum">
+                    <img src="/assets/images/topprice.jpg" class="icon" /><span class="hedding-span">{{ "$" + minPrice.toLocaleString() + " - " + "$" + maxPrice.toLocaleString() }}</span>
+                  </div>
+                  <div class="price-spectrum">
+                    <img src="/assets/images/all.jpg" class="icon" /><span class="hedding-span">{{ sortedPrices.length }} Prices Returned</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-7 coverages-sec">
+              <div class="row property-data">
+                <div class="col-12 my-2 d-flex justify-content-sm-start">
+                  <h5 class="mt-4 hedding-modal">PROPERTY DATA</h5>
+                </div>
+                <div class="col-12 col-sm-12 pr-0 pr-sm-3 mb-3 p-data-inner-row">
+                  <div>
+                    <h5>Flood zone: {{ neptuneFlood }}</h5>
+                    <h5>${{ neptuneFloodPrice.toLocaleString() }} - $3,340</h5>
+                  </div>
+                  <div class="builtyear pl-0 pl-sm-3">
+                    <h5 class="d-flex">
+                      <div class="icon d-flex justify-content-center mr-1 mr-sm-3">
+                        <img src="/assets/images/icons/year-sq.png" class="customIcon" />
+                      </div>
+                      <div>{{ builtyear }} year built</div>
+                    </h5>
+                    <h5 class="d-flex">
+                      <div class="icon d-flex justify-content-center mr-1 mr-sm-3">
+                        <img src="/assets/images/icons/year-sq.png" class="customIcon" />
+                      </div>
+                      <div>{{ square }} sq ft</div>
+                    </h5>
+                    <h5 class="d-flex">
+                      <div class="icon d-flex justify-content-center mr-1 mr-sm-3">
+                        <img src="/assets/images/icons/year-sq.png" class="customIcon" />
+                      </div>
+                      <div>${{ estimate }}</div>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <h5 class="mt-4 hedding-modal">COVERAGES</h5>
+              <div class="row pb-3 covrege-sec-row">
+                <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                  <div class="d-flex align-items-center"></div>
+                  <h5 class="m-0">Dwelling {{ dwelling | number }}</h5>
+                </div>
+                <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                  <div class="d-flex align-items-center"></div>
+                  <h5 class="m-0">Deductible {{ 0.2 * dwelling | number }}</h5>
+                </div>
+                <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                  <div class="d-flex align-items-center"></div>
+                  <h5 class="m-0">Contents $1,000</h5>
+                </div>
+                <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                  <div class="d-flex align-items-center"></div>
+                  <h5 class="m-0">Medical {{ 0.1 * dwelling | number }}</h5>
+                </div>
+                <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                  <div class="d-flex align-items-center"></div>
+                  <h5 class="m-0">Dwelling {{ 0.5 * dwelling | number }}</h5>
+                </div>
+                <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                  <div class="d-flex align-items-center"></div>
+                  <h5 class="m-0">Deductible Yes</h5>
+                </div>
+                <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                  <div class="d-flex align-items-center"></div>
+                  <h5 class="m-0">Contents {{ "500000" | number }}</h5>
+                </div>
+                <div class="col-12 col-sm-6 d-flex align-items-center my-1">
+                  <div class="d-flex align-items-center"></div>
+                  <h5 class="m-0">Medical Yes</h5>
+                </div>
+              </div>
+            </div>
+            <span id="chart_sec"></span>
+          </div>
+
+          <div class="row justify-content-sm-end pl-2 pr-2">
+            <div class="col-12 col-sm-5 go-now-sec d-md-none d-sm-block"></div>
+            <div class="col-12 col-sm-7 col-md-12 d-flex justify-content-sm-center">
+              <button class="w-100 my-0 btn btn-outline-primary font-weight-bold mx-0 d-flex align-items-center justify-content-between" (click)="goToThreeStep()" data-dismiss="modal" aria-label="Close">
+                <h5 class="m-0">Next</h5>
+                <mdb-icon fas icon="arrow-right" class="customIcon"></mdb-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+.info-board{
+  font-family: "Arial Rounded MT Bold";
+  //color: #EA0A3F;
+  table{
+    tr{
+      border-bottom: solid 1px #F1F1F3;
+      td{
+        font-weight: 500;
+        font-family: PingFang, sans-serif;
+        color: #666666;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        .text-smaller {
+          color: #000;
+          font-size: 9px;
+        }
+      }
+      td:first-of-type {
+        padding-left: 2rem;
+        width: 50%;
+      }
+      td:last-of-type{
+        padding-left: 35%;
+        font-size: 1rem;
+        float: left;
+       // font-weight: bold;
+      }
+    }
+
+    tr.bg-grey {
+      background-color: #F2F2F2;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .info-board{
+    table{
+      tr{
+        td:first-of-type {
+          padding-left: 1rem;
+          width: 64%;
+        }
+        td:last-of-type{
+          padding-left: 0;
+          font-size: 1.2rem;
+          font-weight: bold;
+          float: right;
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+}
+.tab-header{
+  border-bottom: 1px solid gray;
+  font-size: 1.2rem;
+  color: #5a5a5a;
+  font-weight:100;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.cust_width{    
+  width: 65%;
+  margin: 0 auto;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+} 
+
+.tab_title{
+  border-bottom: 1px solid #999999;
+  div{
+    padding: 10px;
+    color: #ccc;
+    cursor: pointer;
+    &.selected{
+      font-weight: 400;
+      color:#000;
+    }
+  }
+}

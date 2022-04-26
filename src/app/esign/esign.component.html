@@ -1,0 +1,138 @@
+<div class="container">
+  <div class="p-5 policyPage">
+
+    <div class="row">
+      <div class="col-md-12">
+        <img src="../../assets/images/logo.png"
+             class="col-md-4 col-lg-2 offset-lg-5 img-responsive offset-md-4 col-6 offset-3">
+        <br>
+        <br>
+        <br>
+        <div class="col-md-8 row offset-md-2">
+          <div class="col-md-6 text-center col-6">
+            <span class="text text-center">1. Policy info</span>
+          </div>
+          <div class="col-md-6 text-center col-6">
+            <span class="text text-center font-weight-bolder"><strong>2. Get policy</strong></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 offset-md-3">
+        <div class="form-row">
+          <h3 class="font-weight-bolder text text-warning text-center text-uppercase col-md-12"><strong
+            class="text-center font-italic">Complete!</strong></h3>
+        </div>
+        <div class="form-row">
+          <p class="col-md-6 col-6 col-form-label-lg text text-warning text-capitalize font-weight-bolder text-center">
+            <strong>policy#:</strong>
+          </p>
+          <p class="col-md-6 col-6 col-form-label-lg text text-warning text-capitalize font-weight-bolder text-left">
+            <strong>{{policy_number}}</strong>
+          </p>
+        </div>
+
+        <div class="form-row">
+          <p class="col-md-6 col-6 col-form-label-lg text text-warning text-capitalize font-weight-bolder text-center">
+            <strong>Start
+              Date:</strong></p>
+          <p class="col-md-6 col-6 col-form-label-lg text text-warning text-capitalize font-weight-bolder text-left">
+            <strong>{{start_date}}</strong>
+          </p>
+        </div>
+        <div class="form-row">
+          <p class="col-md-12 col-12 col-form-label-lg text text-center text-capitalize font-weight-bolder"><strong>Policy
+            documents have been sent to you!</strong></p>
+        </div>
+        <div class="form-row">
+
+          <p class="col-md-4 col-6 col-form-label-lg text text-info text-capitalize font-weight-bolder text-center">
+            <strong>Invoice PDF:</strong></p>
+          <p class="col-md-8 col-12  pdfText text-center col-form-label-lg text text-capitalize font-weight-bolder text-left">
+            <mdb-icon far icon="file-pdf" class="text text-primary"></mdb-icon>&nbsp;<a href="/pdfs/{{invoicePDF}}" target="_blank" style="text-decoration: underline;">Click here to download</a>
+          </p>
+          <p class="col-md-4 col-6 col-form-label-lg text text-info text-capitalize font-weight-bolder text-center">
+            <strong>Evidence of Insurance:</strong></p>
+          <p class="col-md-8 col-12 pdfText text-center col-form-label-lg text text-capitalize font-weight-bolder text-left">
+            <mdb-icon far icon="file-pdf" class="text text-primary"></mdb-icon>&nbsp;<a href="{{evidencePDF}}" target="_blank" style="text-decoration: underline;">Click here to download</a>
+          </p>
+
+        </div>
+
+        <div class="form-row">
+          <p
+            class="col-md-12 col-12 col-form-label-lg text text-danger text-center text-capitalize font-weight-bolder customer">
+            <strong>Customer Service</strong></p>
+          <p
+            class="col-md-12 col-12 col-form-label-lg text text-info text-center text-capitalize font-weight-bolder customer customerData">
+            <strong>1-800-903-3232</strong></p>
+        </div>
+        <div class="form-row">
+          <p
+            class="col-md-12 col-12 col-form-label-lg text text-danger text-center text-capitalize font-weight-bolder customer">
+            <strong>Customer Service</strong></p>
+          <p
+            class="col-md-12 col-12 col-form-label-lg text text-info text-center text-capitalize font-weight-bolder customer customerData">
+            <strong>service@boom.insure</strong></p>
+        </div>
+        <form>
+          <button mdbBtn type="button" class="btn btn-info btn-block mx-auto addCar" (click)="toggleCarInputs();">
+            <img src="../../assets/images/addauto.png" style="width: 50px;">
+          </button>
+          <div *ngIf="isAddCar">
+            <div class="list-group-item" *ngFor="let item of carData; index as i">
+              <div class="form-group row carForm">
+
+                <!-- Material input -->
+                <div class="col-md-6">
+                  <div class="md-form mt-0">
+                    <select class="browser-default custom-select CarYearInput" [(ngModel)]="carData[i]['year']"
+                            [ngModelOptions]="{standalone: true}">
+                      <option>Select</option>
+                      <option *ngFor="let item of CarYearData; index as i" [value]="item.year">{{item.year}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="md-form mt-0">
+                    <select class="browser-default custom-select CarMakeInput" [(ngModel)]="carData[i]['make']"
+                            [ngModelOptions]="{standalone: true}">
+                      <option>Select</option>
+                      <option *ngFor="let item of CarMakeData; index as i" [value]="item">{{item}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <input mdbInput type="text" class="form-control CarModelInput" placeholder="Model"
+                         [(ngModel)]="carData[i]['model']" [ngModelOptions]="{standalone: true}">
+                </div>
+
+                <div class="col-md-6">
+                  <div class="md-form mt-0" aria-label="Basic example">
+                    <button mdbBtn type="button" class="waves-light btn btn-sm CarButton" mdbWavesEffect
+                            (click)="addCar(i)">
+                      <mdb-icon fas icon="plus-circle" class="fa-lg text text-dark"></mdb-icon>
+                    </button>
+                    <button mdbBtn type="button" class="waves-light btn btn-sm CarButton" mdbWavesEffect
+                            (click)="deleteCar(i)" *ngIf="i>0">
+                      <mdb-icon fas icon="minus-circle" class="fa-lg text text-dark"></mdb-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <div class="form-row">
+                <div class="mx-auto">
+                  <button mdbBtn type="button" (click)="sendCarData()" class="btn btn-primary mb-4 waves-effect waves-light mx-auto">
+                    Send &nbsp;<mdb-icon fas icon="paper-plane" class="mr-1 fa-md"></mdb-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div id="addCarBoard"></div>
+      </div>
+    </div>
+  </div>
+</div>

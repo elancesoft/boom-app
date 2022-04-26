@@ -1,0 +1,60 @@
+<div mdbModal #priceModal="mdbModal" class="modal fade right" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" *ngIf="isDataLoaded" data-backdrop="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="priceModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <div class="img-wrapper-header">
+          <img [src]="modalData.imgURL" />
+        </div>
+      </div>
+      <div class="modal-body">
+        <table>
+          <tr>
+            <td width="50%">
+              <p class="font-weight-bold">Dwelling {{ commonService.commafy(modalData.dwelling) }}</p>
+            </td>
+            <td width="50%">
+              <p class="font-weight-bold">Liability {{ commonService.commafy(modalData.liability) }}</p>
+            </td>
+          </tr>
+          <tr>
+            <td width="50%">
+              <p class="font-weight-bold">Contents {{ commonService.commafy(modalData.contents) }}</p>
+            </td>
+            <td width="50%">
+              <p class="font-weight-bold">Water Backup {{ commonService.commafy(modalData.waterBackup) }}</p>
+            </td>
+          </tr>
+          <tr>
+            <td width="50%">
+              <p class="font-weight-bold">Deductible {{ commonService.commafy(modalData.deductible) }}</p>
+            </td>
+            <td width="50%">
+              <p class="font-weight-bold">Guaranteed Replacement</p>
+            </td>
+          </tr>
+          <tr>
+            <td width="50%">
+              <p class="font-weight-bold">Home System Protection</p>
+            </td>
+            <td width="50%" class="action-buttons">
+              <button mdbBtn type="button" *ngIf="modalData.type == 8" class="mx-auto" size="block" color="red" (click)="bindQuoteNow()">Next</button>
+              <button mdbBtn type="button" *ngIf="modalData.type < 8" class="mr-1 ml-1 phoneBtn" size="md" color="default" (click)="requestPDF()">
+                <i class="fa-phone-alt fas"></i>
+              </button>
+              <button mdbBtn type="button" *ngIf="modalData.type < 8" class="mr-1 ml-1" size="md" color="default" (click)="next(modalData)">
+                <i class="fa-sms fas"></i>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" mdbBtn color="primary" class="waves-light" aria-label="Close" (click)="priceModal.hide()" mdbWavesEffect>Close</button>
+        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect (click)="priceModal.hide()">OK!</button>
+      </div>
+    </div>
+  </div>
+</div>

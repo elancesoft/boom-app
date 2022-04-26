@@ -1,0 +1,31 @@
+.sort-container {
+  width: 168px;
+  border: 1px solid darkgrey;
+  border-radius: 5px;
+
+  .sort-inner-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    i {
+      margin-right: 15px;
+      font-size: 20px;
+      color: black !important;
+    }
+
+    p {
+      margin-bottom: 0;
+      font-size: 22px;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .sort-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

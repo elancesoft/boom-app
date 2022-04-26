@@ -1,0 +1,16 @@
+<div class="swipeDiv pt-3 pb-5">
+  <div class="swipePrediv"></div>
+  <swiper [config]="config" #usefulSwiper>
+    <div class="swiper-wrapper align-middle">
+      <div class="swiper-slide first mx-auto" (click)="goToThreeStep()">
+        <p class="swipe-txt">CONTINUE</p>
+      </div>
+      <div class="swiper-slide last mx-auto">
+        <div class="left-edge">
+          <i class="arrow fas fa-angle-double-right fa-2x"></i>
+        </div>
+        <p class="text-center swipe-txt">{{text}}</p>
+      </div>
+    </div>
+  </swiper>
+</div>

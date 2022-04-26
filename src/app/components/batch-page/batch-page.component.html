@@ -1,0 +1,150 @@
+<div class="container batch-page" *ngIf="!auth_success" style="margin-top: 100px; margin-bottom: 50px">
+  <div class="row">
+    <div class="col" align="left">
+      <b>partnership code</b>
+      <form>
+        <div class="md-form">
+          <input type="email" class="form-control pr-0 rounded-0 emailInput mb-5" [(ngModel)]="user.code"
+            #input="ngModel" id="code_form" placeholder="code" name="input"
+            style="max-width: 300px; border: 1px solid #ced4da !important;">
+        </div>
+      </form>
+
+      <button type="button" mdbBtn color="" size="sm"
+        class="btn btn-block relative waves-light text-white modal-send-btn"
+        style="border-radius: 3px !important; font-size: 1.2rem; width: 140px; background-color: #34C07D; text-transform: none"
+        (click)="codeEnter()" mdbWavesEffect>Enter
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container batch-page" *ngIf="auth_success">
+  <div class="row">
+    <div class="col" align="left">
+      <b>Partnership Code: {{user.code}}</b>
+      <p>{{user.user_email}}</p>
+
+      <div class="btn-wrapper">
+        <div class="button" (click)="quotesClicked()"><i><img
+              src="../../../assets/images/batch/new_quotes.png" /></i>new quote(s)</div>
+        <div class="button" (click)="historyClicked()"><i><img src="../../../assets/images/batch/history.png" /></i>see
+          history</div>
+        <div class="button" (click)="downloadCsv()"><i><img
+              src="../../../assets/images/batch/download_csv.png" /></i>download csv template</div>
+      </div>
+      <!-- <img class="welcome-img" src="../../../assets/images/batch/welcome.png" width="200" /> -->
+    </div>
+  </div>
+</div>
+
+<div class="container batch-page" *ngIf="auth_success && quotes_view">
+  <div class="row">
+    <div class="col" align="left">
+      <div class="input-wrapper">
+        <div>
+          <p><b>what is your email address?</b></p>
+          <input class="input" placeholder="email address" name="input" style="" value="{{user.user_email}}" disabled>
+          <p class="text-smaller">(this email will be CC'd with the email to the buyer)</p>
+        </div>
+
+        <div>
+          <p><b>partnership code</b></p>
+          <input class="input" placeholder="code" name="input" style="" value="{{user.code}}" disabled>
+          <p class="text-smaller">(enter your partnership code to track your submissions)</p>
+        </div>
+
+      </div>
+    </div>
+    <!-- <div class="text-center" *ngIf="data?.length > 0"
+      style="display: inline-flex; flex-direction: column; vertical-align: top;">
+      <div
+        style="background: #f2f2f2; padding: 10px; border-radius: 10px; border: 1px solid #00e25b; margin-bottom: 6px;">
+        <img src="../../../assets/images/batch/check.png" width="30" style="margin-bottom: 10px;" />
+        <p>Does the uploaded data look correct?<br>Make sure the fields match the heading.</p>
+        <p>Click Start to begin the Batch Quote</p>
+      </div>
+      <div style="display: inline-flex; flex-direction: column; vertical-align: top;">
+        <button type="button" mdbBtn color="success" mdbWavesEffect (click)="sendBulkEmail()"
+          [disabled]="bulk_doing">Start</button>
+        <button type="button" mdbBtn color="danger" mdbWavesEffect (click)="clearBulkEmail()"
+          [disabled]="bulk_doing">Clear</button>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<div class="batch-page bulk-area" *ngIf="auth_success && quotes_view">
+  <!-- <div class="row"> -->
+    <div class="col">
+      <app-address-input #placesRef *ngFor="let cell of data" [guid]="cell.id" [user_email]="user.user_email" [code]="user.code"
+        [address]="cell.address" (removeEmailRow) = "removeEmailRow($event)" [sendto]="cell.sendto" [cc]="cell.cc" [name]="cell.name" [phone]="cell.phone"
+        [autoSelect]= "!!cell.autoSelect">
+      </app-address-input>
+
+      <div class="btn-wrapper" style="display: flex; justify-content: center; margin-bottom: 100px;">
+        <div class="button btn-success" (click)="addSingleEmailRow()">
+          <i class="fas fa-plus" style="padding-right: 15px;"></i>
+          <!-- <span style="padding-right: 15px;">+</span> -->
+          Add</div>
+        <div class="button btn-primary">
+          <label for="file-upload" class="custom-file-upload">
+            <i class="fas fa-upload" style="padding-right: 15px;"></i>
+            <!-- <i><img src="../../../assets/images/batch/uploadicon.svg"
+                width="30" /></i> -->
+                Batch</label>
+          <input id="file-upload" type="file" class="" (change)="uploadCsv($event)" multiple="false" />
+        </div>
+        <div class="button btn-danger" [hidden]="placesRef.length < 2" (click)="sendBulkEmail()">
+          <i class="fas fa-mail-bulk" style="padding-right: 15px;"></i>
+          Send Bulk</div>
+        <!-- <div class="button done" *ngIf="bulk_done; else blulkEmailToast">
+          <div>done</div>
+          <div class="text-smaller">(confirm emails were sent)</div>
+        </div> -->
+        <div [ngClass]="showToast ? bulk_doing ? 'show bg-info' :'show bg-success' :'fade'" class="toast text-white" role="alert" aria-live="assertive" aria-atomic="true" data-color="info">
+          <div class="toast-header-show text-white" style="padding:10px; font-size:1rem">
+            <i [ngClass]="bulk_doing ? 'fa-info-circle' : 'fa-check-double' " class="fas fa-lg mr-2"></i>
+            <strong *ngIf="bulk_doing" class="mr-auto">Inprogress: sending emails</strong>
+            <strong *ngIf="bulk_done"  class="mr-auto">Successfull: emails sent</strong>
+            <!-- <small>11 mins ago</small> -->
+              <span aria-hidden="true" (click)="closeToast()"><i class="far fa-times-circle" style="padding-right: 15px; font-size:1.2rem"></i></span>
+          </div>
+          <div class="toast-body">
+            <div *ngIf="bulk_done">Emails sent successfully </div>
+            <div *ngIf="bulk_doing">
+              The emails are being sent...
+              <div class="spinner-grow text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div class="spinner-grow text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div class="spinner-grow text-success" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div class="spinner-grow text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div class="spinner-grow text-warning" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div class="spinner-grow text-info" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</div>
+
+<div class="container batch-page" *ngIf="auth_success && history_view">
+  <div class="row">
+    <div class="col">
+      <app-bulk-list [user_email]="user.user_email" [code]="user.code"></app-bulk-list>
+    </div>
+  </div>
+</div>
+

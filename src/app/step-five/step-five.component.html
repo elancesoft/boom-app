@@ -1,0 +1,62 @@
+<div class="container col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+  <form [formGroup]="userForm" (ngSubmit)="submitUserData()">
+    <!-- Grid row -->
+    <div class="form-group row" *ngFor="let item of personData; index as i">
+      <div class="col-md-4">
+        <label for="firstname">First Name :</label>
+        <input type="text" id="firstname" class="form-control" mdbInput [(ngModel)]="personData[i]['first_name']"
+               [formControlName]="'firstnameInput'+i"/>
+      </div>
+      <div class="col-md-4">
+        <label for="lastname">Last Name :</label>
+        <input type="text" id="lastname" class="form-control" mdbInput [(ngModel)]="personData[i]['last_name']"
+               [formControlName]="'lastnameInput'+i"/>
+      </div>
+      <div class="col-md-4">
+        <label>Birthday :</label>
+        <input type="date" class="form-control"
+               mdbInput [(ngModel)]="personData[i]['birthday']"
+               [formControlName]="'birthdayInput'+i"/>
+      </div>
+      <div class="col-md-6 col-6" style="margin-top: 25px;">
+        <a href="javascript:void(0)" class="mt-3" *ngIf="i+1==personData.length" (click)="addPerson(i)">+ add
+          insured</a>
+      </div>
+      <div class="col-md-6 col-6" style="margin-top: 25px;">
+        <a href="javascript:void(0)" class="mt-3" *ngIf="i>0 && i+1==personData.length" (click)="deletePerson(i)">
+          <span class="text-danger">- delete</span>
+        </a>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-6">
+        <label for="email">Email :</label>
+        <input type="text" id="email" class="form-control" mdbInput [(ngModel)]="email" formControlName="emailInput"/>
+        <!--<mdb-error *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">Email type is invalid-->
+        <!--</mdb-error>-->
+        <!--<mdb-success *ngIf="emailInput.valid && (emailInput.dirty || emailInput.touched)">Email type is valid-->
+        <!--</mdb-success>-->
+      </div>
+
+      <div class="col-md-6">
+        <label for="phone">Phone :</label>
+        <input type="text" id="phone" class="form-control" mdbInput [(ngModel)]="phone" placeholder="Ex. 1231231234"
+               formControlName="phoneInput"/>
+        <!--<mdb-error *ngIf="phoneInput.invalid && (phoneInput.dirty || phoneInput.touched)">Phone number is-->
+        <!--required.-->
+        <!--</mdb-error>-->
+        <!--<mdb-success *ngIf="phoneInput.valid && (phoneInput.dirty || phoneInput.touched)">Phone number is valid-->
+        <!--</mdb-success>-->
+      </div>
+    </div>
+    <div class="form-group mt-9" style="margin-bottom: 30px;">
+      <div class="col-md-6 offset-md-3">
+        <button mdbBtn type="submit" class="btn btn-red btn-block mx-auto"
+                id="nextBtn">
+          Next&nbsp;
+          <mdb-icon fas icon="angle-right"></mdb-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

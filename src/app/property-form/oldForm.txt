@@ -1,0 +1,126 @@
+
+            <form class="household household_form" [formGroup]="userForm" (ngSubmit)="submitUserData()"
+              *ngIf="userForm">
+              <div class="form-row user_form user_field_subdiv">
+                <div class="row form-group email_phone_row">
+                  <div class="col-lg-1 d-none d-md-block"></div>
+                  <div class="col-md-12 col-lg-5">
+                    <div class="input-group">
+                      <!-- <div class="input-group-prepend">
+                               <span class="input-group-text bg-transparent" id="basic-addon1"> <i class="fa fa-envelope custom-span" aria-hidden="true"></i></span>
+                               </div> -->
+                      <input mdbInput mdbValidate type="email" class="form-control form_input" id="inputemail"
+                        [(ngModel)]="email" formControlName="emailInput" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-lg-5">
+                    <div class="input-group">
+                      <!-- <div class="input-group-prepend">
+                               <span class="input-group-text bg-transparent" id="basic-addon1"> <i class="fa fa-phone custom-span" aria-hidden="true"></i></span>
+                               </div> -->
+                      <input mdbInput type="text" mdbValidate name="phone" formControlName="phoneInput"
+                        palceholder="###-####-####" class="form-control form_input" id="inputphone" [(ngModel)]="phone"
+                        placeholder="Phone">
+                    </div>
+                  </div>
+                  <div class="col-lg-1 d-none d-md-block"></div>
+                </div>
+              </div>
+
+              <div class="row user_field" *ngFor="let item of personData; index as i">
+
+                <div class="col-md-12 user_field_subdiv mb-2">
+                  <div class="form-row">
+                    <div class="col-12 col-lg-3 pl-0">
+                      <div class="form-group mb-0">
+                        <!-- <i class="fa fa-user" aria-hidden="true"></i>
+                                   <input mdbInput type="text" mdbValidate class="form-control form_input" formControlName="firstnameInput{{i}}" [(ngModel)]="personData[i]['first_name']" placeholder="first name"> -->
+                        <div class="input-group">
+                          <!-- <div class="input-group-prepend">
+                                      <span class="input-group-text bg-transparent" id="basic-addon1"> <i class="fa fa-user custom-span" aria-hidden="true"></i></span>
+                                      </div> -->
+                          <input mdbInput type="text" mdbValidate class="form-control form_input"
+                            formControlName="firstnameInput{{i}}" [(ngModel)]="personData[i]['first_name']"
+                            placeholder="First Name">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-3 lastname_div">
+                      <div class="form-group mb-0">
+                        <!-- <i class="fa fa-user" aria-hidden="true"></i>
+                                   <input mdbInput type="text" mdbValidate class="form-control form_input" formControlName="lastnameInput{{i}}" [(ngModel)]="personData[i]['last_name']" placeholder="last name"> -->
+                        <div class="input-group">
+                          <!-- <div class="input-group-prepend">
+                                      <span class="input-group-text bg-transparent" id="basic-addon1"> <i class="fa fa-user custom-span" aria-hidden="true"></i></span>
+                                      </div> -->
+                          <input mdbInput type="text" mdbValidate class="form-control form_input"
+                            formControlName="lastnameInput{{i}}" [(ngModel)]="personData[i]['last_name']"
+                            placeholder="Last Name">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-7 col-lg-3 pr-0 contact_datepicker_div">
+                      <div class="mb-0" onclick="this.children.focus()">
+                        <div class="input-group user_info_datepicker">
+                          <!-- <div class="input-group-prepend">
+                                      <span class="input-group-text bg-transparent" id="basic-addon1"> <i class="fa fa-calendar-o custom-span" aria-hidden="true"></i></span>
+                                      </div> -->
+                          <ejs-datepicker type="text" #property_form (focus)='onFocus($event)'
+                            class=" form-control form_input ng-star-inserted pac-target-input date-piker for-mobile"
+                            id="date" name="datetime" mdbValidate required placeholder='Date of Birth'
+                            formControlName="birthdayInput{{i}}" [(ngModel)]="personData[i]['dob']" format='MM/dd/yyyy'>
+                          </ejs-datepicker>
+                          <input type="text" id="date-of-birth" placeholder="Date of Birth"
+                            class="form-control form_input date-of-birth for-desktop" onfocus="(this.type='date')"
+                            id="date" mdbValidate required formControlName="birthdayInput{{i}}"
+                            [(ngModel)]="personData[i]['dob']">
+                        </div>
+                        <!-- <input placeholder="date of birth" class="form-control form_input" type="text" onfocus="(this.type='date')" id="date"  mdbValidate required formControlName="birthdayInput{{i}}" [(ngModel)]="personData[i]['dob']"  format ='MM/dd/yyyy'> -->
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-3 ">
+                      <div class="form-group mb-0">
+                        <div class="input-group">
+                          <select class="form-control" formControlName="relationInput{{i}}" required
+                            [(ngModel)]="personData[i]['relation']">
+                            <option value="">Relation</option>
+                            <option value="Spouse">Spouse</option>
+                            <option value="Daughter">Daughter</option>
+                            <option value="Son">Son</option>
+                            <option value="Mother">Mother</option>
+                            <option value="Father">Father</option>
+                            <option value="Brother">Brother</option>
+                            <option value="Sister">Sister</option>
+                            <option value="Other">Other</option>
+                          </select>
+                          <!-- <input mdbInput type="text" mdbValidate class="form-control form_input"
+                            formControlName="lastnameInput{{i}}" [(ngModel)]="personData[i]['last_name']"
+                            placeholder="Last Name"> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="close_icon">
+                  <button type="button" class="close" aria-label="Close"
+                    style="margin-top: 10px; font-size: 20pt !important;" (click)="deletePerson(i)" *ngIf="i>0">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+              </div>
+
+
+              <div class="row animated fadeIn add_btn">
+                <div class="col-sm-12">
+                  <button mdbBtn type="button" size="md" class="shadow-none" (click)="addPerson()">
+                    <i class="fa fa-plus"></i>&nbsp; Add
+                  </button>
+                </div>
+              </div>
+              <!-- Grid row -->
+              <div class="my-5 form_btn_div">
+                <button class="btn btn-light continue-next" (click)="sendMail(userForm.value)"
+                  [disabled]="userForm.invalid" [ngClass]="userForm.invalid ? 'invaliddata':'validdata'">Get
+                  Quotes</button>
+              </div>
+            </form>

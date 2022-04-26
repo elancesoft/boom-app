@@ -1,0 +1,115 @@
+<!-- <div class="form-row">
+  <img [src]="'../../assets/images/loader/'+imageName" class="mx-auto issuing"/>
+</div> -->
+
+<!-- -------------------- -->
+<!-- Angular dropdown -->
+<div class="form-row ml-auto mr-auto">
+  <div class="dropdown" mdbDropdown [autoClose]="false">
+    <button mdbDropdownToggle mdbBtn #toggleButton class="dropdown-toggle waves-light btn waves-effect" id="dropdown-btn" mdbWavesEffect style="box-shadow: none" type="button" aria-haspopup="true" aria-expanded="true">
+      <div style="font-size: 0.8em">home</div>
+      <div><img class="home-img" src="../../assets/images/SVG/3dhouse.svg" /></div>
+      <div>
+        <i class="fas fa-2x fa-chevron-down"></i>
+      </div>
+    </button>
+    <div class="dropdown-menu dropdown-primary" id="jumbo-dropdown-menu" #menu>
+      <div *ngFor="let item of dropdownItems; index as i" class="jumbo-option" [ngClass]="insuranceOptions[item.name] ? 'selected' : ''" (click)="toggle(item.name)">
+        <div class="text-wrapper">
+          {{ item.name }}
+        </div>
+        <div class="icon-wrapper">
+          <img class="jumbo-dropdown-image" src="{{ item.url }}" />
+        </div>
+        <div [ngClass]="i != dropdownItems.length - 1 ? 'jumbo-option-divider-div' : 'jumbo-option-last-item'"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <button mdbDropdownToggle mdbBtn #toggleButton class="dropdown-toggle waves-light" id="dropdown-btn" type="button" mdbWavesEffect style="box-shadow: none;">
+      <img class="home-img" src="../../assets/images/button-icons/home-icon.png">
+      <p class="home-txt">home</p>
+      <label class="home-checkbox-container">
+        <input type="checkbox" [checked]="insuranceOptions.home" (change)="toggle('home')">
+        <span class="home-checkmark"></span>
+      </label>
+      <div class="dropDownCaretContainer">
+        <p class="select-txt text-black">more</p>
+        <i class="fas fa-caret-down caretIcon"></i>
+      </div>
+    </button>
+
+    <div class="dropdown-menu dropdown-primary" id="jumbo-dropdown-menu" #menu>
+      <div class="jumbo-option">
+        <div class="icon-wrapper">
+          <img class="jumbo-dropdown-image" src="../../assets/images/button-icons/car-icon.png">
+        </div>
+        <div class="text-wrapper">
+          <p class="jumbo-dropdown-text">auto</p>
+        </div>
+        <label class="checkbox-container">
+          <input type="checkbox" [checked]="insuranceOptions.auto" (change)="toggle('auto')">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <div class="jumbo-option-divider-div"></div>
+
+      <div class="jumbo-option">
+        <div class="icon-wrapper">
+          <img class="jumbo-dropdown-image" src="../../assets/images/button-icons/flood-icon.png">
+        </div>
+        <div class="text-wrapper">
+          <p class="jumbo-dropdown-text">flood</p>
+        </div>
+        <label class="checkbox-container">
+          <input type="checkbox" [checked]="insuranceOptions.flood" (change)="toggle('flood')">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <div class="jumbo-option-divider-div"></div>
+
+      <div class="jumbo-option">
+        <div class="icon-wrapper">
+          <img class="jumbo-dropdown-image" src="../../assets/images/button-icons/life-icon.png">
+        </div>
+        <div class="text-wrapper">
+          <p class="jumbo-dropdown-text">life</p>
+        </div>
+        <label class="checkbox-container">
+          <input type="checkbox" [checked]="insuranceOptions.life" (change)="toggle('life')">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <div class="jumbo-option-divider-div"></div>
+
+      <div class="jumbo-option">
+        <div class="icon-wrapper">
+          <img class="jumbo-dropdown-image" src="../../assets/images/button-icons/umbrella-icon.png">
+        </div>
+        <div class="text-wrapper">
+          <p class="jumbo-dropdown-text">umbrella</p>
+        </div>
+        <label class="checkbox-container">
+          <input type="checkbox" [checked]="insuranceOptions.umbrella" (change)="toggle('umbrella')">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <div class="jumbo-option-divider-div"></div>
+
+      <div class="jumbo-option">
+        <div class="icon-wrapper">
+          <img class="jumbo-dropdown-image" src="../../assets/images/button-icons/condo-icon.png">
+        </div>
+        <div class="text-wrapper">
+          <p class="jumbo-dropdown-text">condo</p>
+        </div>
+        <label class="checkbox-container">
+          <input type="checkbox" [checked]="insuranceOptions.condo" (change)="toggle('condo')">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+
+    </div> 
+  </div>
+</div>-->

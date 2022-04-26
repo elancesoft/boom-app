@@ -1,0 +1,95 @@
+{
+  "ACORD": {
+    "$": {
+      "xmlns": "http://www.ACORD.org/standards/PC_Surety/ACORD1/xml/Stillwater"
+    },
+    "SignonRs": [
+      {
+        "SignonRoleCd": [
+          "Agent"
+        ],
+        "CustId": [
+          {
+            "SPName": [
+              "com.CNG"
+            ],
+            "CustPermId": [
+              "XMLCNGTEST"
+            ],
+            "CustLoginId": [
+              "XMLCNGTEST"
+            ]
+          }
+        ],
+        "ClientDt": [
+          "2019-11-26T09:48:25"
+        ],
+        "CustLangPref": [
+          "ENG"
+        ],
+        "ClientApp": [
+          {
+            "Org": [
+              "Internet"
+            ],
+            "Name": [
+              "com.CNG"
+            ],
+            "Version": [
+              "1.6"
+            ]
+          }
+        ]
+      }
+    ],
+    "InsuranceSvcRs": [
+      {
+        "PolicyInqRs": [
+          {
+            "MsgStatus": [
+              {
+                "MsgStatusCd": [
+                  "ERROR"
+                ],
+                "MsgStatusDesc": [
+                  "Error retrieving declarations page "
+                ]
+              }
+            ],
+            "PolicyInqInfo": [
+              {
+                "PartialPolicy": [
+                  {
+                    "PolicyNumber": [
+                      "PH1159142"
+                    ],
+                    "LOBCd": [
+                      "HOME"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "PolInfo": [
+              {
+                "HomePolicy": [
+                  {
+                    "InsuredOrPrincipal": [
+                      ""
+                    ],
+                    "PersPolicy": [
+                      ""
+                    ],
+                    "HomeLineBusiness": [
+                      ""
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

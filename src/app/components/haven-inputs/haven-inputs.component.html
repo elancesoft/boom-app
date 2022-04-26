@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 inputContainer" *ngIf="!showLoader">
+      <h2 class="text-center font-weight-bold pb-4 text-danger col-md-6 offset-md-3 col-8 offset-2">LIFE INSURANCE</h2>
+      <div class="form-group md-form col-md-6 offset-md-3 col-10 offset-1">
+        <input type="text" mdbInput class="form-control" placeholder="name" [(ngModel)]="name"/>
+      </div>
+      <div class="form-group md-form col-md-6 offset-md-3 col-10 offset-1">
+        <input type="text" placeholder="DOB" class="form-control" onfocus="$(this).hide().next().attr('hidden',false).focus();"/>
+        <input class="form-control" [(ngModel)]="dateOfBirth" hidden="true" type="date"/>
+      </div>
+      <div class="form-group">
+        <div class="md-form col-md-6 offset-md-3 col-10 offset-1">
+          <select class="browser-default custom-select" [(ngModel)]="gender">
+            <option value="0">Select the gender</option>
+            <option [value]="gender.value" *ngFor="let gender of genders">{{gender.label}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="md-form col-md-6 offset-md-3 col-10 offset-1">
+          <select class="browser-default custom-select" [(ngModel)]="coverageAmount">
+            <option value="0">Amount Of Coverage</option>
+            <option [value]="coverage.value" *ngFor="let coverage of coverages">{{coverage.label}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6 offset-md-3 col-10 offset-1">
+          <app-swiper-container (next)="next()" [text]="'Swipe to Quote!'"></app-swiper-container>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 loaderContainer" *ngIf="showLoader">
+      <h4 class="text-center font-weight-bold pb-4 h4-responsive font-italic">Loading...</h4>
+      <div class="loader"></div>
+    </div>
+  </div>
+</div>

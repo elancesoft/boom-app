@@ -1,0 +1,37 @@
+.title {
+  padding: 20px;
+  background: #eee;
+  border: 1px solid #bbb;
+  border-bottom: none;
+  font-weight: 500;
+  font-family: PingFang, sans-serif;
+}
+
+.claim-wrapper {
+  font-family: PingFang, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  border: 1px solid #bbb;
+  padding-top: 3rem;
+
+  .claim-item {
+    width: 14%;
+    text-align: center;
+    min-width: 126px;
+
+    img {
+      height: 54px;
+      object-fit: contain;
+    }
+
+    p {
+      font-size: 0.8em;
+      padding-top: 8px;
+      margin-bottom: 3rem;
+      font-weight: 500;
+    }
+  }
+}

@@ -1,0 +1,1172 @@
+@import "../../assets/styles/variables";
+
+:host ::ng-deep .progress .progress-bar {
+  height: 5px;
+}
+
+:host ::ng-deep mdb-progress .progress {
+  height: 10px;
+  padding: 0;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  background-color: #03a9f430;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  .progress-bar-info {
+    height: 10px;
+    border-radius: 5.18px;
+    background-color: #3fbbe0;
+  }
+}
+.map-container {
+  margin-bottom: 20px;
+}
+p.property-type {
+  margin: 0px 0 0px 0;
+
+  font-size: 12px;
+}
+.loader {
+  font-family: Roboto;
+  position: absolute;
+  top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  @media screen and (max-width: 767px) {
+    top: 110px;
+  }
+  .nav-arrow {
+    position: absolute;
+    cursor: pointer;
+    &.float-left {
+      left: 5%;
+    }
+    &.float-right {
+      right: 5%;
+    }
+    .arrow_icon {
+      width: 100%;
+    }
+  }
+}
+
+mdb-badge {
+  height: 100%;
+}
+.constructionDiv mdb-badge,
+.roofDiv mdb-badge {
+  border: 2px solid #efeeee;
+}
+.basementDiv mdb-badge,
+.constructionDiv input,
+.exteriorDiv mdb-badge {
+  border: 1px solid #d8d8d8;
+}
+
+.constructionDiv mdb-badge {
+  width: 100%;
+  min-height: 330px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  @media screen and (max-width: 991px) {
+    min-height: 260px;
+  }
+  @media screen and (max-width: 767px) {
+    min-height: 225px;
+    padding: 25px 10px 10px;
+    font-size: 17px;
+  }
+  &.roof_select {
+    min-height: auto;
+    @media screen and (max-width: 767px) {
+      padding: 0px 15px;
+    }
+  }
+}
+
+.tab-4 {
+  .constructionDiv mdb-badge {
+    min-height: 250px;
+    @media screen and (max-width: 767px) {
+      min-height: 170px;
+    }
+    img {
+      margin-bottom: 20px;
+      min-height: auto;
+      width: 100%;
+    }
+  }
+}
+mdb-badge {
+  padding: 10px;
+  min-width: 100px;
+  background-color: $white;
+  color: #000;
+  box-shadow: none;
+  border-radius: 8px;
+
+  &:hover {
+    box-shadow: 0 3px 10px #d6d6d6;
+  }
+}
+span#edit_zillow_btn {
+  cursor: pointer;
+  margin-bottom: 50px;
+  display: inline-block;
+  color: #7f7f7f;
+  font-weight: 500;
+}
+.exteriorDiv > mdb-badge {
+  background-color: $white;
+  border-radius: 5.18px;
+  box-shadow: none;
+  cursor: pointer;
+  color: #000;
+  font-size: 22px;
+  align-items: center;
+  &:hover {
+    box-shadow: 0 3px 10px #d6d6d6;
+  }
+
+  @include mq($until: tablet) {
+    min-width: auto;
+  }
+
+  .text-dark {
+    white-space: initial;
+  }
+}
+
+.container {
+  .form-row {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+}
+
+mdb-badge {
+  cursor: pointer;
+  .btn-icon {
+    display: block;
+    width: 30px;
+    margin: 17px auto 10px;
+  }
+
+  .badge-card {
+    span {
+      padding: 0 35px;
+      white-space: normal;
+      min-height: 45px;
+      margin: 0;
+      display: block;
+    }
+  }
+}
+
+.bg-white {
+  text-align: center;
+  margin-top: 2rem;
+  max-width: 100%;
+  overflow: hidden;
+  border: solid 2px #c8c8c8;
+  border-radius: 5.18px;
+
+  @include mq($until: tablet) {
+    border: none;
+  }
+}
+
+.form-row > div,
+h1,
+h4 {
+  text-align: left;
+
+  @include mq($until: tablet) {
+    text-align: center;
+  }
+  @media screen and(max-width: 767px) {
+    padding: 0 !important;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+:host ::ng-deep .exteriorDiv mdb-badge > span {
+  margin: 0px;
+}
+
+:host ::ng-deep .exteriorDiv mdb-badge > span > div {
+  margin: 0px;
+}
+
+.exteriorDiv mdb-badge img {
+  width: 100%;
+}
+
+.constructionDiv {
+  cursor: pointer;
+  @media screen and (max-width: 767px) {
+    width: 50%;
+  }
+  .text-dark {
+    p {
+      white-space: normal;
+      font-size: 15px;
+      margin-top: 5px;
+      font-weight: 500;
+
+      @media screen and (max-width: 767px) {
+        font-size: 15px;
+        margin-top: 0px;
+      }
+    }
+  }
+  img {
+    width: 75%;
+    object-fit: contain;
+    // max-width: 120px;
+    // max-height: 120px;
+    // min-height: 120px;
+
+    &.roof_typ {
+      max-width: 75%;
+      @media screen and (max-width: 767px) {
+        padding: 0px;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .tab5_title {
+    text-align: left;
+    @media screen and (max-width: 576px) {
+      margin-left: 0px;
+    }
+  }
+
+  mdb-badge {
+    &:hover {
+      box-shadow: 0 3px 10px #d6d6d6;
+    }
+  }
+
+  @include mq($until: tablet) {
+    .tab2_form {
+      width: 50%;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+input[type="text"],
+input[type="number"] {
+  background-clip: padding-box;
+  border: 2px solid #5bc0de;
+  border-radius: 0.5rem;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+mdb-badge.badge-warning {
+  background-color: $primary-color;
+  color: white;
+}
+
+/*style for carousel start*/
+.carousel {
+  position: relative;
+  height: 100%;
+
+  .prev {
+    position: absolute;
+    left: -2rem;
+  }
+
+  .next {
+    position: absolute;
+    right: -2rem;
+  }
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  // zoom effect on hover
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.84);
+  border-radius: 0.5em;
+}
+
+.slide:hover {
+  transform: scale(1.025);
+}
+
+// =========================
+// Next and Prev buttons
+// =========================
+.control {
+  border: none;
+  background-color: transparent;
+  outline: 0; // remove blue outline border, but make sure they are still focussable for accessibility
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5em;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  user-select: none;
+  height: 100%;
+  opacity: 80%;
+  // opacity effect on hover
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.84);
+
+  @include mq($until: tablet) {
+    padding: 0;
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+
+  /* Position the buttons */
+  &.next {
+    right: 0;
+  }
+  &.prev {
+    left: 0;
+  }
+}
+
+/* style the arrows */
+.arrow {
+  display: block;
+  border-left: 0.1em solid #c1c1c1;
+  border-bottom: 0.1em solid #c1c1c1;
+  width: 0.5em;
+  height: 0.5em;
+
+  &.left {
+    transform: rotate(45deg);
+  }
+  &.right {
+    transform: rotate(225deg);
+  }
+}
+
+#yearInput,
+#squareInput {
+  width: 120px;
+  background: #f2f2f2;
+}
+
+#mobileLeft {
+  position: absolute;
+  left: 30px;
+  top: -30px;
+  z-index: 9999;
+}
+
+#mobileRight {
+  position: absolute;
+  right: 30px;
+  top: -30px;
+  z-index: 9999;
+}
+
+.form-group i {
+  position: absolute;
+  color: black;
+  font-weight: bold;
+  top: 20px;
+  pointer-events: none;
+  right: 77%;
+  @media screen and (max-width: 768px) {
+    right: 37%;
+  }
+  @media screen and (max-width: 576px) {
+    top: 18px;
+    right: 16px;
+  }
+}
+
+.form-group input {
+  padding-left: 15px;
+}
+
+.continue-next {
+  font-size: 20px;
+  border-radius: 5.18px;
+  width: 200px;
+  height: 44px;
+  text-transform: capitalize;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 3px;
+  font-weight: 600;
+}
+button.btn.btn-light.continue-next.invaliddata {
+  background: #e6e6e6;
+  color: white;
+}
+button.btn.btn-light.continue-next.validdata {
+  background: #f9414f !important;
+  color: white;
+}
+@media screen and (max-width: 767px) {
+  button.btn.btn-light.continue-next.invaliddata,
+  button.btn.btn-light.continue-next.validdata {
+  }
+}
+.btn-light:not(:disabled):not(.disabled):active {
+  color: white;
+}
+
+#blueTile {
+  background-color: #1e6df9;
+  width: 100px;
+  border-radius: 5.18%;
+  color: white;
+  text-align: center;
+  margin-top: 2rem;
+  padding: 2px;
+  height: 50px;
+}
+
+#blue_Tile {
+  background-color: white;
+  width: 100px;
+  border-radius: 5.18%;
+  margin-top: 2rem;
+  padding-top: 14px;
+  height: 50px;
+  line-height: 50px;
+  border: 2px dashed blue;
+}
+
+@media screen and (max-width: 767px) {
+  #inputData {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+  .tab-1 .property_typ .col-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+.tab-2 {
+  .form-row {
+    margin: 0 20px;
+    @media screen and (max-width: 767px) {
+      margin: 0;
+    }
+    .constructionDiv.tab2_form {
+      @media screen and (max-width: 767px) {
+        width: 50%;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+.nav-arrow {
+  &:hover {
+    i {
+      font-size: 54px;
+      transition: font-size 0.5s ease-in;
+    }
+  }
+
+  i {
+    cursor: pointer;
+    font-size: 48px;
+    color: #c8c8c8;
+  }
+}
+
+.property_typ {
+  margin: 0 auto;
+  // justify-content: center;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+}
+.tab-4 {
+  .property_typ {
+    justify-content: flex-start;
+  }
+}
+.constructionDiv {
+  label {
+    font-weight: 700;
+  }
+  input.form-control {
+    font-weight: 700;
+  }
+}
+.row.property_form {
+  margin: 0;
+  padding: 0 10px;
+  #inputData {
+    &.col-6 {
+      @media screen and (min-width: 768px) and (max-width: 1180px) {
+        flex: 0 0 75%;
+      }
+    }
+  }
+  .col-md-10.main_property {
+    padding-left: 70px;
+    @media screen and (min-width: 1500px) {
+      max-width: 60%;
+    }
+    @media screen and (max-width: 768px) {
+      padding: 0px;
+    }
+  }
+}
+
+#zillow-data-section {
+  .property_data {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    @media screen and(max-width:767px) {
+      grid-template-columns: unset;
+    }
+  }
+  h5 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: -5px;
+    @media screen and (max-width: 767px) {
+      font-size: 23px;
+      font-weight: 500;
+    }
+  }
+  #squareInput,
+  #yearInput {
+    width: 160px;
+    font-size: 35px;
+    padding: 0;
+    font-weight: 700;
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+    line-height: normal;
+    height: 50px;
+    color: #007bff;
+  }
+  &.hide-zillow-update {
+    #squareInput,
+    #yearInput {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      &:focus {
+        border: none;
+        box-shadow: none;
+      }
+    }
+    button {
+      justify-content: center;
+      font-size: 20px;
+      border-radius: 10px;
+      span {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+.cont_btn {
+  width: 213px;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.tab-6 {
+  .form-row {
+    padding-left: 0px;
+    @media screen and (max-width: 767px) {
+      padding-left: 0;
+      width: 94%;
+
+      margin: 15px 10px;
+    }
+
+    label {
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 0;
+      @media screen and (max-width: 767px) {
+        font-size: 17px;
+        padding-top: 13px;
+      }
+    }
+    select.form-control {
+      background: #f2f2f2;
+      border: none;
+      border-radius: 2;
+      cursor: pointer;
+      font-weight: 700;
+      color: #000;
+      width: 25%;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      @media screen and (max-width: 768px) {
+        width: 70%;
+      }
+      @media screen and (max-width: 767px) {
+        width: 100%;
+        text-align-last: left;
+      }
+    }
+    button.no_btn {
+      background: #f2f2f2;
+      border-radius: 5.18px;
+      font-weight: 700;
+      color: #000;
+      width: 100%;
+      padding: 0px;
+      margin: 0;
+      box-shadow: none;
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+    }
+  }
+}
+
+.email_phone_row {
+  width: 104%;
+  @media screen and (max-width: 576px) {
+    width: auto;
+  }
+  .col-md-12.col-lg-5 {
+    @media screen and (max-width: 576px) {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+}
+.household {
+  width: 65%;
+  margin: 3%;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 1300px) {
+    width: 70%;
+  }
+  @media screen and (max-width: 1140px) {
+    width: 90%;
+  }
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    margin-left: 0;
+    padding: 0px 17px;
+  }
+  input {
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+    @media screen and (max-width: 1280px) {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+  }
+  .add_btn {
+    text-align: left;
+    button.btn {
+      background: #fbb03b;
+      font-size: 15px;
+      font-weight: 500;
+      border-radius: 5.18px;
+      width: 100px;
+      padding: 5px;
+    }
+  }
+  .user_field {
+    position: relative;
+    .close_icon {
+      position: absolute;
+      right: -5px;
+      @media screen and (max-width: 767px) {
+        right: 10px;
+        top: -30px;
+      }
+    }
+
+    .form-group.mb-3 {
+      @media screen and (max-width: 767px) {
+        position: relative;
+      }
+    }
+  }
+  .form-row.user_form.user_field_subdiv {
+    margin: 25px 0px;
+    width: 100%;
+    @media screen and (max-width: 767px) {
+      margin: 0;
+    }
+  }
+}
+.tab-5,
+.tab-7 {
+  width: 100%;
+  @media screen and (max-width: 1366px) {
+    width: 80%;
+  }
+  @media screen and (max-width: 991px) {
+    width: 100%;
+  }
+}
+
+.sq_feet_blue_text {
+  font-size: 55px;
+  text-align: center;
+  line-height: normal;
+  color: #007bff;
+  @media screen and (max-width: 767px) {
+    font-size: 60px;
+  }
+}
+
+.form_input {
+  height: 50px;
+}
+.custom-span {
+  position: unset !important;
+}
+.bg-transparent {
+  background-color: transparent;
+  border-left-color: #f1f1f1;
+  border-top-color: #f1f1f1;
+  border-bottom-color: #f1f1f1;
+}
+.map_area.col-md-2 {
+  margin-top: 5px;
+}
+.form_divider {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .constructionDiv mdb-badge.roof_select {
+    min-height: 240px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .user_field_subdiv {
+    padding: 0px 20px 0px 20px;
+  }
+  .user_field_subdiv input {
+    margin-bottom: 0px;
+    border-radius: 13px;
+  }
+}
+.update-zillow-detail h5 {
+  margin-bottom: 15px !important;
+}
+.update-zillow-detail .cont_btn {
+  margin-top: 40px;
+}
+
+// ====================fadeIn with slideRight animation
+.slideInRight_custom_1 {
+  -webkit-animation: slideInRight_custom_1 0.7s;
+  animation: slideInRight_custom_1 0.7s;
+}
+@-webkit-keyframes slideInRight_custom_1 {
+  from {
+    -webkit-transform: translate3d(100px, 0, 0);
+    transform: translate3d(100px, 0, 0);
+    visibility: visible;
+    opacity: 0;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight_custom_1 {
+  from {
+    -webkit-transform: translate3d(100px, 0, 0);
+    transform: translate3d(100px, 0, 0);
+    visibility: visible;
+    opacity: 0;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+// ==============only fadeIn animation
+.slideInRight_custom {
+  // -webkit-animation-name: slideInRight_custom;
+  // animation-name: slideInRight_custom;
+  animation: fadein 1s;
+  -moz-animation: fadein 1s; /* Firefox */
+  -webkit-animation: fadein 1s; /* Safari and Chrome */
+  -o-animation: fadein 1s; /* Opera */
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.tab-4 .constructionDiv mdb-badge {
+  border-radius: 10px;
+}
+.constructionDiv mdb-badge.roof_select {
+  border-radius: 10px;
+}
+
+.tab-6 button.btn.no_btn:hover {
+  box-shadow: none;
+}
+
+.user_info_datepicker .e-input-group:not(.e-float-icon-left):not(.e-float-input)::before,
+.user_info_datepicker .e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::before,
+.user_info_datepicker .e-input-group:not(.e-float-icon-left):not(.e-float-input)::after,
+.user_info_datepicker .e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::after {
+  background: transparent;
+}
+.user_info_datepicker .date-piker {
+  border-radius: 13px;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 0px;
+  }
+}
+
+.date-of-birth {
+  // display: none;
+  @media screen and (max-width: 767px) {
+    display: block;
+  }
+}
+::ng-deep {
+  ejs-datepicker {
+    input.e-input,
+    textarea.e-input,
+    .e-input-group,
+    .e-input-group.e-control-wrapper {
+      color: #495057;
+      border-color: #e2e2e2;
+    }
+  }
+}
+ejs-datepicker#ej2-datepicker_0 {
+  @media screen and (max-width: 767px) {
+    span {
+      flex-direction: row;
+    }
+    span::after {
+      text-align: left !important;
+    }
+  }
+  span::after {
+    color: #495057;
+  }
+}
+
+.form-row {
+  div {
+    @media screen and (max-width: 767px) {
+      padding: 4px;
+      margin: 0;
+    }
+  }
+}
+
+.form-control {
+  height: 57px !important;
+}
+
+.selected-address {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 2px solid #f3f3f3;
+  border-radius: 50px;
+  padding: 5px;
+  font-family: "Source Sans Pro Regular";
+  font-weight: bold;
+  font-size: 12px;
+
+  color: #4d4d4d;
+
+  p {
+    font-family: "Open Sans";
+    margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: black;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: $mobile-width) {
+    width: 90%;
+    padding: 8px;
+    font-size: 15px;
+  }
+
+  .loc-icon {
+    background-image: url(../../assets/images/addressImg_blck1.png);
+    background-size: 20px;
+    height: 30px;
+    width: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+
+    @media screen and (max-width: $mobile-width) {
+      background-size: 15px;
+      height: 20px;
+      width: 20px;
+    }
+  }
+}
+
+.head_data span {
+  font-family: "Open Sans";
+}
+.info-header {
+  padding-right: 50px;
+}
+.header-infos {
+  display: flex;
+  flex-direction: row;
+
+  @media screen and (min-width: 1024px) {
+    padding: 20px 40px;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 20px 10px;
+  }
+  @media screen and (max-width: 767px) {
+    padding: 35px 10px 0px 10px;
+  }
+  .address-ctas {
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+    .back-btn {
+      img {
+        width: 30px;
+      }
+    }
+  }
+
+  .head-datas {
+    flex-basis: 50%;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    div {
+      font-family: "Open Sans";
+      background-color: #333333;
+      border-radius: 40px;
+      margin-right: 10px;
+      margin-left: 5px;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: auto;
+      min-height: 35px;
+      height: auto;
+      max-width: 140px;
+      font-weight: 600;
+      max-height: 40px;
+    }
+    i {
+      font-size: 30px;
+      color: #e2e1e1;
+      margin-left: 10px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+
+    .address-ctas {
+      // display: flex;
+      // flex-direction: row;
+      // justify-content: center;
+      // align-items: center;
+      display: grid;
+      -ms-flex-align: center;
+      align-items: center;
+      grid-template-columns: 8% 92%;
+      .back-btn {
+        img {
+          width: 30px;
+        }
+      }
+      .address-container {
+        .addressSelcted {
+          // height: 45px;
+          border-radius: 40px;
+          border: 1px solid #c4c7c7;
+          padding: 8px 15px;
+          overflow: hidden;
+
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      .refresh-container {
+        i {
+          font-size: 30px;
+          color: #e2e1e1;
+          padding: 8px;
+        }
+      }
+    }
+    .head-datas {
+      display: none;
+      flex-direction: row;
+      margin-top: 10px;
+      padding-right: 40px;
+
+      @media screen and (max-width: 320px) {
+        padding-right: 0px;
+      }
+      div {
+        font-weight: 600;
+        font-size: 13px;
+        min-height: 35px;
+        height: auto;
+        max-width: 140px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .tab6_lbl {
+    text-align: left !important;
+    float: left;
+  }
+  .exterior_div mdb-badge.roof_select {
+    min-height: 150px !important;
+    height: 170px;
+    padding: 15px;
+  }
+  .col-lg-3.col-md-4.col-4.constructionDiv.mb-3.exterior_div {
+    padding-right: 7px;
+    padding-left: 7px;
+  }
+  .user_info_datepicker ejs-datepicker span.e-input-group-icon.e-date-icon.e-icons {
+    visibility: hidden;
+  }
+}
+@media screen and (max-width: 767px) {
+  .tab-6 {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .header-infos .address-ctas .address-container .addressSelcted img {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 3px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header-infos .address-ctas .address-container .addressSelcted img {
+    margin-bottom: 0;
+  }
+}
+input#date_input::placeholder {
+  color: #495057db;
+}
+
+ngb-modal-window {
+  margin-top: 0 !important;
+  padding-right: 0 !important;
+}
+
+.__add_btn_ {
+  width: 93.05px;
+  height: 33.13px;
+  background-color: #f9414f;
+  border-radius: 2px;
+  font-size: 14px;
+  color: #fff;
+  display: block;
+}

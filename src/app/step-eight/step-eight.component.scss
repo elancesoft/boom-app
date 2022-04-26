@@ -1,0 +1,51 @@
+@import '../../assets/styles/variables';
+
+.issuingImg {
+  width: 150px;
+  margin-top: 50px;
+  max-height: 150px;
+}
+
+.homeImg {
+  margin-top: -110px;
+  height: 80px;
+}
+
+.progress {
+  width: 200px !important;
+
+  .progress-bar {
+    background-color: $primary-color !important;
+  }
+}
+
+.label-review {
+  color: gray;
+  display: inline;
+
+}
+
+.data-review {
+
+  color: black;
+  display: inline;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.premium-font {
+
+  color: orangered;
+  font-weight: bold;
+}
+
+.compliance-text {
+  border-bottom: 2px dotted gold;
+  border-top: 2px dotted gold;
+}
+
+@media screen and (max-width: 767px) {
+  .mx-auto input {
+    width: 100%;
+  }
+}

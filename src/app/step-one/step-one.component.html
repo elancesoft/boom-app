@@ -1,0 +1,655 @@
+<ng-template #content let-modal>
+  <div class="row fc-step-popup m-0">
+    <div class="col-lg-3 fc-form-img text-center">
+      <img src="https://boom.insure/assets/images/step2-imgs/lighted-beige-house-1396132.jpg" alt="image" />
+    </div>
+    <form [formGroup]="basicInfo" (ngSubmit)="onSubmitModalForm()" class="col-lg-7">
+      <div class="modal-body pb-0">
+        <h4 class="font-weight-bold">Tell us a little more about you for the most accurate qoutes</h4>
+        <p>We'll build this qoute specifically for you using your prior <br />Claim history and soft hit on your credit score</p>
+        <div class="form-row">
+          <div class="md-form form-group col-md-6 m-0">
+            <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" tabindex="-1" />
+            <span class="text-danger" *ngIf="basicInfo.controls.firstName.touched && basicInfo.controls.firstName.errors?.required"> FIrstname is required </span>
+          </div>
+          <div class="md-form form-group col-md-6 m-0">
+            <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" tabindex="-1" />
+            <span class="text-danger" *ngIf="basicInfo.controls.lastName.touched && basicInfo.controls.lastName.errors?.required"> Lastname is required </span>
+          </div>
+          <div class="form-group col-md-6 m-0">
+            <input type="date" id="dobInput" class="form-control" placeholder="MM/DD/YYYY" formControlName="dob" tabindex="-1" />
+            <span class="text-danger" *ngIf="basicInfo.controls.dob.touched && basicInfo.controls.dob.errors?.required"> Date of birth is required. </span>
+            <label for="dobInput" class="fa fa-calendar" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); margin-right: 16px; z-index: 0"></label>
+          </div>
+          <div class="form-check col-md-12 d-flex">
+            <input type="checkbox" class="mt-1 mr-2 form-check-input" id="fc-terms" formControlName="termsAndConditions" tabindex="-1" />
+
+            <!-- <span class="text-danger"
+              *ngIf="(basicInfo.controls.termsAndConditions.touched ) && basicInfo.controls.termsAndConditions.errors?.required">
+              Please agree to terms and conditions.
+            </span> -->
+
+            <label for="fc-terms" class="form-check-label">I agree to the <a href="#!">terms and conditions</a> allowing boom Covered to run a soft credit check and a claim history checkon me to get accurate quote numbers.</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer p-0">
+        <button type="submit" class="btn btn-info w-100 p-3 text-white">Submit</button>
+        <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button> -->
+      </div>
+      <p class="text-center col-md-12"><a class="text-dark" (click)="modal.dismiss('')">Skip enter later</a></p>
+    </form>
+  </div>
+</ng-template>
+
+<div>
+  <div class="container pt-md-2 mt-4 title pb-5" *ngIf="!isProcessing && !showFirst">
+    <div class="col-md-12 inputPage text-center">
+      <!-- Material input -->
+      <div class="form-group elemContainer">
+        <div id="jumbo-div" class="col-12 title container-fluid d-flex mb-3">
+          <div class="d-flex flex-md-row flex-column align-items-center">
+            <img src="../../assets/images/SVG/home.png" />
+            <div>
+              <h1 class="jumbo-h1 pt-5">Simple Home Insurance</h1>
+              <h4 class="text-muted w-75 ml-auto mr-auto">Compare & Purchase your policy online in 3 minutes.</h4>
+              <button (click)="clickBegin()" *ngIf="!showFirst" id="beginBtn" class="beginBtn mt-5">
+                begin
+                <i class="fa fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- details section End-->
+
+        <app-alerts></app-alerts>
+      </div>
+    </div>
+  </div>
+
+  <div class="fc_design" *ngIf="!isProcessing">
+    <header class="fs_header__ w-100">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white w-100">
+        <a class="navbar-brand" href="#">boom</a>
+        <button class="navbar-toggler d-lg-none d-block" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="howtowork" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> how it work <i class="fa fa-chevron-down"></i> </a>
+              <!-- <div class="dropdown-menu" aria-labelledby="howtowork">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div> -->
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="carries" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> carriers <i class="fa fa-chevron-down"></i> </a>
+              <div class="dropdown-menu" aria-labelledby="carries">
+                <a class="dropdown-item" href="javascript:void(0)"><img src="../../assets/images/dropdownlogs/01.jpg" width="100%" height="50px" style="object-fit: contain" /></a>
+
+                <a class="dropdown-item" href="javascript:void(0)"><img src="../../assets/images/dropdownlogs/02.jpg" width="100%" height="50px" style="object-fit: contain" /></a>
+                <a class="dropdown-item" href="javascript:void(0)"><img src="../../assets/images/dropdownlogs/03.jpg" width="100%" height="50px" style="object-fit: contain" /></a>
+
+                <a class="dropdown-item" href="javascript:void(0)"><img src="../../assets/images/dropdownlogs/04.jpg" width="100%" height="50px" style="object-fit: contain" /></a>
+                <a class="dropdown-item" href="javascript:void(0)"><img src="../../assets/images/dropdownlogs/05.jpg" width="100%" height="50px" style="object-fit: contain" /></a>
+                <a class="dropdown-item" href="javascript:void(0)"><img src="../../assets/images/dropdownlogs/06.jpg" width="100%" height="50px" style="object-fit: contain" /></a>
+                <a class="dropdown-item" href="javascript:void(0)"><img src="../../assets/images/dropdownlogs/07.jpg" width="100%" height="50px" style="object-fit: contain" /></a>
+                <a class="dropdown-item" href="javascript:void(0)"><img src="../../assets/images/dropdownlogs/08.jpg" width="100%" height="50px" style="object-fit: contain" /></a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tel:1-833-332-9322">1-833-332-9322</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link btn btn-light" href="#" data-toggle="dropdown" aria-haspopup="true">
+                <i class="fa fa-bars"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="howtowork">
+                <a class="dropdown-item" href="/">Home</a>
+                <a class="dropdown-item" href="javascript:void(0)">Contact Us</a>
+                <a class="dropdown-item" href="javascript:void(0)">About Us</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="fc_header_below_Section container d-block">
+      <div class="fc_home_heading">
+        <h1>Home Insurance Bliss</h1>
+        <p>Enter your address. Get Multiple qoutes. Compare and Learn coverages Bind Online</p>
+      </div>
+
+      <div class="fc_search_input col-md-10 mx-auto mt-5">
+        <div class="address">
+          <input type="number" class="form-control" [(ngModel)]="coverage" (ngModelChange)="loadGooglePlace()" *ngIf="selectedMode == 1" />
+          <div id="loc-icon"></div>
+          <div class="input-address mdb-form flex-column w-100">
+            <img src="../../assets/images/loc.png" />
+            <input type="text" class="form-control addressInput" autocorrect="off" (onAddressChange)="handleAddressChange($event)" id="inputAddressMD" autocapitalize="off" spellcheck="off" (load)="loadGooglePlace()" type="text" *ngIf="GooglePlace == true" placeholder="address" #placesRef />
+            <label for="inputAddressMD" class="address-label">
+              <p class="">address</p>
+              <small>what property do you need to insure?</small>
+            </label>
+          </div>
+          <input *ngIf="cacheMode" _ngcontent-elf-c4="" type="button" value="A" (click)="handleAddressChangeWithCache()" />
+          <input type="text" class="form-control" placeholder="Ex: 419 Virginia Ave, Phoenixville, Pennsylvania 19460" *ngIf="GooglePlace == false" [(ngModel)]="fullAddressText" />
+
+          <button class="fc_run_qoutes btn btn-black ml-md-3">run quotes</button>
+        </div>
+      </div>
+
+      <div class="row justify-content-center py-5">
+        <div class="col-md-4 col-6">
+          <img src="../../assets/images/Screenshot_3.png" alt="" />
+        </div>
+        <div class="col-md-1 d-md-block d-none"></div>
+        <div class="col-md-4 col-6">
+          <img src="../../assets/images/Screenshot_4.png" alt="" />
+        </div>
+      </div>
+
+      <div class="row justify-content-center py-5 mt-5">
+        <div class="col-md-5 col-lg-5 col-8 text-md-right">
+          <img class="img-fluid mx-auto" src="../../assets/images/Screenshot_5.png" alt="" />
+        </div>
+        <div class="col-md-6 col-lg-5">
+          <div class="coverage__text">
+            <h1>
+              Coverage <br />
+              Center
+            </h1>
+            <p>
+              Enter your address and you will be brought <br />
+              To the coverage center. Here you can set your <br />
+              Coverage profile for "apples to apples" qoutes.<br />
+              From each carrier.
+            </p>
+            <img class="w-100" src="../../assets/images/Screenshot_6.png" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center py-5 mt-5">
+        <div class="col-md-5 col-lg-5">
+          <img src="../../assets/images/Screenshot_7.png" alt="" />
+        </div>
+        <div class="col-md-6 col-lg-5">
+          <div class="coverage__text mt-2">
+            <h1>
+              Compare the <br />
+              Best carriers
+            </h1>
+            <p>Rather than filling out multiple forms and calling multiple carriers, we'll put all that data at your fingertips!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==== start header section ==== -->
+  <div class="info-header container-fluid my-3 px-md-5 px-3" *ngIf="isProcessing" [ngClass]="showFirst ? 'animated' : 'd-none'">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 add_filed">
+        <div class="elemContaine">
+          <div class="white-bg addressDiv" *ngIf="!isDisplay; else displayAddress">
+            <input type="text" class="form-control" placeholder="Ex: 419 Virginia Ave, Phoenixville, Pennsylvania 19460" *ngIf="GooglePlace == false" [(ngModel)]="fullAddressText" />
+
+            <a class="text font-weight-bolder text-dark col-md-12 pl-0 pr-0" [ngStyle]="commonService.isMobileMode() ? { 'padding-left': '15px !important' } : ''" (click)="GooglePlace = !GooglePlace; loadGooglePlace()"></a>
+          </div>
+          <!-- details section Start-->
+          <ng-template #displayAddress>
+            <div class="col-12 addressDiv white-bg add_filed" *ngIf="isDisplay">
+              <div class="addressTxt-wrapper addressSelcted shadow_input for-mobile">
+                <span class="font-weight-bold text-center pt-2 addressTxt">
+                  {{ fullAddressText }}
+                </span>
+              </div>
+              <i class="fa fa-refresh d-block d-md-none" aria-hidden="true" (click)="refresh()"></i>
+              <div class="selected-address for-desktop">
+                <div class="loc-icon"></div>
+                <p>
+                  {{ fullAddressText }}
+                </p>
+                <i class="fa fa-bars text-seconadry pl-2 pr-2" aria-hidden="true" style="color: lightgray"></i>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex col-sm-12 head_data">
+        <div class="col-12 d-md-flex">
+          <div class="col-md-2" *ngIf="square">
+            <span>{{ square.toLocaleString() }}&nbsp;sqft</span>
+          </div>
+          <div class="col-md-2 text-center" *ngIf="totalProgress && !square">
+            <div class="snippet" data-title=".dot-typing">
+              <div class="stage">
+                <div class="dot-typing-small"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 text-center" *ngIf="builtyear">
+            <span>{{ builtyear }}&nbsp;yr</span>
+          </div>
+          <div class="col-md-2 text-center d-flex" *ngIf="totalProgress && !builtyear">
+            <div class="snippet" data-title=".dot-typing">
+              <div class="stage">
+                <div class="dot-typing-small"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mr-0" *ngIf="estimate">
+            <span>{{ estimate }}&nbsp;est</span>
+          </div>
+          <div class="col-md-2 mr-0 d-flex" *ngIf="totalProgress && !estimate">
+            <div class="snippet" data-title=".dot-typing">
+              <div class="stage">
+                <div class="dot-typing-small"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <i class="fa fa-refresh ml-auto mr-0 d-none d-md-block" aria-hidden="true" (click)="refresh()"></i>
+      </div>
+    </div>
+  </div>
+  <!-- ==== End header section ==== -->
+
+  <!-- ==== Start home page slider ==== -->
+
+  <!-- ==== End home page slider ==== -->
+</div>
+
+<!-- ==== Start sequence section [Progress bar] ==== -->
+<div *ngIf="isProcessing" style="overflow: hidden; background: #191970" class="processingDiv pt-md-2 mx-auto back-img-process">
+  <!----animation div---->
+  <div class="wrap" style="color: white">
+    <div class="tri">
+      <img src="../../assets/images/annimation/1.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/2.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/3.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/4.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/5.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/1.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/2.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/3.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/4.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/5.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/1.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/2.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/3.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/4.png" />
+    </div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri"></div>
+    <div class="tri">
+      <img src="../../assets/images/annimation/5.png" />
+    </div>
+    <!----animation div---->
+    <div class="wrapper-swing">
+      <div class="left-swing">
+        <div class="fist-swing">
+          <figure class="swing annimation">
+            <!-- <img src="../../assets/images/annimation/1.png"> -->
+          </figure>
+        </div>
+        <div class="sec-swing">
+          <figure class="swing annimationtwo">
+            <!-- <img src="../../assets/images/annimation/2.png"> -->
+          </figure>
+        </div>
+        <div class="third-swing">
+          <figure class="swing annimation">
+            <!-- <img src="../../assets/images/annimation/3.png"> -->
+          </figure>
+        </div>
+      </div>
+      <div class="right-swing">
+        <div class="forth-swing">
+          <figure class="swing-two annimationtwo">
+            <!-- <img src="../../assets/images/annimation/3.png" > -->
+          </figure>
+        </div>
+
+        <div class="six-swing">
+          <figure class="swing-two annimation">
+            <!-- <img src="../../assets/images/annimation/5.png"> -->
+          </figure>
+        </div>
+        <div class="fifth-swing">
+          <figure class="swing-two annimationtwo">
+            <!-- <img src="../../assets/images/annimation/4.png"> -->
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="wrapper-swing">
+    <div class="left-swing">
+        <div class="fist-swing">
+            <figure class="swing annimation">
+                <img src="../../assets/images/annimation/1-new.png">
+            </figure>
+        </div>
+        <div class="sec-swing">
+            <figure class="swing annimationtwo">
+                <img src="../../assets/images/annimation/2-new.png">
+            </figure>
+        </div>
+        <div class="third-swing">
+            <figure class="swing annimation">
+                <img src="../../assets/images/annimation/3-new.png">
+            </figure>
+        </div>
+    </div>
+    <div class="right-swing">
+        <div class="forth-swing">
+            <figure class="swing-two annimationtwo">
+                <img src="../../assets/images/annimation/3-new.png" >
+            </figure>
+        </div>
+
+        <div class="six-swing">
+            <figure class="swing-two annimation">
+                <img src="../../assets/images/annimation/5-new.png">
+            </figure>
+        </div>
+        <div class="fifth-swing">
+            <figure class="swing-two annimationtwo">
+                <img src="../../assets/images/annimation/4-new.png">
+            </figure>
+        </div>
+    </div>
+  </div> -->
+  <!-- ------------------ -->
+
+  <div class="col-12 map-container pr-0 pl-0">
+    <!-- <img class="map_loader" src="../../assets/images/loading_dots.gif" *ngIf="isProcessing && progress < 100"/> -->
+    <!-- <div class="map_loader spinner" *ngIf="isProcessing && progress < 100">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div> -->
+    <div class="snippet step-one-loading" data-title=".dot-typing">
+      <div id="wave">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+
+    <agm-map class="tepone" [zoom]="12" [latitude]="lat" [longitude]="lng" [disableDefaultUI]="true" [scaleControl]="false" [draggable]="false">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+    <div class="overlay"></div>
+  </div>
+  <div class="loader">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 mr-auto ml-auto mb-0">
+        <div class="row progress_cont">
+          <div class="col-md-12 col-12 mr-auto ml-auto mb-0">
+            <div class="col-7 mr-auto ml-auto">
+              <mdb-progress value="{{ progress }}" min="0" max="100" type="info" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"></mdb-progress>
+            </div>
+          </div>
+
+          <div class="col-md-12 text-center">
+            <p *ngIf="progress <= 33">
+              Gathering Data<span class="text_loader dot-spinner" *ngIf="isProcessing && progress < 100">
+                <span class="bounce1"></span>
+                <span class="bounce2"></span>
+                <span class="bounce3"></span>
+              </span>
+            </p>
+            <p *ngIf="progress >= 34 && progress <= 66">
+              Running Quotes<span class="text_loader dot-spinner" *ngIf="isProcessing && progress < 100">
+                <span class="bounce1"></span>
+                <span class="bounce2"></span>
+                <span class="bounce3"></span>
+              </span>
+            </p>
+            <p *ngIf="progress >= 67 && progress <= 100">
+              Preparing Quotes<span class="text_loader dot-spinner" *ngIf="isProcessing && progress < 100">
+                <span class="bounce1"></span>
+                <span class="bounce2"></span>
+                <span class="bounce3"></span>
+              </span>
+            </p>
+            <p>{{ progress + "%" }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ==== End sequence section [Progress bar] ==== -->
+
+<!-- New Front page design Start -->
+<section class="showcase-section" *ngIf="!isProcessing && !showFirst">
+  <div class="grey-curve-svg">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 220 1440 100">
+      <path fill="#ECF0F3" fill-opacity="1" style="--darkreader-inline-fill: #ecf0f3" data-darkreader-inline-fill="" d="M0,320L120,298.7C240,277,480,235,720,234.7C960,235,1201,277,1320,298.7L1440,320L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+    </svg>
+  </div>
+  <div class="section-background-gif">
+    <div class="carriers-gif-wrapper">
+      <img class="carriers-gif" src="../../assets/images/home/frontpage.gif" alt="insurance carriers gif" />
+    </div>
+  </div>
+  <div class="section-background section-background1">
+    <div class="showcase-section-container text-center">
+      <h1 class="animated bounceInLeft">EASY PEASY INSURANCE</h1>
+      <p>You can now shop and purchase insurance completely online. SwypCov will get you rates from the top companies in a few minutes of time. You can purchase a policy completely online or work with a virtual agent to complete the process!</p>
+      <img class="mx-auto swipeAnimation-gif w-100" src="../../assets/images/home/swipeAnimation.gif" />
+    </div>
+  </div>
+  <div class="section2-curved-svg">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 315" viewport-fill="#F43C58">
+      <path
+        fill="#F43C58"
+        fill-opacity="1"
+        d="M0,128L80,144C160,160,320,192,480,181.3C640,171,800,117,960,101.3C1120,85,1280,107,1360,117.3L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+        data-darkreader-inline-fill=""
+        style="--darkreader-inline-fill: #f43c58"
+      ></path>
+    </svg>
+  </div>
+  <div class="section-background section-background2">
+    <div class="showcase-section-container">
+      <h1 class="text-center">Insurance has evolved!</h1>
+      <p class="text-center">You can now shop and purchase insurance completely online. SwypCov will get you rates from the top companies in a few minutes of time. You can purchase a policy completely online or work with a virtual agent to complete the process!</p>
+      <img class="dinosaur-img mx-auto" src="../../assets/images/home/dino.png" />
+    </div>
+  </div>
+  <div class="section2-curved-svg2nd">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" viewport-fill="#F43C58">
+      <path
+        fill="#F43C58"
+        fill-opacity="1"
+        d="M0,32L60,53.3C120,75,240,117,360,144C480,171,600,181,720,154.7C840,128,960,64,1080,48C1200,32,1320,64,1380,80L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+        data-darkreader-inline-fill=""
+        style="--darkreader-inline-fill: #f43c58"
+      ></path>
+    </svg>
+  </div>
+  <div class="section-background section-background3">
+    <div class="showcase-section-container">
+      <h1 class="text-center">Insurance has evolved!</h1>
+      <p class="text-center">You can now shop and purchase insurance completely online. SwypCov will get you rates from the top companies in a few minutes of time. You can purchase a policy completely online or work with a virtual agent to complete the process!</p>
+      <div class="appStore-container d-flex flex-md-row flex-column">
+        <img class="mx-auto swypeCov-img mb-md-0 mb-3" src="../../assets/images/home/SwypeApp.png" />
+        <img class="appStore-img" src="../../assets/images/home/appstores.png" alt="app store" />
+      </div>
+    </div>
+  </div>
+</section>
+<!-- New Front page design End -->

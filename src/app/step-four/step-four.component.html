@@ -1,0 +1,50 @@
+<!---->
+<div class="container col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+  <div class="p-5 notSpecificPage">
+    <h3 class="text-center mt-5">What discounts can save you money:</h3>
+  </div>
+  <div class="col-md-6"></div>
+  <form>
+    <!-- Grid row -->
+    <div class="form-group col-md-8 offset-md-2  col-10 offset-1 row">
+      <div class="col-md-6 col-sm-6 col-12 margin10">
+        <mdb-badge [default]="!smoke_alarm" [warning]="smoke_alarm" (click)="smoke_alarm=!smoke_alarm">smoke alarm
+        </mdb-badge>
+      </div>
+      <div class="col-md-6 col-sm-6 col-12 margin10">
+        <mdb-badge [default]="!central_fire_alarm" [warning]="central_fire_alarm" (click)="central_fire_alarm=!central_fire_alarm">central fire
+          alarm
+        </mdb-badge>
+      </div>
+    </div>
+
+    <div class="form-group col-md-8 offset-md-2  col-10 offset-1 row">
+      <div class="col-md-6 col-sm-6 col-12 margin10">
+        <mdb-badge [default]="!deadbolt_locks" [warning]="deadbolt_locks" (click)="deadbolt_locks=!deadbolt_locks">deadbolt
+          locks
+        </mdb-badge>
+      </div>
+      <div class="col-md-6 col-sm-6 col-12 margin10">
+        <mdb-badge [default]="!central_bulgar_alarm" [warning]="central_bulgar_alarm" (click)="central_bulgar_alarm=!central_bulgar_alarm">central
+          bulgar alarm
+        </mdb-badge>
+      </div>
+    </div>
+    <div class="form-group col-md-8 offset-md-2  col-10 offset-1 row">
+      <div class="col-md-6 col-sm-6 col-12 margin10">
+        <mdb-badge [default]="!bundle_discount" [warning]="bundle_discount" (click)="bundle_discount=!bundle_discount">bundle
+          discount
+        </mdb-badge>
+      </div>
+    </div>
+    <div class="form-group mt-9">
+      <div class="col-md-6 offset-md-3 col-8 offset-2">
+        <button mdbBtn type="button" class="btn btn-red btn-block mx-auto"
+                id="nextBtn" (click)="goToFiveStep()">
+          Next&nbsp;
+          <mdb-icon fas icon="angle-right"></mdb-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

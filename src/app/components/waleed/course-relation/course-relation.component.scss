@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+.twoInputForm {
+  margin-top: 47.2px;
+  > p {
+    max-width: 575px;
+    margin: auto;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: normal !important;
+    font-family: "Source Sans Pro", sans-serif;
+    text-align: center;
+  }
+  > .add-relations-form {
+    margin: 82px auto;
+    max-width: 690px;
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        margin-right: 30px;
+        max-width: 100%;
+        height: auto;
+        @media screen and (max-width: 767px) {
+          margin-right: 10px;
+        }
+      }
+      input {
+        max-width: 275px;
+        height: 43px;
+        background-color: #f2f2f2;
+        border: 1px solid transparent;
+        box-shadow: none !important;
+        @media screen and (max-width: 767px) {
+          max-width: 100%;
+        }
+        &:focus {
+          border-color: #ded7d7;
+        }
+      }
+    }
+
+    button {
+      width: 130px;
+      height: 40px;
+      font-size: 18px;
+      line-height: 23px;
+      color: #fff;
+      font-family: "Source Sans Pro", sans-serif;
+      font-weight: 500;
+      margin-top: 50px;
+
+      &.invaliddata {
+        background-color: #e6e6e6;
+      }
+      &.validdata {
+        background-color: #fa5353;
+      }
+    }
+  }
+}
+
+:host ::ng-deep mdb-progress .progress {
+  height: 10px;
+  padding: 0;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  background-color: #03a9f430;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  .progress-bar-info {
+    height: 10px;
+    border-radius: 5.18px;
+    background-color: #3fbbe0;
+  }
+}
+
+.map-container {
+  margin-bottom: 20px;
+}

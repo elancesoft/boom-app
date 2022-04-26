@@ -1,0 +1,28 @@
+.info-board{
+  .address-text{
+    color: #EE3924;
+    font-weight: 900;
+    font-size: 18px;
+  }
+  table{
+    tr{
+      td{
+        font-weight: normal;
+        font-family: PingFang, sans-serif;
+        color: #6E6F70;
+        padding: 6px 0;
+        &:last-child{
+          color: #4285f4;
+        }
+      }
+
+      .text-right {
+        color: #4265e4 ;
+      }
+    }
+  }
+}
+.cust_width{    
+  width: 65%;
+  margin: 0 auto;
+}

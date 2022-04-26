@@ -1,0 +1,53 @@
+@import "../../../../assets/styles/variables";
+
+.modal {
+  .modal-header {
+    button.close {
+      color: black !important;
+    }
+    .img-wrapper-header {
+      img {
+        width: 130px;
+      }
+
+      .universal-img {
+        width: 140px;
+      }
+
+      .liberty-mutual {
+        width: 130px;
+      }
+    }
+  }
+
+  .modal-body {
+    table {
+      width: 100% !important;
+
+      td {
+        p {
+          color: #000 !important;
+          font-weight: bold !important;
+          @media screen and (max-width: 767px) {
+            font-size: 13px;
+            margin-bottom: 0.5rem !important;
+          }
+        }
+      }
+
+      td.action-buttons {
+        font-size: 20px !important;
+        @media screen and (max-width: $mobile-width) {
+          .phoneBtn {
+            margin-left: 5px !important;
+          }
+        }
+        @media screen and (min-width: $desktop-width) {
+          .phoneBtn {
+            margin-left: 20px !important;
+          }
+        }
+      }
+    }
+  }
+}

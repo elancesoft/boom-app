@@ -1,0 +1,91 @@
+
+@import '../../assets/styles/variables';
+
+.h1-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  background: $primary-color;  /* fallback for old browsers */
+  background-image: url("../../assets/images/contact1.jpg"); /* image fallback for old browsers */
+  
+  // background-image: linear-gradient(to bottom, rgba(208, 30, 57, 0.7), rgb(30,144, 285, 0.4), rgba(0, 51, 255, 0.4)),
+  // url("../../assets/images/contact1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+  .h1-opacity {
+    
+    .contact-h1 {
+      color: #fff !important;
+      margin: auto;
+      font-size: 3em;
+      font-weight: 900;
+      text-decoration: underline wavy $primary-color;
+    }
+  }
+}
+
+.container {
+  .inner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+
+    h1, h3, h5, h6, p {
+      padding: 0 15px;
+      text-align: center;
+    }
+
+    h3 {
+      left: 0;
+      margin: 25px auto 10px;
+    }
+    
+    p {
+      width: 700px;
+      font-size: 18px;
+    }
+    
+    @media screen and (max-width: 799px) {
+      p {
+        width: 550px;
+      }
+    }
+    @media screen and (max-width: 770px) {
+      p {
+        width: 400px;
+      }
+    }
+    @media screen and (max-width: 455px) {
+      p {
+        width: 350px;
+      }
+    }
+    @media screen and (max-width: 370px) {
+      p {
+        width: 300px;
+      }
+    }
+
+    .points-of-contact {
+      font-size: 35px;
+      margin: 35px auto 0px;
+    }
+
+    .modal-btn {
+      background-color: $primary-color !important;
+    }
+
+    .modal {
+      
+      .send-btn {
+        background-color: $primary-color !important;
+      }
+    }
+  }
+}

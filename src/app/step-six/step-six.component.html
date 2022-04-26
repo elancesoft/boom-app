@@ -1,0 +1,123 @@
+<app-header [currentUrl]="'step6'"></app-header>
+
+<div class="loader animated">
+  <div class="row">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 col-lg-3 col-xl-5 filter_sec">
+          <app-demo-page [disabled]="true" class="text-left d-md-block d-none"></app-demo-page>
+        </div>
+        <div class="col-md-10 mx-md-auto col-lg-8 col-xl-7">
+          <!-- top filters -->
+          <div class="flex-row view-buttons">
+            <div class="custom-plans">
+              <span class="d-flex align-items-center">
+                <img class="customIcon mr-2" src="/assets/images/icons/info.png" style="filter: brightness(0.3); height: 16px; width: 16px" />
+                <!-- (click)="setUpOlark()" -->
+                <span class="small"> For Custom Plans, talk to a <span class="live-agent">live agent</span> now.</span>
+              </span>
+            </div>
+            <!-- <div class="price-dropdown-view-option">
+              <div class="form-group mr-5">
+                <label [ngClass]="commonService.isMobileMode() ? 'mr-1' : ''">Price:</label>
+                <select class="recent_update_select" id="roofyearInput" [(ngModel)]="selectedValue"
+                  (change)="selectedFilter($event)" placeholder="select">
+                  <option *ngFor="let item of roofTypeValues" [value]="item.id">{{ item.value }}</option>
+                </select>
+                <i class="fa fa-angle-down font-weight-bold d-block d-md-none price_caret" aria-hidden="true"></i>
+              </div>
+              <div class="gird-list-view-icons">
+                <span class="mr-3 first-span" (click)="insuranceView('list')">
+                  <img src="../../assets/images/view-icons/visualization.png" alt="" />
+                </span>
+                <span class="" (click)="insuranceView('grid')">
+                  <img src="../../assets/images/view-icons/view-list-button.png" alt="" style="filter: contrast(0)" />
+                </span>
+              </div>
+            </div> -->
+          </div>
+
+          <div class="item" *ngFor="let api of apiCallsResults">
+            <div *ngIf="api.loading">
+              <div class="card skeleton">
+                <div class="card-body">
+                  <div class="logoAndText">
+                    <div class="brand_logo">  <img [src]="api.slideImg" class="price-widget-img img-fluid" /></div>
+                 
+                    <ul class="priceDetailText">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
+                  </div>
+
+                  <div class="priceAndButton">
+                    <h1></h1>
+                    <p class=""></p>
+                    <button class="btn btn-outline-dark"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="!api.loading">
+              <app-price-widget [data]="api" (selectPlan)="selectPlan($event)" [hideSelectPlan]="false"></app-price-widget>
+            </div>
+          </div>
+
+
+
+          <div class="item" *ngFor="let api of staticCallResults">
+            <div *ngIf="api.loading">
+              <div class="card skeleton">
+                <div class="card-body">
+                  <div class="logoAndText">
+                    <div class="brand_logo">  <img [src]="api.slideImg" class="price-widget-img img-fluid" /></div>
+                 
+                    <ul class="priceDetailText">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
+                  </div>
+
+                  <div class="priceAndButton">
+                    <h1></h1>
+                    <p class=""></p>
+                    <button class="btn btn-outline-dark"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="!api.loading">
+              <app-price-widget [data]="api" (selectPlan)="selectPlan($event)" [hideSelectPlan]="false"></app-price-widget>
+            </div>
+          </div>
+
+
+
+
+          <!-- price widget components -->
+          <!-- <div class="item" *ngFor="let insurance of insurances">
+            <app-price-widget [static]="insurance.static"
+              [className]="viewmode == 'Grid' ? gridpriceWidgetCommonClass : listpriceWidgetCommonClass"
+              [price]="insurance.price" [imgURL]="insuranceImgs[insurance.type]" [name]="insurance.name"
+              [bgColor]="bgColor[insurance.type]" [dwelling]="insurance.dwelling" (openModal)="goForChat($event)"
+              [currpage]="'stepsix'" [pricesType]="insurance.pricesType"></app-price-widget>
+          </div>
+
+          <div class="item" *ngFor="let insurance of nonApiInsurances">
+            <app-price-widget [static]="insurance.static"
+              [className]="viewmode == 'Grid' ? gridpriceWidgetCommonClass : listpriceWidgetCommonClass"
+              [price]="insurance.price" [imgURL]="insuranceImgs[insurance.type]" [name]="insurance.name"
+              [bgColor]="bgColor[insurance.type]" [dwelling]="insurance.dwelling" (openModal)="goForChat($event)"
+              [currpage]="'stepsix'" [pricesType]="insurance.pricesType"></app-price-widget>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+<div class="address-input-form">
+    <div class="single-email-row row">
+        <div class="col-9 row">
+            <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4 p-0">
+
+                <div class="addressDiv" *ngIf="!isDisplay">
+                    <input class="form-control addressInput" autocorrect="false" appOnblur = {{address}} index = "{{rowIndex}}"
+                        isAutofillEnabled="{{!!autoSelect}}" (triggerAutoSelect)="handleAutoSelect($event)"
+                        (onAddressChange)="handleAddressChange($event)" id="inputAddressMD" autocapitalize="off"
+                        spellcheck="off" (load)="loadGooglePlace()" type="text" [(ngModel)]="address"
+                        *ngIf="GooglePlace==true" placeholder="address" #placesRef>
+                </div>
+
+                <div class="detailsContainer" *ngIf="isDisplay">
+                    <div class="font-weight-bold text-center addressTxt">
+                        <div class="addr-icon spinner-border text-success"  *ngIf="!successBadge && !failureBadge" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div>
+                        <span class="badge badge-pill green addr-icon" *ngIf="successBadge">
+                            <i class="fas fa-check white-text" aria-hidden="true"></i>
+                        </span>
+                        <span *ngIf="failureBadge" class="errorBadge addr-icon">
+                            <i _ngcontent-oby-c6="" aria-hidden="true" class="far fa-times-circle"></i>
+                        </span>
+                        <span>{{fullAddressText}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <div style="display: flex;">
+                    <div style="display: flex">
+                        <input class="input input1" placeholder="send to" name="input" [(ngModel)]="sendto">
+                    </div>
+                    <div style="display: flex">
+                        <input class="input input1" placeholder="cc (optional)" name="input" [(ngModel)]="cc">
+                    </div>
+                <!-- </div>
+                <div style="display: flex;"> -->
+                    <div style="display: flex">
+                        <input class="input input1" placeholder="name" name="input" [(ngModel)]="name">
+                    </div>
+                    <div style="display: flex">
+                        <input class="input input1" placeholder="phone" name="input" [(ngModel)]="phone">
+                    </div>
+
+                </div>
+            </div>
+            <!-- <div class="col-4">
+               
+            </div> -->
+        </div>
+        <div class="col-3">
+
+            <div *ngIf="failureBadge; else progressBlock" style="display:flex;">
+                <div class="btn-small btn btn-danger" (click)="remove($event)">
+                    Remove</div>
+            </div>
+            <ng-template #progressBlock>
+                <div class="action-area"
+                    *ngIf="(!isFinished || !gethippodata_finished || !getflooddata_finished || !getstillwaterdata_finished || !getplymouthdata_finished || !getuniversaldata_finished) && addressInputed"
+                    style="margin-left: 30px">
+                    <mdb-progress value="{{progress}}" min="0" max="100" type="info" aria-valuenow="{{progress}}  "
+                        aria-valuemin="0" aria-valuemax="100"></mdb-progress>
+                </div>
+            </ng-template>
+            <div class="action-area row"
+                *ngIf="isFinished && gethippodata_finished && getflooddata_finished && getstillwaterdata_finished && getplymouthdata_finished && getuniversaldata_finished">
+
+                <div style="display:flex">
+                    <!-- <div class="gmap-price" style="margin-left: 30px"> -->
+
+                        <!--app-demo-gmap></app-demo-gmap-->
+                        <!-- <agm-map [zoom]="10" [latitude]="lat" [longitude]="lng">
+                            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+
+                        </agm-map>
+
+                    </div> -->
+                    <!-- </div>
+                <div class="col-3"> -->
+                    
+                        <div class="price-section">{{total_prices}} Prices</div>
+
+                        <div>
+                        <div class="pdf-preview" *ngIf="pdf_link != ''">
+                            <img src="../../../assets/images/batch/pdf.png" (click)="downloadPdf()" />
+                            <!-- <a href="http://localhost:4200/assets/images/403310e0-0e69-4719-a79a-531d2018727b.pdf" download="download.pdf" target="_blank">
+                                <img src="../../../assets/images/batch/pdf.png">
+                            </a> -->
+                        </div>
+
+                        <div class="pdf-preview" *ngIf="pdf_link == ''">
+                            <a class="disabled">
+                                <img src="../../../assets/images/batch/pdf.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="button btn btn-primary send-button" (click)="sendEmail(sendto, cc, name, phone, false)">
+                        Send</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

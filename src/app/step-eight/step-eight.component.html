@@ -1,0 +1,323 @@
+<!---->
+<!---->
+<div class="container col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+  <div class="col-md-4 offset-md-4 loader" *ngIf="loading">
+    <div class="form-row mt-3">
+      <img src="../../assets/images/issuing.gif" class="mx-auto issuingImg"/>
+    </div>
+    <div class="form-row">
+      <img src="../../assets/images/SVG/home.svg" class="mx-auto homeImg">
+    </div>
+    <div class="form-row mt-3">
+      <div class="progress mx-auto">
+        <div class="progress-bar" role="progressbar" [style.width]="progress*(1.15)+'%'" [attr.aria-valuenow]="progress"
+             aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+    <div class="form-row mt-3">
+      <p class="text-center font-weight-bold text-danger col-md-12">
+        {{progress + '%'}}
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container-fluid" *ngIf="!loading">
+
+  <div id="first-row" class="row">
+
+    <div class="col-lg-2 col-md-0 col-sm-0 col-0">
+
+    </div>
+
+
+    <div class="col-lg-8 col-md-0 col-sm-0 col-0">
+
+      <h1>Review Page</h1><br><br><Br>
+
+      <h2>Quote #: {{commonService.getUniqueID()}}</h2>
+      <hr>
+      <!-------------COMPANY-------------------------->
+      <div class="row">
+
+        <div class="col-lg-4  col-5">
+          <a href="{{total_data['ConsumerURL']}}"><img [src]="companyLogos['Stillwater']" width="80%"></a>
+
+        </div>
+        <div class="col-lg-8 col-7">
+
+
+          <p class="label-review"> AM BEST Rating:</p>
+          <p class="data-review"> A-</p><br>
+
+          <p class="label-review"> Clearsurance:</p>
+          <p class="data-review"> 4.3 of 5</p><br><br>
+          <i>{{total_data['apiType']}} is one of the top respected companies in the US.</i>
+        </div>
+      </div>
+      <div class="form-row">
+        <br><br><br>
+        <div class="mx-auto">
+          <mdb-checkbox [checked]="false" [(ngModel)]="isSelectedCompany">
+            <label for="compliance-text"><p id="compliance-text" class="compliance-text">
+              &nbsp;I agree to select {{total_data['apiType']}} as my Insurance Copmany
+            </p></label></mdb-checkbox>
+        </div>
+        <br>
+      </div>
+      <hr>
+      <!-------------Coverage-------------------------->
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="container">
+            <h3>Coverage Details</h3>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th>Basic Coverage</th>
+                <th>Amount</th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Premium</td>
+                <td class="premium-font">{{total_data['pricing']|currency:'USD':'symbol':'1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td>Coverage A / Dwelling</td>
+                <td>{{dwelling_value|currency:'USD':'symbol':'1.0-0'}}</td>
+
+              </tr>
+
+
+              <tr>
+                <td>Coverage B / Other Structures</td>
+                <td>{{structures|currency:'USD':'symbol':'1.0-0'}}</td>
+
+              </tr>
+
+              <tr>
+                <td>Coverage C / Personal Property</td>
+                <td>{{personel_property|currency:'USD':'symbol':'1.0-0'}}</td>
+
+              </tr>
+
+              <tr>
+                <td>Coverage D / Loss of Use</td>
+                <td>{{loss_of_use|currency:'USD':'symbol':'1.0-0'}}</td>
+
+              </tr>
+
+              <tr>
+                <td>Coverage E / Liability</td>
+                <td>{{liability|currency:'USD':'symbol':'1.0-0'}}</td>
+
+              </tr>
+
+              <tr>
+                <td>Coverage F / Medical Payments</td>
+                <td>{{med_to_pay|currency:'USD':'symbol':'1.0-0'}}</td>
+
+              </tr>
+
+              <tr style="border-bottom: solid 2px #dee2e6;">
+                <th>Extra Coverage</th>
+                <th>Amount</th>
+              </tr>
+
+              <tr>
+                <td>Water Backup</td>
+                <td>10,000</td>
+
+              </tr>
+
+
+              <tr>
+                <td>Service Line Coverage</td>
+                <td>5,000</td>
+
+              </tr>
+              <tr *ngIf="total_data.apiType=='Plymouth'">
+                <td>Home Systems</td>
+                <td>50,000</td>
+
+              </tr>
+              <tr>
+                <td>Dwelling Extension</td>
+                <td *ngIf="total_data.apiType=='Stillwater'">NO GUARANTEED</td>
+                <td *ngIf="total_data.apiType=='Plymouth'">GUARANTEED</td>
+
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <br><br><br>
+        <div class="mx-auto">
+          <mdb-checkbox [checked]="false" [(ngModel)]="isSelectedCoverage">
+            <label for="defaultCheck"><p id="defaultCheck" class="compliance-text">&nbsp;I agree to the coverages above
+              and have
+              no other
+              requirements
+              of coverage.</p>
+            </label>
+          </mdb-checkbox>
+        </div>
+        <br>
+      </div>
+
+
+      <hr>
+
+
+      <!-------------Details-------------------------->
+      <h3>Applicant Details</h3><br>
+      <div class="row">
+
+
+        <div class="col-lg-6 col-md-6 col-sm-6">
+
+
+          <p class="label-review"> Insured:</p>
+          <p
+            class="data-review"> {{total_data['personData'][0]['first_name'] + ' ' + total_data['personData'][0]['last_name']}}</p>
+          <br><br>
+
+          <p class="label-review"> DOB:</p>
+          <p class="data-review"> {{total_data['personData'][0]['birthday']}}</p>
+          <br><br>
+
+          <p class="label-review"> Co-Applicant:</p>
+          <p
+            class="data-review"> {{total_data['personData'][1] != undefined ? total_data['personData'][1]['first_name'] + ' ' + total_data['personData'][1]['last_name'] : 'None'}}</p>
+          <br><br>
+
+          <p class="label-review"> DOB:</p>
+          <p
+            class="data-review"> {{total_data['personData'][1] != undefined ? total_data['personData'][1]['birthday'] : 'None'}}</p>
+          <br><br>
+
+
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6">
+
+          <p class="label-review"> Property to Insure:</p>
+          <p class="data-review"> {{static_address}}</p>
+          <br><br>
+          <p class="label-review"> Policy Start Date:</p>
+          <p class="data-review"> {{total_data['mortgage_data']['startdate']}}</p>
+          <br><br>
+
+
+          <p class="label-review"> Quote Date:</p>
+          <p class="data-review"> {{quote_date}}</p>
+          <br><br>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <br><br><br>
+        <div class="mx-auto">
+          <mdb-checkbox [checked]="false" [(ngModel)]="isSelectedApplicant">
+            <label for="defaultCheck"><p class="compliance-text">&nbsp;I agree the applicant details are accurate.</p>
+            </label>
+          </mdb-checkbox>
+        </div>
+        <br>
+      </div>
+      <hr>
+      <!-------------Property Details-------------------------->
+      <h3>Property Details</h3><br>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <p class="label-review"> Year Built:</p>
+          <p class="data-review"> {{total_data['built_year']}}</p>
+          <br><br>
+          <p class="label-review"> Foundation:</p>
+          <p class="data-review"> {{total_data['is_basement'] ? 'finished' : 'unfinished'}}</p>
+          <br><br>
+          <p class="label-review"> Building Type:</p>
+          <p class="data-review"> {{buildings[total_data['building_type']]}}</p>
+          <br><br>
+          <p class="label-review"> Construction Type:</p>
+          <p class="data-review"> {{constructions[total_data['construction_type']]}}</p>
+          <br><br>
+          <p class="label-review"> Exterior:</p>
+          <p class="data-review"> {{exteriors[total_data['exterior_type']]}}</p>
+          <br><br>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <p class="label-review"> Roof Type:</p>
+          <p class="data-review"> {{roofs[total_data['roof_type']]}}</p>
+          <br><br>
+          <p class="label-review"> Roof Year:</p>
+          <p class="data-review"> {{total_data['roof_year']}}</p>
+          <br><br>
+          <p class="label-review"> A/C:</p>
+          <p class="data-review"> {{total_data['ac_year']}}</p>
+          <br><br>
+          <p class="label-review"> Electric:</p>
+          <p class="data-review"> {{total_data['electric_year']}}</p>
+          <br><br>
+          <p class="label-review"> Plumbing:</p>
+          <p class="data-review"> {{total_data['plumbing_year']}}</p>
+          <br><br>
+        </div>
+      </div>
+      <div class="form-row">
+        <br><br><br>
+        <div class="mx-auto">
+          <mdb-checkbox [checked]="false" [(ngModel)]="isSelectedProperty">
+            <label for="defaultCheck"><p class="compliance-text">&nbsp;I agree the above Property Details are
+              accurate</p>
+            </label>
+          </mdb-checkbox>
+
+        </div>
+        <br>
+      </div>
+      <hr><!-------------Property Details-------------------------->
+      <h3>Compliance Agreements</h3><br>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <p class="label-review">1.) I do have have a dog with a bite history or any of the following breeds (akita,
+            pitbull, doeberman, roetweiler, wold hybrid, chow, huskey, german shephard)</p>
+          <br><br>
+          <p class="label-review">2.) I will occupy this property as my primary residence and it will not be vacant or
+            under construction at anytime.</p>
+          <br><br>
+          <p class="label-review">3.) I do not have a swimming pool with a slide or diving board.</p>
+          <br><br>
+          <p class="label-review">4.) I do not have a trampoline or skateboard ramp.</p>
+          <br><br>
+        </div>
+      </div>
+      <div class="form-row">
+        <br><br><br>
+        <div class="mx-auto">
+          <mdb-checkbox [checked]="false" [(ngModel)]="isSelectedFinalAgreement">
+            <label for="defaultCheck"><p class="compliance-text">&nbsp;I have read all the compliance agreements and agree
+              they are true for my policy</p></label>
+          </mdb-checkbox>
+        </div>
+        <br>
+      </div>
+      <hr>
+      <div class="form-row">
+        <button mdbBtn type="button" id="now-btn" class="btn btn-success btn-lg mx-auto" [disabled]="!isValid()"
+                (click)="issuePolicy()">Next
+        </button>
+      </div>
+    </div>
+    <br/>
+  </div>
+</div>

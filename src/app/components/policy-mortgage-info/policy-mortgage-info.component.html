@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mortgageContainer">
+      <h4 class="text-center font-weight-bold pb-4 h4-responsive font-italic">Please provide your contact at your mortgage company?</h4>
+      <form [formGroup]="userForm" (ngSubmit)="next()">
+      <div class="form-group">
+        <input type="email" class="form-control col-md-4 offset-md-4 col-8 offset-2" [(ngModel)]="email" formControlName="emailInput"/>
+      </div>
+      <div class="form-group col-md-4 offset-md-4 col-8 offset-2">
+        <button
+          class="btn btn-block btn-white text-center font-weight-bold font-italic shadow-none m-0"
+          type="submit">{{userForm.valid?'next':'skip'}}
+        </button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<!-- Grid column -->
+<div class="col-md-6 col-lg-6 col-12 pr-0 pl-0" *ngIf="address">
+  <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+</div>
+<div class="col-md-6 col-lg-6 col-12 pt-4"
+     *ngIf="address && !commonService.isMobileMode()">
+  <p class="address font-weight-bold">
+    {{address['address'] + ', ' + address['locality'] + ', ' + address['administrative_area_level_1'] + ' ' + address['postal_code']}}
+  </p>
+  <p class="font-weight-bold row">
+    <span class="col-md-5 col-6 text-right">Year Built #:</span>
+    <span class="col-md-7 col-6 text-left text-danger"
+          *ngIf="!showLoader && showLoader!=undefined">{{zillowData['built_year']}}</span>
+    <span class="loader col-md-7 col-6" *ngIf="showLoader">
+      <app-loading></app-loading>
+    </span>
+  </p>
+  <p class="font-weight-bold row">
+    <span class="col-md-5 col-6 text-right">Square Feet #:</span>
+    <span class="col-md-7 col-6 text-left text-danger"
+          *ngIf="!showLoader && showLoader!=undefined">{{commonService.commafy(zillowData['square'])}}</span>
+    <span class="loader col-md-7 col-6" *ngIf="showLoader">
+      <app-loading></app-loading>
+    </span>
+  </p>
+  <p class="font-weight-bold row" *ngIf="zillowData['estimate'] != 'NaN'">
+    <span class="col-md-5 col-6 text-right">Est value #:</span>
+    <span class="col-md-7 col-6 text-left text-danger"
+          *ngIf="!showLoader && showLoader!=undefined">
+      {{'$' + commonService.commafy(zillowData['estimate'])}}
+    </span>
+    <span class="loader col-md-7 col-6" *ngIf="showLoader">
+      <app-loading></app-loading>
+    </span>
+  </p>
+</div>

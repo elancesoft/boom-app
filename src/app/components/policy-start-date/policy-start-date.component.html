@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <!-- <app-price-widget
+        [className]="listpriceWidgetCommonClass"
+        [price]="InsuranceData.price"
+        [imgURL]="insuranceImgs[InsuranceData.type]"
+        [name]="InsuranceData.name"
+        [bgColor]="bgColor[InsuranceData.type]"
+        [dwelling]="InsuranceData.dwelling"
+        [currpage]='policystart'
+      ></app-price-widget> -->
+      <app-price-widget [className]="listpriceWidgetCommonClass" [price]="InsuranceData.price" [imgURL]="insuranceImgs[InsuranceData.type]" [name]="InsuranceData.name" [bgColor]="bgColor[InsuranceData.type]" [dwelling]="InsuranceData.dwelling"></app-price-widget>
+    </div>
+    <div class="col-md-6 inputContainer">
+      <div class="row">
+        <div class="col-md-12 mortgageContainer">
+          <h4 class="text-center font-weight-bold pb-4 h4-responsive font-italic">When you want to start this policy?</h4>
+          <div class="form-row">
+            <input type="date" class="form-control col-md-4 offset-md-4 col-8 offset-2" [(ngModel)]="start_date" />
+          </div>
+        </div>
+
+        <div class="col-md-12 mortgageContainer">
+          <h4 class="text-center font-weight-bold pb-4 h4-responsive font-italic">Will you have a mortgage for this property?</h4>
+          <div class="form-group col-md-4 offset-md-4 col-8 offset-2">
+            <button class="btn btn-block btn-gray text-center font-weight-bold font-italic shadow-none ml-0" type="button" (click)="next(true)" [ngClass]="isHaveMortgage ? 'btn-danger' : 'btn-white'">yes</button>
+            <button class="btn btn-block btn-gray text-center font-weight-bold font-italic shadow-none ml-0 mt-3" type="button" (click)="next(false)" [ngClass]="isHaveMortgage === false ? 'btn-danger' : 'btn-white'">no</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

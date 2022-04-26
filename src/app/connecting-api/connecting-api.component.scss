@@ -1,0 +1,30 @@
+@import '../../assets/styles/variables';
+
+.processingDiv {
+
+
+  .progress-stats {
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+
+    .progress {
+      width: 100%;
+      border: solid 1px $primary-secondary-color;
+      @media screen and (max-width: $mobile-width) {
+        height: 5px;
+      }
+
+      @media screen and (min-width: $desktop-width) {
+        height: 8px;
+      }
+
+      .filled-in {
+        height: 100%;
+        background-color: $primary-secondary-color;
+      }
+    }
+  }
+
+
+}

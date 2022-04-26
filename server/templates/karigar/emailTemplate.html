@@ -1,0 +1,164 @@
+
+
+<div style="margin:auto;width: 700px;" >
+    <h4 style="
+    text-align: center;
+    background-color: #3393ff;
+    color: white;
+    padding: 20px 10px;"
+    >
+    New Quote Request</h4>
+    <table width="100%" style="margin:30px auto" cellpadding="0">
+        <tbody><tr>
+            <td style="text-align:center;width:33%">
+                <div style="font-size:18px">Agent:</div>
+                <div style="font-size:22px;font-weight:bold;margin-top:10px">Peter Hughes</div>
+                <div style="font-size:14px;margin-top:10px">610-699-9000</div>
+                <div style="font-size:14px;margin-top:10px"><a href="mailto:caitlin@greaterpenn.com" target="_blank">Peter@gaurdha.com</a> </div>
+            </td>
+            <td style="text-align:center;width:33%"><img style="height:80px;width:80px" src="https://apply.insure/assets/images/umbrella.png" class="CToWUd a6T" tabindex="0"><div class="a6S" dir="ltr" style="opacity: 0.01; left: 479.984px; top: 677.75px;"><div id=":tl" class="T-I J-J5-Ji aQv T-I-ax7 L3 a5q" role="button" tabindex="0" aria-label="Download attachment " data-tooltip-class="a1V" data-tooltip="Download"><div class="akn"><div class="aSK J-J5-Ji aYr"></div></div></div></div></td>
+            <td style="text-align:center;width:33%">
+                <div style="font-size:18px">Client:</div>
+                <div style="font-size:22px;font-weight:bold;margin-top:10px">{{firstName}} {{lastName}}</div>
+                <div style="font-size:18px">{{dob}}</div>
+                <div style="font-size:14px;margin-top:10px">{{phone}} </div>
+                <div style="font-size:14px;margin-top:10px"><a href="mailto:mathew.stern@gmail.com" target="_blank">{{email}}</a> </div>
+            </td>
+        </tr>
+    </tbody></table>
+  
+
+    <div style=" background: #3393ff;
+    color: white;
+    text-align: center;
+    padding:5px;
+    ">
+        <h4>HOUSEHOLD MEMBERS</h4>
+        <table style="
+            width: 100%;
+            color:white
+        " >
+        {% for i in relations %}
+
+            <tr>
+                <td  style="padding: 10px 61px;" >{{i.firstName}}</td>
+                <td  style="padding: 10px 61px;" >{{i.lastName}}</td>
+                <td  style="padding: 10px 61px;" >{{i.dob}}</td>
+                <td  style="padding: 10px 61px;" >{{i.relation}}</td>
+            </tr> 
+           
+        {% endfor %}
+         
+          
+        </table>
+    </div>
+
+    <div style="text-align:center;margin:10px" >
+        
+        <img  src="https://apply.insure/assets/images/location.png" height="100px" />
+        <p>Your Address</p>
+        <h2>{{address}}</h2>
+    </div>
+
+    
+    
+    <div style="
+    text-align: center;
+    padding:5px;
+    ">
+        
+        <table style="
+        text-align: center;
+        width:100%
+          
+        " >
+        
+           
+            <tr>
+                <td  style="padding: 10px 61px;" >Exterior</td>
+                <td  style="padding: 10px 61px;" >{{exterior}}</td>
+            </tr> 
+
+            <tr style="background-color:#f2f2f2">
+                <td  style="padding: 10px 61px;" >Square</td>
+                <td  style="padding: 10px 61px;" >{{square}}</td>
+            </tr> 
+
+            <tr>
+                <td  style="padding: 10px 61px;" >Year Built</td>
+                <td  style="padding: 10px 61px;" >{{built_year}}</td>
+            </tr> 
+
+            <tr style="background-color:#f2f2f2">
+                <td  style="padding: 10px 61px;" >AC Year</td>
+                <td  style="padding: 10px 61px;" >{{ac_year}}</td>
+            </tr> 
+
+            <tr>
+                <td  style="padding: 10px 61px;" >Electric Year</td>
+                <td  style="padding: 10px 61px;" >{{electric_year}}</td>
+            </tr> 
+
+            <tr style="background-color:#f2f2f2">
+                <td  style="padding: 10px 61px;" >Plumbing Year</td>
+                <td  style="padding: 10px 61px;" >{{plumbing_year}}</td>
+            </tr>
+            
+            <tr>
+                <td  style="padding: 10px 61px;" >Roof Year</td>
+                <td  style="padding: 10px 61px;" >{{roof_year}}</td>
+            </tr>
+
+            <tr style="background-color:#f2f2f2">
+                <td  style="padding: 10px 61px;" >Roof Status</td>
+                <td  style="padding: 10px 61px;" >{{roof_status}}</td>
+            </tr>
+
+
+     
+        
+           
+          
+        </table>
+    </div>
+
+    <div style="text-align:center;margin:10px" >
+        
+        <img  src="https://apply.insure/assets/images/suv.png" height="100px" />
+        
+        <h2>Car Insurance</h2>
+    </div>
+      
+    <div style=" text-align: center; padding:5px; ">
+      
+        <table style=" width: 100%; text-align: center; " >
+
+            {% for i in cars %}
+
+           
+                {% if  loop.index % 2 == 0    %}
+            
+                    <tr>
+                        <td  style="padding: 10px 61px;" >{{i.carModel}}</td>
+                        <td  style="padding: 10px 61px;" >{{i.make}}</td>
+                        <td  style="padding: 10px 61px;" >{{i.year}}</td>
+                    </tr> 
+
+                {% else %}
+                    <tr style="background-color:#f2f2f2">
+                        <td  style="padding: 10px 61px;" >{{i.carModel}}</td>
+                        <td  style="padding: 10px 61px;" >{{i.make}}</td>
+                        <td  style="padding: 10px 61px;" >{{i.year}}</td>
+                    </tr> 
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+
+    <div style="
+        background-color:#3393ff;
+        height: 150px;
+    ">
+
+    </div>
+</div>

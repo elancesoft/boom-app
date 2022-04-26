@@ -1,0 +1,13 @@
+@import '../../../assets/styles/variables';
+
+$font-family: Roboto;
+.map-container {
+  width: 100%;
+  max-width: 100%;
+  height: 284px;
+
+  agm-map {
+    width: 100%;
+    height: 100%;
+  }
+}

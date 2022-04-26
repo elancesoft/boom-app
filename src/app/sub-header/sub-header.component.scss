@@ -1,0 +1,136 @@
+@import '../../assets/styles/variables';
+
+.mainDiv {
+  background-color: #F2F2F2;
+  width: 100%;
+  position: sticky;
+  margin-top: 63px;
+  z-index: 1019;
+
+  .mapContainer {
+
+    agm-map {
+      //width: 100vw;
+      height: 150px;
+    }
+  }
+  .mapContainer2 {
+
+    agm-map {
+      height: 300px;
+    }
+  }
+
+  .details-container {
+    width: 400px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #ECF0F3;
+    border-radius: 10px;
+
+    p {
+      color: #000;
+      margin: 0;
+    }
+
+    .details-img-wrapper {
+      margin-right: 65px;
+      width: 49px;
+      height: 49px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 50%;
+
+      .flood-img {
+        width: 35px;
+      }
+    }
+
+    .details-inner-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  .details-container:nth-child(1) {
+    margin-bottom: 10px !important;
+  }
+
+  @media screen and (max-width: 441px) {
+    .details-container {
+      width: 350px;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .details-container {
+      width: 270px;
+    }
+  }
+
+  .address-policy-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25px;
+    right: 50px;
+
+    .address-details-container {
+      height: 60px;
+      width: 200px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.4);
+
+      .detailsDiv{
+        p{
+          font-size: 12px;
+          margin-bottom: .05rem !important;
+          color: #fff;
+
+          span {
+            color: #fff;
+          }
+
+          span:nth-child(1) {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+
+    .policy-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+
+  @media screen and (max-width: 780px) {
+    .address-policy-container {
+      display: none;
+      .policy-btn {
+        display: none;
+      }
+    }
+  }
+
+  .top-progress {
+    height: 10px;
+    width: 100%;
+    background-color: transparent;
+    z-index: 99;
+  }
+
+  .top-progress .progress-bar {
+    background-color: $primary-color;
+  }
+}

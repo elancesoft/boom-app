@@ -1,0 +1,183 @@
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_27 valign=middle colspan="2"
+            style=font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;>
+          <img src="https://boom.insure/assets/images/demo-price/range_new.png" width="100px"
+               style="width: 50px; margin-left: 45%;margin-bottom: 25px;">
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <h3>Applicant Details</h3>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Full Name : </b> <span>{{ personData['firstname'] +' '+personData['lastname']}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Email : </b> <span>{{ personData['email'] }}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Phone : </b> <span>{{ personData['phone'] }}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>DOB : </b> <span>{{ personData['dob'] }}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+{% if (personData.length>1) %}
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Co-Applicant : </b> <span>{{ personData[1]['first_name'] +' '+personData[1]['last_name'] }}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>DOB : </b> <span>{{ personData[1]['birthday'] }}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+{% endif %}
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <h3>Selected Buy Details</h3>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Name: </b> <span>{{selected_insurance_data.name}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Price: </b> <span>{{selected_insurance_data.price}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr mc:repeatable=item>
+  <td style=padding:0 0 27px;>
+    <table width=100% cellpadding=0 cellspacing=0>
+      <tr>
+        <td mc:edit="block_26" width=40 valign=top>
+          <img src=https://www.psd2html.com/examples/markup/ultimaker/ico-01.png width=32
+               style=vertical-align:top; alt=/>
+        </td>
+        <td mc:edit=block_27 valign=top
+            style="font:14px/24px Verdana, Geneva, sans-serif; color:#3b434a;">
+          <b>Plan: </b> <span>{{selected_insurance_data.pricesType}}</span>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

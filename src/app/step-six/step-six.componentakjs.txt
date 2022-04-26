@@ -1,0 +1,1494 @@
+import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, Input, OnInit, EventEmitter, ViewChild, Directive } from '@angular/core';
+import { Router } from '@angular/router';
+import { LocalStorageService } from 'angular-web-storage';
+import { CommonService } from '../services/common.service';
+import { ApiService } from '../services/api-service';
+import { APICommonData, ModalData } from '../home/models';
+import { OlarkService } from '../services/olark.service';
+// import { OwlCarousel } from 'ngx-owl-carousel';
+import * as $ from "jquery";
+import { DatePickerComponent, FocusEventArgs } from '@syncfusion/ej2-angular-calendars';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+// import {FormsModule} from '@angular/forms'
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+
+@Component({
+  selector: 'app-step-six',
+  templateUrl: './step-six.component.html',
+  styleUrls: ['./step-six.component.scss'],
+  providers: [OlarkService]
+})
+
+export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
+  // @ViewChild('OwlElement', {static: false}) OwlElement: OwlCarousel;
+
+  @ViewChild('policy_start_date', { static: false })
+  // public datepickerObj: CalendarComponent;
+  public datepickerObj: DatePickerComponent;
+
+  onFocus(args: FocusEventArgs): void {
+    this.datepickerObj.show();
+  }
+
+
+  selectedValue = 0;
+  roofTypeValues = [
+    { id: 0, value: ' low to high' },
+    { id: 1, value: ' high to low' }
+  ];
+  showModal: EventEmitter<boolean> = new EventEmitter();
+  modalData: ModalData;
+  dwelling_value = 0;
+  dwelling_basic = 0;
+  contents = 0;
+  structures = 0;
+  liability = 0;
+  deductible = 0;
+  loss_of_use = 0;
+  water_backup = 0;
+  loss_assessment = 0;
+  coverageAry: Array<any>;
+  apiType: string;
+  low_price: any;
+  high_price: any;
+  pricing: any;
+  ConsumerURL: string;
+  uniqueId: string;
+  isMobile: boolean;
+  stillwaterData: any;
+  universalData: any;
+  showNationWide = false;
+  showMetlife = false;
+  showTravellers = false;
+  showUniversal = false;
+  showPlymouth = false;
+  showStillwater = false;
+  showLiberty = false;
+  showProgressive = false;
+  stillwaterLoader = true;
+  universalLoader = true;
+  hippoLoader = true;
+  plymouthLoader = true;
+  libertyLoader = true;
+  progressiveLoader = true;
+  userInfo: object;
+  universalPricing: number;
+  universalQuoteLink: string;
+  universalQuoteData: object;
+  plymouthData: object;
+  showChat = false;
+  chatType: number;
+  userData: object = {};
+
+  apiLoader: {
+    nationwide: false,
+    hippo: false,
+    stillwater: false,
+    plymouth: false,
+    universal: false
+  }
+
+  insuranceImgs = [
+    {
+      slideImg: '../../assets/images/metlife_new_logo.png',
+      caroImages: [
+        // "../../../assets/images/insurelist-caro/insure-list-img-caro.jpg",
+        "../../../assets/images/insurelist-caro/insure-list-img-caro.jpg",
+        //"../../../assets/images/insurelist-caro/insure-list-img-caro.jpg"
+      ]
+    }, {
+      slideImg: '../../assets/images/SVG/nationwide-icon.png',
+      caroImages: [
+        //"../../assets/images/caro-slider-images/Nationwide_Good.png",
+        "../../assets/images/caro-slider-images/Nationwide_Better.png",
+        //"../../assets/images/caro-slider-images/Nationwide_Best.png"
+      ]
+    },
+    {
+      slideImg: '../../assets/images/SVG/travelers-icon.png',
+      caroImages: [
+        //"../../assets/images/caro-slider-images/Travelers_Good.png",
+        "../../assets/images/caro-slider-images/Travelers_Better.png",
+        //"../../assets/images/caro-slider-images/Travelers_Best.png"
+      ]
+    }, {
+      slideImg: '../../assets/images/SVG/universal-icon.png',
+      caroImages: [
+        //"../../assets/images/caro-slider-images/Universal_Good.png",
+        "../../assets/images/caro-slider-images/Universal_Better.png",
+        //"../../assets/images/caro-slider-images/Universal_Best.png"
+      ]
+    }, {
+      slideImg: '../../assets/images/SVG/plymouth-rock-icon.png',
+      caroImages: [
+        //"../../assets/images/caro-slider-images/PlymouthRock_Good.png",
+        "../../assets/images/caro-slider-images/PlymouthRock_Better.png",
+        //"../../assets/images/caro-slider-images/PlymouthRock_Best.png"
+      ]
+    }, {
+      slideImg: '../../assets/images/SVG/progressive-icon.png',
+      caroImages: [
+        //"../../assets/images/caro-slider-images/Progressive_Good.png",
+        "../../assets/images/caro-slider-images/Progressive_Better.png",
+        //"../../assets/images/caro-slider-images/Progressive_Best.png"
+      ]
+    }, {
+      slideImg: '../../assets/images/companies/hippo.png',
+      caroImages: [
+        //"../../assets/images/caro-slider-images/Hippo_Good.png",
+        "../../assets/images/caro-slider-images/Hippo_Better.png",
+        //"../../assets/images/caro-slider-images/Hippo_Best.png"
+      ]
+    }, {
+      slideImg: '../../assets/images/companies/stillwater.png',
+      caroImages: [
+        //"../../assets/images/caro-slider-images/Stillwater_Good.png",
+        "../../assets/images/caro-slider-images/Stillwater_Better.png",
+        //"../../assets/images/caro-slider-images/Stillwater_Best.png"
+      ]
+    }
+  ];
+
+  mobInsuranceImgs: object = [
+    // '../../assets/images/metlife_new_logo.png',
+    // '../../assets/images/hous-illustrations/liberty-icon.png',
+    '../../assets/images//hous-illustrations/Nationwide_Best.png',
+    '../../assets/images/hous-illustrations/Travelers_Best.png',
+    '../../assets/images/hous-illustrations/Universal_Best.png',
+    '../../assets/images/hous-illustrations/PlymouthRock_Best.png',
+    '../../assets/images/hous-illustrations/Progressive_Best.png',
+    '../../assets/images/hous-illustrations/Hippo_Best.png',
+    '../../assets/images/hous-illustrations/Stillwater_Best.png'
+  ];
+  ldrArr: Array<any> = [];
+
+
+  bgColor: any = [
+    "darkblue", "darkgreen", "red", "darkred", "#5bc0de", "lightblue", "#167EF8", "green", "darkyellow"
+  ];
+  chatPricing: number;
+  insurances: Array<ModalData> = [];
+  nonApiInsurances: Array<ModalData> = [];
+  filteredInsurances: Array<ModalData> = [];
+  filterConditions: any;
+  priceLoaderCommonClass = 'animated bounceIn loader';//col-md-4 col-6 mt-2 mb-2 form-row
+  gridpriceWidgetCommonClass = 'animated bounceIn item';//mr-4 ml-md-0 ml-4 col-md-4 col-6 mt-2 mb-2 form-row
+  listpriceWidgetCommonClass = 'animated bounceIn item';//mr-4 ml-md-0 ml-4 col-md-4 my-2 form-row
+  viewmode: string;
+  value_sort_up: boolean;
+  isMobileLoading: boolean = true;
+  startDate: any;
+  imgURL: string;
+
+  IsInsuranceSlider = 0;
+
+  @HostListener('window:resize', ['$event'])
+
+  onResize(event) {
+    this.isMobile = event.target.innerWidth <= 768;
+  }
+
+
+  protected ngUnsubscribe: Subject<void> = new Subject<void>();
+
+
+
+  dwellingFromhippoMax = 200
+  dwellingFromhippoMin = 0
+  dwellingFromhippo = 110
+
+  personalPropertyFromHippoDwell = 50
+  personalPropertyFromHippoDwellMax = 75
+  personalPropertyFromHippoDwellMin = 25
+
+  fcSecondLowestPrice = 100;
+  fcManipulatedSecondLowestPrice = 0
+  fcDwelling = 110
+  fcLiability = 300000;
+  fcProperty = 50;
+  fcDeductible = 2500;
+  fcDwellingExtension = 0
+  fcWaterBackup = 0;
+  fcSewerLine = 0;
+  fcEquipmentBreakdown = 0;
+  fcReplacementCost = 0;
+
+
+  fcDwellingPrice = 0
+  fcLiabilityPrice = 0;
+  fcPropertyPrice = 0;
+  fcDeductiblePrice = 0;
+  fcDwellingExtensionPrice = 0;
+  fcWaterBackupPrice = 0;
+  fcSewerLinePrice = 0;
+  fcEquipmentBreakdownPrice = 0;
+  fcReplacementCostPrice = 0;
+  fcFilterData: any = {}
+
+  fcBundleToggle: boolean = true
+
+
+
+
+  constructor(
+    private modalService: NgbModal,
+    public router: Router,
+    public local: LocalStorageService,
+    public commonService: CommonService,
+    private apiService: ApiService,
+    public elemRef: ElementRef,
+    private olark: OlarkService
+  ) {
+    this.fcBundleToggle = true
+    this.ldrArr = [
+      { 'one': 1 },
+      { 'two': 2 },
+      { 'three': 3 },
+      { 'four': 4 },
+      { 'five': 5 },
+      { 'six': 6 },
+      { 'seven': 7 },
+      { 'eight': 8 },
+    ];
+    try {
+      this.dwellingFromhippo = JSON.parse(this.commonService.getLocalItem('total_data').hippo).coverage_a
+      this.dwellingFromhippoMax = (this.dwellingFromhippo * 200) / 100
+      this.dwellingFromhippoMin = (this.dwellingFromhippo * 80) / 100
+
+      this.personalPropertyFromHippoDwell = (this.dwellingFromhippo * 50) / 100
+      this.personalPropertyFromHippoDwellMax = (this.dwellingFromhippo * 75) / 100
+      this.personalPropertyFromHippoDwellMin = (this.dwellingFromhippo * 25) / 100
+    } catch (error) {
+
+    }
+
+
+    this.fcDwelling = this.dwellingFromhippo
+    this.fcProperty = this.personalPropertyFromHippoDwell
+
+    //this.fcFilterInit()
+  }
+
+
+  fcFilterInit() {
+    console.log('******************** ', this.local.get('fcFilterData'));
+    this.fcFilterData = this.local.get('fcFilterData')
+
+
+    // this.fcLiabilityPrice=this.fcFilterData.fcLiability
+    this.fcDwellingPrice = this.fcFilterData.fcDwellingPrice
+    // this.fcLiabilityPrice=this.fcFilterData.fcLiabilityPrice
+    // this.fcPropertyPrice=this.fcFilterData.fcPropertyPrice
+    // this.fcDeductiblePrice=this.fcFilterData.fcDeductiblePrice
+    // this.fcDwellingExtensionPrice=this.fcFilterData.fcDwellingExtensionPrice
+    // this.fcWaterBackupPrice=this.fcFilterData.fcWaterBackupPrice
+    // this.fcSewerLinePrice=this.fcFilterData.fcSewerLinePrice
+
+
+
+    this.fcDwelling = this.fcFilterData.fcDwelling,
+      this.fcDwellingExtension = this.fcFilterData.fcDwellingExtension,
+      this.fcLiability = this.fcFilterData.fcLiability,
+      this.fcProperty = this.fcFilterData.fcProperty,
+      this.fcDeductible = this.fcFilterData.fcDeductible,
+      this.fcWaterBackup = this.fcFilterData.fcWaterBackup,
+      this.fcSewerLine = this.fcFilterData.fcSewerLine,
+      this.fcEquipmentBreakdown = this.fcFilterData.fcEquipmentBreakdown,
+      this.fcReplacementCost = this.fcFilterData.fcReplacementCost
+
+
+    this.fcManipulatedSecondLowestPrice = this.fcFilterData.fcManipulatedSecondLowestPrice
+
+
+  }
+  bundleToggleChange(event, bundleModalTemplate) {
+    // console.log('event',event)
+    // setTimeout(() => {
+    //   console.log(event)
+    //this.fcBundleToggle=event
+    // }, 0);
+
+    this.modalService.open(bundleModalTemplate, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      // this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      if (reason === 'noBundle') {
+        this.ubundle('noBundle')
+        //this.fcBundleToggle=true
+      } else if (reason === 'bundle') {
+        this.ubundle('bundle')
+      }
+      else if (reason === 0 || reason === 'Cross click') {
+        this.fcBundleToggle = !event.checked
+      }
+      // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  async ubundle(flag) {
+
+    // This aborts all HTTP requests.
+    this.ngUnsubscribe.next();
+    // This completes the subject properlly.
+    this.ngUnsubscribe.complete();
+    console.log('now go false')
+
+    let fcInsuranceUnbundle = await this.commonService.getLocalItem('fcInsuranceUnbundled')
+    let fcInsuranceBundle = await this.commonService.getLocalItem('fcInsuranceBundled')
+
+    if (flag === 'noBundle' && fcInsuranceUnbundle && fcInsuranceUnbundle.length > 0) {
+
+      this.insurances = fcInsuranceUnbundle
+      this.fcBundleToggle = false
+      this.modalService.dismissAll()
+      return
+    }
+    if (flag === 'bundle' && fcInsuranceBundle && fcInsuranceBundle.length > 0) {
+
+      this.insurances = fcInsuranceBundle
+      this.fcBundleToggle = true
+      this.modalService.dismissAll()
+      return
+    }
+
+    this.fcBundleToggle = false
+    this.modalService.dismissAll()
+    this.IsInsuranceSlider = 0
+    this.insurances = []
+    this.calcPrices();
+    this.getPricing(true);
+    this.getStartDate();
+    this.viewmode = 'List';
+
+  }
+
+  fcFilterChange(value, name) {
+
+    if (name == 'fcDwelling') {
+
+      //if block  will run when no coverage_a/dwelling comes from hippo
+      if (this.dwellingFromhippoMax === 200 && this.dwellingFromhippoMin === 0) {
+        this.fcDwellingPrice = (value - this.fcDwelling) * 2500
+      } else {
+        const incrementBy = Math.floor((value - this.dwellingFromhippo) / 2500)
+        if (incrementBy !== 0) {
+          let percent = (this.fcSecondLowestPrice * 1.3) / 100
+          this.fcDwellingPrice = percent * incrementBy
+        }
+
+      }
+
+    }
+
+    if (name == 'fcDwellingExtension') {
+      this.fcDwellingExtensionPrice = parseInt(value)
+    }
+
+    if (name == 'fcLiability') {
+      if (value === 300000) {
+        this.fcLiabilityPrice = 0
+      }
+
+      if (value === 100000) {
+        this.fcLiabilityPrice = -12
+      }
+      if (value === 500000) {
+        this.fcLiabilityPrice = 12
+      }
+    }
+
+
+    if (name == 'fcProperty') {
+
+      if (this.personalPropertyFromHippoDwellMax === 75 && this.personalPropertyFromHippoDwellMin === 25) {
+        this.fcPropertyPrice = (value - 50) * 5000
+      } else {
+        const incrementBy = Math.floor((value - this.personalPropertyFromHippoDwell) / 2500)
+        if (incrementBy !== 0) {
+          let percent = (this.fcSecondLowestPrice * 0.5) / 100
+          this.fcPropertyPrice = percent * incrementBy
+        }
+
+      }
+    }
+
+
+    if (name == 'fcDeductible') {
+      if (value === 2500) {
+        this.fcDeductiblePrice = 0
+      }
+
+      if (value === 5000) {
+        this.fcDeductiblePrice = -8.75
+      }
+      if (value === 1000) {
+        this.fcDeductiblePrice = 5.41
+      }
+    }
+
+    if (name == 'fcWaterBackup') {
+      this.fcWaterBackupPrice = value ? 55 : 0
+    }
+
+    if (name == 'fcSewerLine') {
+      this.fcSewerLinePrice = value ? 45 : 0
+    }
+
+    if (name == 'fcEquipmentBreakdown') {
+      this.fcEquipmentBreakdownPrice = value ? 5 : 0
+    }
+    if (name == 'fcReplacementCost') {
+      this.fcReplacementCostPrice = value ? 77 : 0
+
+    }
+
+
+    this.fcManipulatedSecondLowestPrice =
+      this.fcSecondLowestPrice +
+      this.fcDwellingPrice +
+      this.fcDwellingExtensionPrice +
+      this.fcLiabilityPrice +
+      this.fcPropertyPrice +
+      this.fcDeductiblePrice +
+      this.fcWaterBackupPrice +
+      this.fcSewerLinePrice +
+      this.fcEquipmentBreakdownPrice +
+      this.fcReplacementCostPrice
+
+
+
+    const filterObject = {
+      fcSecondLowestPrice: this.fcSecondLowestPrice,
+      fcManipulatedSecondLowestPrice: this.fcManipulatedSecondLowestPrice,
+      fcDwellingPrice: this.fcDwellingPrice,
+      fcDwellingExtensionPrice: this.fcDwellingExtensionPrice,
+      fcLiabilityPrice: this.fcLiabilityPrice,
+      fcPropertyPrice: this.fcPropertyPrice,
+      fcDeductiblePrice: this.fcDeductiblePrice,
+      fcWaterBackupPrice: this.fcWaterBackupPrice,
+      fcSewerLinePrice: this.fcSewerLinePrice,
+      fcEquipmentBreakdownPrice: this.fcEquipmentBreakdownPrice,
+      fcReplacementCostPrice: this.fcReplacementCostPrice,
+
+
+
+
+      fcDwelling: this.fcDwelling,
+      fcDwellingExtension: this.fcDwellingExtension,
+      fcLiability: this.fcLiability,
+      fcProperty: this.fcProperty,
+      fcDeductible: this.fcDeductible,
+      fcWaterBackup: this.fcWaterBackup,
+      fcSewerLine: this.fcSewerLine,
+      fcEquipmentBreakdown: this.fcEquipmentBreakdown,
+      fcReplacementCost: this.fcReplacementCost
+
+    }
+    this.commonService.setLocalItem('fcFilterData', filterObject)
+  }
+
+  toggleMonthYear(month) {
+
+    if (month) {
+      $(".fc-price-year").hide();
+      $(".fc-price-month").show();
+
+      $('#monthTog').addClass("price-active");
+      $('#yearTog').removeClass("price-active");
+    } else {
+      $(".fc-price-year").show();
+      $(".fc-price-month").hide();
+      $('#monthTog').removeClass("price-active");
+      $('#yearTog').addClass("price-active");
+    }
+
+  }
+
+
+
+  dwelling;
+  ngOnInit() {
+    this.calcPrices();
+    this.getPricing();
+    this.getStartDate();
+    this.viewmode = 'List';
+  }
+
+  ngOnDestroy(): void {
+    // this.olark.hide();
+  }
+
+  ngAfterViewInit() {
+
+    var i = 10;
+    var int = setInterval(function () {
+      window.scrollTo(0, i);
+      i += 20;
+      if (i >= ($(window).height() / 2)) clearInterval(int);
+    }, 1);
+
+    // @ts-ignore
+    if (this.commonService.isMobileMode()) {
+      this.setUpOlark();
+    }
+  }
+
+  getStartDate() {
+    this.startDate = localStorage.getItem('startDate');
+  }
+
+  async setUpOlark() {
+    await this.olark.load(window, document, 'static.olark.com/jsclient/loader.js');
+    this.olark.identify('4797-648-10-9515');
+    this.olark.hide();
+  }
+
+  async showChatWidget($event) {
+    if (this.commonService.isMobileMode()) {
+      this.olark.show();
+    } else {
+      this.showChat = true;
+      this.chatType = $event.type;
+      this.chatPricing = $event.price;
+      await this.olark.load(window, document, 'static.olark.com/jsclient/loader.js');
+      this.olark.identify('4797-648-10-9515');
+      setTimeout(() => {
+        document.querySelector('.chat-container').scrollIntoView({
+          behavior: 'smooth',
+          block: 'end'
+        });
+      });
+    }
+  }
+
+  async getPricing(discount = false) {
+    let total_data = this.commonService.getLocalItem('total_data');
+    this.uniqueId = this.commonService.getUniqueID();
+    const mode = total_data['mode'];
+    this.apiType = '--';
+    this.low_price = total_data['low_price'];
+    this.high_price = total_data['high_price'];
+    const {
+      email, isGooglePlace, zillow, personData, phone, ac_year, plumbing_year, electric_year, roof_year, construction_type,
+      building_type, roof_type, exterior_type, roof_status, is_basement, is_bundle, is_security, is_smart, foundation_type,
+      smoke_alarm, dwell_coverage, central_fire_alarm, deadbolt_locks, central_bulgar_alarm, bundle_discount
+    } = total_data;
+    const firstname = personData ? personData[0].first_name : '';
+    const lastname = personData ? personData[0].last_name : '';
+    const birthday = "01-01-2000";
+    let sqft, year_built, estimate, addressData: any;
+    addressData = this.commonService.getAddressData();
+    sqft = String(zillow['square']).replace(',', '');
+    year_built = String(zillow['built_year']).replace(',', '');
+    estimate = String(zillow['estimate']).replace(',', '');
+
+
+    // let fcUserBasic = this.local.get('fcUserBasic')
+    // personData[0]['first_name'] = "sdfhka"
+    // personData[0]['last_name'] = "lasdtashdkja "
+    personData
+    const data: APICommonData = {
+      street: addressData['address'],
+      city: addressData['locality'],
+      state: addressData['administrative_area_level_1'],
+      postal_code: addressData['postal_code'],
+      sqft,
+      email: "abc@abc.com",
+      year_built,
+      estimate,
+      mode,
+      personData,
+      ac_year,
+      phone,
+      plumbing_year,
+      electric_year,
+      roof_year,
+      construction_type,
+      building_type,
+      roof_type,
+      exterior_type,
+      roof_status,
+      is_basement,
+      is_bundle,
+      is_security,
+      is_smart,
+      foundation_type
+    };
+    if (mode == 1) {
+      data['dwell_coverage'] = total_data['coverage'];
+    }
+    const params = {
+      is_security: true,
+      is_smart: true,
+      is_bundle: true
+    };
+    Object.assign(data, params);
+    //basic,better,best
+    //choice,better,lower
+
+    data['basic'] = {
+      'deductible': this.fcDeductible,
+      'liability': this.fcLiability,
+      'dwelling': this.fcDwelling,
+      'dwelling_extension': this.fcDwellingExtension ? 'true' : 'false',//missing
+      'water_backup': this.fcWaterBackup,
+      'service_line': this.fcSewerLine,
+      'equipment_breakdown': this.fcEquipmentBreakdown ? 'true' : 'false'
+    };
+
+    data['better'] = {
+      'deductible': this.fcDeductible,
+      'liability': 500000,
+      'dwelling': parseInt((this.fcDwelling * 1.15).toFixed(0)),
+      'dwelling_extension': this.fcDwellingExtension ? 'true' : 'false',//missing
+      'water_backup': 10000,
+      'service_line': 1,
+      'equipment_breakdown': 'true'
+    };
+
+    let _deductible = 2500
+    if (this.deductible === 1000) {
+      _deductible = 2500
+    }
+    if (this.deductible === 2500) {
+      _deductible = 5000
+    }
+
+    data['best'] = {
+      'deductible': _deductible,
+      'liability': 100000,
+      'dwelling': this.fcDwelling,
+      'dwelling_extension': this.fcDwellingExtension ? 'true' : 'false',//missing
+      'water_backup': 0,
+      'service_line': 0,
+      'equipment_breakdown': 'false'
+    };
+
+    data['bundleDiscount'] = discount
+
+    //data['basic'] = {'deductible':2500,'liability':300000,'dwelling':this.dwelling,'dwelling_extension':'false','water_backup':0,'service_line':0,'equipment_breakdown':'false'};
+
+    //data['better'] = {'deductible':1000,'liability':500000,'dwelling':this.dwelling,'dwelling_extension':'true','water_backup':5000,'service_line':0,'equipment_breakdown':'false'};
+
+    //    data['best'] = {'deductible':1000,'liability':500000,'dwelling':this.dwelling*1.10,'dwelling_extension':'true','water_backup':10000,'service_line':0,'equipment_breakdown':'true'};
+
+    this.apiService.getNationWideData(data).pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+
+      try {
+        let basicprice = 0;
+        let betterPrice = 0;
+        let bestPrice = 0;
+
+
+        // if (res['result']['basic']['offeredQuotes'] != undefined && res['result']['basic']['offeredQuotes'].length > 0) {
+        //   var quotePremium = res['result']['basic']['offeredQuotes'][0];
+
+        //   basicprice = typeof quotePremium['premium'] != "undefined" && typeof quotePremium['premium']['total'] != "undefined" && typeof quotePremium['premium']['total']['amount'] != "undefined" ? quotePremium['premium']['total']['amount'] : 0
+        // }
+
+        if (res['result']['better']['offeredQuotes'] != undefined && res['result']['better']['offeredQuotes'].length > 0) {
+          var quotePremium = res['result']['better']['offeredQuotes'][0];
+
+          betterPrice = typeof quotePremium['premium'] != "undefined" && typeof quotePremium['premium']['total'] != "undefined" && typeof quotePremium['premium']['total']['amount'] != "undefined" ? quotePremium['premium']['total']['amount'] : 0
+
+        }
+
+        // if (res['result']['best']['offeredQuotes'] != undefined && res['result']['best']['offeredQuotes'].length > 0) {
+        //   var quotePremium = res['result']['best']['offeredQuotes'][0];
+
+        //   bestPrice = typeof quotePremium['premium'] != "undefined" && typeof quotePremium['premium']['total'] != "undefined" && typeof quotePremium['premium']['total']['amount'] != "undefined" ? quotePremium['premium']['total']['amount'] : 0
+        // }
+        //console.log("Nationwide Basic Price:", basicprice);
+
+        this.showNationWide = true;
+        console.log(betterPrice, betterPrice != 0, betterPrice != undefined)
+        if (betterPrice != 0 && betterPrice != undefined) {
+          console.log('NationWide Values', [Math.round(basicprice), Math.round(betterPrice), Math.round(bestPrice)])
+          this.insurances.push(
+            {
+              type: 1,
+              //price: this.low_price,
+              // price: [Math.round(basicprice), Math.round(betterPrice), Math.round(bestPrice)],
+              price: [Math.round(betterPrice)],
+              imgURL: this.insuranceImgs[1].slideImg,
+              bgColor: this.bgColor[0],
+              // dwelling: [this.dwelling, this.dwelling, (this.dwelling * 1.10)],
+              dwelling: [this.dwelling],
+              liability: 300000,
+              contents: this.dwelling_basic * 0.5,
+              waterBackup: 100000,
+              deductible: 1000,
+              keyword: ['well', 'bundle', 'extended', 'underground'],
+              name: "Nationwide",
+              btn_cls: "nationwide_btn",
+              caroImages: [
+                // "../../assets/images/caro-slider-images/Nationwide_Good.png",
+                "../../assets/images/caro-slider-images/Nationwide_Better.png",
+                // "../../assets/images/caro-slider-images/Nationwide_Best.png"
+              ],
+              // pricesType: ["Basic", "Choice", "Best"]
+              pricesType: ["Choice"]
+            });
+          this.insurances.sort((a: any, b: any) => a.price[0] - b.price[0]);
+          this.doFilter();
+
+          this.isMobileLoading = false;
+          this.ldrArr.pop();
+          this.filteredInsurances = this.filteredInsurances.sort((a: any, b: any) => a.price - b.price);
+
+          if (this.fcBundleToggle === true) {
+            this.commonService.setLocalItem('fcInsuranceBundled', this.filteredInsurances);
+          } else {
+            this.commonService.setLocalItem('fcInsuranceUnbundled', this.filteredInsurances);
+          }
+
+        }
+        this.IsInsuranceSlider++;
+      } catch (error) {
+        console.log('nationwide', error)
+        this.insurances.push({
+          static: true,
+          type: 1,
+          price: [],
+          imgURL: this.insuranceImgs[1].slideImg,
+          bgColor: this.bgColor[0],
+          //dwelling: this.plymouthData['dwelling'],
+          dwelling: [],
+          liability: 0,
+          contents: 0,
+          waterBackup: 0,
+          deductible: 0,
+          keyword: [],
+          name: "Nationwide",
+          btn_cls: "nationwide_btn",
+          caroImages: [
+            // "../../assets/images/caro-slider-images/Nationwide_Good.png",
+            "../../assets/images/caro-slider-images/Nationwide_Better.png",
+            // "../../assets/images/caro-slider-images/Nationwide_Best.png"
+          ],
+          pricesType: []
+        });
+        this.showNationWide = true;
+        this.IsInsuranceSlider++;
+      }
+
+
+    }, (error) => {
+      this.insurances.push({
+        static: true,
+        type: 1,
+        price: [],
+        imgURL: this.insuranceImgs[1].slideImg,
+        bgColor: this.bgColor[0],
+        //dwelling: this.plymouthData['dwelling'],
+        dwelling: [],
+        liability: 0,
+        contents: 0,
+        waterBackup: 0,
+        deductible: 0,
+        keyword: [],
+        name: "Nationwide",
+        btn_cls: "nationwide_btn",
+        caroImages: [
+          // "../../assets/images/caro-slider-images/Nationwide_Good.png",
+          "../../assets/images/caro-slider-images/Nationwide_Better.png",
+          // "../../assets/images/caro-slider-images/Nationwide_Best.png"
+        ],
+        pricesType: []
+      });
+      this.showNationWide = true;
+      this.IsInsuranceSlider++;
+      console.log('nationwide', error)
+    });
+
+
+    this.apiService.getHippoData(data).pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+
+      //console.log('API getHippoData step6', res)
+      this.hippoLoader = false;
+      if (res['success']) {
+        const data = JSON.parse(res['data']);
+        if (data['quote_premium']) {
+          console.log('Hippo values:', [data['quote_premium'], data['quote_premium'], data['quote_premium']])
+          this.insurances.push({
+
+            type: 6,
+            price: [data['quote_premium']],
+            // price: [data['quote_premium'], data['quote_premium'], data['quote_premium']],
+            imgURL: this.insuranceImgs[6].slideImg,
+            name: "Hippo",
+            btn_cls: "hippo_btn",
+            bgColor: this.bgColor[7],
+            dwelling: [this.dwelling],
+            // dwelling: [this.dwelling, this.dwelling, (this.dwelling * 1.10)],
+            liability: 500000,
+            contents: data['coverage_a'] * 0.5,
+            waterBackup: 100000,
+            deductible: 1000,
+            keyword: ['extended', 'underground'],
+            caroImages: [
+              // "../../assets/images/caro-slider-images/Hippo_Good.png",
+              "../../assets/images/caro-slider-images/Hippo_Better.png",
+              //"../../assets/images/caro-slider-images/Hippo_Best.png"
+            ],
+            pricesType: ["Choice"]
+            // pricesType: ["Basic", "Choice", "Best"]
+          });
+        }
+      } else {
+        this.insurances.push({
+          static: true,
+          type: 6,
+          price: [],
+          imgURL: this.insuranceImgs[6].slideImg,
+          name: "Hippo",
+          btn_cls: "hippo_btn",
+          bgColor: this.bgColor[7],
+          dwelling: [],
+          liability: 500000,
+          contents: 0,
+          waterBackup: 100000,
+          deductible: 1000,
+          keyword: [],
+          caroImages: [
+            //"../../assets/images/caro-slider-images/Hippo_Good.png",
+            "../../assets/images/caro-slider-images/Hippo_Better.png",
+            //"../../assets/images/caro-slider-images/Hippo_Best.png"
+          ],
+          pricesType: []
+        });
+      }
+      // let universal = total_data['insurance_data']['universal'];
+      this.doFilter();
+      this.IsInsuranceSlider++;
+      this.ldrArr.pop();
+      this.filteredInsurances = this.filteredInsurances.sort((a: any, b: any) => a.price - b.price);
+      this.insurances.sort((a: any, b: any) => a.price[0] - b.price[0]);
+      if (this.fcBundleToggle === true) {
+        this.commonService.setLocalItem('fcInsuranceBundled', this.filteredInsurances);
+      } else {
+        this.commonService.setLocalItem('fcInsuranceUnbundled', this.filteredInsurances);
+      }
+    });
+
+    this.apiService.getUniversalData(data).pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+      // console.log('API getUniversalData step6', res)
+
+      const universal = res.basic.data;
+      // let universal = total_data['insurance_data']['universal'];
+      if (universal.result === 'success') {
+        //alert('success')
+        this.universalData = universal;
+        if (this.universalData['QuoteWrapper']['Message'] == 'OK') {
+          this.universalPricing = this.universalData['QuoteWrapper']['Premium'];
+          this.universalQuoteLink = this.universalData['QuoteWrapper']['QuoteLink'];
+          this.universalQuoteData = this.universalData['QuoteWrapper']['Quote'];
+          this.showUniversal = true;
+          this.setInsuranceData('universal', this.universalData);
+          console.log('Universal values', [this.universalPricing, this.universalPricing, this.universalPricing])
+          this.insurances.push({
+            type: 3,
+            price: [this.universalPricing],
+            // price: [this.universalPricing, this.universalPricing, this.universalPricing],
+            imgURL: this.insuranceImgs[3].slideImg,
+            bgColor: this.bgColor[3],
+            dwelling: [this.dwelling, this.dwelling, (this.dwelling * 1.10)],
+            liability: this.universalQuoteData['CoverageE'],
+            contents: this.universalQuoteData['CoverageC'],
+            waterBackup: 100000,
+            deductible: this.universalQuoteData['AOPDeductible'],
+            keyword: ['extended', 'underground'],
+            name: "Universal",
+            btn_cls: "universal_btn",
+            caroImages: [
+              // "../../assets/images/caro-slider-images/Universal_Good.png",
+              "../../assets/images/caro-slider-images/Universal_Better.png",
+              // "../../assets/images/caro-slider-images/Universal_Best.png"
+            ],
+            pricesType: ["Choice"]
+          });
+        } else {
+          this.showUniversal = true;
+          this.insurances.push({
+            static: true,
+            type: 3,
+            price: [],
+            imgURL: this.insuranceImgs[3].slideImg,
+            bgColor: this.bgColor[3],
+            dwelling: [],
+            liability: 0,
+            contents: 0,
+            waterBackup: 100000,
+            deductible: 0,
+            keyword: [],
+            name: "Universal",
+            btn_cls: "universal_btn",
+            caroImages: [
+              "../../assets/images/caro-slider-images/Universal_Good.png"
+            ],
+            pricesType: []
+          });
+        }
+      }
+      this.universalLoader = false;
+      this.doFilter();
+      this.IsInsuranceSlider++;
+      this.ldrArr.pop();
+      this.filteredInsurances = this.filteredInsurances.sort((a: any, b: any) => a.price - b.price);
+      this.insurances.sort((a: any, b: any) => a.price[0] - b.price[0]);
+      if (this.fcBundleToggle === true) {
+        this.commonService.setLocalItem('fcInsuranceBundled', this.filteredInsurances);
+      } else {
+        this.commonService.setLocalItem('fcInsuranceUnbundled', this.filteredInsurances);
+      }
+    });
+
+    this.apiService.getPlymouthData(data).pipe(takeUntil(this.ngUnsubscribe)).subscribe((res) => {
+      //console.log('API getPlymouthData step6', res)
+      const plymouth = res;
+      this.plymouthData = {};
+      if (plymouth.result === 'success') {
+        this.plymouthData = plymouth.data;
+        this.showPlymouth = true;
+        console.log('plymouth values', [this.plymouthData['good']['pricing'] * 12, this.plymouthData['better']['pricing'] * 12, this.plymouthData['best']['pricing'] * 12])
+        this.insurances.push({
+          type: 4,
+          // price: [this.plymouthData['good']['pricing'] * 12, this.plymouthData['better']['pricing'] * 12, this.plymouthData['best']['pricing'] * 12],
+          price: [this.plymouthData['better']['pricing'] * 12],
+          imgURL: this.insuranceImgs[4].slideImg,
+          bgColor: this.bgColor[4],
+          //dwelling: this.plymouthData['dwelling'],
+          // dwelling: [this.dwelling, this.dwelling, (this.dwelling * 1.10)],
+          dwelling: [this.dwelling],
+          liability: this.plymouthData['good']['personalLiability'],
+          contents: this.dwelling_basic * 0.5,
+          waterBackup: 100000,
+          deductible: 1000,
+          keyword: ['bundle', 'extended', 'underground'],
+          name: "Plymouth",
+          btn_cls: "plymouth_btn",
+          caroImages: [
+            // "../../assets/images/caro-slider-images/PlymouthRock_Good.png",
+            "../../assets/images/caro-slider-images/PlymouthRock_Better.png",
+            // "../../assets/images/caro-slider-images/PlymouthRock_Best.png"
+          ],
+          // pricesType: ["Basic", "Choice", "Best"]
+          pricesType: ["Choice"]
+        });
+        this.doFilter();
+
+        this.ldrArr.pop();
+        this.filteredInsurances = this.filteredInsurances.sort((a: any, b: any) => a.price - b.price);
+        this.insurances.sort((a: any, b: any) => a.price[0] - b.price[0]);
+
+        this.setInsuranceData('plymouth', this.plymouthData);
+      } else {
+        this.showPlymouth = true
+        this.showProgressive = true;
+        this.showLiberty = true;
+        this.insurances.push({
+          static: true,
+          type: 4,
+          price: [],
+          imgURL: this.insuranceImgs[4].slideImg,
+          bgColor: this.bgColor[4],
+          //dwelling: this.plymouthData['dwelling'],
+          dwelling: [],
+          liability: 0,
+          contents: 0,
+          waterBackup: 0,
+          deductible: 0,
+          keyword: [],
+          name: "Plymouth",
+          btn_cls: "plymouth_btn",
+          caroImages: [
+            "../../assets/images/caro-slider-images/PlymouthRock_Good.png",
+            "../../assets/images/caro-slider-images/PlymouthRock_Better.png",
+            "../../assets/images/caro-slider-images/PlymouthRock_Best.png"
+          ],
+          pricesType: []
+        });
+
+        // this.insurances.push({
+        //   static: true,
+        //   type: 4,
+        //   price: [],
+        //   imgURL: this.insuranceImgs[4].slideImg,
+        //   bgColor: this.bgColor[5],
+        //   //dwelling: this.plymouthData['dwelling'],
+        //   dwelling: [],
+        //   liability: 0,
+        //   contents: 0,
+        //   waterBackup: 100000,
+        //   deductible: 1000,
+        //   keyword: [],
+        //   name: "Liberty Mutual",
+        //   btn_cls: "liberty_mutual_btn",
+        //   caroImages: [
+        //     "../../assets/images/caro-slider-images/PlymouthRock_Good.png",
+        //     "../../assets/images/caro-slider-images/PlymouthRock_Better.png",
+        //     "../../assets/images/caro-slider-images/PlymouthRock_Best.png"
+        //   ],
+        //   pricesType: []
+        // });
+      }
+      this.plymouthLoader = false;
+      setTimeout(() => this.libertyLoader = false, 2000);
+      this.IsInsuranceSlider++;
+      // setTimeout(() => this.progressiveLoader = false, 4000);
+    });
+
+    this.apiService.getStillwaterData(data).pipe(takeUntil(this.ngUnsubscribe)).subscribe((res) => {
+      //console.log('API getStillwaterData step6', res)
+      this.stillwaterLoader = false;
+      if (res.result === 'success') {
+        this.stillwaterData = res.data;
+        //this.stillwaterData = total_data['insurance_data']['stillwater'];
+        this.apiType = 'stillwater';
+        // console.log('hello', this.stillwaterData, res.data)
+        if (this.stillwaterData['ACORD'] == undefined) {
+          this.commonService.modalOpen('Error', 'An error occurred. Please try again later.');
+          return;
+        }
+        status = this.stillwaterData['ACORD']['InsuranceSvcRs']['HomePolicyQuoteInqRs']['MsgStatus']['MsgStatusCd'];
+        try {
+          const coverageAry = this.stillwaterData['ACORD']['InsuranceSvcRs']['HomePolicyQuoteInqRs']['HomeLineBusiness']['Dwell']['Coverage'];
+          total_data['coverageAry'] = coverageAry;
+          if (status == 'Success') {
+
+
+            // this.pricing = this.stillwaterData['ACORD']['InsuranceSvcRs']['HomePolicyQuoteInqRs']['PolicySummaryInfo']['FullTermAmt']['Amt'];
+            this.pricing = this.stillwaterData['ACORD']['InsuranceSvcRs']['HomePolicyQuoteInqRs']['PolicySummaryInfo']['FullTermAmt']['Amt'];
+            this.ConsumerURL = this.stillwaterData['ACORD']['InsuranceSvcRs']['HomePolicyQuoteInqRs']['PolicySummaryInfo']['ItemIdInfo']['InsurerId'];
+            this.uniqueId = this.stillwaterData['ACORD']['InsuranceSvcRs']['HomePolicyQuoteInqRs']['PersPolicy']['QuoteInfo']['CompanysQuoteNumber'];
+
+            // this.pricing = total_data['pricing'];
+            this.dwelling_value = coverageAry.filter(coverage => {
+              return coverage['CoverageCd'] === 'DWELL';
+            })[0]['Limit']['FormatInteger'];
+
+            this.contents = coverageAry.filter(coverage => {
+              return coverage['CoverageCd'] === 'PP';
+            })[0]['Limit']['FormatInteger'];
+
+            this.structures = mode == 0 ? coverageAry.filter(coverage => {
+              return coverage['CoverageCd'] === 'OS';
+            })[0]['Limit']['FormatInteger'] : '';
+
+            this.liability = coverageAry.filter(coverage => {
+              return coverage['CoverageCd'] === 'PL';
+            })[0]['Limit']['FormatInteger'];
+
+            this.deductible = mode == 1 ? coverageAry.filter(coverage => {
+              return coverage['CoverageCd'] === 'PP';
+            })[0]['Deductible']['FormatInteger'] : '';
+
+            this.loss_of_use = coverageAry.filter(coverage => {
+              return coverage['CoverageCd'] === 'LOU';
+            })[0]['Limit']['FormatInteger'];
+            // console.log('stillwaterData', 'hellow LOU')
+
+            // this.water_backup = coverageAry.filter(coverage => {
+            //   return coverage['CoverageCd'] === 'SEWER';
+            // })[0]['Limit']['FormatInteger'];
+
+            // this.loss_assessment = mode == 1 ? coverageAry.filter(coverage => {
+            //   return coverage['CoverageCd'] === 'LAC';
+            // })[0]['Limit']['FormatInteger'] : '';
+
+            total_data['pricing'] = this.pricing;
+            total_data['ConsumerURL'] = this.ConsumerURL;
+            total_data['apiType'] = 'Stillwater';
+            if (mode == 1) {
+              Object.assign(this.userData, { dwell_coverage: total_data['coverage'] });
+            }
+            this.showStillwater = true;
+
+            this.insurances.push({
+              type: 7,
+              // price: [res.basic, res.better, res.best],
+              price: [res.better],
+              imgURL: this.insuranceImgs[7].slideImg,
+              bgColor: this.bgColor[7],
+              // dwelling: [this.dwelling, this.dwelling, (this.dwelling * 1.10)],
+              dwelling: [this.dwelling],
+              liability: this.liability,
+              contents: this.contents,
+              waterBackup: 0,
+              deductible: 1000,
+              keyword: ['bundle', 'extended', 'underground'],
+              name: "Stillwater",
+              btn_cls: "stillwater_btn",
+              caroImages: [
+                // "../../assets/images/caro-slider-images/Stillwater_Good.png",
+                "../../assets/images/caro-slider-images/Stillwater_Better.png",
+                // "../../assets/images/caro-slider-images/Stillwater_Best.png"
+              ],
+              // pricesType: ["Basic", "Choice", "Best"]
+              pricesType: ["Choice"]
+
+            });
+            console.log('stillwater values', [res.basic, res.better, res.best])
+            this.doFilter();
+            // console.log('stillwaterData', [res.basic, res.better, res.best])
+            this.setInsuranceData('stillwater', this.stillwaterData);
+            this.insurances.sort((a: any, b: any) => a.price[0] - b.price[0]);
+            if (this.fcBundleToggle === true) {
+              this.commonService.setLocalItem('fcInsuranceBundled', this.filteredInsurances);
+            } else {
+              this.commonService.setLocalItem('fcInsuranceUnbundled', this.filteredInsurances);
+            }
+          } else {
+            let message = this.stillwaterData['ACORD']['InsuranceSvcRs']['HomePolicyQuoteInqRs']['MsgStatus']['MsgStatusDesc'];
+            try {
+              message = message.split(':')[1].trim();
+              if (message.indexOf('FRIQ100Q') > 0) {
+                message = 'Service is unavailable now.\n';
+
+              }
+            } catch (e) {
+              message = 'An error occurred.';
+            }
+            this.commonService.modalOpen('Error', message);
+          }
+        } catch (e) {
+          console.log(e)
+        }
+      } else {
+        this.showStillwater = true;
+        this.insurances.push({
+          static: true,
+          type: 7,
+          price: [],
+          imgURL: this.insuranceImgs[7].slideImg,
+          bgColor: this.bgColor[7],
+          dwelling: [],
+          liability: 0,
+          contents: 0,
+          waterBackup: 0,
+          deductible: 1000,
+          keyword: [],
+          name: "Stillwater",
+          btn_cls: "stillwater_btn",
+          caroImages: [
+            "../../assets/images/caro-slider-images/Stillwater_Good.png",
+            "../../assets/images/caro-slider-images/Stillwater_Better.png",
+            "../../assets/images/caro-slider-images/Stillwater_Best.png"
+          ],
+          pricesType: []
+
+        });
+      }
+      this.IsInsuranceSlider++;
+    }, error => {
+      this.IsInsuranceSlider++;
+      this.showStillwater = true;
+      this.insurances.push({
+        static: true,
+        type: 7,
+        price: [],
+        imgURL: this.insuranceImgs[7].slideImg,
+        bgColor: this.bgColor[7],
+        dwelling: [],
+        liability: 0,
+        contents: 0,
+        waterBackup: 0,
+        deductible: 1000,
+        keyword: [],
+        name: "Stillwater",
+        btn_cls: "stillwater_btn",
+        caroImages: [
+          "../../assets/images/caro-slider-images/Stillwater_Good.png",
+          "../../assets/images/caro-slider-images/Stillwater_Better.png",
+          "../../assets/images/caro-slider-images/Stillwater_Best.png"
+        ],
+        pricesType: []
+
+      });
+    });
+
+
+    setTimeout(() => {
+      this.showMetlife = true;
+      this.nonApiInsurances.push({
+        static: true,
+        type: 0,
+        price: [],
+        imgURL: this.insuranceImgs[0].slideImg,
+        bgColor: this.bgColor[1],
+        dwelling: [],
+        liability: 0,
+        contents: 0,
+        waterBackup: 0,
+        deductible: 0,
+        keyword: [],
+        name: "MetLife",
+        btn_cls: "metlife_btn",
+        caroImages: [
+          "../../../assets/images/insurelist-caro/insure-list-img-caro.jpg",
+        ],
+        pricesType: []
+      });
+
+      if (this.fcBundleToggle === true) {
+        this.commonService.setLocalItem('fcInsuranceBundled', this.filteredInsurances);
+      } else {
+        this.commonService.setLocalItem('fcInsuranceUnbundled', this.filteredInsurances);
+      }
+    }, 1500);
+
+    setTimeout(() => {
+      this.showTravellers = true;
+      this.nonApiInsurances.push({
+        static: true,
+        type: 2,
+        price: [],
+        imgURL: this.insuranceImgs[2].slideImg,
+        bgColor: this.bgColor[2],
+        dwelling: [0],
+        liability: 0,
+        contents: 0,
+        waterBackup: 0,
+        deductible: 0,
+        keyword: [],
+        name: "Travelers",
+        btn_cls: "travellers_btn",
+        caroImages: [
+          "../../assets/images/caro-slider-images/Travelers_Good.png",
+        ],
+        pricesType: []
+      });
+      if (this.fcBundleToggle === true) {
+        this.commonService.setLocalItem('fcInsuranceBundled', this.filteredInsurances);
+      } else {
+        this.commonService.setLocalItem('fcInsuranceUnbundled', this.filteredInsurances);
+      }
+    }, 1300)
+
+    setTimeout(() => {
+      this.showProgressive = true;
+      this.nonApiInsurances.push({
+        static: true,
+        type: 5,
+        price: [],
+        imgURL: this.insuranceImgs[5].slideImg,
+        bgColor: this.bgColor[6],
+        //dwelling: this.plymouthData['dwelling'],
+        dwelling: [],
+        liability: 0,
+        contents: 0,
+        waterBackup: 0,
+        deductible: 0,
+        keyword: [],
+        name: "Progressive",
+        btn_cls: "progressive_btn",
+        caroImages: [
+          "../../assets/images/caro-slider-images/Progressive_Good.png",
+        ],
+        pricesType: []
+      });
+    }, 1000);
+  }
+
+  allDataLoaded() {
+    return this.showNationWide && this.showMetlife && this.showTravellers && !this.universalLoader &&
+      !this.plymouthLoader && !this.libertyLoader && !this.progressiveLoader && !this.stillwaterLoader;
+  }
+
+  calcPrices() {
+    const total_data = this.local.get('total_data');
+    let square, estimate;
+
+    if ((typeof total_data['zillow']['square']) == 'string') {
+      square = parseInt(total_data['zillow']['square'].replace(',', ''));
+      estimate = parseInt(total_data['zillow']['estimate'].replace(',', ''));
+    } else {
+      square = total_data['zillow']['square'];
+      estimate = total_data['zillow']['estimate'];
+    }
+    this.dwelling_basic = ((parseInt(square) * 200) + parseInt(estimate)) / 2;
+
+    if (typeof total_data['hippo'] != "undefined" && typeof JSON.parse(total_data['hippo']).coverage_a != "undefined") {
+      this.dwelling = Number(JSON.parse(total_data['hippo']).coverage_a) > 0 ? Number(JSON.parse(total_data['hippo']).coverage_a) : ((parseInt(square) * 200) + parseInt(estimate)) / 2;
+    } else {
+      this.dwelling = ((parseInt(square) * 200) + parseInt(estimate)) / 2;
+    }
+    // console.log("dwelling Price: ", this.dwelling);
+  }
+
+  bindNow() {
+    const uniqueId = this.commonService.getLocalItem('unique_id');
+    const data = { uniqueId };
+    this.apiService.bindNow(data).subscribe(res => {
+      // if (res['result'] == 'success') {
+      this.router.navigate(['/step7']);
+      // }
+    }, (err) => {
+    });
+  }
+
+  /* setModalData(data) {
+    this.modalData = data;
+    this.showModal.emit(true);
+  } */
+
+  /* next(modalData: ModalData) {
+    const total_data = this.commonService.getLocalItem('total_data');
+    let mortgage_data = total_data['mortgage_data'];
+    if (!mortgage_data) mortgage_data = {};
+    mortgage_data['imgURL'] = modalData.imgURL;
+    mortgage_data['price'] = modalData.price;
+    this.commonService.applyTotalData('mortgage_data', mortgage_data);
+    this.router.navigateByUrl('/preparing-policy');
+  } */
+
+
+  goForChat = (data) => {
+
+
+
+
+    console.log('selected plan', data)
+
+    this.modalData = data;
+
+    // const selectedPlan={
+    //   "name": data.name,
+    //   "price":[data.price],
+    //   "dwelling": [data.dwelling],
+    //   "pricesType": [data.pricesType]
+    // }
+
+    let selectedIns = { ...this.filteredInsurances.filter((ins) => ins.name === data.name)[0] }
+    selectedIns.price = [data.price]
+    selectedIns.dwelling = [data.dwelling]
+    selectedIns.pricesType = [data.pricesType]
+    selectedIns.caroImages = [data.img]
+
+    this.commonService.applyTotalData('selected_insurance_data', selectedIns);
+    const total_data = this.commonService.getLocalItem('total_data');
+    let mortgage_data = total_data['mortgage_data'];
+    if (!mortgage_data) {
+      mortgage_data = {};
+    }
+    mortgage_data['imgURL'] = this.modalData.imgURL;
+    mortgage_data['price'] = this.modalData.price;
+    this.commonService.applyTotalData('mortgage_data', mortgage_data);
+
+    var maildata = {
+      personData: this.commonService.getLocalItem('fcUserBasic'),
+      selected_insurance_data: total_data.selected_insurance_data,
+      address: total_data.address_components.formatted_address
+    };
+    this.apiService.sendSelectedBuyMail(maildata).subscribe(
+      (res) => {
+        console.log('API sendSelectedBuyMail', res)
+
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    this.commonService.setLocalItem('toLastStep', true)
+    this.router.navigateByUrl('/preparing-policy');
+
+  }
+
+  getHippoPrice() {
+    let price, hippo;
+    try {
+      hippo = JSON.parse(this.commonService.getLocalItem('total_data').hippo);
+      price = hippo.quote_premium;
+    } catch (e) {
+      price = '';
+    }
+    return price;
+  }
+
+  setInsuranceData(key, value) {
+    const total_data = this.commonService.getLocalItem('total_data');
+    let insurance_data = total_data['insurance_data'];
+    if (!insurance_data) {
+      insurance_data = {};
+    }
+    Object.assign(insurance_data, { [key]: value });
+    Object.assign(total_data, { insurance_data });
+    this.commonService.setLocalItem('total_data', total_data);
+    this.uniqueId = this.commonService.getUniqueID();
+  }
+
+  sortPrices(type) {
+    if (type == 'DESC') {
+      // document.getElementById("price-desc").classList.add("active-order");
+      // document.getElementById("price-asc").classList.remove("active-order");
+      this.filteredInsurances = this.filteredInsurances.sort((a: any, b: any) => b.price - a.price);
+    } else if (type == 'ASC') {
+      // document.getElementById("price-asc").classList.add("active-order");
+      // document.getElementById("price-desc").classList.remove("active-order");
+      this.filteredInsurances = this.filteredInsurances.sort((a: any, b: any) => a.price - b.price);
+    } else {
+      if (this.value_sort_up) {
+        this.filteredInsurances = this.filteredInsurances.sort((a: any, b: any) => a.dwelling - b.dwelling);
+        this.value_sort_up = false;
+      } else {
+        this.filteredInsurances = this.filteredInsurances.sort((a: any, b: any) => b.dwelling - a.dwelling);
+        this.value_sort_up = true;
+      }
+    }
+    // this.OwlElement.reInit();
+    return;
+  }
+
+  doFilter(conditions = {}) {
+    const filters = [];
+    if (conditions.hasOwnProperty('well')) {
+      this.filterConditions = conditions;
+    }
+    if (!this.filterConditions) {
+      return;
+    }
+    Object.keys(this.filterConditions).forEach((condition) => {
+      if (this.filterConditions[condition]) {
+        filters.push(condition);
+      }
+    });
+    this.filteredInsurances = this.insurances.filter((insurance) => insurance.keyword.some(r => filters.includes(r)));
+    // console.log('filteredInsurances', this.filteredInsurances)
+  }
+
+  detailtoggle(type) {
+
+    var x = document.getElementById("insure_arrow_" + type).parentNode;
+    var y = x.parentNode;
+    if ((<Element>y).classList.contains('active-detail')) {
+      (<Element>y).classList.remove("active-detail");
+      let divs = document.getElementsByClassName("item_list");
+      for (let index = 0; index < divs.length; ++index) {
+        if (divs[index].classList.contains('active-detail')) {
+          divs[index].classList.remove("active-detail");
+        }
+      }
+      return;
+    }
+
+    let divs = document.getElementsByClassName("item_list");
+    for (let index = 0; index < divs.length; ++index) {
+      if (divs[index].classList.contains('active-detail')) {
+        divs[index].classList.remove("active-detail");
+      }
+    }
+
+    (<Element>y).classList.add("active-detail");
+  }
+
+  selectedFilter(event) {
+    if (event.target.value === '0') {
+      this.insurances.sort((a: any, b: any) => a.price[0] - b.price[0]);
+      //this.sortPrices('ASC')
+    } else if (event.target.value === '1') {
+      this.insurances.sort((a: any, b: any) => b.price[0] - a.price[0]);
+      //this.sortPrices('DESC')
+    }
+  }
+  insuranceView(view) {
+  }
+}

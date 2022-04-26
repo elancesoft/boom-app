@@ -1,0 +1,227 @@
+@import "../../assets/styles/variables";
+
+.container {
+  padding-bottom: 50px;
+
+  .form-row {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  p {
+    margin-top: 1rem;
+  }
+
+  .building_row {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  form {
+    margin-top: 50px;
+  }
+
+  #yearInput.ng-dirty,
+  #squareInput.ng-dirty,
+  #acInput.ng-dirty,
+  #electricInput.ng-dirty,
+  #plumbingInput.ng-dirty,
+  #roofyearInput.ng-dirty {
+    background-color: $primary-color;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+  }
+
+  #yearInput:focus,
+  #squareInput:focus,
+  #acInput:focus,
+  #electricInput:focus,
+  #plumbingInput:focus,
+  #roofyearInput:focus {
+    box-shadow: none;
+  }
+
+  .constructionDiv mdb-badge,
+  .basementDiv mdb-badge,
+  .roofDiv mdb-badge {
+    border: solid 2px #c8c8c8;
+  }
+  .constructionDiv mdb-badge:hover,
+  .basementDiv mdb-badge:hover,
+  .roofDiv mdb-badge:hover {
+    border: solid 3px $primary-color;
+  }
+
+  label:after {
+    content: "";
+    width: 0px;
+    height: 2px;
+    display: block;
+    background-color: $primary-color;
+    transition: 300ms;
+    color: $primary-color;
+  }
+
+  .form-group:hover {
+    .hover-animation:after {
+      width: 100%;
+    }
+  }
+
+  .building_row:hover {
+    .hover-animation:after {
+      width: 100%;
+    }
+  }
+
+  mdb-badge.badge-warning {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  .title-container {
+    .icon-img {
+      width: 50px;
+      margin-right: 20px;
+    }
+    @media screen and (max-width: 400px) {
+      .icon-img {
+        width: 40px;
+        margin-right: 15px;
+      }
+    }
+  }
+  mdb-badge {
+    .btn-icon {
+      display: block;
+      width: 30px;
+      margin: 0 auto 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  label {
+    font-weight: bold;
+  }
+  .system_year {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    label {
+      margin-bottom: 0.25rem;
+      margin-top: 0.25rem;
+    }
+  }
+  .modal mdb-badge {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 1400px) and (min-width: 990px) {
+  .buildingDiv h5 {
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  .buildingDiv img {
+    max-width: 70px;
+    margin-top: -10px;
+  }
+  .constructionDiv,
+  .basementDiv,
+  .roofDiv {
+    max-width: 50%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .modal-content h5 {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    margin: 0 auto;
+
+    .otherBtnDiv {
+      text-align: center;
+    }
+
+    .otherBtnDiv:last-of-type a {
+      padding-top: 5%;
+    }
+  }
+}
+
+.building_type {
+  border: solid 2px #c8c8c8;
+  border-radius: 10px;
+  padding: 20px 10px;
+  cursor: pointer;
+}
+
+.building_type:hover {
+  border: solid 3px $primary-color;
+}
+
+.homeImage {
+  width: 60%;
+  margin-left: 20%;
+}
+
+.activeHome {
+  border: solid 2px $primary-color;
+}
+
+mdb-badge {
+  padding: 10px;
+  min-width: 100px;
+  background-color: #fff;
+  color: #000;
+  box-shadow: none;
+  border-radius: 10px;
+}
+
+.modal mdb-badge,
+.buildingDiv .building_type {
+  width: 100%;
+  min-height: 50px;
+
+  img {
+    float: left;
+  }
+
+  h5 {
+    margin-top: 10px;
+  }
+}
+
+.btn-red {
+  background-color: $primary-color;
+}
+
+.buildingDiv .building_type {
+  text-align: center;
+}
+
+mdb-badge:hover {
+  cursor: pointer;
+}
+
+.margin10 {
+  margin-top: 10px;
+}
+
+/*comment*/
+.modal {
+  -webkit-overflow-scrolling: auto;
+  overflow-y: auto;
+}
+
+#yearInput,
+#squareInput {
+  height: 50px;
+}

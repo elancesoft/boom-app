@@ -1,0 +1,572 @@
+<app-header [currentUrl]="'step3'"></app-header>
+<!-- new header info -->
+
+<div class="loader animated">
+  <div class="row property_form">
+    <div class="map_area" [ngClass]="currentTab != 'Tab9' ? 'col-md-2' : 'd-none'">
+      <div class="justify-content-center">
+        <mdb-progress value="{{ progress }}" style="height: 15px" min="0" max="100" type="info" aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100"></mdb-progress>
+      </div>
+      <div class="map-container pr-0 pl-0">
+        <agm-map [zoom]="12" [latitude]="lat" [longitude]="lng" [disableDefaultUI]="true" [scaleControl]="false" [draggable]="false">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+        <div class="overlay"></div>
+      </div>
+      <div class="text-left">
+        <p class="property-type font-weight-bold mb-1" [ngClass]="HomeType == 'Primary Home' ? '' : 'd-none'">Primary Residence</p>
+        <p class="property-type font-weight-bold mb-1" [ngClass]="HomeType == 'Second Home' ? '' : 'd-none'">Second Residence</p>
+        <p class="property-type font-weight-bold mb-1" [ngClass]="HomeType == 'Rental Property' ? '' : 'd-none'">Rental Residence</p>
+        <p class="property-type mb-1" [ngClass]="currentTab != 'Tab1' && currentTab != 'Tab2' ? '' : 'd-none'"><span class="font-weight-bold">Built year:</span> {{ built_year }} <br /><span class="font-weight-bold">Square feet:</span> {{ square }}</p>
+        <p class="property-type mb-1" [ngClass]="currentTab != 'Tab1' && currentTab != 'Tab2' && currentTab != 'Tab3' ? '' : 'd-none'"><span class="font-weight-bold">Foundation:</span> {{ foundationType == 1 ? "Basement" : foundationType == 2 ? "Crawl Space" : "Slab" }}</p>
+        <p class="property-type mb-1" [ngClass]="currentTab != 'Tab1' && currentTab != 'Tab2' && currentTab != 'Tab3' && currentTab != 'Tab4' ? '' : 'd-none'"><span class="font-weight-bold">Roof shape:</span> {{ RoofShape }}</p>
+        <p class="property-type mb-1" [ngClass]="currentTab != 'Tab1' && currentTab != 'Tab2' && currentTab != 'Tab3' && currentTab != 'Tab4' && currentTab != 'Tab5' ? '' : 'd-none'"><span class="font-weight-bold">Roof type:</span> {{ RoofType }}</p>
+        <p class="property-type mb-1" [ngClass]="(currentTab == 'Tab6' || currentTab == 'Tab7' || currentTab == 'Tab8') && roof_year != '' ? '' : 'd-none'"><span class="font-weight-bold">Roof year:</span> {{ roof_year }}</p>
+        <p class="property-type mb-1" [ngClass]="(currentTab == 'Tab6' || currentTab == 'Tab7' || currentTab == 'Tab8') && electric_year != '' ? '' : 'd-none'"><span class="font-weight-bold">Electric year:</span> {{ electric_year }}</p>
+        <p class="property-type mb-1" [ngClass]="(currentTab == 'Tab6' || currentTab == 'Tab7' || currentTab == 'Tab8') && plumbing_year != '' ? '' : 'd-none'"><span class="font-weight-bold">Plumbing year:</span> {{ plumbing_year }}</p>
+        <p class="property-type mb-1" [ngClass]="(currentTab == 'Tab6' || currentTab == 'Tab7' || currentTab == 'Tab8') && ac_year != '' ? '' : 'd-none'"><span class="font-weight-bold">AC year:</span> {{ ac_year }}</p>
+        <!-- ExteriorType -->
+        <p class="property-type" [ngClass]="(currentTab == 'Tab7' || currentTab == 'Tab8') && exterior_type == 1 ? '' : 'd-none'"><span class="font-weight-bold">Exterior:</span> Aluminum Siding</p>
+        <p class="property-type" [ngClass]="(currentTab == 'Tab7' || currentTab == 'Tab8') && exterior_type == 2 ? '' : 'd-none'"><span class="font-weight-bold">Exterior: </span> Brick Veneer</p>
+        <p class="property-type" [ngClass]="(currentTab == 'Tab7' || currentTab == 'Tab8') && exterior_type == 3 ? '' : 'd-none'"><span class="font-weight-bold">Exterior: </span> Brick</p>
+        <p class="property-type" [ngClass]="(currentTab == 'Tab7' || currentTab == 'Tab8') && exterior_type == 4 ? '' : 'd-none'"><span class="font-weight-bold">Exterior: </span> Concrete</p>
+        <p class="property-type" [ngClass]="(currentTab == 'Tab7' || currentTab == 'Tab8') && exterior_type == 5 ? '' : 'd-none'"><span class="font-weight-bold">Exterior: </span> Hardiplank</p>
+        <p class="property-type" [ngClass]="(currentTab == 'Tab7' || currentTab == 'Tab8') && exterior_type == 6 ? '' : 'd-none'"><span class="font-weight-bold">Exterior: </span> Stone Veneer</p>
+        <p class="property-type" [ngClass]="(currentTab == 'Tab7' || currentTab == 'Tab8') && exterior_type == 7 ? '' : 'd-none'"><span class="font-weight-bold">Exterior: </span> Stone</p>
+        <p class="property-type" [ngClass]="(currentTab == 'Tab7' || currentTab == 'Tab8') && exterior_type == 8 ? '' : 'd-none'"><span class="font-weight-bold">Exterior: </span> Stucco Siding</p>
+        <p class="property-type" [ngClass]="(currentTab == 'Tab7' || currentTab == 'Tab8') && exterior_type == 9 ? '' : 'd-none'"><span class="font-weight-bold">Exterior: </span> Vinyl Siding</p>
+        <p class="property-type" [ngClass]="(currentTab == 'Tab7' || currentTab == 'Tab8') && exterior_type == 10 ? '' : 'd-none'"><span class="font-weight-bold">Exterior: </span> Wood Siding</p>
+      </div>
+    </div>
+    <div [ngClass]="currentTab != 'Tab9' ? 'col-md-10 main_property' : 'col-md-12'">
+      <div class="text-center mt-0 mb-3" id="inputData">
+        <div class="">
+          <!-- <div [ngClass]="currentTab == 'Tab5' ? 'container-fluid' : 'container-fluid'"> -->
+          <!--Tab1 content -->
+          <div *ngIf="currentTab === 'Tab1'" class="tab-1 slideInRight_custom animated">
+            <h1 class="font-28 ml-3 text-left mb-4">What type of function does your property have?</h1>
+            <p class="out-of-seven d-block d-md-none mb-0">2 of 8</p>
+            <div class="row my-2 property_typ">
+              <!-- Default input -->
+              <div class="col-lg-3 col-md-4 constructionDiv mb-3">
+                <mdb-badge [white]="HomeType != 'Primary Home'" [default]="HomeType == 'Primary Home'" (click)="setKeyValue('HomeType', 'Primary Home')">
+                  <div class="text-dark">
+                    <img src="../../assets/images/tabbingimages/primaryhome.svg" class="btn-icon" alt="" />
+                    <p class="mt-3">Primary Home</p>
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 constructionDiv mb-3">
+                <mdb-badge [white]="HomeType != 'Second Home'" [default]="HomeType == 'Second Home'" (click)="setKeyValue('HomeType', 'Second Home')">
+                  <div class="text-dark">
+                    <img src="../../assets/images/tabbingimages/secondhome.svg" class="btn-icon" alt="" />
+                    <p class="mt-3">Second Home</p>
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 constructionDiv mb-3">
+                <mdb-badge [white]="HomeType != 'Rental Property'" [default]="HomeType == 'Rental Property'" (click)="setKeyValue('HomeType', 'Rental Property')">
+                  <div class="text-dark">
+                    <img src="../../assets/images/tabbingimages/rental_property.svg" class="btn-icon" alt="" />
+                    <p class="mt-3">Rental Property</p>
+                  </div>
+                </mdb-badge>
+              </div>
+            </div>
+          </div>
+          <!-- Tab2 content -->
+          <div *ngIf="currentTab === 'Tab2'" class="tab-2 slideInRight_custom_1 animated">
+            <h1 class="ml-3 text-left mb-4 d-block d-md-none">
+              Is the following information <br />
+              correct?
+            </h1>
+            <h1 class="font-28 ml-3 text-left mb-4 d-none d-md-block">What type of function does your property have?</h1>
+            <p class="out-of-seven d-block d-md-none mb-0">3 of 8</p>
+            <div class="row mt-4">
+              <div class="col-lg-7 col-md-12 mt-0 mt-md-3 hide-zillow-update" id="zillow-data-section">
+                <div class="property_data">
+                  <div class="form-group mb-4">
+                    <h5>Square feet</h5>
+                    <p class="sqft-text sq_feet_blue_text" *ngIf="update_zillow == false">{{ square }}</p>
+                    <input mdbInput type="number" class="form-control zillow-data-input" [(ngModel)]="square" [ngModelOptions]="{ standalone: true }" id="squareInput" *ngIf="update_zillow" />
+                  </div>
+                  <div class="form-group mb-0 mt-4 mt-md-0">
+                    <h5>Year</h5>
+                    <p class="built-year-text sq_feet_blue_text" *ngIf="update_zillow == false">{{ built_year }}</p>
+                    <input mdbInput type="number" [(ngModel)]="built_year" class="form-control zillow-data-input" [ngModelOptions]="{ standalone: true }" id="yearInput" *ngIf="update_zillow" />
+                  </div>
+                </div>
+                <div>
+                  <span (click)="zillowEdit($event)" id="edit_zillow_btn"
+                    >edit <span><i class="fa fa-edit"></i></span
+                  ></span>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-primary cont_btn" (click)="setZillowData()">
+                    continue <span><i class="fa fa-arrow-right"></i></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Tab3 content -->
+          <div *ngIf="currentTab === 'Tab3'" class="tab-3 slideInRight_custom animated">
+            <h1 class="font-28 ml-3 text-left mb-4">What type of foundation does your property have?</h1>
+
+            <p class="out-of-seven d-block d-md-none mb-0">4 of 8</p>
+            <div class="row my-3 property_typ">
+              <!-- Default input -->
+              <div class="col-lg-3 col-md-4 constructionDiv mb-3">
+                <mdb-badge [white]="foundationType != 3" [default]="foundationType == 3" (click)="setKeyValue('foundationType', 3)">
+                  <div class="text-dark">
+                    <img src="../../assets/images/tabbingimages/homeonslab.png" class="btn-icon" alt="" />
+                    <p>Home on slab</p>
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 constructionDiv mb-3">
+                <mdb-badge [white]="foundationType != 2" [default]="foundationType == 2" (click)="setKeyValue('foundationType', 2)">
+                  <div class="text-dark">
+                    <img src="../../assets/images/tabbingimages/home_on_crawl_space.png" class="btn-icon" alt="" />
+                    <p>
+                      Home on <br />
+                      Crawl Space
+                    </p>
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 constructionDiv mb-3">
+                <mdb-badge [white]="foundationType != 1" [default]="foundationType == 1" (click)="setKeyValue('foundationType', 1)">
+                  <div class="text-dark">
+                    <img src="../../assets/images/tabbingimages/home_with_basement.png" class="btn-icon" alt="" />
+                    <p>
+                      Home With <br />
+                      Basement
+                    </p>
+                  </div>
+                </mdb-badge>
+              </div>
+            </div>
+          </div>
+          <!-- Tab4 content -->
+          <div *ngIf="currentTab === 'Tab4'" class="tab-4 slideInRight_custom animated">
+            <h1 class="font-28 ml-4 text-left mb-4">What type of roof do you have ?</h1>
+            <p class="out-of-seven pl-4 d-block d-md-none mb-0">5 of 8</p>
+
+            <div class="row my-3 px-2 px-md-0 property_typ roof_type_div">
+              <!-- Default input -->
+              <div class="col-xl-4 col-lg-3 col-md-4 col-12 constructionDiv mb-3">
+                <mdb-badge [white]="RoofShape != 'Peaked'" [default]="RoofShape == 'Peaked'" (click)="setKeyValue('RoofShape', 'Peaked')">
+                  <div class="text-dark">
+                    <img src="../../assets/images/tabbingimages/roof_shape_peaked.png" class="btn-icon" alt="" />
+                    <p>Peaked</p>
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-xl-4 col-lg-3 col-md-4 col-12 constructionDiv mb-3">
+                <mdb-badge [white]="RoofShape != 'Flat'" [default]="RoofShape == 'Flat'" (click)="setKeyValue('RoofShape', 'Flat')">
+                  <div class="text-dark">
+                    <img src="../../assets/images/tabbingimages/roof_type_flat.png" class="btn-icon" alt="" />
+                    <p>Flat</p>
+                  </div>
+                </mdb-badge>
+              </div>
+            </div>
+          </div>
+          <!-- Tab5 content -->
+          <div *ngIf="currentTab === 'Tab5'" class="tab-5 slideInRight_custom animated">
+            <h1 class="font-28 ml-3 text-left mb-4">Have any of your major systems had recent updates?</h1>
+            <p class="out-of-seven d-block d-md-none mb-0">6 of 8</p>
+
+            <div class="row my-3 property_typ">
+              <!-- Default input -->
+              <div class="col-lg-3 col-md-4 constructionDiv mb-3" *ngFor="let item of sliderCards">
+                <mdb-badge class="roof_select" [white]="RoofType != item.title" [default]="RoofType == item.title" (click)="setKeyValue('RoofType', item.title)">
+                  <div class="text-dark">
+                    <p class="tab5_title">{{ item.title }}</p>
+                    <img src="{{ item.img }}" class="btn-icon roof_typ" alt="" />
+                  </div>
+                </mdb-badge>
+              </div>
+            </div>
+          </div>
+          <!-- Tab6 contents -->
+          <div *ngIf="currentTab == 'Tab6'" class="tab-6 col slideInRight_custom animated">
+            <h1 class="font-28 ml-3 text-left mb-4">When was the last time your systems<br />were either upgraded or repaired?</h1>
+            <p class="out-of-seven d-block d-md-none mb-0">7 of 8</p>
+            <div class="form-row mt-3">
+              <div class="form-group col-lg-3 col-md-6 col-6 tab6_lbl align-self-center">
+                <label>roof</label>
+              </div>
+              <div class="form-group col-lg-8 col-md-6 select_no_grp col-6">
+                <select class="form-control recent_update_select" id="roofyearInput" (change)="setblur($event, 'roof_year')" [(ngModel)]="roof_year" [ngModelOptions]="{ standalone: true }" placeholder="select">
+                  <option value="" selected>Select</option>
+                  <option *ngFor="let item of roofTypeValues; index as i" value="{{ item.value }}">{{ item.label }}</option>
+                </select>
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <!-- <button class="btn no_btn">No</button> -->
+              </div>
+            </div>
+            <div class="form-row">
+              <!-- Default input --
+                       <div class="form-group col-md-12">
+                         <div>
+                           <label>please let us know what year your systems are from&nbsp;<span class="text-default">*</span></label>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
+                             <label>roof</label>
+                             <select class="form-control" id="roofyearInput" (change)="setblur($event, 'roof_year')" [(ngModel)]="roof_year" [ngModelOptions]="{ standalone: true }">
+                               <option *ngFor="let item of roofTypeValues; index as i" value="{{item.value}}">{{item.label}}</option>
+                             </select>
+                           </div>
+                           <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
+                             <label>plumbing</label>
+                             <select class="form-control" id="plumbingInput" (change)="setblur($event, 'plumbing_year')" [(ngModel)]="plumbing_year" [ngModelOptions]="{ standalone: true }">
+                               <option *ngFor="let item of roofTypeValues; index as i" value="{{item.value}}">{{item.label}}</option>
+                             </select>
+                           </div>
+                           <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
+                             <label>A/C</label>
+                             <select class="form-control" id="acInput" (change)="setblur($event, 'ac_year')" [(ngModel)]="ac_year" [ngModelOptions]="{ standalone: true }">
+                               <option *ngFor="let item of roofTypeValues; index as i" value="{{item.value}}">{{item.label}}</option>
+                             </select>
+                           </div>
+                           <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
+                             <label>Electric</label>
+                             <select class="form-control" id="electricInput" (change)="setblur($event, 'electric_year')"  [(ngModel)]="electric_year" [ngModelOptions]="{ standalone: true }" >
+                               <option *ngFor="let item of roofTypeValues; index as i" value={{item.value}}>{{item.label}}</option>
+                             </select>
+                           </div>
+                         </div>
+                       </div-->
+              <div class="form-group col-lg-3 col-md-6 col-6 tab6_lbl align-self-center">
+                <label>eletrical system</label>
+              </div>
+              <div class="form-group col-lg-8 col-md-6 select_no_grp col-6">
+                <select class="form-control recent_update_select" id="electricInput" (change)="setblur($event, 'electric_year')" [(ngModel)]="electric_year" [ngModelOptions]="{ standalone: true }">
+                  <option value="" selected>Select</option>
+                  <option *ngFor="let item of roofTypeValues; index as i" value="{{ item.value }}">{{ item.label }}</option>
+                </select>
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <!-- <button class="btn no_btn">No</button> -->
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-lg-3 col-md-6 col-6 tab6_lbl align-self-center">
+                <label>plumbing system</label>
+              </div>
+              <div class="form-group col-lg-8 col-md-6 select_no_grp col-6">
+                <select class="form-control recent_update_select" id="plumbingInput" (change)="setblur($event, 'plumbing_year')" [(ngModel)]="plumbing_year" [ngModelOptions]="{ standalone: true }">
+                  <option value="" selected>Select</option>
+                  <option *ngFor="let item of roofTypeValues; index as i" value="{{ item.value }}">{{ item.label }}</option>
+                </select>
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <!-- <button class="btn no_btn">No</button> -->
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-lg-3 col-md-6 col-6 tab6_lbl align-self-center">
+                <label>A/C system</label>
+              </div>
+              <div class="form-group col-lg-8 col-md-6 select_no_grp col-6">
+                <select class="form-control recent_update_select" id="acInput" (change)="setblur($event, 'ac_year')" [(ngModel)]="ac_year" [ngModelOptions]="{ standalone: true }">
+                  <option value="" selected>Select</option>
+                  <option *ngFor="let item of roofTypeValues; index as i" value="{{ item.value }}">{{ item.label }}</option>
+                </select>
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <!-- <button class="btn no_btn">No</button> -->
+              </div>
+            </div>
+          </div>
+          <!-- Tab7 content -->
+          <div *ngIf="currentTab == 'Tab7'" class="tab-7 slideInRight_custom animated">
+            <h1 class="font-28 ml-3 text-left mb-4">What type of exterior do you have ?</h1>
+
+            <p class="out-of-seven d-block d-md-none mb-0">8 of 8</p>
+            <div class="row my-3 property_typ">
+              <!-- Default input -->
+
+              <div class="col-lg-3 col-md-4 col-4 constructionDiv mb-3 exterior_div">
+                <mdb-badge [white]="exterior_type != 1" [default]="exterior_type == 1" (click)="setKeyExteriorType('exterior_type', 1)" class="roof_select">
+                  <div class="text-dark">
+                    <p class="tab5_title">Aluminum Siding</p>
+                    <img src="../../assets/images/exteriors/aluminum%20siding.png" class="btn-icon roof_typ mt-2" alt="" />
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 col-4 constructionDiv mb-3 exterior_div">
+                <mdb-badge [white]="exterior_type != 2" [default]="exterior_type == 2" (click)="setKeyExteriorType('exterior_type', 2)" class="roof_select">
+                  <div class="text-dark">
+                    <p class="tab5_title">Brick Veneer</p>
+                    <img src="../../assets/images/exteriors/brick-veneer.png" class="btn-icon roof_typ mt-2" alt="" />
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 col-4 constructionDiv mb-3 exterior_div">
+                <mdb-badge [white]="exterior_type != 3" [default]="exterior_type == 3" (click)="setKeyExteriorType('exterior_type', 3)" class="roof_select">
+                  <div class="text-dark">
+                    <p class="tab5_title">Brick</p>
+                    <img src="../../assets/images/exteriors/brick.png" class="btn-icon roof_typ mt-2" alt="" />
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 col-4 constructionDiv mb-3 exterior_div">
+                <mdb-badge [white]="exterior_type != 4" [default]="exterior_type == 4" (click)="setKeyExteriorType('exterior_type', 4)" class="roof_select">
+                  <div class="text-dark">
+                    <p class="tab5_title">Concrete</p>
+                    <img src="../../assets/images/exteriors/concrete.png" class="btn-icon roof_typ mt-2" alt="" />
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 col-4 constructionDiv mb-3 exterior_div">
+                <mdb-badge [white]="exterior_type != 5" [default]="exterior_type == 5" (click)="setKeyExteriorType('exterior_type', 5)" class="roof_select">
+                  <div class="text-dark">
+                    <p class="tab5_title">Hardiplank</p>
+                    <img src="../../assets/images/exteriors/hardiplank.png" class="btn-icon roof_typ mt-2" alt="" />
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 col-4 constructionDiv mb-3 exterior_div">
+                <mdb-badge [white]="exterior_type != 6" [default]="exterior_type == 6" (click)="setKeyExteriorType('exterior_type', 6)" class="roof_select">
+                  <div class="text-dark">
+                    <p class="tab5_title">Stone Veneer</p>
+                    <img src="../../assets/images/exteriors/stone%20veneer.png" class="btn-icon roof_typ mt-2" alt="" />
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 col-4 constructionDiv mb-3 exterior_div">
+                <mdb-badge [white]="exterior_type != 7" [default]="exterior_type == 7" (click)="setKeyExteriorType('exterior_type', 7)" class="roof_select">
+                  <div class="text-dark">
+                    <p class="tab5_title">Stone</p>
+                    <img src="../../assets/images/exteriors/stone.png" class="btn-icon roof_typ mt-2" alt="" />
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 col-4 constructionDiv mb-3 exterior_div">
+                <mdb-badge [white]="exterior_type != 8" [default]="exterior_type == 8" (click)="setKeyExteriorType('exterior_type', 8)" class="roof_select">
+                  <div class="text-dark">
+                    <p class="tab5_title">Stucco Siding</p>
+                    <img src="../../assets/images/exteriors/stucco%20siding.png" class="btn-icon roof_typ mt-2" alt="" />
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 col-4 constructionDiv mb-3 exterior_div">
+                <mdb-badge [white]="exterior_type != 9" [default]="exterior_type == 9" (click)="setKeyExteriorType('exterior_type', 9)" class="roof_select">
+                  <div class="text-dark">
+                    <p class="tab5_title">Vinyl Siding</p>
+                    <img src="../../assets/images/exteriors/vinyl%20siding.png" class="btn-icon roof_typ mt-2" alt="" />
+                  </div>
+                </mdb-badge>
+              </div>
+              <div class="col-lg-3 col-md-4 col-4 constructionDiv mb-3 exterior_div">
+                <mdb-badge [white]="exterior_type != 10" [default]="exterior_type == 10" (click)="setKeyExteriorType('exterior_type', 10)" class="roof_select">
+                  <div class="text-dark">
+                    <p class="tab5_title">Wood Siding</p>
+                    <img src="../../assets/images/exteriors/wood%20siding.png" class="btn-icon roof_typ mt-2" alt="" />
+                  </div>
+                </mdb-badge>
+              </div>
+            </div>
+          </div>
+          <!-- Tab8 content -->
+          <div *ngIf="currentTab == 'Tab8'" class="tab-8 tab-24 slideInRight_custom animated">
+            <!-- <h1 class="font-28 ml-3 text-left mb-4">Please enter your contact info. <br />This is the last page before quotes!</h1> -->
+
+            <form class="add-relations-form" [formGroup]="userForm">
+              <div class="row justify-content-md-center">
+                <div class="col-md-4 col-6 pr-1">
+                  <input class="form-control mt-1" type="text" style="border: 1px solid #ced4da" formControlName="firstName" mdbInput mdbValidate placeholder="First Name" />
+                </div>
+                <div class="col-md-4 col-6 pl-1">
+                  <input class="form-control mt-1" type="text" style="border: 1px solid #ced4da" formControlName="lastName" mdbInput mdbValidate placeholder="Last Name" />
+                </div>
+                <div class="col-md-4 col-6 form-group mt-3 mt-md-0 pr-1">
+                  <!-- <input class="form-control mt-1 d-flex align-items-center justify-content-start" id="dobuser" formControlName="dob" mdbInput type="date" mdbValidate placeholder="" />
+                  <label for="dobuser" class="fa fa-calendar" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); margin-right: 33px; margin-top: 1px; z-index: 0"></label>
+                 -->
+                  <mat-form-field appearance="fill" class="customInputDate">
+                    <input matInput #input [matDatepicker]="picker1" id="dobuser" formControlName="dob" mdbInput min="1" mdbValidate class="form-control" placeholder="mm/dd/yyyy" (click)="picker1.open()" >
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1 (closed)="input.blur()"></mat-datepicker>
+                  </mat-form-field>
+                
+                
+                </div>
+                <!-- <div class="col-md-4">
+                  <input class="form-control mt-1" type="email" style="border: 1px solid #ced4da" formControlName="email" mdbInput mdbValidate placeholder="Email" />
+                </div>
+                <div class="col-md-4">
+                  <input class="form-control mt-1" type="number" style="border: 1px solid #ced4da" formControlName="phone" mdbInput mdbValidate placeholder="Phone" />
+                </div> -->
+              </div>
+
+              <ng-container formArrayName="relations">
+                <h5 class="my-4 text-left">Add Household Member:</h5>
+                <ng-container *ngFor="let relationGroupForm of relations.controls; let i = index">
+                  <div class="row mt-2" [formGroup]="relationGroupForm">
+                    <div class="col-md-3 col-6 pr-1">
+                      <input class="form-control" formControlName="firstName" mdbInput mdbValidate placeholder="First Name" />
+                    </div>
+                    <div class="col-md-3 col-6 pl-1">
+                      <input class="form-control" formControlName="lastName" mdbInput mdbValidate placeholder="Last Name" />
+                    </div>
+                    <div class="col-md-3 col-6 pr-1 form-group mt-3 mt-md-0">
+                      <!-- <input class="form-control d-flex align-items-center justify-content-start" id="dobUser2" type="date" formControlName="dob" mdbInput mdbValidate /> -->
+                     
+                      <mat-form-field appearance="fill" class="customInputDate">
+                        <input matInput #input [matDatepicker]="picker1" id="dobUser2" formControlName="dob" mdbInput  mdbValidate class="form-control" placeholder="mm/dd/yyyy" (click)="picker1.open()" >
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1 (closed)="input.blur()"></mat-datepicker>
+                      </mat-form-field>
+                     
+                     
+                      <!-- <label for="dobUser2" class="fa fa-calendar" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); margin-right: 33px; margin-top: -2px; z-index: 0"></label> -->
+                    </div>
+                    <div class="col-md-3 col-6 d-flex pl-1 mt-3 mt-md-0">
+                      <select class="form-control" formControlName="relation" mdbInput mdbValidate>
+                        <option value="">Relation</option>
+                        <option value="Spouse">Spouse</option>
+                        <option value="Daughter">Daughter</option>
+                        <option value="Son">Son</option>
+                        <option value="Mother">Mother</option>
+                        <option value="Father">Father</option>
+                        <option value="Brother">Brother</option>
+                        <option value="Sister">Sister</option>
+                        <option value="Other">Other</option>
+                      </select>
+
+                      <button class="btn btn-sm btn-danger r-2" style="font-size: 20px; height: 57px" (click)="deleteRelation(i)">x</button>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <button class="btn mt-2 mb-3 __add_btn_" (click)="addRelation()" type="button"><span aria-hidden="true">Add +</span></button>
+              <div class="row justify-content-center">
+                <div *ngIf="fcShowTermsAndConditions; then privacyModal; else mailFunction">here is ignored</div>
+                <ng-template #privacyModal>
+                  <button type="button" class="btn btn-light continue-next" (click)="open(privacyContent)" [disabled]="userForm.invalid" [ngClass]="userForm.invalid ? 'invaliddata' : 'validdata'">Get Quotes</button>
+                </ng-template>
+                <ng-template #mailFunction>
+                  <button type="button" class="btn btn-light continue-next" (click)="sendMail(userForm)" [disabled]="userForm.invalid" [ngClass]="userForm.invalid ? 'invaliddata' : 'validdata'">Get Quotes</button>
+                </ng-template>
+              </div>
+            </form>
+          </div>
+
+          <!-- Tab9 content -->
+          <div *ngIf="currentTab == 'Tab9'" class="slideInRight animated">
+            <app-step-six></app-step-six>
+          </div>
+        </div>
+      </div>
+      <!--div class="col-1 align-self-center float-right nav-arrow" (click)="moveTab(true)" *ngIf="!commonService.isMobileMode() && currentTab !== 'Tab5'">
+           <img src="../../assets/images/icons/right_arrow.png" class="arrow_icon right" alt="" />
+           </div-->
+    </div>
+  </div>
+</div>
+<ng-template #carousel>
+  <div class="carousel row">
+    <!-- <button class="control prev" (click)="slide(true)">
+        <span class="arrow left"></span>
+        </button> -->
+    <div class="col-12 carousel-items exteriorDiv">
+      <owl-carousel [options]="homeSlider" [carouselClasses]="['owl-theme roof_type_item']">
+        <ng-container class="mx-2 my-3 exteriorDiv" *ngFor="let card of sliderCards; let i = index">
+          <mdb-badge class="mx-2 mx-md-0 item" [white]="roof_type != i + 1" [default]="roof_type == i + 1" (click)="setKeyBasement('roof_type', i + 1)">
+            <div class="text-dark">
+              {{ card.title }}
+              <img [src]="card.img" class="btn-icon mt-2" alt="" />
+            </div>
+          </mdb-badge>
+        </ng-container>
+      </owl-carousel>
+    </div>
+    <!-- <button class="control next" (click)="slide(false)">
+        <span class="arrow right"></span>
+        </button> -->
+  </div>
+</ng-template>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="text-center p-3" id="price_div">
+        <div class="price_break range_modal" style="width: 637px">
+          <div class="">
+            <button class="btn w-100 mx-0 d-flex justify-content-center m-auto" (click)="refresh()">RESTART <i class="fa fa-refresh pl-4" aria-hidden="true"></i></button>
+          </div>
+          <h5 class="d-flex mt-4 pl-2 align-items-center">
+            <img src="/assets/images/icons/year-sq.png" class="customIcon" /><span class="font-weight-bold">{{ builtyear }} year built</span>
+          </h5>
+          <h5 class="d-flex pl-2 align-items-center">
+            <img src="/assets/images/icons/year-sq.png" class="customIcon" /><span class="font-weight-bold">{{ square }} sq ft</span>
+          </h5>
+          <h5 class="d-flex pl-2 align-items-center">
+            <img src="/assets/images/icons/year-sq.png" class="customIcon" /><span class="font-weight-bold">${{ estimate }}</span>
+          </h5>
+          <h5 class="text-left pl-2 pt-3 font-weight-bold">Flood zone: {{ neptuneFlood }}</h5>
+
+          <p class="text-left pl-2 pt-4 pb-3" style="font-weight: bold"><strong>Value Spectrum:</strong></p>
+
+          <ng5-slider [(value)]="spectrum_val" [options]="modal_range_picker" class="spectrum_modal_range"></ng5-slider>
+
+          <div class="pt-5">
+            <button class="btn w-100 mx-0 d-flex justify-content-center m-auto" data-dismiss="modal" (click)="popupStatus = 0">Close <span class="pl-4">X</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#privacyModal">
+  Launch demo modal
+</button> -->
+
+<!--
+<div class="modal fade show" modal="true" style="display: block;" id="privacyModal" tabindex="-1" role="dialog" aria-labelledby="privacyModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="privacyModalTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<ng-template #privacyContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Terms and Conditions</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <strong>Our Privacy Policy</strong>
+    <p>Every website needs a Terms and Conditions. Even if your website is not for your business or any commercial structure, you will be better off with a Terms and Conditions agreemnent. All websites are advised to have their own agreements for their own protection.</p>
+
+    <p>
+      We will help you by providing this FREE terms and conditions generator. Fill in the blank fields below, and we will email you your personalized terms and conditions just for you and your business. The accuracy of the generated document on this website is not legally binding. Use at your own
+      risk.
+    </p>
+
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" [(ngModel)]="fcPrivacyCheck" id="exampleCheck1" />
+      <label class="form-check-label" for="exampleCheck1">I agree</label>
+    </div>
+    <button type="button" class="btn btn-outline-dark mt-1" [disabled]="!fcPrivacyCheck" (click)="sendMail(userForm)">Proceed</button>
+  </div>
+</ng-template>

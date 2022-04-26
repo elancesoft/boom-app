@@ -1,0 +1,94 @@
+<div class="container col-md-10 offset-md-1 col-lg-6 offset-lg-3">
+  <form>
+    <div class="col-md-8">
+      <!-- Grid row -->
+      <h3 class="exterior_title">exterior:</h3>
+    </div>
+    <div class="col-md-12">
+      <!-- Grid row -->
+      <div class="form-row exterior_row">
+        <!-- Default input -->
+
+        <label>What type of exterior do you have&nbsp;<span class="text-danger">*</span></label>
+        <div class="row col-md-10 exteriorDiv">
+          <div class="col-xl-6 col-sm-6 margin10">
+            <mdb-badge [default]="exteriorType!=1" [warning]="exteriorType==1" (click)="goToExteriorStep(1)">
+              <img src="../../assets/images/exteriors/aluminum%20siding.png" width="50" />
+              <h5>Aluminum Siding</h5>
+            </mdb-badge>
+          </div>
+          <div class="col-xl-6 col-sm-6 margin10">
+            <mdb-badge [default]="exteriorType!=2" [warning]="exteriorType==2" (click)="goToExteriorStep(2)">
+              <img src="../../assets/images/exteriors/brick-veneer.png" width="50" />
+              <h5>Brick Veneer</h5>
+            </mdb-badge>
+          </div>
+          <div class="col-xl-6 col-sm-6 margin10">
+            <mdb-badge [default]="exteriorType!=3" [warning]="exteriorType==3" (click)="goToExteriorStep(3)">
+              <img src="../../assets/images/exteriors/brick.png" width="50" />
+              <h5>Brick</h5>
+            </mdb-badge>
+          </div>
+          <div class="col-xl-6 col-sm-6 margin10">
+            <mdb-badge [default]="exteriorType!=4" [warning]="exteriorType==4" (click)="goToExteriorStep(4)">
+              <img src="../../assets/images/exteriors/concrete.png" width="50" />
+              <h5>Concrete</h5>
+            </mdb-badge>
+          </div>
+          <div class="col-xl-6 col-sm-6 margin10">
+            <mdb-badge [default]="exteriorType!=5" [warning]="exteriorType==5" (click)="goToExteriorStep(5)"><img
+              src="../../assets/images/exteriors/hardiplank.png" width="50" />
+              <h5>Hardiplank</h5>
+            </mdb-badge>
+          </div>
+          <div class="col-xl-6 col-sm-6 margin10">
+            <mdb-badge [default]="exteriorType!=6" [warning]="exteriorType==6" (click)="goToExteriorStep(6)"><img
+              src="../../assets/images/exteriors/stone%20veneer.png" width="50" />
+              <h5>Stone Veneer</h5>
+            </mdb-badge>
+          </div>
+          <div class="col-xl-6 col-sm-6 margin10">
+            <mdb-badge [default]="exteriorType!=7" [warning]="exteriorType==7" (click)="goToExteriorStep(7)"><img
+              src="../../assets/images/exteriors/stone.png" width="50" />
+              <h5>Stone</h5>
+            </mdb-badge>
+          </div>
+          <div class="col-xl-6 col-sm-6 margin10">
+            <mdb-badge [default]="exteriorType!=8" [warning]="exteriorType==8" (click)="goToExteriorStep(8)"><img
+              src="../../assets/images/exteriors/stucco%20siding.png" width="50" />
+              <h5>Stucco Siding</h5>
+            </mdb-badge>
+          </div>
+          <div class="col-xl-6 col-sm-6 margin10">
+            <mdb-badge [default]="exteriorType!=9" [warning]="exteriorType==9" (click)="goToExteriorStep(9)"><img
+              src="../../assets/images/exteriors/vinyl%20siding.png" width="50" />
+              <h5>Vinyl Siding</h5>
+            </mdb-badge>
+          </div>
+          <div class="col-xl-6 col-sm-6 margin10">
+            <mdb-badge [default]="exteriorType!=10" [warning]="exteriorType==10" (click)="goToExteriorStep(10)"><img
+              src="../../assets/images/exteriors/wood%20siding.png" width="50" />
+              <h5>Wood Siding</h5>
+            </mdb-badge>
+          </div>
+          <div class="col-xl-6 col-sm-6 margin10">
+            <mdb-badge [default]="exteriorType!=0" [warning]="exteriorType==0" (click)="goToExteriorStep(0)">
+              <h5 class="font-weight-bolder">Other</h5>
+            </mdb-badge>
+          </div>
+        </div>
+        <!--<div class="col-md-2 col-sm-6 col-6 margin10 otherBtnDiv">-->
+        <!--<a href="javascript:void(0)" class="mt-3" [ngStyle]="exteriorType>4?{'font-weight':'900'}:{}" data-toggle="modal"-->
+        <!--data-target="#additionalexterior"-->
+        <!--(click)="exteriorModal.show()">Other</a>-->
+        <!--</div>-->
+      </div>
+      <!-- Grid row -->
+      <div class="form-row buttonRow">
+        <button type="button" mdbBtn class="btn-md mx-auto btn-red col-md-4 offset-md-2"
+                (click)="goToExteriorStep('')">Next
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

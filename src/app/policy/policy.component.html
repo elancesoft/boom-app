@@ -1,0 +1,356 @@
+<div class="container">
+  <div class="col-md-8 offset-md-2 loader" *ngIf="loading">
+    <h2 class="col-md-6 col-12 col-form-label-lg text text-warning font-weight-bolder h2-responsive loadingTitle">
+      <strong>Issuing policy...</strong>
+    </h2>
+    <div class="form-group col-md-8">
+      <h1
+        class="col-md-12 col-12 col-form-label-lg text text-warning font-weight-bolder text-right loadingNumber h1-responsive">
+        <strong *ngIf="progress<100">{{progress + "%"}}</strong>
+        <strong *ngIf="progress>100">Processing</strong>
+      </h1>
+    </div>
+    <div class="form-group col-md-12">
+      <h3
+        class="col-md-12 col-12 col-form-label-lg text text-danger text-center font-weight-bolder text-right loadingNumber h3-responsive">
+        <strong>Customer Service</strong>
+      </h3>
+      <h3
+        class="col-md-12 col-12 col-form-label-lg text text-info text-center font-weight-bolder text-right loadingNumber h3-responsive">
+        <strong>1-800-903-3232</strong>
+      </h3>
+    </div>
+  </div>
+
+  <div class="p-5 policyPage" *ngIf="!loading">
+    <div class="row">
+      <div class="col-md-12" style="margin-bottom: 32px;">
+        <img src="../../assets/images/logo.png" id="topImage"
+             class="col-md-4 col-lg-2 offset-lg-5 img-responsive offset-md-4 col-6 offset-3">
+        <br>
+        <br>
+        <br>
+        <div class="col-md-8 row offset-md-2">
+          <div class="col-md-6 text-center col-6">
+            <span class="text text-center font-weight-bolder"><strong>1. Policy info</strong></span>
+          </div>
+          <div class="col-md-6 text-center col-6">
+            <span class="text text-center">2. Get policy</span>
+          </div>
+        </div>
+        <div class="form-group col-md-4 offset-md-3 form-group">
+          <!--<label class="control-label font-italic small" style="margin-top: 2rem;">Client ID#: 1231231232</label>-->
+        </div>
+      </div>
+      <!-- Extended material form grid -->
+      <form class="col-md-12" [formGroup]="validatingMortage" (ngSubmit)="issuePolicy()" (change)="showPersonDiv()">
+        <!-- Grid row -->
+        <div class="form-row">
+
+          <!-- Grid column -->
+
+          <div class="col-md-6 offset-md-3">
+            <h3 class="font-weight-bolder h3-responsive text-center" style="margin-bottom: 32px;">1. Enter your phone
+              number</h3>
+            <!-- Material input -->
+            <div class="md-form form-group">
+              <input mdbInput type="text" class="form-control" placeholder="E.g. 123-123-1234"
+                     formControlName="phoneNumberInput" [(ngModel)]="phoneNumber" mdbvalidate>
+
+              <mdb-error *ngIf="phoneNumberInput.invalid && (phoneNumberInput.dirty || phoneNumberInput.touched)">Phone
+                number is invalid
+              </mdb-error>
+              <mdb-success *ngIf="phoneNumberInput.valid && (phoneNumberInput.dirty || phoneNumberInput.touched)">Phone
+                number is valid
+              </mdb-success>
+            </div>
+          </div>
+          <!-- Grid column -->
+          <!-- Grid column -->
+
+          <div class="col-md-6 offset-md-3">
+            <h3 class="font-weight-bolder h3-responsive text-center"
+                style="margin-bottom: 32px;min-height: 40px !important;">2. Select your start
+              date</h3>
+            <!-- Material input -->
+            <div class="md-form form-group">
+              <input mdbInput type="date" class="form-control" placeholder="start date (mm/dd/yy)"
+                     formControlName="startDateInput" [(ngModel)]="startDate" [min]="setValdiStartDate()['minDate']"
+                     [max]="setValdiStartDate()['maxDate']" mdbvalidate>
+
+              <mdb-error *ngIf="startDateInput.invalid && (startDateInput.dirty || startDateInput.touched)">Start date
+                name is invalid
+              </mdb-error>
+              <mdb-success *ngIf="startDateInput.valid && (startDateInput.dirty || startDateInput.touched)">Start date
+                is valid
+              </mdb-success>
+            </div>
+          </div>
+          <!-- Grid column -->
+          <!-- Grid column -->
+          <div class="col-md-6 offset-md-3">
+            <!-- Material input -->
+            <h3 class="font-weight-bolder h3-responsive text-center" style="margin-bottom: 32px;">3. Do you have a
+              mortgage?</h3>
+            <div class="form-row" style="margin-top: 2rem; margin-bottom: 1rem !important;">
+              <div class="mx-auto">
+
+                <!-- Default inline 1-->
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" [value]="true" [(ngModel)]="haveMortgage"
+                         id="defaultInline1" name="haveMortgage" (ngModelChange)="validateMortgageForm()"
+                         mdbInput [ngModelOptions]="{standalone: true}">
+                  <label class="custom-control-label" for="defaultInline1">Yes</label>
+                </div>
+
+                <!-- Default inline 2-->
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" [value]="false" [(ngModel)]="haveMortgage"
+                         id="defaultInline2" name="haveMortgage" (ngModelChange)="validateMortgageForm()"
+                         mdbInput [ngModelOptions]="{standalone: true}">
+                  <label class="custom-control-label" for="defaultInline2">No</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+        <div *ngIf="haveMortgage" class="animated fadeIn">
+          <!-- Grid row -->
+          <div class="form-row">
+            <!-- Grid column -->
+            <div class="col-md-6 offset-md-3">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput type="text" class="form-control" placeholder="Mortgage name"
+                       formControlName="mortgageNameInput" mdbvalidate [(ngModel)]="mortgageName">
+                <mdb-error *ngIf="mortgageNameInput.invalid && (mortgageNameInput.dirty || mortgageNameInput.touched)">
+                  This Maximum 15 characters is required
+                </mdb-error>
+                <mdb-success *ngIf="mortgageNameInput.valid && (mortgageNameInput.dirty || mortgageNameInput.touched)">
+                  Mortgage name is valid
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-6 offset-md-3">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput mdbvalidate type="text" class="form-control" id="inputAddress2MD"
+                       placeholder="Mortgagee name continued" formControlName="continueNameInput" mdbvalidate
+                       [(ngModel)]="continueName">
+
+                <mdb-error *ngIf="continueNameInput.invalid && (continueNameInput.dirty || continueNameInput.touched)">
+                  This Maximum 15 characters is required
+                </mdb-error>
+                <mdb-success *ngIf="continueNameInput.valid && (continueNameInput.dirty || continueNameInput.touched)">
+                  This field is valid
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+
+          <!-- Grid row -->
+          <div class="form-row">
+            <!-- Grid column -->
+            <div class="col-md-6 offset-md-3">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput type="text" class="form-control" id="inputStreetMD" placeholder="Street address"
+                       formControlName="streetInput" mdbvalidate [(ngModel)]="street">
+
+                <mdb-error *ngIf="streetInput.invalid && (streetInput.dirty || streetInput.touched)">This field is
+                  required
+                </mdb-error>
+                <mdb-success *ngIf="streetInput.valid && (streetInput.dirty || streetInput.touched)">This field is valid
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 offset-md-3">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput type="text" class="form-control" id="inputCityMD" placeholder="City"
+                       formControlName="cityInput" mdbvalidate [(ngModel)]="city">
+                <mdb-error *ngIf="cityInput.invalid && (cityInput.dirty || cityInput.touched)">City is required
+                </mdb-error>
+                <mdb-success *ngIf="cityInput.valid && (cityInput.dirty || cityInput.touched)">City is valid
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <!-- Material input -->
+              <div class="md-form form-group">
+
+                <select name="state" mdbInput class="form-control" id="inputStateMD" placeholder="State"
+                        formControlName="stateInput" mdbvalidate [(ngModel)]="state" style="height: 41px !important;">
+                  <option *ngFor="let state of stateAry" [ngValue]="state"
+                          [selected]="state['value'] === 'PA'">{{state}}</option>
+                </select>
+                <mdb-error *ngIf="stateInput.invalid && (stateInput.dirty || stateInput.touched)">State is required
+                </mdb-error>
+                <mdb-success *ngIf="stateInput.valid && (stateInput.dirty || stateInput.touched)">State is valid
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput type="text" class="form-control" id="inputZipMD" placeholder="Zip"
+                       formControlName="zipInput" mdbvalidate [(ngModel)]="zip">
+                <mdb-error *ngIf="zipInput.invalid && (zipInput.dirty || zipInput.touched)">Zip is required
+                </mdb-error>
+                <mdb-success *ngIf="zipInput.valid && (zipInput.dirty || zipInput.touched)">Zip is valid
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+
+          <!-- Grid row -->
+          <div class="form-row">
+            <!-- Grid column -->
+            <div class="col-md-6 offset-md-3">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput type="text" class="form-control" id="inputCityMD1" placeholder="Loan #"
+                       formControlName="loanInput" mdbvalidate [(ngModel)]="loan">
+
+                <mdb-error *ngIf="loanInput.invalid && (loanInput.dirty || loanInput.touched)">Loan is invalid
+                </mdb-error>
+                <mdb-success *ngIf="loanInput.valid && (loanInput.dirty || loanInput.touched)">Loan is valid
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+            <div class="col-md-8 offset-md-2">
+              <h3 class="text text-danger text-center font-weight-bolder h3-responsive">
+                <strong>Want us to email your lender information?</strong>
+              </h3>
+            </div>
+
+            <div class="col-md-6 offset-md-3">
+              <h5 class="text text-center font-weight-bolder lenderText">
+                Enter your Lender's email address and we'll send it directly to them!
+              </h5>
+            </div>
+            <!-- Grid column -->
+            <div class="col-md-6 offset-md-3">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput type="text" class="form-control" [ngModelOptions]="{standalone: true}" mdbvalidate
+                       [(ngModel)]="lenderEmail" placeholder="Lender's email">
+                <!--<mdb-error *ngIf="lenderEmailInput.invalid && (lenderEmailInput.dirty || lenderEmailInput.touched)">-->
+                <!--Lender's email is invalid-->
+                <!--</mdb-error>-->
+                <!--<mdb-success *ngIf="lenderEmailInput.valid && (lenderEmailInput.dirty || lenderEmailInput.touched)">-->
+                <!--Lender's email is valid-->
+                <!--</mdb-success>-->
+              </div>
+            </div>
+
+            <!--<div class="col-md-6 offset-md-3">-->
+            <!--&lt;!&ndash; Material input &ndash;&gt;-->
+            <!--<div class="md-form form-group">-->
+            <!--<p class="font-italic font-weight-bolder text-center">After completion, all required policy documents-->
+            <!--will be sent to-->
+            <!--your mortgage company!</p>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!-- Grid column -->
+          </div>
+        </div>
+        <div class="form-row" id="addPersonDiv">
+          <div class="col-md-6 offset-md-3">
+            <!-- Material input -->
+            <h3 class="font-weight-bolder h3-responsive">4. Do you need to add another person?</h3>
+            <div class="form-row" style="margin-top: 2rem;">
+              <!-- Default inline 1-->
+              <div class="mx-auto" style="margin-bottom: 2rem;">
+
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="defaultInline3" name="addAnotherPerson"
+                         mdbInput mdbValidate [value]="true" [(ngModel)]="haveUsers"
+                         [ngModelOptions]="{standalone: true}">
+                  <label class="custom-control-label" for="defaultInline3">Yes</label>
+                </div>
+
+                <!-- Default inline 2-->
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" checked id="defaultInline4" name="addAnotherPerson"
+                         mdbInput [value]="false" [(ngModel)]="haveUsers" [ngModelOptions]="{standalone: true}">
+                  <label class="custom-control-label" for="defaultInline4">No</label>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="haveUsers">
+              <div class="form-group row" *ngFor="let item of personData; index as i">
+                <!-- Material input -->
+                <label class="col-sm-2 col-form-label">
+                  <mdb-icon fas icon="user-circle" class="mr-1 fa-lg"></mdb-icon>
+                </label>
+                <div class="col-sm-5">
+                  <div class="md-form mt-0">
+                    <input type="text" class="form-control" placeholder="First Name"
+                           [(ngModel)]="personData[i]['first_name']" [ngModelOptions]="{standalone: true}">
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="md-form mt-0">
+                    <input type="text" class="form-control" placeholder="Last Name"
+                           [(ngModel)]="personData[i]['last_name']" [ngModelOptions]="{standalone: true}">
+                  </div>
+                </div>
+                <label class="col-sm-2 col-form-label">
+                  <mdb-icon fas icon="birthday-cake" class="mr-1 fa-lg"></mdb-icon>
+                </label>
+                <div class="col-sm-5">
+                  <div class="md-form mt-0" onclick="this.children.date.focus()">
+                    <input type="date" class="form-control" placeholder="Birthday" style="height: 25px !important;"
+                           id="date" [(ngModel)]="personData[i]['birthday']" [ngModelOptions]="{standalone: true}">
+                  </div>
+                </div>
+                <div class="form-row col-sm-5">
+                  <div class="md-form mt-0 mx-auto">
+                    <button mdbBtn class="btn btn-sm" type="button" (click)="addPerson(i)">
+                      <mdb-icon fas icon="plus-circle" class="fa-lg text-dark"></mdb-icon>
+                    </button>
+                    <button mdbBtn class="btn btn-sm" type="button" (click)="deletePerson(i)" *ngIf="i>0">
+                      <mdb-icon fas icon="minus-circle" class="fa-lg  text-dark"></mdb-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+
+              <p class="text text-danger text-center font-weight-bolder"><strong>Need help? Call a live licensed agent
+                to finish up the deal</strong></p>
+              <p class="text text-info text-center font-weight-bolder"><strong>1-800-903-3232</strong></p>
+            </div>
+          </div>
+          <!-- Grid row -->
+        </div>
+        <div class="form-row">
+          <button mdbBtn type="submit" class="btn btn-orange btn-md mx-auto">
+            Next&nbsp;
+            <mdb-icon fas icon="angle-right"></mdb-icon>
+          </button>
+        </div>
+      </form>
+      <!-- Extended material form grid -->
+    </div>
+  </div>
+</div>

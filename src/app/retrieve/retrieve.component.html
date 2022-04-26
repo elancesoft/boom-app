@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="p-5 retrievePage">
+    <div class="row">
+      <div class="col-md-12">
+        <img src="../../assets/images/logo.png"
+             class="col-md-4 col-lg-2 offset-lg-5 img-responsive offset-md-4 col-6 offset-3">
+        <h2 class="text text-center font-weight-bolder h2-responsive">Retrieve your quote with your quote ID</h2>
+      </div>
+    </div>
+    <div class="row" *ngIf="!shwoDetailsBoard">
+      <form class="col-md-6 offset-md-3" [formGroup]="QuoteForm" (ngSubmit)="getQuoteData()">
+      <div class="form-group">
+        <input type="text" mdbInput mdbValidate class="form-control" placeholder="quote ID #"
+               formControlName="quoteInput" [(ngModel)]="quote"/>
+
+        <mdb-error *ngIf="quoteInput.invalid && (quoteInput.dirty || quoteInput.touched)">This field is invalid
+        </mdb-error>
+        <mdb-success *ngIf="quoteInput.valid && (quoteInput.dirty || quoteInput.touched)">This field is valid
+        </mdb-success>
+      </div>
+      <div class="form-row">
+        <button mdbBtn class="btn btn-blue btn-md mx-auto"><mdb-icon fas icon="check"></mdb-icon>&nbsp;&nbsp;Retrieve</button>
+      </div>
+      </form>
+    </div>
+    <div class="row" style="margin-top: 30px;" *ngIf="shwoDetailsBoard">
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-4">
+              <h3 class="text text-dark font-weight-bolder h3-responsive text-center">First Name:</h3>
+            </div>
+            <div class="col-md-8">
+              <h3 class="text text-info font-weight-bolder h3-responsive text-center">{{data.first_name}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-4">
+              <h3 class="text text-dark font-weight-bolder h3-responsive text-center">Last Name:</h3>
+            </div>
+            <div class="col-md-8">
+              <h3 class="text text-info font-weight-bolder h3-responsive text-center">{{data.last_name}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-4">
+              <h3 class="text text-dark font-weight-bolder h3-responsive text-center">Birthday:</h3>
+            </div>
+            <div class="col-md-8">
+              <h3 class="text text-info font-weight-bolder h3-responsive text-center">{{data.birthday}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-4">
+              <h3 class="text text-dark font-weight-bolder h3-responsive text-center">Address</h3>
+            </div>
+            <div class="col-md-8">
+              <h3 class="text text-info font-weight-bolder h3-responsive text-center">{{data.address}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-4">
+              <h3 class="text text-dark font-weight-bolder h3-responsive text-center">Quote Id:</h3>
+            </div>
+            <div class="col-md-8">
+              <h3 class="text text-info font-weight-bolder h3-responsive text-center">{{data.quote_id}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-4">
+              <h3 class="text text-dark font-weight-bolder h3-responsive text-center">Policy#</h3>
+            </div>
+            <div class="col-md-8">
+              <h3 class="text text-info font-weight-bolder h3-responsive text-center">{{data.policy_number}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

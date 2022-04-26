@@ -1,0 +1,53 @@
+<div class="container history">
+  <div class="row">
+    <div class="col">
+      <div class="header-container">
+        <h4>History</h4>
+        <div class="btn-wrapper">
+          <div class="button" (click)="ytdClicked()" [ngClass]="is_ytd == true ? 'active' : ''">YTD</div>
+          <div class="button" (click)="Clicked2019()" [ngClass]="is_2019 == true ? 'active' : ''">2019</div>
+          <div class="button" (click)="Clicked2018()" [ngClass]="is_2018 == true ? 'active' : ''">2018</div>
+        </div>
+      </div>
+
+      <h4>{{filtered_bulks?.length}} Properties Sent</h4>
+
+      <table id="tableSort" mdbTable>
+        <thead>
+          <tr>
+            <!--th *ngFor="let head of headElements; let i = index" aria-controls="tableSort" scope="col" [mdbTableSort]="bulks" [sortBy]="headElements[i]">{{head | titlecase}}
+              <mdb-icon fas icon="sort"></mdb-icon>
+              headElements = ['address', 'cc', 'createdAt', 'id', 'phone', 'sendto', 'updatedAt', 'user_email'];
+            </th-->
+            <th [mdbTableSort]="filtered_bulks" aria-controls="tableSort" scope="col" sortBy="createdAt">Date Sent:
+              <mdb-icon fas icon="sort"></mdb-icon>
+            </th>
+            <th [mdbTableSort]="filtered_bulks" aria-controls="tableSort" scope="col" sortBy="address">Address
+              <mdb-icon fas icon="sort"></mdb-icon>
+            </th>
+            <th [mdbTableSort]="filtered_bulks" aria-controls="tableSort" scope="col" sortBy="sendto">Sender
+              <mdb-icon fas icon="sort"></mdb-icon>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bulk of filtered_bulks; let i = index">
+            <!--td scope="row">{{user.createdAt | date: 'MM/dd/yyyy'}}</td-->
+            <td scope="row">{{bulk.createdAt | date: 'MMM d, y, h:mm:ss a'}}</td>
+            <td>
+              {{ bulk.address }}
+            </td>
+            <td>
+              {{ bulk.sendto }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="no_data" class="no-data text-center">
+        no data
+      </div>
+
+    </div>
+  </div>
+</div>

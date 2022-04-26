@@ -1,0 +1,61 @@
+<div class="items " [ngClass]="data.fadeIn?'fade-in':''">
+  <div class="card phase2PriceCard">
+    <div class="card-body">
+      <div class="logoAndText">
+        <div class="brand_logo">
+          <img [src]="data.slideImg" class="price-widget-img img-fluid" />
+        </div>
+        <div class="brandText">
+          <small><img src="./../../../assets/business-and-trade-2.svg" alt="" /> Homeowners Insurance </small>
+          <small><img src="./../../../assets/business-and-trade-2.svg" alt="" /> A+ “Superior” AM Best</small>
+        </div>
+        <ul class="priceDetailText" *ngIf="!data.static">
+          <li *ngIf="data.result.dwelling!='NaN'">
+            <img src="./../../../assets/protection.svg" alt="" />
+            {{data.result.dwelling.toLocaleString("en-US")}}  Dwelling
+          </li>
+          <li *ngIf="data.result.liability!='NaN'">
+            <img src="./../../../assets/protection.svg" alt="" />
+            {{data.result.liability.toLocaleString("en-US")}} Liability
+          </li>
+          <li *ngIf="data.result.deductible!='NaN'">
+            <img src="./../../../assets/protection.svg" alt="" />
+            {{data.result.deductible.toLocaleString("en-US")}} Deductible
+          </li>
+          <li *ngIf="data.result.personalProperty!='NaN'">
+            <img src="./../../../assets/protection.svg" alt="" />
+            {{data.result.personalProperty.toLocaleString("en-US")}} Personal Property
+          </li>
+        </ul>
+      </div>
+
+      <div class="priceAndButton" *ngIf="!data.static">
+        <h1>
+          {{ data.result.price | currency: "USD":"symbol":"1.0-0" }}
+        </h1>
+        <p class="">{{ data.result.price / 12 | currency: "USD":"symbol":"1.0-0" }} /mo</p>
+        <button class="btn btn-outline-dark" (click)="clickSelectPlan(data)" *ngIf="!hideSelectPlan">Go</button>
+      </div>
+      <div class="requestBtn" *ngIf="data.static">
+        <button class="btn">Click to request</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">...</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

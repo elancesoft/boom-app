@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-12">
+    <div class="row info-board">
+      <div class="col-md-12">
+        <table width="100%" class="">
+          <tr>
+            <td class="text-left">square feet:</td>
+            <td class="text-left">{{ zillowInfo["square"] }}</td>
+          </tr>
+          <tr>
+            <td class="text-left">year built:</td>
+            <td class="text-left">{{ zillowInfo["built_year"] }}</td>
+          </tr>
+          <tr>
+            <td class="text-left">estimate:</td>
+            <td class="text-left">{{ "$" + zillowInfo["estimate"] }}</td>
+          </tr>
+          <tr *ngIf="floodInfo['zone']">
+            <td class="text-left">flood zone:</td>
+            <td class="text-left">{{ floodInfo["zone"] }}</td>
+          </tr>
+          <tr *ngIf="floodInfo['premium']">
+            <td class="text-left">flood estimate:</td>
+            <td class="text-left">{{ "$" + floodInfo["premium"] }}</td>
+          </tr>
+          <!--tr>
+            <td class="text-left">common claims:</td>
+            <td class="text-right"></td>
+          </tr-->
+        </table>
+        <!--div class="row">
+          <div class="col-2 offset-1">
+            <img src="../../../assets/images/demo-price/fire.png" width="30">
+          </div>
+          <div class="col-2">
+            <img src="../../../assets/images/demo-price/temperature.png" width="30">
+          </div>
+          <div class="col-2">
+            <img src="../../../assets/images/demo-price/cloud.png" width="30">
+          </div>
+        </div-->
+      </div>
+    </div>
+  </div>
+</div>

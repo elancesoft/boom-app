@@ -1,0 +1,263 @@
+<div class="insure_policy prepering_policy_main_div">
+  <!-- new header info -->
+  <app-header   [currentUrl]="'policy-chat'" ></app-header>
+  <!-- new header info -->
+  <div class="container-fluid insure_chat">
+    <!-- <h1 class="pl-5">Preparing your policy...</h1> -->
+    <div class="row">
+      <div class="col-md-3 col-lg-2 agentContainer">
+        <div class="agent_data">
+          <h6 class="font-18">Want to buy without an agent's help ?</h6>
+          <p>See your options below:</p>
+          <div class="form-group d-flex hippo_agent">
+            <!-- <img src="{{mobInsuranceImgs[InsuranceData.type]}}" height="100" width="100"> &nbsp;&nbsp;
+              <strong>${{ InsuranceData.price }}</strong> -->
+            <img src="../../../assets/images/companies/hippo.png" width="100" /> &nbsp;&nbsp;
+            <strong>${{ hippoprice }}</strong>
+          </div>
+          <div class="form-group text-center">
+            <a href="{{ hippolink }}" target="_blank" class="hippo_link">
+              <div class="d-flex buy-now mx-auto">
+                <img src="../../../assets/images/SVG/shopping-cart.svg" />
+                <span>buy</span>
+              </div>
+            </a>
+            <!-- <button class="btn btn-default">Buy</button> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-lg-12 inputContainer prepering_policy_cont">
+        <div class="row inputContainer-rev-mob px-0 px-md-5">
+          <div class="col-md-10 col-lg-6 col-xl-5 col-xxl-4 app_price_widget">
+            <!-- <app-price-widget [className]="" [price]="InsuranceData.price" [imgURL]="insuranceImgs[InsuranceData.type]"
+              [name]="InsuranceData.name" [bgColor]="bgColor[InsuranceData.type]" [dwelling]="InsuranceData.dwelling"
+              [currpage]='olarkchat' [pricesType]="InsuranceData.pricesType"></app-price-widget>
+             -->
+            <app-price-widget
+              [data]="selectedPlan"
+              [hideSelectPlan]="true"
+            >
+            </app-price-widget>
+
+            <!-- <div class="d-flex buy-now mx-auto pl-3 pr-4 py-2 mb-4" (click)="openModal()"><img src="../../../assets/images/SVG/shopping-cart.svg" /> <span class="ml-3 h4 mb-0">buy</span></div>
+
+            <div class="form-group policy_detail">
+              <p>{{ mortgageData.startdate }} Start Date</p>
+              <p>{{ mortgageData.lender_email == "" ? "No Mortgage" : mortgageData.lender_email }}</p>
+            </div> -->
+            <div class="d-flex flex-column orderChangeDIv">
+              <h3 class="text-danger mt-5 pl-3">
+                <strong><img src="/assets/images/icons/finish-flag.png" class="customIcon pr-1" /> Final Steps:</strong>
+              </h3>
+
+              <div class="fc-insurace-btns">
+                <a href="https://staging.myhippo.io/your-home" target="_blank" class="fc-buy-online fc-buy-btns">
+                  <div class="fc-express">
+                    <p>
+                      Express <span><img src="../../../assets/images/fc/img/expressicon.png" /></span>
+                    </p>
+
+                    <img src="./../../assets/images/fc/img/buyonlinicon.png" class="fc-buyonlinicon" />
+                  </div>
+                  <div class="fc-online-price">
+                    <h4 class="fc-price-buy">$1.1443</h4>
+                    <p class="fc-btn-online">Buy Online</p>
+                  </div>
+                </a>
+                <a href="#" class="fc-quick-bundle fc-buy-btns" data-toggle="modal" data-target="#carInfoModal">
+                  <div class="fc-express">
+                    <p>
+                      <span><img src="./../../assets/images/fc/img/caricon.png" /></span> Quick Bundle<span class="ml-2"></span><img src="./../../assets/images/fc/img/arrowright.png" /><span></span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              <h6 class="h4-responsive mt-3 pl-3 pb-5">Give authority to our agent to finalize!</h6>
+            </div>
+
+            <div class="express-and-quickbundle d-none">
+              <div class="hippo">
+                <div class="hippo-img">
+                  <p>Express</p>
+                  <img src="../../../assets/images/companies/hippo.png" width="100" />
+                </div>
+                <div class="price-buy-online">
+                  <strong>${{ hippoprice }}</strong>
+                  <a class="buy-online" href="https://staging.myhippo.io/Outdoorsy/3e305278-e78b-041e-8f65-b5cccd46fc30" target="_blank">Buy Online </a>
+                </div>
+              </div>
+              <div class="quickbundle">
+                <div class="quick-bundle-container">
+                  <img src="../../../assets/images/car-outline.png" alt="" />
+                  <span> <strong>Quick Bundle</strong> </span>
+                  <img src="../../../assets/images/arrow-outline.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-6 col-xl-7 col-xxl-8">
+            <div class="fc-insurance">
+              <h2 class="font-weight-bold">Time to finalize.</h2>
+              <p>A life advisor will now process your policy. Feel free to ask any questions here! Just a few cilcks remaining untill you have your proof of coverage.</p>
+              <div class="fc-finalize">
+                <div class="fc-finalize-wrap">
+                  <div class="fc-finalize-sync">
+                    <h3>1. Policy Sync</h3>
+                    <div class="fc-finalize-img">
+                      <img src="./../../assets/images/fc/img/policy-sync.png" />
+                    </div>
+                    <div class="fc-tick-img">
+                      <div class="tick__icon"></div>
+                      <img id="tick_icon" src="./../../assets/images/fc/img/tick.png" />
+                      <img id="tick_icon_success" style="display: none" src="./../../assets/images/checkmark.svg" />
+                    </div>
+                  </div>
+                  <div class="fc-finalize-sync mb-5">
+                    <h3 class="font-weight-bolder">2. Live Agent Review</h3>
+                    <div class="fc-finalize-img">
+                      <img src="./../../assets/images/fc/img/agent.png" />
+                    </div>
+                    <div class="fc-refresh-icon">
+                      <img src="./../../assets/images/fc/img/refreshicon.png" />
+                    </div>
+                  </div>
+                  <div class="fc-finalize-sync">
+                    <h3>3. Policy Complete</h3>
+                    <div class="fc-finalize-img">
+                      <img src="./../../assets/images/fc/img/policy-complete.png" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <h3> <strong>Time to finalize.</strong> </h3>
+            <p class="finalize-desc">
+              A life advisor will now process your policy. Feel free to ask any questions here! Just a few clicks remaining until you have your proof coverage.
+            </p> -->
+            <!-- <h1 class="pl-5" (click)="back()">You've selected {{InsuranceData.name}}! <img
+                src="/assets/images/icons/confetti.png" class="customIcon pb-2 pl-1" /> </h1>
+            -->
+
+            <h1 class="pl-5">You've selected {{ selectedPlan.name }}! <img src="/assets/images/icons/confetti.png" class="customIcon pb-2 pl-1" /></h1>
+
+            <div class="chat_box chat-container" style="display: none">
+              <div class="form-row loader">
+                <div class="sbl-circ-path mx-auto"></div>
+              </div>
+              <div id="olark-box-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row">
+    <div class="col-md-6 offset-md-3 col-12 chatWidget animated fadeIn"
+          *ngIf="showChat && !commonService.isMobileMode()">
+        <div class="form-row" *ngIf="imgURL">
+          <img [src]="imgURL" class="mx-auto price-image"/>
+        </div>
+        <div class="chat-container" style="margin-bottom: 50px">
+          <div class="form-row" *ngIf="chatPricing">
+            <h2 class="text-black pt-3 font-weight-bold mx-auto">{{chatPricing|currency:'USD':'symbol':'1.0-0'}}
+              <small> / year</small>
+            </h2>
+          </div>
+          <div class="form-row loader" style="margin-top: 100px;">
+            <div class="sbl-circ-path mx-auto"></div>
+          </div>
+          <div id="olark-box-container"></div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="text-center p-3" id="price_div">
+        <div class="price_break range_modal" style="width: 637px">
+          <div class="">
+            <button class="btn w-100 mx-0 d-flex justify-content-center m-auto" (click)="refresh()">RESTART <i class="fa fa-refresh pl-4" aria-hidden="true"></i></button>
+          </div>
+          <h5 class="d-flex mt-4 pl-2 align-items-center">
+            <img src="/assets/images/icons/year-sq.png" class="customIcon" /><span class="font-weight-bold">{{ builtyear }} year built</span>
+          </h5>
+          <h5 class="d-flex pl-2 align-items-center">
+            <img src="/assets/images/icons/year-sq.png" class="customIcon" /><span class="font-weight-bold">{{ square.toLocaleString() }} sq ft</span>
+          </h5>
+          <h5 class="d-flex pl-2 align-items-center">
+            <img src="/assets/images/icons/year-sq.png" class="customIcon" /><span class="font-weight-bold">${{ estimate }}</span>
+          </h5>
+          <h5 class="text-left pl-2 pt-3 font-weight-bold">Flood zone: {{ neptuneFlood }}</h5>
+
+          <p class="text-left pl-2 pt-4 pb-3" style="font-weight: bold"><strong>Value Spectrum:</strong></p>
+
+          <ng5-slider [(value)]="spectrum_val" [options]="modal_range_picker" class="spectrum_modal_range"></ng5-slider>
+
+          <div class="pt-5">
+            <button class="btn w-100 mx-0 d-flex justify-content-center m-auto" data-dismiss="modal" (click)="popupStatus = 0">Close <span class="pl-4">X</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="carInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title m-auto font-weight-bold" id="exampleModalLongTitle">What cars are in your house hold?</h5>
+        <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="carForm">
+          <ng-container formArrayName="cars">
+            <ng-container *ngFor="let carGroup of cars.controls; let i = index">
+              <div class="row mt-2" [formGroup]="carGroup">
+                <div class="col-md-4 d-flex">
+                  <select class="form-control" formControlName="year" mdbSelect mdbValidate>
+                    <option value="">Year</option>
+                    <option *ngFor="let year of yearOptions; let index = index" value="{{ year }}">{{ year }}</option>
+                  </select>
+                </div>
+                <div class="col-md-4 d-flex">
+                  <select class="form-control" formControlName="make" mdbInput mdbValidate>
+                    <option *ngFor="let make of makeOptions; let index = index" value="{{ make.value }}">{{ make.title }}</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <div class="d-flex">
+                    <input class="form-control" formControlName="carModel" mdbInput mdbValidate placeholder="Model" style="width: -webkit-fill-available" />
+                    <button class="btn btn-sm btn-danger r-2" style="font-size: 20px" (click)="deleteCar(i)">x</button>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+          <button class="btn btn-warning mt-2 bg-dark text-white border-0 font-weight-bold" (click)="addCar()"><span aria-hidden="true">Add +</span></button>
+
+          <div class="row m-0 mt-3">
+            <button type="button" class="btn btn-danger col-12 font-weight-bold" data-dismiss="modal" (click)="saveCarInfo(carForm)">Continue</button>
+          </div>
+
+          <!-- <div class="row justify-content-center">
+            <button class="btn btn-light continue-next" (click)="sendMail(carForm)"
+              [disabled]="carForm.invalid" [ngClass]="carForm.invalid ? 'invaliddata':'validdata'">Get
+              Quotes</button>
+          </div> -->
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<app-header [currentUrl]="'course-relation'"></app-header>
+<div class="container-fluid">
+  <div class="row ">
+    <div class="map_area" class="col-md-2" >
+      <div style="padding-left: 10px;margin-top: 44px;">
+        <div class="justify-content-center" >
+          <mdb-progress value="{{ 100 }}" style="height: 15px" min="0" max="100" type="info" aria-valuenow="progress"
+            aria-valuemin="0" aria-valuemax="100"></mdb-progress>
+        </div>
+        <div class="map-container pr-0 pl-0">
+          <agm-map [zoom]="12" [latitude]="lat" [longitude]="lng" [disableDefaultUI]="true" [scaleControl]="false"
+            [draggable]="false">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+          <div class="overlay"></div>
+        </div>
+        <div class="text-left">
+          <!-- <p class="  mb-1" [ngClass]="HomeType == 'Primary Home' ? '' : 'd-none'">Primary
+            Residence</p>
+          <p class="  mb-1" [ngClass]="HomeType == 'Second Home' ? '' : 'd-none'">Second
+            Residence</p>
+          <p class="  mb-1" [ngClass]="HomeType == 'Rental Property' ? '' : 'd-none'">Rental
+            Residence</p> -->
+          <p class=" mb-1" style="font-size: 12px;font-family: Roboto"><span style="font-weight: 700 !important">Built year:</span> {{ built_year }} <br /><span
+            style="font-weight: 700 !important">Square feet:</span> {{ square }}</p>
+          <p class=" mb-1" style="font-size: 12px;font-family: Roboto"><span style="font-weight: 700 !important">Foundation:</span> {{ foundation_type }}</p>
+          <p class=" mb-1" style="font-size: 12px;font-family: Roboto"><span style="font-weight: 700 !important">Roof shape:</span> {{ roof_status }}</p>
+          <!-- <p class=" mb-1" ><span class="">Roof type:</span> {{ roof_type }}</p> -->
+          <p class=" mb-1" style="font-size: 12px;font-family: Roboto"><span style="font-weight: 700 !important">Roof year:</span> {{ roof_year }}</p>
+          <p class=" mb-1" style="font-size: 12px;font-family: Roboto"><span style="font-weight: 700 !important">Electric year:</span> {{ electric_year }}</p>
+          <p class=" mb-1" style="font-size: 12px;font-family: Roboto"><span style="font-weight: 700 !important">Plumbing year:</span> {{ plumbing_year }}</p>
+          <p class=" mb-1" style="font-size: 12px;font-family: Roboto"><span style="font-weight: 700 !important">AC year:</span> {{ ac_year }}</p>
+          <!-- ExteriorType -->
+          <p class="" style="font-size: 12px;font-family: Roboto"><span style="font-weight: 700 !important">Exterior:</span> {{ exterior }}</p>
+        </div>
+      </div>
+      
+    </div>
+  
+  
+  
+  
+    <div class="twoInputForm col-md-10">
+      <div class="col-12 px-4 text-center">
+        <p>Please enter your contact info.This is the last page before quotes!</p>
+      </div>
+      <form class="add-relations-form" [formGroup]="userForm">
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-10">
+            <div class="form-group">
+              <img src="./../../../../assets/smartphone.svg" alt="" />
+  
+              <input class="form-control mt-1" type="number" mdbInput min="1" formControlName="phone" mdbInput mdbValidate
+                placeholder="Phone" />
+            </div>
+          </div>
+          <div class="col-md-6 col-10">
+            <div class="form-group">
+              <img src="./../../../../assets/mail.svg" alt="" />
+  
+              <input class="form-control mt-1" type="email" formControlName="email" mdbInput mdbValidate
+                placeholder="Email" />
+            </div>
+          </div>
+          <button type="button" class="btn btn-light continue-next" (click)="submitAndSendMail(userForm)"
+            [disabled]="userForm.invalid" [ngClass]="userForm.invalid ? 'invaliddata' : 'validdata'">Get Quotes</button>
+        </div>
+      </form>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+</div>

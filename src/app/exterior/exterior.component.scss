@@ -1,0 +1,119 @@
+@import '../../assets/styles/variables';
+.container {
+  padding-bottom: 50px;
+
+  .exterior_row {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  .exterior_title{
+    margin-top: 35px;
+    margin-bottom: 60px;
+  }
+}
+
+label:after {
+  content: '';
+  width: 0px;
+  height: 2px;
+  display: block;
+  background-color: $primary-color;
+  transition: 300ms;
+  color: $primary-color;
+}
+
+.exterior_row:hover {
+  label:after {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  label {
+    font-weight: bold;
+  }
+  .modal mdb-badge {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 1400px) and (min-width: 990px) {
+  .exteriorDiv h5 {
+    font-size: 12px;
+    margin-top: 5px !important;
+  }
+  .exteriorDiv img {
+    max-width: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .modal-content h5 {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+
+  .container {
+    margin: 0 auto;
+
+    .otherBtnDiv {
+      text-align: center;
+    }
+
+    .otherBtnDiv:last-of-type a {
+      padding-top: 5%;
+    }
+  }
+}
+
+mdb-badge {
+  padding: 10px;
+  min-width: 100px;
+  background-color: #fff !important;
+  color: #000 !important;
+  box-shadow: none !important;
+  border-radius: 10px !important;
+}
+
+.exteriorDiv mdb-badge.badge-warning{
+
+  border-color: $primary-color !important;
+}
+.exteriorDiv mdb-badge{
+  border-width: 2px !important;
+}
+.modal mdb-badge, .exteriorDiv mdb-badge {
+  width: 100% !important;
+  min-height: 50px;
+
+  img {
+    float: left;
+  }
+
+  h5 {
+    margin-top: 10px;
+  }
+}
+
+mdb-badge:hover {
+  cursor: pointer;
+}
+
+.margin10 {
+  margin-top: 10px;
+}
+
+/*comment*/
+.modal {
+  -webkit-overflow-scrolling: auto !important;
+  overflow-y: auto !important;
+}
+
+.buttonRow{
+  margin-top: 50px;
+}
+.btn-red{
+  background-color: $primary-color !important;
+}

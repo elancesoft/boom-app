@@ -1,0 +1,161 @@
+<soapenv:Envelope xmlns:atl="http://schemas.datacontract.org/2004/07/Atlas.Web.Data.Objects"
+                  xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+                  xmlns:ns="http://schemas.datacontract.org/2004/07/" xmlns:tem="http://tempuri.org/"
+                  xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <tem:upcicProcessQuote>
+      <tem:q>
+        <ns:ACHTransactionId>0</ns:ACHTransactionId>
+        <ns:AOPDeductible>1000</ns:AOPDeductible>
+        <ns:AcknowledgeBinding>false</ns:AcknowledgeBinding>
+        <ns:AdditionalInterests>
+          
+        </ns:AdditionalInterests>
+        <ns:AddressLine1>247 Cohasset Lane</ns:AddressLine1>
+        <ns:Agriculture>false</ns:Agriculture>
+        <ns:AnyAdditionalInterests>false
+        </ns:AnyAdditionalInterests>
+        <ns:AnyLosses>false</ns:AnyLosses>
+        <ns:AnyScheduledItems>true</ns:AnyScheduledItems>
+        <ns:Applicants>
+          <ns:Contact>
+            <ns:AddressLine1>247 Cohasset Lane</ns:AddressLine1>
+            <ns:BusinessEntity>false</ns:BusinessEntity>
+            <ns:BusinessName></ns:BusinessName>
+            <ns:City>West Chester</ns:City>
+            <ns:ContactTypeId>4</ns:ContactTypeId>
+            <ns:Country>US</ns:Country>
+            <ns:DateOfBirth>1988-11-11</ns:DateOfBirth>
+            <ns:Email>abc@abc.com</ns:Email>
+            <ns:FirstName>new man</ns:FirstName>
+            <ns:Id>{00000000-0000-0000-0000-000000000000}</ns:Id>
+            <ns:LastName>my man</ns:LastName>
+            <ns:PhoneNumber>3456701701</ns:PhoneNumber>
+            <ns:ReferenceNumber>0</ns:ReferenceNumber>
+            <ns:State>PA</ns:State>
+            <ns:ZipCode>19380</ns:ZipCode>
+          </ns:Contact>
+        </ns:Applicants>
+        <ns:Arson>false</ns:Arson>
+        <ns:Bankruptcy>false</ns:Bankruptcy>
+        <ns:BurglarAlarm>Local</ns:BurglarAlarm>
+        <ns:Business>false</ns:Business>
+        <ns:CarrierId>1</ns:CarrierId>
+        <ns:CentralAirConditioning>true</ns:CentralAirConditioning>
+        <ns:CheckingAccountHolderName>?</ns:CheckingAccountHolderName>
+        <ns:CheckingAccountNumber>?</ns:CheckingAccountNumber>
+        <ns:CheckingRoutingNumber>?</ns:CheckingRoutingNumber>
+        <ns:City>West Chester</ns:City>
+        <ns:ConfirmAcknowledgeBinding>false</ns:ConfirmAcknowledgeBinding>
+        <ns:ConfirmEmail>abc@abc.com</ns:ConfirmEmail>
+        <ns:CoverageA
+        xsi:nil="true"/>
+        <ns:CoverageB xsi:nil="true"/>
+        <ns:CoverageC xsi:nil="true"/>
+        
+        <ns:CoverageD xsi:nil="true"/>
+        <ns:CoverageE>300000</ns:CoverageE>
+        <ns:CoverageF>3000</ns:CoverageF>
+        <ns:CurrentPolicyExpiration>2021-10-12</ns:CurrentPolicyExpiration>
+        <ns:CurrentlyInsured>true</ns:CurrentlyInsured>
+        <ns:DateOfPurchaseOrLease>2021-10-12</ns:DateOfPurchaseOrLease>
+        <ns:DayCare>false</ns:DayCare>
+        <ns:DogTypes>
+        </ns:DogTypes>
+        <ns:Dogs>false</ns:Dogs>
+        <ns:EffectiveDate>2021-10-12</ns:EffectiveDate>
+        <ns:ElectricalUpdateYear>2021</ns:ElectricalUpdateYear>
+        <ns:Email>abc@abc.com</ns:Email>
+        <ns:Felony>false</ns:Felony>
+        <ns:FireAlarm>Local</ns:FireAlarm>
+        <ns:FirstName>new man</ns:FirstName>
+        <ns:Fuses>false</ns:Fuses>
+        <ns:Have1802>true</ns:Have1802>
+        <ns:HeatingUpdateYear>2017</ns:HeatingUpdateYear>
+        <ns:HurricaneDeductible>
+          2
+        </ns:HurricaneDeductible>
+        <ns:Id>0</ns:Id>
+        <ns:InsuranceFraud>false</ns:InsuranceFraud>
+        <ns:Judgements>false</ns:Judgements>
+        <ns:KnobTube>false</ns:KnobTube>
+        <ns:LastName>my man</ns:LastName>
+        <ns:LawsuitInsurance>false</ns:LawsuitInsurance>
+        <ns:LivingArea>2011</ns:LivingArea>
+        <ns:LivingUnits>1</ns:LivingUnits>
+        <ns:Locked>false</ns:Locked>
+        <ns:Losses>
+
+        </ns:Losses>
+        <ns:MobileOrManufactured>false</ns:MobileOrManufactured>
+        <ns:MonthsUnoccupied>
+        </ns:MonthsUnoccupied>
+        <ns:NumberOfStories>1.0</ns:NumberOfStories>
+        <ns:OccupiedBy>Owner</ns:OccupiedBy>
+        <ns:OtherCoverages>
+          <ns:OtherCoverage>
+            <ns:Fields>
+              <ns:OtherCoverageField>
+                <ns:Id>4</ns:Id>
+                <ns:Value>Personal Property Replacement Cost</ns:Value>
+              </ns:OtherCoverageField>
+            </ns:Fields>
+            <ns:Id>4</ns:Id>
+            <ns:Included>true</ns:Included>
+          </ns:OtherCoverage>
+        </ns:OtherCoverages>
+        <ns:PaymentPlan>0</ns:PaymentPlan>
+        <ns:PlumbingUpdateYear>2020</ns:PlumbingUpdateYear>
+        <ns:PolicyNumber xsi:nil="true"/>
+        <ns:PolyButylene>false</ns:PolyButylene>
+        <ns:PoolFence>false</ns:PoolFence>
+        <ns:PortableHeat>false</ns:PortableHeat>
+        <ns:Premium xsi:nil="true"/>
+        <ns:ProductFamily>Homeowners</ns:ProductFamily>
+        <ns:ProductId>1</ns:ProductId>
+        <ns:ProtectionClass>0</ns:ProtectionClass>
+        <ns:ReplacementCost xsi:nil="true"/>
+        <ns:RiskData>
+        </ns:RiskData>
+        <ns:RoofShape>Gable</ns:RoofShape>
+        <ns:RoofingMaterial>15001</ns:RoofingMaterial>
+        <ns:RoofingUpdateYear>2016</ns:RoofingUpdateYear>
+        <ns:ScheduleInspection>false</ns:ScheduleInspection>
+        <ns:ScheduledItems>
+
+        </ns:ScheduledItems>
+        <ns:Service100Amp>false</ns:Service100Amp>
+        <ns:Sprinklers>None</ns:Sprinklers>
+        <ns:StateId>59</ns:StateId>
+        <ns:StyleOfHome>Dwelling</ns:StyleOfHome>
+        <ns:SwimmingPool>false</ns:SwimmingPool>
+        <ns:Trustee>false</ns:Trustee>
+        <ns:TypeOfConstruction>Concrete</ns:TypeOfConstruction>
+        <ns:TypeOfFoundation>Crawl Space</ns:TypeOfFoundation>
+        <ns:TypeOfHeating>Electric</ns:TypeOfHeating>
+        <ns:TypeOfOccupancy>Primary</ns:TypeOfOccupancy>
+        <ns:UnitFloor>1</ns:UnitFloor>
+        <ns:WPDFactor>211111111</ns:WPDFactor>
+        <ns:WithWind>true</ns:WithWind>
+        <ns:Within1000ftOfFireHydrant>true</ns:Within1000ftOfFireHydrant>
+        <ns:YearBuilt>1993</ns:YearBuilt>
+        <ns:ZipCode>19380</ns:ZipCode>
+      </tem:q>
+      <tem:properties>
+        <arr:string>?</arr:string>
+      </tem:properties>
+      <tem:t>
+        <ns:IP>110.39.160.170</ns:IP>
+        <ns:Message></ns:Message>
+        <ns:TokenGuid>45D21848-831B-4BA2-BBE0-8BFA8D083B44</ns:TokenGuid>
+        <ns:Username>pinnacle</ns:Username>
+        <ns:Version>1.0</ns:Version>
+      </tem:t>
+    </tem:upcicProcessQuote>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+
+

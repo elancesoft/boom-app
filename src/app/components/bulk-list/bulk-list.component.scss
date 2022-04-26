@@ -1,0 +1,45 @@
+.history {
+  h4 {
+    margin-left: -20px;
+    padding-right: 50px;
+  }
+  table {
+    border-spacing: 20px;
+    border-collapse: separate;
+    margin-left: -40px;
+
+    tbody {
+      td {
+        background: #f2f2f2;
+        padding: 4px 10px;
+      }
+    }
+  }
+
+  .header-container {
+    display: flex;
+    padding-bottom: 50px;
+
+    .button {
+      background: #f2f2f2;
+      padding: 5px 31px;
+      margin-right: 3rem;
+      width: auto;
+      height: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .button.active {
+      border: 2px solid #4caf50;
+    }
+  }
+
+  .no-data {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+

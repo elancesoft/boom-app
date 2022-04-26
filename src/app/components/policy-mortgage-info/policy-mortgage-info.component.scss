@@ -1,0 +1,11 @@
+.mortgageContainer{
+  margin-top: 100px;
+  .btn-white{
+    background: white;
+    border: solid 3px #f3f3f3;
+    color: black !important;
+  }
+  .form-control:focus{
+    box-shadow: none !important;
+  }
+}
