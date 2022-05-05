@@ -48,3 +48,6 @@ dist
 templates/universal_api_process_quote_request.xml
 config/neptune_token.txt
 server/server.rar
+
+server/config.js
+config.js
